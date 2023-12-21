@@ -1,0 +1,21 @@
+/*
+ * flow_controller.c
+ *
+ *  Created on: Dec 17, 2023
+ *      Author: Juan Lopez
+ */
+
+#include "main.h"
+#include "flow_controller.h"
+
+// Static Functions Declaration
+
+
+// Public Functions
+dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel){
+	dac_handletypedef output;
+	output.dac = dac;
+	output.channel = channel;
+}
+
+// Static Functions
