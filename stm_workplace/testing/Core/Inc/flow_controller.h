@@ -14,9 +14,12 @@ typedef struct{
 	uint32_t channel;
 }dac_handletypedef;
 
-// ADC_HandleTypeDef
 
 // Public functions
 dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel);
+
+void dacSet(dac_handletypedef *dac, float volts);
+float adcGet(ADC_HandleTypeDef *hadc1);
+void printMsg(char * str, UART_HandleTypeDef *huart2);
 
 #endif /* INC_FLOW_CONTROLLER_H_ */

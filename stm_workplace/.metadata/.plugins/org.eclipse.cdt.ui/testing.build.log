@@ -1,17 +1,17 @@
-20:00:52 **** Incremental Build of configuration Debug for project testing ****
+19:41:23 **** Incremental Build of configuration Debug for project testing ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: testing.elf
  
 arm-none-eabi-size   testing.elf 
 arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
    text	   data	    bss	    dec	    hex	filename
-  18500	    124	   1852	  20476	   4ffc	testing.elf
+  32156	    484	   1860	  34500	   86c4	testing.elf
 Finished building: default.size.stdout
  
 Finished building: testing.list
  
 
-20:00:54 Build Finished. 0 errors, 0 warnings. (took 1s.333ms)
+19:41:24 Build Finished. 0 errors, 0 warnings. (took 1s.385ms)
 

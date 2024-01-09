@@ -12,3 +12,386 @@ Finished building: default.size.stdout
  
 Finished building: testing.list
  
+15:09:54 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:14: warning: passing argument 1 of 'dacSet' from incompatible pointer type [-Wincompatible-pointer-types]
+  129 |    dacSet(reg.dac, 1.4);
+      |           ~~~^~~~
+      |              |
+      |              DAC_HandleTypeDef * {aka struct __DAC_HandleTypeDef *}
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:22:32: note: expected 'dac_handletypedef *' but argument is of type 'DAC_HandleTypeDef *' {aka 'struct __DAC_HandleTypeDef *'}
+   22 | void dacSet(dac_handletypedef *dac, float volts);
+      |             ~~~~~~~~~~~~~~~~~~~^~~
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  16704	     24	   1808	  18536	   4868	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+15:10:39 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:11: warning: passing argument 1 of 'dacSet' from incompatible pointer type [-Wincompatible-pointer-types]
+  129 |    dacSet(&reg.dac, 1.4);
+      |           ^~~~~~~~
+      |           |
+      |           DAC_HandleTypeDef ** {aka struct __DAC_HandleTypeDef **}
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:22:32: note: expected 'dac_handletypedef *' but argument is of type 'DAC_HandleTypeDef **' {aka 'struct __DAC_HandleTypeDef **'}
+   22 | void dacSet(dac_handletypedef *dac, float volts);
+      |             ~~~~~~~~~~~~~~~~~~~^~~
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  16704	     24	   1808	  18536	   4868	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+15:11:00 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:11: error: incompatible type for argument 1 of 'dacSet'
+  129 |    dacSet(*reg.dac, 1.4);
+      |           ^~~~~~~~
+      |           |
+      |           DAC_HandleTypeDef {aka struct __DAC_HandleTypeDef}
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:22:32: note: expected 'dac_handletypedef *' but argument is of type 'DAC_HandleTypeDef' {aka 'struct __DAC_HandleTypeDef'}
+   22 | void dacSet(dac_handletypedef *dac, float volts);
+      |             ~~~~~~~~~~~~~~~~~~~^~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:11:11 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:14: warning: passing argument 1 of 'dacSet' from incompatible pointer type [-Wincompatible-pointer-types]
+  129 |    dacSet(reg.dac, 1.4);
+      |           ~~~^~~~
+      |              |
+      |              DAC_HandleTypeDef * {aka struct __DAC_HandleTypeDef *}
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:22:32: note: expected 'dac_handletypedef *' but argument is of type 'DAC_HandleTypeDef *' {aka 'struct __DAC_HandleTypeDef *'}
+   22 | void dacSet(dac_handletypedef *dac, float volts);
+      |             ~~~~~~~~~~~~~~~~~~~^~~
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  16704	     24	   1808	  18536	   4868	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+15:12:10 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+../Core/Src/flow_controller.c:26:6: error: conflicting types for 'dacSet'
+   26 | void dacSet(dac_handletypedef dac, float volts){
+      |      ^~~~~~
+In file included from ../Core/Src/flow_controller.c:9:
+../Core/Inc/flow_controller.h:22:6: note: previous declaration of 'dacSet' was here
+   22 | void dacSet(dac_handletypedef *dac, float volts);
+      |      ^~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:12:26 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:14: error: incompatible type for argument 1 of 'dacSet'
+  129 |    dacSet(reg.dac, 1.4);
+      |           ~~~^~~~
+      |              |
+      |              DAC_HandleTypeDef * {aka struct __DAC_HandleTypeDef *}
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:22:31: note: expected 'dac_handletypedef' but argument is of type 'DAC_HandleTypeDef *' {aka 'struct __DAC_HandleTypeDef *'}
+   22 | void dacSet(dac_handletypedef dac, float volts);
+      |             ~~~~~~~~~~~~~~~~~~^~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:13:15 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:11: error: incompatible type for argument 1 of 'dacSet'
+  129 |    dacSet(reg, 1.4);
+      |           ^~~
+      |           |
+      |           dac_handletypedef
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:22:32: note: expected 'dac_handletypedef *' but argument is of type 'dac_handletypedef'
+   22 | void dacSet(dac_handletypedef *dac, float volts);
+      |             ~~~~~~~~~~~~~~~~~~~^~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+15:13:54 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  16704	     24	   1808	  18536	   4868	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+15:14:29 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size   testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16704	     24	   1808	  18536	   4868	testing.elf
+Finished building: default.size.stdout
+ 
+16:40:21 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  20764	    120	   1856	  22740	   58d4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+16:55:25 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size   testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20764	    120	   1856	  22740	   58d4	testing.elf
+Finished building: default.size.stdout
+ 
+17:01:09 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  20764	    120	   1856	  22740	   58d4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+17:19:24 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  32116	    484	   1860	  34460	   869c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+17:20:10 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size   testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32116	    484	   1860	  34460	   869c	testing.elf
+Finished building: default.size.stdout
+ 
+17:21:59 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  32116	    484	   1860	  34460	   869c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+17:24:08 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  32084	    484	   1860	  34428	   867c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+19:29:34 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/flow_controller.c: In function 'adcGet':
+../Core/Src/flow_controller.c:33:16: warning: passing argument 1 of 'HAL_ADC_Start' from incompatible pointer type [-Wincompatible-pointer-types]
+   33 |  HAL_ADC_Start(&hadc1);
+      |                ^~~~~~
+      |                |
+      |                ADC_HandleTypeDef ** {aka struct __ADC_HandleTypeDef **}
+In file included from ../Core/Inc/stm32f3xx_hal_conf.h:219,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/flow_controller.c:8:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h:206:58: note: expected 'ADC_HandleTypeDef *' {aka 'struct __ADC_HandleTypeDef *'} but argument is of type 'ADC_HandleTypeDef **' {aka 'struct __ADC_HandleTypeDef **'}
+  206 | HAL_StatusTypeDef       HAL_ADC_Start(ADC_HandleTypeDef* hadc);
+      |                                       ~~~~~~~~~~~~~~~~~~~^~~~
+../Core/Src/flow_controller.c:34:28: warning: passing argument 1 of 'HAL_ADC_PollForConversion' from incompatible pointer type [-Wincompatible-pointer-types]
+   34 |  HAL_ADC_PollForConversion(&hadc1, 20);
+      |                            ^~~~~~
+      |                            |
+      |                            ADC_HandleTypeDef ** {aka struct __ADC_HandleTypeDef **}
+In file included from ../Core/Inc/stm32f3xx_hal_conf.h:219,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/flow_controller.c:8:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h:208:70: note: expected 'ADC_HandleTypeDef *' {aka 'struct __ADC_HandleTypeDef *'} but argument is of type 'ADC_HandleTypeDef **' {aka 'struct __ADC_HandleTypeDef **'}
+  208 | HAL_StatusTypeDef       HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc, uint32_t Timeout);
+      |                                                   ~~~~~~~~~~~~~~~~~~~^~~~
+../Core/Src/flow_controller.c:35:31: warning: passing argument 1 of 'HAL_ADC_GetValue' from incompatible pointer type [-Wincompatible-pointer-types]
+   35 |  adcBitVal = HAL_ADC_GetValue(&hadc1);
+      |                               ^~~~~~
+      |                               |
+      |                               ADC_HandleTypeDef ** {aka struct __ADC_HandleTypeDef **}
+In file included from ../Core/Inc/stm32f3xx_hal_conf.h:219,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/flow_controller.c:8:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h:220:61: note: expected 'ADC_HandleTypeDef *' {aka 'struct __ADC_HandleTypeDef *'} but argument is of type 'ADC_HandleTypeDef **' {aka 'struct __ADC_HandleTypeDef **'}
+  220 | uint32_t                HAL_ADC_GetValue(ADC_HandleTypeDef* hadc);
+      |                                          ~~~~~~~~~~~~~~~~~~~^~~~
+../Core/Src/flow_controller.c:36:20: error: 'lux' undeclared (first use in this function)
+   36 |  adcVolts = (float)lux/4095 * 3.3;
+      |                    ^~~
+../Core/Src/flow_controller.c:36:20: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/flow_controller.c: In function 'printMsg':
+../Core/Src/flow_controller.c:43:21: error: 'huart2' undeclared (first use in this function)
+   43 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+      |                     ^~~~~~
+../Core/Src/flow_controller.c:43:45: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   43 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+      |                                             ^~~~~~
+../Core/Src/flow_controller.c:43:45: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/flow_controller.c:10:1: note: include '<string.h>' or provide a declaration of 'strlen'
+    9 | #include "flow_controller.h"
+  +++ |+#include <string.h>
+   10 | 
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:32:43 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+../Core/Src/flow_controller.c:40:6: error: conflicting types for 'printMsg'
+   40 | void printMsg(char * str, UART_HandleTypeDef *huart2){
+      |      ^~~~~~~~
+In file included from ../Core/Src/flow_controller.c:9:
+../Core/Inc/flow_controller.h:23:6: note: previous declaration of 'printMsg' was here
+   23 | void printMsg(char * str);
+      |      ^~~~~~~~
+../Core/Src/flow_controller.c: In function 'printMsg':
+../Core/Src/flow_controller.c:43:44: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   43 |  HAL_UART_Transmit(huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+      |                                            ^~~~~~
+../Core/Src/flow_controller.c:43:44: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/flow_controller.c:10:1: note: include '<string.h>' or provide a declaration of 'strlen'
+    9 | #include "flow_controller.h"
+  +++ |+#include <string.h>
+   10 | 
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:33:06 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/flow_controller.c: In function 'printMsg':
+../Core/Src/flow_controller.c:43:44: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   43 |  HAL_UART_Transmit(huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+      |                                            ^~~~~~
+../Core/Src/flow_controller.c:43:44: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/flow_controller.c:10:1: note: include '<string.h>' or provide a declaration of 'strlen'
+    9 | #include "flow_controller.h"
+  +++ |+#include <string.h>
+   10 | 
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  32132	    484	   1860	  34476	   86ac	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+19:38:59 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/flow_controller.c: In function 'printMsg':
+../Core/Src/flow_controller.c:44:44: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   44 |  HAL_UART_Transmit(huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+      |                                            ^~~~~~
+../Core/Src/flow_controller.c:44:44: warning: incompatible implicit declaration of built-in function 'strlen'
+../Core/Src/flow_controller.c:10:1: note: include '<string.h>' or provide a declaration of 'strlen'
+    9 | #include "flow_controller.h"
+  +++ |+#include <string.h>
+   10 | 
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  32156	    484	   1860	  34500	   86c4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+19:41:23 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size   testing.elf 
+arm-none-eabi-objdump -h -S  testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  32156	    484	   1860	  34500	   86c4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 

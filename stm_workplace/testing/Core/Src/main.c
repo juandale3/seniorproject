@@ -51,10 +51,8 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 
 float value_dac = 1.9;
-uint32_t var;
-
-uint16_t lux;
 char msg[20];
+float volts = 0;
 
 /* USER CODE END PV */
 
@@ -108,13 +106,8 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
-  value_dac = 0.3;
-  /* testing range
-	var= (var+1)%4096;
-	HAL_Delay(1);
-   */
-  HAL_ADC_Start(&hadc1);
+  dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
+  dacSet(&reg, value_dac);
 
   /* USER CODE END 2 */
 
@@ -123,11 +116,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_ADC_PollForConversion(&hadc1, 20);
-	  lux = HAL_ADC_GetValue(&hadc1);
-	  sprintf(msg, "Light: %hu \r\n", lux);
-	  HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), HAL_MAX_DELAY);
-	  HAL_Delay(500);
+
+	  volts = adcGet(&hadc1);
+	  sprintf(msg, "Volts: %.2f V\r\n", volts);
+	  printMsg(msg, &huart2);
+
+	  HAL_Delay(1000);
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

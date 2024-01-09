@@ -1,2 +1,4 @@
-../Core/Src/flow_controller.c:17:19:createDAC	32	static
-../Core/Src/flow_controller.c:25:13:dacSet	16	static
+../Core/Src/flow_controller.c:22:19:createDAC	32	static
+../Core/Src/flow_controller.c:29:6:dacSet	16	static
+../Core/Src/flow_controller.c:34:7:adcGet	16	static
+../Core/Src/flow_controller.c:42:6:printMsg	16	static
