@@ -106,15 +106,8 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  //dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
-  //dacSet(&reg, value_dac);
-
-  /*
-	volts = adcGet(&hadc1);
-	sprintf(msg, "Volts: %.2f V\r\n", volts);
-	printMsg(msg, &huart2);
-	HAL_Delay(1000);
-  */
+  dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
+  dacSet(&reg, value_dac);
 
   /* USER CODE END 2 */
 
@@ -127,6 +120,7 @@ int main(void)
 	  volts = adcGet(&hadc1);
 	  sprintf(msg, "Volts: %.2f V\r\n", volts);
 	  printMsg(msg, &huart2);
+
 	  HAL_Delay(1000);
 
     /* USER CODE BEGIN 3 */

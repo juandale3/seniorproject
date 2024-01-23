@@ -10,13 +10,10 @@
 
 #include <string.h>	// used for UART printing
 
-// Private variables	------------------------------------------------//
-
-// Analog Variables
+// Private variables			----------------------------------------//
 uint32_t dacBitVal;	// DAC outputs voltage = 12-bit value
 uint16_t adcBitVal; // ADC returns voltage = 12-bit value
 float adcVolts;		// adcBitVal converted into volts
-
 
 
 // Static Functions Declaration	----------------------------------------//

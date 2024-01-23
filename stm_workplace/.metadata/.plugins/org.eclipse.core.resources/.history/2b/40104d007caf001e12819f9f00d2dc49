@@ -10,19 +10,15 @@
 
 #include <string.h>	// used for UART printing
 
-// Private variables	------------------------------------------------//
-
-// Analog Variables
 uint32_t dacBitVal;	// DAC outputs voltage = 12-bit value
 uint16_t adcBitVal; // ADC returns voltage = 12-bit value
 float adcVolts;		// adcBitVal converted into volts
 
 
+// Static Functions Declaration
 
-// Static Functions Declaration	----------------------------------------//
 
-
-// Public Functions		------------------------------------------------//
+// Public Functions
 dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel)
 /*
  * Creates user-defined data type to be able to control the DAC
@@ -58,5 +54,5 @@ void printMsg(char * str, UART_HandleTypeDef *huart2){
 	HAL_UART_Transmit(huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
 }
 
-// Static Functions		------------------------------------------------//
+// Static Functions
 
