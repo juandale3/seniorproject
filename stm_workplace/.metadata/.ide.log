@@ -1,0 +1,16 @@
+2024-01-23 12:28:20,655 [INFO] Activator:179 - 
+
+
+2024-01-23 12:28:20,656 [INFO] Activator:180 - !SESSION log4j initialized
+2024-01-23 12:28:21,245 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.debug.option.cpuclock.497954732 uses a null category that is invalid in its context. The option was ignored.
+2024-01-23 12:28:21,413 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.debug.option.cpuclock.467264851 uses a null category that is invalid in its context. The option was ignored.
+2024-01-23 12:28:26,697 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.debug.option.cpuclock.497954732 uses a null category that is invalid in its context. The option was ignored.
+2024-01-23 12:28:26,721 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.debug.option.cpuclock.467264851 uses a null category that is invalid in its context. The option was ignored.
+2024-01-23 12:28:45,829 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2024-01-23 12:28:45,830 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2024-01-23 12:28:45,831 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2024-01-23 12:40:21,463 [ERROR] ApiDbMcu:1619 - Can't use Application install path:
+2024-01-23 12:40:26,959 [WARN] RulesReader:63 - Compatibility file://mcu/compatibility.xml not found
+2024-01-23 12:49:51,737 [INFO] JxBrowserEngine:114 - Initiate JxBrowser Engine with user profile folder
+2024-01-23 12:49:55,082 [WARN] WebAppUi:336 - Updater plugin not available.
+2024-01-23 12:49:55,567 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
