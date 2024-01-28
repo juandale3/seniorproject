@@ -1,17 +1,24 @@
-14:33:43 **** Incremental Build of configuration Debug for project testing ****
+20:16:00 **** Incremental Build of configuration Debug for project testing ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:138:57: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                                                         ^
+../Core/Src/main.c:138:17: note: 'sprintf' output between 21 and 330 bytes into a destination of size 20
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: testing.elf
  
 arm-none-eabi-size  testing.elf 
 arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
    text	   data	    bss	    dec	    hex	filename
-  31388	    476	   2180	  34044	   84fc	testing.elf
+  31420	    476	   2180	  34076	   851c	testing.elf
 Finished building: default.size.stdout
  
 Finished building: testing.list
  
 
-14:33:44 Build Finished. 0 errors, 0 warnings. (took 862ms)
+20:16:01 Build Finished. 0 errors, 1 warnings. (took 925ms)
 

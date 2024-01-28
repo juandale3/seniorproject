@@ -842,3 +842,237 @@ Finished building: default.size.stdout
  
 Finished building: testing.list
  
+16:05:33 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  28676	    476	   2140	  31292	   7a3c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+16:08:36 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28676	    476	   2140	  31292	   7a3c	testing.elf
+Finished building: default.size.stdout
+ 
+16:19:41 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  28676	    476	   2140	  31292	   7a3c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+16:19:48 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28676	    476	   2140	  31292	   7a3c	testing.elf
+Finished building: default.size.stdout
+ 
+16:28:47 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  28612	    476	   2140	  31228	   79fc	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+16:28:53 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28612	    476	   2140	  31228	   79fc	testing.elf
+Finished building: default.size.stdout
+ 
+16:31:45 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  28612	    476	   2140	  31228	   79fc	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+16:31:49 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28612	    476	   2140	  31228	   79fc	testing.elf
+Finished building: default.size.stdout
+ 
+17:00:21 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/flow_controller.c:73:6: error: conflicting types for 'flowRateMethod'; have 'void(uint8_t,  GPIO_InitTypeDef,  GPIO_TypeDef *, uint16_t)' {aka 'void(unsigned char,  GPIO_InitTypeDef,  GPIO_TypeDef *, short unsigned int)'}
+   73 | void flowRateMethod(uint8_t method, GPIO_InitTypeDef GPIO_InitStruct, GPIO_TypeDef * port, uint16_t pin){
+      |      ^~~~~~~~~~~~~~
+In file included from ../Core/Src/flow_controller.c:9:
+../Core/Inc/flow_controller.h:25:6: note: previous declaration of 'flowRateMethod' with type 'void(uint8_t,  GPIO_TypeDef *, uint16_t)' {aka 'void(unsigned char,  GPIO_TypeDef *, short unsigned int)'}
+   25 | void flowRateMethod(uint8_t method, GPIO_TypeDef * port, uint16_t pin);
+      |      ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:138:57: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                                                         ^
+../Core/Src/main.c:138:17: note: 'sprintf' output between 21 and 330 bytes into a destination of size 20
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:01:23 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:138:57: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                                                         ^
+../Core/Src/main.c:138:17: note: 'sprintf' output between 21 and 330 bytes into a destination of size 20
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  31420	    476	   2180	  34076	   851c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+17:01:36 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31420	    476	   2180	  34076	   851c	testing.elf
+Finished building: default.size.stdout
+ 
+17:39:53 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:143:17: warning: implicit declaration of function 'srintf'; did you mean 'sprintf'? [-Wimplicit-function-declaration]
+  143 |                 srintf(msg, "Open\r\n");
+      |                 ^~~~~~
+      |                 sprintf
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.10.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/main.o: in function `main':
+C:/Users/oneju/OneDrive/Fall 2023/CPE 190/seniorproject/stm_workplace/testing/Debug/../Core/Src/main.c:143: undefined reference to `srintf'
+C:/ST/STM32CubeIDE_1.10.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: C:/Users/oneju/OneDrive/Fall 2023/CPE 190/seniorproject/stm_workplace/testing/Debug/../Core/Src/main.c:147: undefined reference to `srintf'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: testing.elf] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+17:40:16 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  31492	    476	   2180	  34148	   8564	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+17:40:41 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31492	    476	   2180	  34148	   8564	testing.elf
+Finished building: default.size.stdout
+ 
+17:41:16 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  31508	    476	   2180	  34164	   8574	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+17:43:10 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  31516	    476	   2180	  34172	   857c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+20:08:48 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  31516	    476	   2180	  34172	   857c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+20:16:00 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:138:57: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                                                         ^
+../Core/Src/main.c:138:17: note: 'sprintf' output between 21 and 330 bytes into a destination of size 20
+  138 |                 sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\OneDrive\Fall 2023\CPE 190\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  31420	    476	   2180	  34076	   851c	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
