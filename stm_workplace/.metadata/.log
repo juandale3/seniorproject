@@ -1485,3 +1485,18 @@ java.lang.Exception: Resource '/testing' does not exist.
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-01-27 17:37:24.530
 !MESSAGE Indexed 'testing' (28 sources, 122 headers) in 4.88 sec: 11,514 declarations; 60,300 references; 2 unresolved inclusions; 49 syntax errors; 188 unresolved names (0.26%)
+!SESSION 2024-01-27 17:51:27.769 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-01-27 17:51:37.697
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-01-27 17:51:37.699
+!MESSAGE Log4j2 initialized with config file C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-01-27 17:51:48.797
+!MESSAGE Started RMI Server, listening on port 41337

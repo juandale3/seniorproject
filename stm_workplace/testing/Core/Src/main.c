@@ -51,7 +51,7 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 
 float value_dac = 1.9;
-char msg[20];
+char msg[25];
 float volts = 0;
 
 /* USER CODE END PV */
@@ -116,6 +116,15 @@ int main(void)
 	HAL_Delay(1000);
   */
 
+  /*
+ 	  	volts = readFlow(&hadc1);
+ 	  	//volts = adcGet(&hadc1);
+ 	  	//sprintf(msg, "Volts: %.2f V\r\n", volts);
+ 	  	sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+ 	  	printMsg(msg, &huart2);
+ 	  	HAL_Delay(1000);
+   	  */
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -123,12 +132,23 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  	volts = readFlow(&hadc1);
+	  	//volts = adcGet(&hadc1);
+	  	//sprintf(msg, "Volts: %.2f V\r\n", volts);
+	  	sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+	  	printMsg(msg, &huart2);
+	  	HAL_Delay(1000);
 
-	  volts = adcGet(&hadc1);
-	  sprintf(msg, "Volts: %.2f V\r\n", volts);
-	  printMsg(msg, &huart2);
-	  HAL_Delay(1000);
-
+	  /*
+	  	flowRateMethod(0);
+	  	sprintf(msg, "Open\r\n");
+	  	printMsg(msg, &huart2);
+	  	HAL_Delay(5000);
+	  	flowRateMethod(1);
+	  	sprintf(msg, "Gnd\r\n");
+	  	printMsg(msg, &huart2);
+	  	HAL_Delay(5000);
+	  	*/
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -327,12 +347,19 @@ static void MX_USART2_UART_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pins : PA1 PA3 PA5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_5;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

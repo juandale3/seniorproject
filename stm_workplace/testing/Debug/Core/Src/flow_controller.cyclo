@@ -1,4 +1,7 @@
-flow_controller.c:22:19:createDAC	1
-flow_controller.c:29:6:dacSet	1
-flow_controller.c:34:7:adcGet	1
-flow_controller.c:42:6:printMsg	1
+../Core/Src/flow_controller.c:39:19:createDAC	1
+../Core/Src/flow_controller.c:51:6:dacSet	1
+../Core/Src/flow_controller.c:59:7:adcGet	1
+../Core/Src/flow_controller.c:67:6:printMsg	1
+../Core/Src/flow_controller.c:73:7:readFlow	1
+../Core/Src/flow_controller.c:84:6:flowRateMethod	2
+../Core/Src/flow_controller.c:112:6:flowRateSP	5
