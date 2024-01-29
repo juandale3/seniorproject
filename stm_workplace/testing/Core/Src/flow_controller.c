@@ -46,13 +46,21 @@ dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel)
 	output.channel = channel;
 	return output;
 }
+
 void dacSet(dac_handletypedef *dac, float volts){
-/*
- * Pass the user-defined data type and the voltage as args
- */
 	dacBitVal = (volts/3.3)*4095;
 	HAL_DAC_SetValue(dac->dac, dac->channel, DAC_ALIGN_12B_R, dacBitVal);
 }
+
+
+// testing this
+/*
+void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts){
+	HAL_DAC_Start(dac, channel);
+	dacBitVal = (volts/3.3)*4095;
+	HAL_DAC_SetValue(dac, channel, DAC_ALIGN_12B_R, dacBitVal);
+}*/
+
 
 float adcGet(ADC_HandleTypeDef *hadc1){
 	HAL_ADC_Start(hadc1);

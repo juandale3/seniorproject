@@ -19,6 +19,7 @@ typedef struct{
 dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel);
 
 void dacSet(dac_handletypedef *dac, float volts);
+// void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
 float adcGet(ADC_HandleTypeDef *hadc1);						// Measures the ADC, Returns Volts
 void printMsg(char * str, UART_HandleTypeDef *huart2);		// Prints char[] through Uart
 float readFlow(ADC_HandleTypeDef *hadc1);					// Reads the flow rate and returns L/min

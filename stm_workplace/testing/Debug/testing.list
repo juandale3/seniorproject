@@ -31,23 +31,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  13 .comment      00000043  00000000  00000000  00020204  2**0
                   CONTENTS, READONLY
- 14 .debug_info   0000d3a1  00000000  00000000  00020247  2**0
+ 14 .debug_info   0000d3aa  00000000  00000000  00020247  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_abbrev 00001fdf  00000000  00000000  0002d5e8  2**0
+ 15 .debug_abbrev 00001fdf  00000000  00000000  0002d5f1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_aranges 00000a50  00000000  00000000  0002f5c8  2**3
+ 16 .debug_aranges 00000a50  00000000  00000000  0002f5d0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_rnglists 000007d9  00000000  00000000  00030018  2**0
+ 17 .debug_rnglists 000007d9  00000000  00000000  00030020  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_macro  0001c84b  00000000  00000000  000307f1  2**0
+ 18 .debug_macro  0001c84b  00000000  00000000  000307f9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_line   0000e549  00000000  00000000  0004d03c  2**0
+ 19 .debug_line   0000e54e  00000000  00000000  0004d044  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_str    000a56f4  00000000  00000000  0005b585  2**0
+ 20 .debug_str    000a56f4  00000000  00000000  0005b592  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_frame  00003aac  00000000  00000000  00100c7c  2**2
+ 21 .debug_frame  00003aac  00000000  00000000  00100c88  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 0000006e  00000000  00000000  00104728  2**0
+ 22 .debug_line_str 0000006e  00000000  00000000  00104734  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -986,10 +986,10 @@ Disassembly of section .text:
  8000c46:	bf00      	nop
 
 08000c48 <adcGet>:
- */
 	dacBitVal = (volts/3.3)*4095;
-	HAL_DAC_SetValue(dac->dac, dac->channel, DAC_ALIGN_12B_R, dacBitVal);
+	HAL_DAC_SetValue(dac, channel, DAC_ALIGN_12B_R, dacBitVal);
 }
+
 
 float adcGet(ADC_HandleTypeDef *hadc1){
  8000c48:	b580      	push	{r7, lr}

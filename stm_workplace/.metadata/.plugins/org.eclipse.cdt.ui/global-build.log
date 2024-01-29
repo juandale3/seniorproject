@@ -1604,3 +1604,41 @@ Finished building: default.size.stdout
  
 Finished building: testing.list
  
+19:02:05 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+../Core/Src/flow_controller.c:58:6: error: conflicting types for 'dacSet'; have 'void(DAC_HandleTypeDef *, uint32_t,  float)' {aka 'void(struct __DAC_HandleTypeDef *, long unsigned int,  float)'}
+   58 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts){
+      |      ^~~~~~
+../Core/Src/flow_controller.c:49:6: note: previous definition of 'dacSet' with type 'void(dac_handletypedef *, float)'
+   49 | void dacSet(dac_handletypedef *dac, float volts){
+      |      ^~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:07:22 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+../Core/Src/flow_controller.c:57:6: error: conflicting types for 'dacSet'; have 'void(DAC_HandleTypeDef *, uint32_t,  float)' {aka 'void(struct __DAC_HandleTypeDef *, long unsigned int,  float)'}
+   57 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts){
+      |      ^~~~~~
+In file included from ../Core/Src/flow_controller.c:9:
+../Core/Inc/flow_controller.h:21:6: note: previous declaration of 'dacSet' with type 'void(dac_handletypedef *, float)'
+   21 | void dacSet(dac_handletypedef *dac, float volts);
+      |      ^~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:07:58 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  31420	    476	   2188	  34084	   8524	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
