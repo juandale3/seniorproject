@@ -50,7 +50,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
-float value_dac = 1.9;
+float value_dac = 3;
 char msg[25];
 float volts = 0;
 
@@ -106,8 +106,8 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  //dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
-  //dacSet(&reg, value_dac);
+  dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
+  dacSet(&reg, value_dac);
 
   /*
 	volts = adcGet(&hadc1);
@@ -132,12 +132,12 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  	volts = readFlow(&hadc1);
-	  	//volts = adcGet(&hadc1);
-	  	//sprintf(msg, "Volts: %.2f V\r\n", volts);
-	  	sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+	  /*	volts = readFlow(&hadc1);
+	  	//volts = adcfiltered(&hadc1);
+	  	//sprintf(msg, "Volts: %.3f V\r\n", volts);
+	  	sprintf(msg, "Flow Rate: %.1f L/min\r\n", volts);
 	  	printMsg(msg, &huart2);
-	  	HAL_Delay(1000);
+	  	HAL_Delay(1000);*/
 
 	  /*
 	  	flowRateMethod(0);
