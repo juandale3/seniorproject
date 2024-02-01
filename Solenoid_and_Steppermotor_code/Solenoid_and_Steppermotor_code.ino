@@ -34,6 +34,7 @@ void setup() {
 
 void loop() {
   // Open the solenoid valve
+  /*
   digitalWrite(openSolenoidPin, LOW);
   digitalWrite(closeSolenoidPin, HIGH);
   delay(3000);  // Open the valve for 3 seconds
@@ -42,7 +43,7 @@ void loop() {
   digitalWrite(openSolenoidPin, HIGH);
   digitalWrite(closeSolenoidPin, LOW);
   delay(3000);  // Close the valve for 3 seconds
-
+    */
   // Move the motor a specified number of steps
   stepper.moveTo(905);  // Adjust the number of steps as needed
 
@@ -58,4 +59,19 @@ void loop() {
   }
 
   // You can repeat this loop or implement your desired logic here
+}
+void SerialCommunication() {
+
+    if (Serial.available() > 0) {
+    char command = Serial.read();
+
+    if (command == 'Start Pump 1') {
+        
+        digitalWrite(openSolenoidPin, LOW);
+        digitalWrite(closeSolenoidPin, HIGH);
+        
+    } else if (command == 'Start Pump 2') {
+      digitalWrite(LED_BUILTIN, LOW);
+    }
+  }
 }
