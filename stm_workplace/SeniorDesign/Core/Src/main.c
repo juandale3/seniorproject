@@ -18,13 +18,14 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "string.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-//#include "flow_controller.h"
-#include "string.h"
-#include "math.h"
+#include "flow_controller.h"
+#include <math.h>
 #include <stdio.h>
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,6 +98,9 @@ const int PumpOpStatus = 2;
 const float desiredvacuum = 0.00399966;
 const int ledPin = 4;
 
+
+
+
 //uint16_t adcBitVal; // ADC returns voltage = 12-bit value
 //float adcVolts; // adcBitVal converted into volts
 /* USER CODE END 0 */
@@ -136,6 +140,10 @@ int main(void)
   MX_DAC_Init();
   /* USER CODE BEGIN 2 */
 
+  // dacSet(&hdac, DAC_CHANNEL_1, 2.5);
+  float volts = 0;
+  char msg[30];
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -143,9 +151,12 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
-
-
+	  //volts = adcGet(&hadc1);
+	  volts = readFlow(&hadc1);
+	  //sprintf(msg, "Volts: %.2f V\r\n", volts);
+	  sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+	  printMsg(msg, &huart3);
+	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
 /*
 	  HAL_ADC_Start(&hadc1);

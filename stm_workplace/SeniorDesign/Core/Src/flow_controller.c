@@ -37,32 +37,11 @@ GPIO_TypeDef * ContactDI3Group = GPIOA;
 
 
 // Public Functions		------------------------------------------------//
-dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel)
-/*
- * Creates user-defined data type to be able to control the DAC
- * Pass the DAC_HandleTypeDef and channel as args
- */
-{
-	HAL_DAC_Start(dac, channel);
-	dac_handletypedef output;
-	output.dac = dac;
-	output.channel = channel;
-	return output;
-}
-
-void dacSet(dac_handletypedef *dac, float volts){
-	dacBitVal = (volts/3.3)*4095;
-	HAL_DAC_SetValue(dac->dac, dac->channel, DAC_ALIGN_12B_R, dacBitVal);
-}
-
-
-// testing this
-/*
 void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts){
 	HAL_DAC_Start(dac, channel);
 	dacBitVal = (volts/3.3)*4095;
 	HAL_DAC_SetValue(dac, channel, DAC_ALIGN_12B_R, dacBitVal);
-}*/
+}
 
 
 float adcGet(ADC_HandleTypeDef *hadc1){
@@ -113,14 +92,15 @@ float readFlow(ADC_HandleTypeDef *hadc1)
 	// 5-0V 10 L/min=250 mV
 	// voltage divider  R2=10k, R1=5.1k
 	// .75 = 0, 0.88 = 10}
-	adcFiltered(hadc1);
+	//adcFiltered(hadc1);
+	adcGet(hadc1);
 	// instFlow = adcVolts * (10.0+5.1)/10.0 / 0.025;	// 0.025V = 1 L/min
-	float prev = instFlow;
-	instFlow = (adcVolts - 0.57)/  0.013;
-	if(fabs(instFlow - prev) < 0.7){
+	//float prev = instFlow;
+	instFlow = (adcVolts - 0.64)/  0.013;
+	/*if(fabs(instFlow - prev) < 0.7){
 		instFlow = prev;
 	}
-	instFlow = roundf(instFlow);
+	instFlow = roundf(instFlow);*/
 	return instFlow;
 }
 

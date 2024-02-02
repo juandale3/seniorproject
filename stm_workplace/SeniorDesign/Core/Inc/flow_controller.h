@@ -8,18 +8,8 @@
 #ifndef INC_FLOW_CONTROLLER_H_
 #define INC_FLOW_CONTROLLER_H_
 
-// DAC_HandleTypeDef
-typedef struct{
-	DAC_HandleTypeDef *dac;
-	uint32_t channel;
-}dac_handletypedef;
-
-
 // Public functions
-dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel);
-
-void dacSet(dac_handletypedef *dac, float volts);
-// void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
+void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
 float adcGet(ADC_HandleTypeDef *hadc1);						// Measures the ADC, Returns Volts
 float adcFiltered(ADC_HandleTypeDef *hadc1);
 void printMsg(char * str, UART_HandleTypeDef *huart2);		// Prints char[] through Uart

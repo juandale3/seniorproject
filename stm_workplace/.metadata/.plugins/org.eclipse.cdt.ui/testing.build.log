@@ -1,10 +1,39 @@
-19:28:21 **** Incremental Build of configuration Debug for project testing ****
+20:08:56 **** Incremental Build of configuration Debug for project testing ****
 make -j12 all 
-arm-none-eabi-size  testing.elf 
-   text	   data	    bss	    dec	    hex	filename
-  29116	    480	   2144	  31740	   7bfc	testing.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/flow_controller.c:53:6: error: conflicting types for 'dacSet'; have 'void(dac_handletypedef *, float)'
+   53 | void dacSet(dac_handletypedef *dac, float volts){
+      |      ^~~~~~
+In file included from ../Core/Src/flow_controller.c:9:
+../Core/Inc/flow_controller.h:23:6: note: previous declaration of 'dacSet' with type 'void(DAC_HandleTypeDef *, uint32_t,  float)' {aka 'void(struct __DAC_HandleTypeDef *, long unsigned int,  float)'}
+   23 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
+      |      ^~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:109:27: warning: implicit declaration of function 'createDAC' [-Wimplicit-function-declaration]
+  109 |   dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
+      |                           ^~~~~~~~~
+../Core/Src/main.c:109:27: error: invalid initializer
+../Core/Src/main.c:110:10: warning: passing argument 1 of 'dacSet' from incompatible pointer type [-Wincompatible-pointer-types]
+  110 |   dacSet(&reg, value_dac);
+      |          ^~~~
+      |          |
+      |          dac_handletypedef *
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:23:32: note: expected 'DAC_HandleTypeDef *' {aka 'struct __DAC_HandleTypeDef *'} but argument is of type 'dac_handletypedef *'
+   23 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
+      |             ~~~~~~~~~~~~~~~~~~~^~~
+../Core/Src/main.c:110:3: error: too few arguments to function 'dacSet'
+  110 |   dacSet(&reg, value_dac);
+      |   ^~~~~~
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/flow_controller.h:23:6: note: declared here
+   23 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
+      |      ^~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-19:28:21 Build Finished. 0 errors, 0 warnings. (took 267ms)
+20:08:56 Build Failed. 6 errors, 2 warnings. (took 616ms)
 
