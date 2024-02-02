@@ -1,10 +1,62 @@
-14:27:21 **** Incremental Build of configuration Debug for project SeniorDesign ****
+19:04:40 **** Incremental Build of configuration Debug for project SeniorDesign ****
 make -j12 all 
-arm-none-eabi-size  SeniorDesign.elf 
-   text	   data	    bss	    dec	    hex	filename
-  39288	    796	   3652	  43736	   aad8	SeniorDesign.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:157:44: warning: implicit declaration of function 'pow' [-Wimplicit-function-declaration]
+  157 |           double referencePressure = 1.0 * pow(10, -9.581295);
+      |                                            ^~~
+../Core/Src/main.c:23:1: note: include '<math.h>' or provide a declaration of 'pow'
+   22 | #include "flow_controller.h"
+  +++ |+#include <math.h>
+   23 | 
+../Core/Src/main.c:157:44: warning: incompatible implicit declaration of built-in function 'pow' [-Wbuiltin-declaration-mismatch]
+  157 |           double referencePressure = 1.0 * pow(10, -9.581295);
+      |                                            ^~~
+../Core/Src/main.c:157:44: note: include '<math.h>' or provide a declaration of 'pow'
+../Core/Src/main.c:167:11: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  167 |           sprintf(buffer, "ADC Value %.2f Pressure %.2f mbar\r\n", adcVolts, pressure);
+      |           ^~~~~~~
+../Core/Src/main.c:23:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   22 | #include "flow_controller.h"
+  +++ |+#include <stdio.h>
+   23 | 
+../Core/Src/main.c:167:11: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  167 |           sprintf(buffer, "ADC Value %.2f Pressure %.2f mbar\r\n", adcVolts, pressure);
+      |           ^~~~~~~
+../Core/Src/main.c:167:11: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/flow_controller.c:39:19: error: conflicting types for 'createDAC'; have 'DAC_HandleTypeDef(DAC_HandleTypeDef *, uint32_t)' {aka 'DAC_HandleTypeDef(DAC_HandleTypeDef *, long unsigned int)'}
+   39 | DAC_HandleTypeDef createDAC(DAC_HandleTypeDef *dac, uint32_t channel)
+      |                   ^~~~~~~~~
+In file included from ../Core/Src/flow_controller.c:9:
+../Core/Inc/flow_controller.h:19:19: note: previous declaration of 'createDAC' with type 'dac_handletypedef(DAC_HandleTypeDef *, uint32_t)' {aka 'dac_handletypedef(DAC_HandleTypeDef *, long unsigned int)'}
+   19 | dac_handletypedef createDAC(DAC_HandleTypeDef *dac, uint32_t channel);
+      |                   ^~~~~~~~~
+../Core/Src/flow_controller.c: In function 'createDAC':
+../Core/Src/flow_controller.c:47:15: error: 'DAC_HandleTypeDef' has no member named 'dac'
+   47 |         output.dac = dac;
+      |               ^
+../Core/Src/flow_controller.c:48:15: error: 'DAC_HandleTypeDef' has no member named 'channel'
+   48 |         output.channel = channel;
+      |               ^
+../Core/Src/flow_controller.c: At top level:
+../Core/Src/flow_controller.c:52:6: error: conflicting types for 'dacSet'; have 'void(DAC_HandleTypeDef *, float)'
+   52 | void dacSet(DAC_HandleTypeDef *dac, float volts){
+      |      ^~~~~~
+In file included from ../Core/Src/flow_controller.c:9:
+../Core/Inc/flow_controller.h:21:6: note: previous declaration of 'dacSet' with type 'void(dac_handletypedef *, float)'
+   21 | void dacSet(dac_handletypedef *dac, float volts);
+      |      ^~~~~~
+../Core/Src/flow_controller.c: In function 'dacSet':
+../Core/Src/flow_controller.c:54:29: error: 'DAC_HandleTypeDef' has no member named 'dac'
+   54 |         HAL_DAC_SetValue(dac->dac, dac->channel, DAC_ALIGN_12B_R, dacBitVal);
+      |                             ^~
+../Core/Src/flow_controller.c:54:39: error: 'DAC_HandleTypeDef' has no member named 'channel'
+   54 |         HAL_DAC_SetValue(dac->dac, dac->channel, DAC_ALIGN_12B_R, dacBitVal);
+      |                                       ^~
+make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-14:27:22 Build Finished. 0 errors, 0 warnings. (took 535ms)
+19:04:41 Build Failed. 8 errors, 4 warnings. (took 866ms)
 
