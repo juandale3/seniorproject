@@ -18,12 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "string.h"
-#include "flow_controller.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+//#include "flow_controller.h"
+#include "string.h"
+#include "math.h"
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,8 +97,8 @@ const int PumpOpStatus = 2;
 const float desiredvacuum = 0.00399966;
 const int ledPin = 4;
 
-uint16_t adcBitVal; // ADC returns voltage = 12-bit value
-float adcVolts; // adcBitVal converted into volts
+//uint16_t adcBitVal; // ADC returns voltage = 12-bit value
+//float adcVolts; // adcBitVal converted into volts
 /* USER CODE END 0 */
 
 /**
@@ -143,8 +144,10 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
 
+
+    /* USER CODE BEGIN 3 */
+/*
 	  HAL_ADC_Start(&hadc1);
 	  HAL_ADC_PollForConversion(&hadc1, 20);
 	  adcBitVal = HAL_ADC_GetValue(&hadc1);
@@ -167,6 +170,7 @@ int main(void)
 	  sprintf(buffer, "ADC Value %.2f Pressure %.2f mbar\r\n", adcVolts, pressure);
 
       HAL_UART_Transmit(&huart3, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
+      */
   }
   /* USER CODE END 3 */
 }
