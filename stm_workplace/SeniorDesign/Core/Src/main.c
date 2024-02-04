@@ -143,6 +143,24 @@ int main(void)
   // dacSet(&hdac, DAC_CHANNEL_1, 2.5);
   float volts = 0;
   char msg[30];
+  ADC_ChannelConfTypeDef sConfig = {0};
+  sConfig.Channel = ADC_CHANNEL_5;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+  /*
+	  volts = adcGet(&hadc1);
+	  //volts = readFlow(&hadc1);
+	  sprintf(msg, "Volts: %.2f V\r\n", volts);
+	  //sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+	  printMsg(msg, &huart3);
+	  HAL_Delay(1000);
+	  if(sConfig.Channel == ADC_CHANNEL_6){
+		  sConfig.Channel = ADC_CHANNEL_5;
+	  }else{
+		  sConfig.Channel = ADC_CHANNEL_6;
+	  }
+	  HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+   */
 
   /* USER CODE END 2 */
 
@@ -151,13 +169,26 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  //volts = adcGet(&hadc1);
-	  volts = readFlow(&hadc1);
-	  //sprintf(msg, "Volts: %.2f V\r\n", volts);
-	  sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
+
+    /* USER CODE BEGIN 3 */
+	  volts = adcGet(&hadc1);
+	  sprintf(msg, "Volts: %.2f V\r\n", volts);
 	  printMsg(msg, &huart3);
 	  HAL_Delay(1000);
-    /* USER CODE BEGIN 3 */
+	  if(sConfig.Channel == ADC_CHANNEL_6){
+		  sConfig.Channel = ADC_CHANNEL_9;
+		  sConfig.Rank = ADC_REGULAR_RANK_1;
+		  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+
+	  }else{
+		  sConfig.Channel = ADC_CHANNEL_6;
+		  sConfig.Rank = ADC_REGULAR_RANK_1;
+		  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+	  }
+	  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+	  {
+	    Error_Handler();
+	  }
 /*
 	  HAL_ADC_Start(&hadc1);
 	  HAL_ADC_PollForConversion(&hadc1, 20);
@@ -208,7 +239,7 @@ void SystemClock_Config(void)
   * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 4;
@@ -255,7 +286,7 @@ static void MX_ADC1_Init(void)
 
   /* USER CODE END ADC1_Init 0 */
 
-  ADC_ChannelConfTypeDef sConfig = {0};
+//  ADC_ChannelConfTypeDef sConfig = {0};
 
   /* USER CODE BEGIN ADC1_Init 1 */
 
@@ -266,8 +297,8 @@ static void MX_ADC1_Init(void)
   hadc1.Instance = ADC1;
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
@@ -282,13 +313,23 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_5;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
+//  sConfig.Channel = ADC_CHANNEL_9;
+//  sConfig.Rank = ADC_REGULAR_RANK_1;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
+//
+//  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+//  */
+//  sConfig.Channel = ADC_CHANNEL_6;
+//  sConfig.Rank = ADC_REGULAR_RANK_2;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */

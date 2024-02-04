@@ -46,9 +46,10 @@ void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts){
 
 float adcGet(ADC_HandleTypeDef *hadc1){
 	HAL_ADC_Start(hadc1);
-	HAL_ADC_PollForConversion(hadc1, 20);
+	HAL_ADC_PollForConversion(hadc1, 1000);
 	adcBitVal = HAL_ADC_GetValue(hadc1);
 	adcVolts = (float)adcBitVal/4095 * 3.3;
+	HAL_ADC_Stop(hadc1);
 	return adcVolts;
 }
 
