@@ -1172,3 +1172,91 @@ arm-none-eabi-size  SeniorDesign.elf
   31968	    796	   3668	  36432	   8e50	SeniorDesign.elf
 Finished building: default.size.stdout
  
+00:21:31 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:170:11: warning: implicit declaration of function 'flowControllerADC'; did you mean 'flowControlADC'? [-Wimplicit-function-declaration]
+  170 |           flowControllerADC();
+      |           ^~~~~~~~~~~~~~~~~
+      |           flowControlADC
+../Core/Src/main.c:144:26: warning: variable 'sConfig' set but not used [-Wunused-but-set-variable]
+  144 |   ADC_ChannelConfTypeDef sConfig = {0};
+      |                          ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:559:6: warning: conflicting types for 'flowControllerADC'; have 'void(void)'
+  559 | void flowControllerADC(void){
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:170:11: note: previous implicit declaration of 'flowControllerADC' with type 'void(void)'
+  170 |           flowControllerADC();
+      |           ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'flowControllerADC':
+../Core/Src/main.c:561:9: error: 'sConfig' undeclared (first use in this function); did you mean 'TxConfig'?
+  561 |         sConfig.Channel = ADC_CHANNEL_9;
+      |         ^~~~~~~
+      |         TxConfig
+../Core/Src/main.c:561:9: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'vacuumGaugeADC':
+../Core/Src/main.c:573:9: error: 'sConfig' undeclared (first use in this function); did you mean 'TxConfig'?
+  573 |         sConfig.Channel = ADC_CHANNEL_6;
+      |         ^~~~~~~
+      |         TxConfig
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+00:22:28 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:170:11: warning: implicit declaration of function 'flowControllerADC'; did you mean 'flowControlADC'? [-Wimplicit-function-declaration]
+  170 |           flowControllerADC();
+      |           ^~~~~~~~~~~~~~~~~
+      |           flowControlADC
+../Core/Src/main.c:144:26: warning: variable 'sConfig' set but not used [-Wunused-but-set-variable]
+  144 |   ADC_ChannelConfTypeDef sConfig = {0};
+      |                          ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:559:6: warning: conflicting types for 'flowControllerADC'; have 'void(void)'
+  559 | void flowControllerADC(void){
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:170:11: note: previous implicit declaration of 'flowControllerADC' with type 'void(void)'
+  170 |           flowControllerADC();
+      |           ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  31984	    796	   3668	  36448	   8e60	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+00:23:22 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  31952	    796	   3668	  36416	   8e40	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+00:23:59 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  31952	    796	   3668	  36416	   8e40	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
