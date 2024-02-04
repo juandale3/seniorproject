@@ -1,0 +1,14 @@
+/*
+ * state_machine.c
+ *
+ *  Created on: Feb 3, 2024
+ *      Author: manue
+ */
+
+enum states {
+	START
+} state;
+
+void state_machine() {
+
+}
