@@ -1,0 +1,11 @@
+/*
+ * state_machine.c
+ *
+ *  Created on: Feb 3, 2024
+ *      Author: manue
+ */
+
+
+void state_machine() {
+
+}

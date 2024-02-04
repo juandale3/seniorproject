@@ -1,0 +1,61 @@
+/*
+ * state_machine.c
+ *
+ *  Created on: Feb 3, 2024
+ *      Author: Manny Mort Jr
+ */
+#include <stdio.h>
+#include <stdbool.h>
+
+
+enum states {
+	START,
+	VAC_ACHIEVMENT_TEST,
+	WARM_UP,
+	LOAD_TEST,
+	OPERATION_TEST,
+	ULTIMATE_MEASURE_TEST,
+	IDLE,
+	FAIL_STATE
+
+
+} eNextState;
+
+void state_machine() {
+	bool error = false;
+	switch(eNextState) {
+		case START:
+			if(!error) {
+				eNextState = FAIL_STATE;
+			}
+			break;
+
+		case VAC_ACHIEVMENT_TEST:
+
+			if(!error) {
+				eNextState = FAIL_STATE;
+			}
+			break;
+		case WARM_UP:
+
+			if(!error) {
+				eNextState = FAIL_STATE;
+			}
+			break;
+		case LOAD_TEST:
+
+			if(!error) {
+				eNextState = FAIL_STATE;
+			}
+			break;
+		case OPERATION_TEST:
+			break;
+		case ULTIMATE_MEASURE_TEST:
+			break;
+		case FAIL_STATE:
+			break;
+		case IDLE:
+			break;
+
+	}
+}

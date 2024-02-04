@@ -1,0 +1,38 @@
+/*
+ * state_machine.c
+ *
+ *  Created on: Feb 3, 2024
+ *      Author: Manny Mort Jr
+ */
+
+enum states {
+	START,
+	VAC_ACHIEVMENT_TEST,
+	WARM_UP,
+	LOAD_TEST,
+	OPERATION_TEST,
+	ULTIMATE_MEASURE_TEST,
+	IDLE,
+	ERROR
+
+} state;
+
+void state_machine() {
+	switch(state) {
+		case START:
+			break;
+
+		case VAC_ACHIEVMENT_TEST:
+
+
+			break;
+		case WARM_UP:
+			break;
+		case LOAD_TEST:
+			break;
+		case OPERATION_TEST:
+			break;
+		case ULTIMATE_MEASURE_TEST:
+			break;
+	}
+}
