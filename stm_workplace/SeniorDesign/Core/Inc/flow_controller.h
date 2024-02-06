@@ -8,12 +8,12 @@
 #ifndef INC_FLOW_CONTROLLER_H_
 #define INC_FLOW_CONTROLLER_H_
 
-// Public functions
-void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
-float adcGet(ADC_HandleTypeDef *hadc1);						// Measures the ADC, Returns Volts
-float adcFiltered(ADC_HandleTypeDef *hadc1);
-void printMsg(char * str, UART_HandleTypeDef *huart2);		// Prints char[] through Uart
-float readFlow(ADC_HandleTypeDef *hadc1);					// Reads the flow rate and returns L/min
+// Public Functions Declarations
+
+void flowControllerADC(ADC_HandleTypeDef* hadc);
+float adcFiltered(ADC_HandleTypeDef* hadc1);
+float readFlow(float voltage);
+float setFlowRate(float inputVoltage, uint8_t targetFlowRate);
 void flowRateMethod(uint8_t method);						// Changes Control Method: Digital = 0, Analog = 1;
 void flowRateSP(uint8_t setPoint);							// If Control Method == 0, then this changes between Set Points
 

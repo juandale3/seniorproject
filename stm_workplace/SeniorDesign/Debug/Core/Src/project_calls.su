@@ -1,0 +1,3 @@
+../Core/Src/project_calls.c:29:6:dacSet	24	static
+../Core/Src/project_calls.c:35:7:adcGet	16	static
+../Core/Src/project_calls.c:73:6:printMsg	16	static

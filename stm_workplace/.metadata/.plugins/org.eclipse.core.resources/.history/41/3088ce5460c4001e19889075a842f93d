@@ -1,0 +1,65 @@
+/*
+ * vacuum_gauge.c
+ *
+ *  Created on: Feb 4, 2024
+ *      Author: oneju
+ */
+
+// Includes
+#include "main.h"
+
+//
+const float maxInputVoltage = 10.0;  // Maximum input voltage (before scaling down)
+const float stmMaxVoltage = 3.0;  // Maximum voltage Arduino can read
+const int maxADCValue = 1023;  // Maximum value the analog-to-digital converter can produce
+const int PumpOpStatus = 2;
+const float desiredvacuum = 0.00399966;
+const int ledPin = 4;
+
+// Static Functions Declaration	----------------------------------------//
+
+
+
+// Public Functions		------------------------------------------------//
+void vacuumGaugeADC(ADC_HandleTypeDef* hadc){
+	ADC_ChannelConfTypeDef sConfig = {0};
+
+	sConfig.Channel = ADC_CHANNEL_6;
+	sConfig.Rank = ADC_REGULAR_RANK_1;
+	sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+
+	if (HAL_ADC_ConfigChannel(hadc, &sConfig) != HAL_OK)
+	{
+	  Error_Handler();
+	}
+	return;
+}
+
+/*
+	  HAL_ADC_Start(&hadc1);
+	  HAL_ADC_PollForConversion(&hadc1, 20);
+	  adcBitVal = HAL_ADC_GetValue(&hadc1);
+	  adcVolts = ((float)adcBitVal/4095) * 3.3;
+		//return adcVolts;
+
+	  //double voltage = (stmMaxVoltage / maxADCValue) * adcBitVal;  // Convert the ADC reading back to the actual voltage
+	  adcVolts = adcVolts * 3.9722;
+
+	  double referencePressure = 1.0 * pow(10, -9.581295);
+	  double referenceVoltage = 0.774;
+	  double scalingFactor = 0.75;
+	  double pressure = referencePressure * pow(10, ((adcVolts - referenceVoltage) / scalingFactor));
+
+
+	  HAL_Delay(100);
+
+	  char buffer[100];
+
+	  sprintf(buffer, "ADC Value %.2f Pressure %.2f mbar\r\n", adcVolts, pressure);
+
+      HAL_UART_Transmit(&huart3, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
+      */
+
+
+// Static Functions		------------------------------------------------//
+

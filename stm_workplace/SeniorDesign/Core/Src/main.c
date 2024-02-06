@@ -18,11 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "string.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "flow_controller.h"
+#include "project_calls.h"
+#include "vacuum_gauge.h"
+
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
@@ -91,15 +93,10 @@ static void MX_DAC_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-const float maxInputVoltage = 10.0;  // Maximum input voltage (before scaling down)
-const float stmMaxVoltage = 3.0;  // Maximum voltage Arduino can read
-const int maxADCValue = 1023;  // Maximum value the analog-to-digital converter can produce
-const int PumpOpStatus = 2;
-const float desiredvacuum = 0.00399966;
-const int ledPin = 4;
 
-void flowControllerADC(void);
-void vacuumGaugeADC(void);
+
+//void flowControllerADC(void);
+//void vacuumGaugeADC(void);
 
 /* USER CODE END 0 */
 
@@ -138,25 +135,14 @@ int main(void)
   MX_DAC_Init();
   /* USER CODE BEGIN 2 */
 
-  // dacSet(&hdac, DAC_CHANNEL_1, 2.5);
+  //dacSet(&hdac, DAC_CHANNEL_1, 2.5);
   float volts = 0;
-  char msg[30];
+  float FlowRate = 0;
+  float vacuumScale = 0;
+  char msg[100];
 
-  /*
-	  volts = adcGet(&hadc1);
-	  //volts = readFlow(&hadc1);
-	  sprintf(msg, "Volts: %.2f V\r\n", volts);
-	  //sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
-	  printMsg(msg, &huart3);
-	  HAL_Delay(1000);
-	  if(sConfig.Channel == ADC_CHANNEL_6){
-		  sConfig.Channel = ADC_CHANNEL_5;
-	  }else{
-		  sConfig.Channel = ADC_CHANNEL_6;
-	  }
-	  HAL_ADC_ConfigChannel(&hadc1, &sConfig);
-   */
 
+  flowControllerADC(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -164,39 +150,25 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  //flowControllerADC();
-	  vacuumGaugeADC();
-	  volts = adcGet(&hadc1);
-	  sprintf(msg, "Volts: %.2f V\r\n", volts);
-	  printMsg(msg, &huart3);
-	  HAL_Delay(1000);
+
 
     /* USER CODE BEGIN 3 */
 
-/*
-	  HAL_ADC_Start(&hadc1);
-	  HAL_ADC_PollForConversion(&hadc1, 20);
-	  adcBitVal = HAL_ADC_GetValue(&hadc1);
-	  adcVolts = ((float)adcBitVal/4095) * 3.3;
-		//return adcVolts;
+	  vacuumGaugeADC(&hadc1);
+	  volts = adcGet(&hadc1);
+	  vacuumScale = readVacuum(volts);
+	  sprintf(msg, "Vacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n", volts, vacuumScale);
+	  printMsg(msg, &huart3);
+	  HAL_Delay(1000);
 
-	  //double voltage = (stmMaxVoltage / maxADCValue) * adcBitVal;  // Convert the ADC reading back to the actual voltage
-	  adcVolts = adcVolts * 3.9722;
+	  flowControllerADC(&hadc1);
+	  volts = adcGet(&hadc1);
+	  FlowRate = readFlow(volts);
+	  sprintf(msg, "Flow Controller\t\tVolts: %.3f V\tFlow Rate:\t%1.0f\tL/min\r\n", volts, FlowRate);
+	  printMsg(msg, &huart3);
+	  dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
+	  HAL_Delay(1000);
 
-	  double referencePressure = 1.0 * pow(10, -9.581295);
-	  double referenceVoltage = 0.774;
-	  double scalingFactor = 0.75;
-	  double pressure = referencePressure * pow(10, ((adcVolts - referenceVoltage) / scalingFactor));
-
-
-	  HAL_Delay(100);
-
-	  char buffer[100];
-
-	  sprintf(buffer, "ADC Value %.2f Pressure %.2f mbar\r\n", adcVolts, pressure);
-
-      HAL_UART_Transmit(&huart3, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
-      */
   }
   /* USER CODE END 3 */
 }
@@ -535,33 +507,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-void flowControllerADC(void){
-	ADC_ChannelConfTypeDef sConfig = {0};
-
-	sConfig.Channel = ADC_CHANNEL_9;
-	sConfig.Rank = ADC_REGULAR_RANK_1;
-	sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
-
-	if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-	{
-	  Error_Handler();
-	}
-	return;
-}
-void vacuumGaugeADC(void){
-	ADC_ChannelConfTypeDef sConfig = {0};
-
-	sConfig.Channel = ADC_CHANNEL_6;
-	sConfig.Rank = ADC_REGULAR_RANK_1;
-	sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
-
-	if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-	{
-	  Error_Handler();
-	}
-	return;
-}
 
 /* USER CODE END 4 */
 

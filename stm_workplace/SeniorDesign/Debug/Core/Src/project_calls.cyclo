@@ -1,0 +1,3 @@
+../Core/Src/project_calls.c:29:6:dacSet	1
+../Core/Src/project_calls.c:35:7:adcGet	1
+../Core/Src/project_calls.c:73:6:printMsg	1

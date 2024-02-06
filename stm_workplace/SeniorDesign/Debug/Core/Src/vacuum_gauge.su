@@ -1,0 +1,2 @@
+../Core/Src/vacuum_gauge.c:26:6:vacuumGaugeADC	32	static
+../Core/Src/vacuum_gauge.c:40:7:readVacuum	32	static
