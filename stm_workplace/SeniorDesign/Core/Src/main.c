@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "string.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -28,6 +29,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,7 +95,9 @@ static void MX_DAC_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+ // Definition here
 
+/* USER CODE END SysInit */
 
 //void flowControllerADC(void);
 //void vacuumGaugeADC(void);
@@ -134,6 +138,11 @@ int main(void)
   MX_ADC1_Init();
   MX_DAC_Init();
   /* USER CODE BEGIN 2 */
+  struct stateVariables {
+  	  float vacuumScale;
+  	  float flowRate;
+  	  char msg[100];
+  };
 
   //dacSet(&hdac, DAC_CHANNEL_1, 2.5);
   float volts = 0;
@@ -141,7 +150,20 @@ int main(void)
   float vacuumScale = 0;
   char msg[100];
 
+  enum State {
+      START,
+      VAC_ACHIEVMENT_TEST,
+      WARM_UP,
+      LOAD_TEST,
+      OPERATION_TEST,
+      ULTIMATE_MEASURE_TEST,
+      IDLE,
+      FAIL_STATE,
+      STOP
+  };
+  enum State eNextState = START;
 
+  int stateDelay = 1000;
   flowControllerADC(&hadc1);
   /* USER CODE END 2 */
 
@@ -150,7 +172,6 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
 
     /* USER CODE BEGIN 3 */
 
@@ -161,6 +182,10 @@ int main(void)
 	  printMsg(msg, &huart3);
 	  HAL_Delay(1000);
 
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
+
 	  flowControllerADC(&hadc1);
 	  volts = adcGet(&hadc1);
 	  FlowRate = readFlow(volts);
@@ -168,6 +193,138 @@ int main(void)
 	  printMsg(msg, &huart3);
 	  dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
 	  HAL_Delay(1000);
+
+	  //STATE MACHINE STARTS HERE
+	bool error = false;
+	while(eNextState != STOP) {
+
+		switch(eNextState) {
+			case START:
+				//print start message
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
+
+				sprintf(msg,"\nStarting State Machine \r\n");
+				printMsg(msg,&huart3);
+				//send starting status message
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+
+
+				if(!error) {
+					eNextState = FAIL_STATE;
+				}
+				eNextState = VAC_ACHIEVMENT_TEST;
+
+				break;
+			case VAC_ACHIEVMENT_TEST:
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
+
+				sprintf(msg,"Vacuum Achievement Pump Test in progress \r\n");
+				printMsg(msg,&huart3);
+
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+				/*Turn Vacuum G*/
+				if(!error) {
+					eNextState = FAIL_STATE;
+				}
+				eNextState = WARM_UP;
+				break;
+			case WARM_UP:
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
+
+				sprintf(msg, "Vacuum Pump warm Test \r\n");
+				printMsg(msg,&huart3);
+
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+				/*Continuously read temperature*/
+				if(!error) {
+					eNextState = FAIL_STATE;
+				}
+				eNextState = LOAD_TEST;
+				break;
+			case LOAD_TEST:
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
+
+				sprintf(msg, "Load being added to the system \r\n");
+				printMsg(msg,&huart3);
+
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+
+				/*Read Temperature value*/
+				if(!error) {
+					eNextState = FAIL_STATE;
+				}
+				eNextState = OPERATION_TEST;
+				break;
+			case OPERATION_TEST:
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
+
+				sprintf(msg,"Measuring Temperature State \r\n");
+				printMsg(msg,&huart3);
+
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+
+				if(!error) {
+					eNextState = FAIL_STATE;
+				}
+				eNextState = ULTIMATE_MEASURE_TEST;
+				break;
+			case ULTIMATE_MEASURE_TEST:
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
+
+				sprintf(msg, "Ultimate Pressure Test State \r\n\n");
+				printMsg(msg ,&huart3);
+
+				HAL_Delay(stateDelay);
+				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+
+				if(!error) {
+					eNextState = FAIL_STATE;
+				}
+				eNextState = FAIL_STATE;
+				break;
+			case FAIL_STATE:
+				sprintf(msg, "Fail State \r\n\n");
+				printMsg(msg ,&huart3);
+				for(int i = 0; i < 5; i++) {
+					HAL_Delay(500);
+					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_SET);
+
+					HAL_Delay(500);
+					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
+				}
+
+
+
+
+				if(!error) {
+					eNextState = STOP;
+				}
+				break;
+			case IDLE:
+				break;
+			case STOP:
+				for(int i = 0; i < 5; i++) {
+
+				}
+				break;
+			default:
+				if(!error) {
+					eNextState = STOP;
+				}
+
+		}
+	}
 
   }
   /* USER CODE END 3 */
@@ -242,7 +399,7 @@ static void MX_ADC1_Init(void)
 
   /* USER CODE END ADC1_Init 0 */
 
-//  ADC_ChannelConfTypeDef sConfig = {0};
+  ADC_ChannelConfTypeDef sConfig = {0};
 
   /* USER CODE BEGIN ADC1_Init 1 */
 
@@ -259,7 +416,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 2;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -269,23 +426,23 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-//  sConfig.Channel = ADC_CHANNEL_9;
-//  sConfig.Rank = ADC_REGULAR_RANK_1;
-//  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
-//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-//  {
-//    Error_Handler();
-//  }
-//
-//  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-//  */
-//  sConfig.Channel = ADC_CHANNEL_6;
-//  sConfig.Rank = ADC_REGULAR_RANK_2;
-//  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
-//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-//  {
-//    Error_Handler();
-//  }
+  sConfig.Channel = ADC_CHANNEL_9;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_6;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
+  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
@@ -464,11 +621,15 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
@@ -481,6 +642,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PF0 PF1 PF2 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
   GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;

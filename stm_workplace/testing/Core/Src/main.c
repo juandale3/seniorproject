@@ -21,9 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "flow_controller.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -38,6 +38,19 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+enum State {
+	START,
+	VAC_ACHIEVMENT_TEST,
+	WARM_UP,
+	LOAD_TEST,
+	OPERATION_TEST,
+	ULTIMATE_MEASURE_TEST,
+	IDLE,
+	FAIL_STATE,
+	STOP
+
+
+} eNextState;
 
 /* USER CODE END PM */
 
@@ -50,9 +63,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
-float value_dac = 3;
-char msg[25];
-float volts = 0;
+
 
 /* USER CODE END PV */
 
@@ -106,25 +117,6 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
-  dacSet(&reg, value_dac);
-
-  /*
-	volts = adcGet(&hadc1);
-	sprintf(msg, "Volts: %.2f V\r\n", volts);
-	printMsg(msg, &huart2);
-	HAL_Delay(1000);
-  */
-
-  /*
- 	  	volts = readFlow(&hadc1);
- 	  	//volts = adcGet(&hadc1);
- 	  	//sprintf(msg, "Volts: %.2f V\r\n", volts);
- 	  	sprintf(msg, "Flow Rate: %1.0f L/min\r\n", volts);
- 	  	printMsg(msg, &huart2);
- 	  	HAL_Delay(1000);
-   	  */
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -132,23 +124,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  /*	volts = readFlow(&hadc1);
-	  	//volts = adcfiltered(&hadc1);
-	  	//sprintf(msg, "Volts: %.3f V\r\n", volts);
-	  	sprintf(msg, "Flow Rate: %.1f L/min\r\n", volts);
-	  	printMsg(msg, &huart2);
-	  	HAL_Delay(1000);*/
 
-	  /*
-	  	flowRateMethod(0);
-	  	sprintf(msg, "Open\r\n");
-	  	printMsg(msg, &huart2);
-	  	HAL_Delay(5000);
-	  	flowRateMethod(1);
-	  	sprintf(msg, "Gnd\r\n");
-	  	printMsg(msg, &huart2);
-	  	HAL_Delay(5000);
-	  	*/
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

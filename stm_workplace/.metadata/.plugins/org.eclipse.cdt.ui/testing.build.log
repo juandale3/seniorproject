@@ -1,39 +1,10 @@
-20:08:56 **** Incremental Build of configuration Debug for project testing ****
+14:18:39 **** Incremental Build of configuration Debug for project testing ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/flow_controller.c:53:6: error: conflicting types for 'dacSet'; have 'void(dac_handletypedef *, float)'
-   53 | void dacSet(dac_handletypedef *dac, float volts){
-      |      ^~~~~~
-In file included from ../Core/Src/flow_controller.c:9:
-../Core/Inc/flow_controller.h:23:6: note: previous declaration of 'dacSet' with type 'void(DAC_HandleTypeDef *, uint32_t,  float)' {aka 'void(struct __DAC_HandleTypeDef *, long unsigned int,  float)'}
-   23 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
-      |      ^~~~~~
-make: *** [Core/Src/subdir.mk:37: Core/Src/flow_controller.o] Error 1
-make: *** Waiting for unfinished jobs....
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:109:27: warning: implicit declaration of function 'createDAC' [-Wimplicit-function-declaration]
-  109 |   dac_handletypedef reg = createDAC(&hdac1, DAC_CHANNEL_1);
-      |                           ^~~~~~~~~
-../Core/Src/main.c:109:27: error: invalid initializer
-../Core/Src/main.c:110:10: warning: passing argument 1 of 'dacSet' from incompatible pointer type [-Wincompatible-pointer-types]
-  110 |   dacSet(&reg, value_dac);
-      |          ^~~~
-      |          |
-      |          dac_handletypedef *
-In file included from ../Core/Src/main.c:24:
-../Core/Inc/flow_controller.h:23:32: note: expected 'DAC_HandleTypeDef *' {aka 'struct __DAC_HandleTypeDef *'} but argument is of type 'dac_handletypedef *'
-   23 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
-      |             ~~~~~~~~~~~~~~~~~~~^~~
-../Core/Src/main.c:110:3: error: too few arguments to function 'dacSet'
-  110 |   dacSet(&reg, value_dac);
-      |   ^~~~~~
-In file included from ../Core/Src/main.c:24:
-../Core/Inc/flow_controller.h:23:6: note: declared here
-   23 | void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);
-      |      ^~~~~~
-make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/state_machine.o:C:/Users/mmorteo/OneDrive - ebaratech.com/Documents/GitHub/seniorproject/stm_workplace/testing/Debug/../Core/Src/state_machine.c:33: multiple definition of `eNextState'; ./Core/Src/main.o:C:/Users/mmorteo/OneDrive - ebaratech.com/Documents/GitHub/seniorproject/stm_workplace/testing/Debug/../Core/Src/main.c:53: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: testing.elf] Error 1
 "make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-20:08:56 Build Failed. 6 errors, 2 warnings. (took 616ms)
+14:18:39 Build Failed. 2 errors, 0 warnings. (took 420ms)
 

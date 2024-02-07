@@ -6,7 +6,7 @@
  */
 #include <stdio.h>
 #include <stdbool.h>
-
+#include <main.h>
 
 enum State {
 	START,
@@ -27,34 +27,40 @@ void state_machine() {
 	bool error = false;
 	switch(eNextState) {
 		case START:
+			//print start message
+			printf("Starting Pump 1 \n");
+			//send starting status message
 			if(!error) {
 				eNextState = FAIL_STATE;
 			}
 			break;
 			eNextState = VAC_ACHIEVMENT_TEST;
 		case VAC_ACHIEVMENT_TEST:
-
+			printf("Vacuum Achievement Pump Test in progress \n");
+			/*Turn Vacuum G*/
 			if(!error) {
 				eNextState = FAIL_STATE;
 			}
 			eNextState = WARM_UP;
 			break;
 		case WARM_UP:
-
+			printf("Vacuum Pump warm Test \n");
+			/*Continuously read temperature*/
 			if(!error) {
 				eNextState = FAIL_STATE;
 			}
 			eNextState = LOAD_TEST;
 			break;
 		case LOAD_TEST:
-
+			printf("Load being added to the system \n");
+			/*Read Temperature value*/
 			if(!error) {
 				eNextState = FAIL_STATE;
 			}
 			eNextState = OPERATION_TEST;
 			break;
 		case OPERATION_TEST:
-
+			printf("Measure");
 			if(!error) {
 				eNextState = FAIL_STATE;
 			}
@@ -69,14 +75,20 @@ void state_machine() {
 			break;
 		case FAIL_STATE:
 
+
+
 			if(!error) {
-				eNextState = FAIL_STATE;
+				eNextState = STOP;
 			}
 			break;
 		case IDLE:
 			break;
 		case STOP:
 			break;
+		default:
+			if(!error) {
+				eNextState = STOP;
+			}
 
 	}
 }

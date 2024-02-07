@@ -1,5 +1,5 @@
-Core/Src/flow_controller.o: ../Core/Src/flow_controller.c \
- ../Core/Inc/main.h ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h \
+Core/Src/state_machine.o: ../Core/Src/state_machine.c ../Core/Inc/main.h \
+ ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h \
  ../Core/Inc/stm32f3xx_hal_conf.h \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rcc.h \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h \
@@ -29,8 +29,7 @@ Core/Src/flow_controller.o: ../Core/Src/flow_controller.c \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_pwr.h \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_pwr_ex.h \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h \
- ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart_ex.h \
- ../Core/Inc/flow_controller.h
+ ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart_ex.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:
 ../Core/Inc/stm32f3xx_hal_conf.h:
@@ -63,4 +62,3 @@ Core/Src/flow_controller.o: ../Core/Src/flow_controller.c \
 ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_pwr_ex.h:
 ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h:
 ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart_ex.h:
-../Core/Inc/flow_controller.h:
