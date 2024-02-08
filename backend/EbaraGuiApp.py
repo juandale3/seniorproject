@@ -1,8 +1,15 @@
 import customtkinter
+import serial
+import time
 
-customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")
+# Setup serial connection
+ser = serial.Serial('COM9', 115200, timeout=1)
 
+# Flush any remaining input buffer to start fresh
+ser.flushInput()
+
+#customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
+#customtkinter.set_default_color_theme("blue")
 
 class App(customtkinter.CTk):
     WIDTH = 1000
@@ -30,6 +37,9 @@ class App(customtkinter.CTk):
         self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Pump 2 Data", command=self.show_content3)
         self.sidebar_button_3.grid(row=3, column=0, pady=10, padx=20)
 
+        self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text="Pump Status Data", command=self.show_content4)
+        self.sidebar_button_4.grid(row=4, column=0, pady=10, padx=20)
+
         # Main content area
         # Lighter shade for the main content area
         self.main_content = customtkinter.CTkFrame(self, fg_color="gray15")
@@ -37,9 +47,7 @@ class App(customtkinter.CTk):
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        label = customtkinter.CTkLabel(self.main_content, text="Currently no pumps running")
-        label.grid(row=0, column=0, pady=20, padx=20)
-
+        
     def clear_main_content(self):
         # Clear the main content area
         for widget in self.main_content.winfo_children():
@@ -86,6 +94,26 @@ class App(customtkinter.CTk):
         textbox.grid(row=2, column=2)
 
         textbox.insert("0.0", "CTkTextbox\n\n" +"Pump 2 Data Here\n\n")
+
+    def show_content4(self):
+        # Update to content 4
+        self.clear_main_content()
+        label = customtkinter.CTkLabel(self.main_content, text="Pump Status Data")
+        label.grid(pady=20, padx=20)
+        
+        self.textbox = customtkinter.CTkTextbox(self.main_content, height=500, width=500)
+        self.textbox.grid(row=2, column=2)
+
+        self.update_serial_data()
+
+    def update_serial_data(self):
+        if ser.in_waiting > 0:
+            serialData = ser.readline().decode('utf-8')  # Decode data to string
+            print(serialData)  # This will print the decoded string
+            self.textbox.insert('end', serialData + '\n')  # Insert data at the end of the textbox
+        self.after(100, self.update_serial_data)  # Schedule this method to be called again after 100ms
+
+            
 
 
 
