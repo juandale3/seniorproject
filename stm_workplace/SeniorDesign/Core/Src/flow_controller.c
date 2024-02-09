@@ -74,15 +74,20 @@ float readFlow(float voltage)
 	return instFlow;
 }
 
-float setFlowRate(float inputVoltage, uint8_t targetFlowRate){
-
-	readFlow(inputVoltage);
-	unRestrictedFlow = instFlow / (1.0 - flowRestriction);
-	flowRestriction = (float)targetFlowRate / unRestrictedFlow;
-
-	float outputVoltage = (float)(maxVoltage - referenceVolt) * flowRestriction + (float)referenceVolt;
-
-	return outputVoltage / amp;
+//float setFlowRate(float inputVoltage, uint8_t targetFlowRate){
+//
+//	readFlow(inputVoltage);
+//	unRestrictedFlow = instFlow / (1.0 - flowRestriction);
+//	flowRestriction = (float)targetFlowRate / unRestrictedFlow;
+//
+//	float outputVoltage = (float)(maxVoltage - referenceVolt) * flowRestriction + (float)referenceVolt;
+//
+//	return outputVoltage / amp;
+//
+//}
+float setFlowRate(uint8_t targetFlowRate){
+	// returns DAC Voltage output
+	return ((float)targetFlowRate * scalingFactor + (float)referenceVolt)/amp;
 
 }
 

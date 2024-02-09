@@ -60,8 +60,8 @@ all: main-build
 main-build: testing.elf secondary-outputs
 
 # Tool invocations
-testing.elf testing.map: $(OBJS) $(USER_OBJS) C:\Users\mmorteo\OneDrive\ -\ ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "testing.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+testing.elf testing.map: $(OBJS) $(USER_OBJS) C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "testing.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

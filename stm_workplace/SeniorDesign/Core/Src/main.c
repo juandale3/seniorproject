@@ -182,9 +182,6 @@ int main(void)
 	  printMsg(msg, &huart3);
 	  HAL_Delay(1000);
 	*/
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
 	  /*
 	  flowControllerADC(&hadc1);
 	  volts = adcGet(&hadc1);
@@ -194,6 +191,10 @@ int main(void)
 	  dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
 	  HAL_Delay(1000);
 	  */
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
+
 
 	  //STATE MACHINE STARTS HERE
 	bool error = false;
@@ -232,7 +233,7 @@ int main(void)
 				printMsg(msg,&huart3);
 				HAL_Delay(3000);
 
-				sprintf(msg,"\tTurning on Vacuum Guage for measurement...\r\n");
+				sprintf(msg,"\tTurning on Vacuum Gauge for measurement...\r\n");
 				printMsg(msg, &huart3);
 
 				vacuumGaugeADC(&hadc1);
@@ -287,7 +288,7 @@ int main(void)
 				FlowRate = readFlow(volts);
 				sprintf(msg, "\tFlow Controller\t\tVolts: %.3f V\tFlow Rate:\t%1.0f\tL/min\r\n\n", volts, FlowRate);
 				printMsg(msg, &huart3);
-				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
+				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(50));
 
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
@@ -446,7 +447,7 @@ static void MX_ADC1_Init(void)
 
   /* USER CODE END ADC1_Init 0 */
 
-  ADC_ChannelConfTypeDef sConfig = {0};
+//  ADC_ChannelConfTypeDef sConfig = {0};
 
   /* USER CODE BEGIN ADC1_Init 1 */
 
@@ -463,7 +464,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 2;
+  hadc1.Init.NbrOfConversion = 1;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -473,23 +474,23 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_9;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
-  sConfig.Channel = ADC_CHANNEL_6;
-  sConfig.Rank = ADC_REGULAR_RANK_2;
-  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
+//  sConfig.Channel = ADC_CHANNEL_9;
+//  sConfig.Rank = ADC_REGULAR_RANK_1;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
+//
+//  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+//  */
+//  sConfig.Channel = ADC_CHANNEL_6;
+//  sConfig.Rank = ADC_REGULAR_RANK_2;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */

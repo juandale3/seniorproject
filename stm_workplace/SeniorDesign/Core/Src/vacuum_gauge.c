@@ -14,9 +14,9 @@
 float desiredvacuum = 0.00399966;
 
 float pressure;
-float referencePressure = pow(10, -9.301295);	// where did you get this number
-float referenceVoltage = 0.774;					// where did you get this number
-float scalingFactor = 0.75;						// where did you get this number
+float referencePressure = pow(10, -9.301295);
+float referenceVoltage = 0.774;
+float scalingFactor = 0.75;
 
 // Static Functions Declaration	----------------------------------------//
 

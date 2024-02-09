@@ -1,5 +1,5 @@
 ../Core/Src/flow_controller.c:50:6:flowControllerADC	32	static
 ../Core/Src/flow_controller.c:63:7:readFlow	16	static
-../Core/Src/flow_controller.c:77:7:setFlowRate	24	static
-../Core/Src/flow_controller.c:89:6:flowRateMethod	16	static
-../Core/Src/flow_controller.c:117:6:flowRateSP	16	static
+../Core/Src/flow_controller.c:88:7:setFlowRate	16	static
+../Core/Src/flow_controller.c:94:6:flowRateMethod	16	static
+../Core/Src/flow_controller.c:122:6:flowRateSP	16	static
