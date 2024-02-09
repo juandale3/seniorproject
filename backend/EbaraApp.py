@@ -1,7 +1,9 @@
 import threading
 import customtkinter
-from backend.EbaraGuiApp import App
-from backend.EbaraWebApp import webapp
+
+from EbaraGuiApp import App
+from EbaraWebApp import webapp
+
 
 def runGUI():
     app = App()

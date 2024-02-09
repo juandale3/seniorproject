@@ -174,18 +174,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
+	  /*
 	  vacuumGaugeADC(&hadc1);
 	  volts = adcGet(&hadc1);
 	  vacuumScale = readVacuum(volts);
 	  sprintf(msg, "Vacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n", volts, vacuumScale);
 	  printMsg(msg, &huart3);
 	  HAL_Delay(1000);
-
+	*/
 	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
 	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
 	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
-
+	  /*
 	  flowControllerADC(&hadc1);
 	  volts = adcGet(&hadc1);
 	  FlowRate = readFlow(volts);
@@ -193,21 +193,25 @@ int main(void)
 	  printMsg(msg, &huart3);
 	  dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
 	  HAL_Delay(1000);
+	  */
 
 	  //STATE MACHINE STARTS HERE
 	bool error = false;
 	while(eNextState != STOP) {
-
+		int pump = 0;
 		switch(eNextState) {
 			case START:
 				//print start message
+				pump++;
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
 
-				sprintf(msg,"\nStarting State Machine \r\n");
+				sprintf(msg,"Starting State Machine on Pump %d\r\n\n", pump);
 				printMsg(msg,&huart3);
 				//send starting status message
+
 				HAL_Delay(stateDelay);
+
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
 
 
@@ -218,11 +222,26 @@ int main(void)
 
 				break;
 			case VAC_ACHIEVMENT_TEST:
-				HAL_Delay(stateDelay);
+				//HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
 
-				sprintf(msg,"Vacuum Achievement Pump Test in progress \r\n");
+				sprintf(msg,"Starting Vacuum Achievement Pump Test in progress (Step 18) \r\n");
 				printMsg(msg,&huart3);
+
+				sprintf(msg,"\tTimer for 60 minutes on\r\n");
+				printMsg(msg,&huart3);
+				HAL_Delay(3000);
+
+				sprintf(msg,"\tTurning on Vacuum Guage for measurement...\r\n");
+				printMsg(msg, &huart3);
+
+				vacuumGaugeADC(&hadc1);
+				volts = adcGet(&hadc1);
+				vacuumScale = readVacuum(volts);
+				sprintf(msg, "\tVacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n\n", volts, vacuumScale);
+				printMsg(msg, &huart3);
+				//HAL_Delay(1000);
+
 
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
@@ -236,7 +255,10 @@ int main(void)
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
 
-				sprintf(msg, "Vacuum Pump warm Test \r\n");
+				sprintf(msg, "Starting Idle Warm-up Test (Step 19) \r\n");
+				printMsg(msg,&huart3);
+
+				sprintf(msg,"\tTemperature sensor on...\r\n\n");
 				printMsg(msg,&huart3);
 
 				HAL_Delay(stateDelay);
@@ -251,8 +273,21 @@ int main(void)
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
 
-				sprintf(msg, "Load being added to the system \r\n");
+				sprintf(msg,"Starting Load Test (Step(20)\r\n");
+				printMsg(msg, &huart3);
+				sprintf(msg, "\tLoad being added to the system \r\n");
 				printMsg(msg,&huart3);
+
+				sprintf(msg, "\tMeasuring Flow rate\r\n");
+				printMsg(msg,&huart3);
+
+				/*Mass Flow Controller code*/
+				flowControllerADC(&hadc1);
+				volts = adcGet(&hadc1);
+				FlowRate = readFlow(volts);
+				sprintf(msg, "\tFlow Controller\t\tVolts: %.3f V\tFlow Rate:\t%1.0f\tL/min\r\n\n", volts, FlowRate);
+				printMsg(msg, &huart3);
+				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
 
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
@@ -267,7 +302,9 @@ int main(void)
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
 
-				sprintf(msg,"Measuring Temperature State \r\n");
+				sprintf(msg,"Starting Continuous Operation Test (Step 21)\r\n");
+				printMsg(msg,&huart3);
+				sprintf(msg,"\tReading Temperature... \r\n\n");
 				printMsg(msg,&huart3);
 
 				HAL_Delay(stateDelay);
@@ -282,8 +319,18 @@ int main(void)
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
 
-				sprintf(msg, "Ultimate Pressure Test State \r\n\n");
+				sprintf(msg, "Starting Ultimate Vacuum Pressure Test (Step 22)\r\n");
 				printMsg(msg ,&huart3);
+
+
+				sprintf(msg,"\tTurning on Vacuum Guage for measurement...\r\n");
+				printMsg(msg, &huart3);
+
+				vacuumGaugeADC(&hadc1);
+				volts = adcGet(&hadc1);
+				vacuumScale = readVacuum(volts);
+				sprintf(msg, "\tVacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n\n", volts, vacuumScale);
+				printMsg(msg, &huart3);
 
 				HAL_Delay(stateDelay);
 				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);

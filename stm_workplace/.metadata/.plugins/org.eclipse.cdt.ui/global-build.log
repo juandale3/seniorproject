@@ -3374,3 +3374,331 @@ arm-none-eabi-size  SeniorDesign.elf
   42056	    808	   3688	  46552	   b5d8	SeniorDesign.elf
 Finished building: default.size.stdout
  
+12:51:30 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:150:9: warning: unused variable 'vacuumScale' [-Wunused-variable]
+  150 |   float vacuumScale = 0;
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+../Core/Src/main.c:148:9: warning: unused variable 'volts' [-Wunused-variable]
+  148 |   float volts = 0;
+      |         ^~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  32112	    796	   3660	  36568	   8ed8	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+12:54:13 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:150:9: warning: unused variable 'vacuumScale' [-Wunused-variable]
+  150 |   float vacuumScale = 0;
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+../Core/Src/main.c:148:9: warning: unused variable 'volts' [-Wunused-variable]
+  148 |   float volts = 0;
+      |         ^~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  32136	    796	   3660	  36592	   8ef0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:03:08 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:213:45: error: 'huar3' undeclared (first use in this function); did you mean 'huart3'?
+  213 |                                 printf(msg,&huar3);
+      |                                             ^~~~~
+      |                                             huart3
+../Core/Src/main.c:213:45: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+make: *** [Core/Src/subdir.mk:46: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+13:03:31 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:233:45: error: 'huar3' undeclared (first use in this function); did you mean 'huart3'?
+  233 |                                 printf(msg,&huar3);
+      |                                             ^~~~~
+      |                                             huart3
+../Core/Src/main.c:233:45: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+make: *** [Core/Src/subdir.mk:46: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+13:03:50 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  41480	    808	   3672	  45960	   b388	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:05:07 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  41464	    808	   3672	  45944	   b378	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:06:33 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  41464	    808	   3672	  45944	   b378	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:23:52 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41464	    808	   3672	  45944	   b378	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+13:24:22 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41464	    808	   3672	  45944	   b378	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+13:25:32 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  41424	    808	   3672	  45904	   b350	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:26:17 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  41424	    808	   3672	  45904	   b350	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:29:16 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:149:9: warning: unused variable 'FlowRate' [-Wunused-variable]
+  149 |   float FlowRate = 0;
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  41432	    808	   3672	  45912	   b358	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:37:13 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:279:72: warning: unknown escape sequence: '\M'
+  279 |                                 sprintf(msg, "\Measuring Flow rate\r\n");
+      |                                                                        ^
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  42336	    808	   3688	  46832	   b6f0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:37:30 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42336	    808	   3688	  46832	   b6f0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+13:38:55 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  42336	    808	   3688	  46832	   b6f0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:39:15 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42336	    808	   3688	  46832	   b6f0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+13:43:23 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  42360	    808	   3688	  46856	   b708	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:43:40 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42360	    808	   3688	  46856	   b708	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+13:49:16 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  42536	    808	   3688	  47032	   b7b8	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:51:27 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  42576	    808	   3688	  47072	   b7e0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:52:37 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  42576	    808	   3688	  47072	   b7e0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+13:53:21 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42576	    808	   3688	  47072	   b7e0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+14:16:24 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42576	    808	   3688	  47072	   b7e0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+14:40:23 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42576	    808	   3688	  47072	   b7e0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 

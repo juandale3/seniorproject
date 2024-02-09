@@ -2,6 +2,9 @@ import customtkinter
 import serial
 import time
 
+from flask import Flask
+webapp = Flask(__name__)
+
 # Setup serial connection
 ser = serial.Serial('COM9', 115200, timeout=1)
 
@@ -114,10 +117,23 @@ class App(customtkinter.CTk):
         self.after(100, self.update_serial_data)  # Schedule this method to be called again after 100ms
 
             
+@webapp.route('/')
+def root():
+    return 'Root Page loaded'
 
 
 
 
+
+
+
+if __name__ == '__main__':
+    #webapp.run(debug=True, port = 8080)
+    app = App()
+    app.mainloop()
+
+'''
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+'''
