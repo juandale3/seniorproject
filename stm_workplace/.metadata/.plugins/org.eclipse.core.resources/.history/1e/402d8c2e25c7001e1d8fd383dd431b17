@@ -34,17 +34,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-  enum State {
-      START,
-      VAC_ACHIEVMENT_TEST,
-      WARM_UP,
-      LOAD_TEST,
-      OPERATION_TEST,
-      ULTIMATE_MEASURE_TEST,
-      IDLE,
-      FAIL_STATE,
-      STOP
-  };
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -105,11 +95,12 @@ static void MX_DAC_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+ // Definition here
 
 /* USER CODE END SysInit */
 
-
+//void flowControllerADC(void);
+//void vacuumGaugeADC(void);
 
 /* USER CODE END 0 */
 
@@ -159,17 +150,17 @@ int main(void)
   float vacuumScale = 0;
   char msg[100];
 
-//  enum State {
-//      START,
-//      VAC_ACHIEVMENT_TEST,
-//      WARM_UP,
-//      LOAD_TEST,
-//      OPERATION_TEST,
-//      ULTIMATE_MEASURE_TEST,
-//      IDLE,
-//      FAIL_STATE,
-//      STOP
-//  };
+  enum State {
+      START,
+      VAC_ACHIEVMENT_TEST,
+      WARM_UP,
+      LOAD_TEST,
+      OPERATION_TEST,
+      ULTIMATE_MEASURE_TEST,
+      IDLE,
+      FAIL_STATE,
+      STOP
+  };
   enum State eNextState = START;
 
   int stateDelay = 1000;

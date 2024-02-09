@@ -605,11 +605,11 @@ int main(void)
   float vacuumScale = 0;
  800070a:	f04f 0300 	mov.w	r3, #0
  800070e:	673b      	str	r3, [r7, #112]	; 0x70
-      ULTIMATE_MEASURE_TEST,
-      IDLE,
-      FAIL_STATE,
-      STOP
-  };
+//      ULTIMATE_MEASURE_TEST,
+//      IDLE,
+//      FAIL_STATE,
+//      STOP
+//  };
   enum State eNextState = START;
  8000710:	2300      	movs	r3, #0
  8000712:	f887 3087 	strb.w	r3, [r7, #135]	; 0x87
