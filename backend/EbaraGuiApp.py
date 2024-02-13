@@ -2,14 +2,13 @@ import customtkinter
 import serial
 import time
 
-from flask import Flask
-webapp = Flask(__name__)
+
 
 # Setup serial connection
-ser = serial.Serial('COM9', 115200, timeout=1)
+#ser = serial.Serial('COM9', 115200, timeout=1)
 
 # Flush any remaining input buffer to start fresh
-ser.flushInput()
+#ser.flushInput()
 
 #customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 #customtkinter.set_default_color_theme("blue")
@@ -120,10 +119,6 @@ class App(customtkinter.CTk):
         self.after(100, self.update_serial_data)  # Schedule this method to be called again after 100ms
 
             
-@webapp.route('/')
-def root():
-    return 'Root Page loaded'
-
 
 
 
