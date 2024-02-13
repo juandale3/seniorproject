@@ -17,6 +17,10 @@ uint16_t adcBitVal; // ADC returns voltage = 12-bit value
 float adcVolts = 0;		// adcBitVal converted into volts
 //const uint8_t ADCSAMPLESIZE = 5;
 
+// Pins
+
+
+
 // Analog Variables
 
 
@@ -70,9 +74,26 @@ float adcGet(ADC_HandleTypeDef *hadc1){
 //	return adcVolts;
 //}
 
-void printMsg(char * str, UART_HandleTypeDef *huart2){
+void printMsg(char* str, UART_HandleTypeDef *huart2){
 	// sprintf(msg, "Volts: %.2f V\r\n", volts);
 	// HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), HAL_MAX_DELAY);
 	HAL_UART_Transmit(huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+	return;
 }
+void listenMsg(int* str, UART_HandleTypeDef *huart2){
+	HAL_UART_Receive(huart2, (uint8_t *)str, 50, HAL_MAX_DELAY);
+	return;
+}
+
+void solenoidOpen(GPIO_TypeDef * solenoidGroup, uint16_t solenoidPin){
+
+//	HAL_GPIO_WritePin(solenoidGroup, solenoidPin, 1);	// 3.3 V
+	return;
+}
+void solenoidClose(GPIO_TypeDef * solenoidGroup, uint16_t solenoidPin){
+
+//	HAL_GPIO_WritePin(solenoidGroup, solenoidPin, 0);	// gnd
+	return;
+}
+
 // Static Functions		------------------------------------------------//

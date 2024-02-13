@@ -18,13 +18,14 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "string.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "flow_controller.h"
 #include "project_calls.h"
 #include "vacuum_gauge.h"
+#include "stepperMotor.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -36,14 +37,24 @@
 /* USER CODE BEGIN PTD */
   enum State {
       START,
+	  VAC_ACHIEVMENT_TEST_INIT,
       VAC_ACHIEVMENT_TEST,
+	  WARM_UP_INIT,
       WARM_UP,
-      LOAD_TEST,
-      OPERATION_TEST,
+      LOAD_TEST_INIT,
+	  LOAD_TEST,
+      OPERATION_TEST_INIT,
+	  OPERATION_TEST,
+	  ULTIMATE_MEASURE_TEST_INIT,
       ULTIMATE_MEASURE_TEST,
       IDLE,
       FAIL_STATE,
       STOP
+  };
+  struct stateVariables {
+  	  float vacuumScale;
+  	  float flowRate;
+  	  char msg[100];
   };
 /* USER CODE END PTD */
 
@@ -58,47 +69,58 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-#if defined ( __ICCARM__ ) /*!< IAR Compiler */
-#pragma location=0x2007c000
-ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
-#pragma location=0x2007c0a0
-ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptors */
-
-#elif defined ( __CC_ARM )  /* MDK ARM Compiler */
-
-__attribute__((at(0x2007c000))) ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
-__attribute__((at(0x2007c0a0))) ETH_DMADescTypeDef  DMATxDscrTab[ETH_TX_DESC_CNT]; /* Ethernet Tx DMA Descriptors */
-
-#elif defined ( __GNUC__ ) /* GNU Compiler */
-ETH_DMADescTypeDef DMARxDscrTab[ETH_RX_DESC_CNT] __attribute__((section(".RxDecripSection"))); /* Ethernet Rx DMA Descriptors */
-ETH_DMADescTypeDef DMATxDscrTab[ETH_TX_DESC_CNT] __attribute__((section(".TxDecripSection")));   /* Ethernet Tx DMA Descriptors */
-
-#endif
-
-ETH_TxPacketConfig TxConfig;
-
 ADC_HandleTypeDef hadc1;
 
 DAC_HandleTypeDef hdac;
-
-ETH_HandleTypeDef heth;
 
 UART_HandleTypeDef huart3;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
+/* Definitions for stateMachine */
+osThreadId_t stateMachineHandle;
+const osThreadAttr_t stateMachine_attributes = {
+  .name = "stateMachine",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for sendData */
+osThreadId_t sendDataHandle;
+const osThreadAttr_t sendData_attributes = {
+  .name = "sendData",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityBelowNormal1,
+};
 /* USER CODE BEGIN PV */
+int tests[6];
+int* currentTest = &tests[0];
+enum State eNextState = START;
+
+float volts = 0;
+float dacVolts = 0;
+float FlowRate = 0;
+float vacuumScale = 0;
+char msg[100];
+
+
+static GPIO_TypeDef * solenoidOneGroup = GPIOA;
+static uint16_t solenoidOnePin = GPIO_PIN_1;
+
+static GPIO_TypeDef * solenoidTwoGroup = GPIOA;
+static uint16_t solenoidTwoPin = GPIO_PIN_2;
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_ETH_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_DAC_Init(void);
+void StartDefaultTask(void *argument);
+void StartTask02(void *argument);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -141,41 +163,61 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ETH_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   MX_ADC1_Init();
   MX_DAC_Init();
   /* USER CODE BEGIN 2 */
-  struct stateVariables {
-  	  float vacuumScale;
-  	  float flowRate;
-  	  char msg[100];
-  };
+
 
   //dacSet(&hdac, DAC_CHANNEL_1, 2.5);
-  float volts = 0;
-  float FlowRate = 0;
-  float vacuumScale = 0;
-  char msg[100];
 
-//  enum State {
-//      START,
-//      VAC_ACHIEVMENT_TEST,
-//      WARM_UP,
-//      LOAD_TEST,
-//      OPERATION_TEST,
-//      ULTIMATE_MEASURE_TEST,
-//      IDLE,
-//      FAIL_STATE,
-//      STOP
-//  };
-  enum State eNextState = START;
 
-  int stateDelay = 1000;
-  flowControllerADC(&hadc1);
+
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* creation of stateMachine */
+  stateMachineHandle = osThreadNew(StartDefaultTask, NULL, &stateMachine_attributes);
+
+  /* creation of sendData */
+  sendDataHandle = osThreadNew(StartTask02, NULL, &sendData_attributes);
+  osThreadSuspend(sendDataHandle);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -200,189 +242,6 @@ int main(void)
 	  dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
 	  HAL_Delay(1000);
 	  */
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
-
-
-	  //STATE MACHINE STARTS HERE
-	bool error = false;
-	while(eNextState != STOP) {
-		int pump = 0;
-		switch(eNextState) {
-			case START:
-				//print start message
-				pump++;
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
-
-				sprintf(msg,"Starting State Machine on Pump %d\r\n\n", pump);
-				printMsg(msg,&huart3);
-				//send starting status message
-
-				HAL_Delay(stateDelay);
-
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-
-
-				if(!error) {
-					eNextState = FAIL_STATE;
-				}
-				eNextState = VAC_ACHIEVMENT_TEST;
-
-				break;
-			case VAC_ACHIEVMENT_TEST:
-				//HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
-
-				sprintf(msg,"Starting Vacuum Achievement Pump Test in progress (Step 18) \r\n");
-				printMsg(msg,&huart3);
-
-				sprintf(msg,"\tTimer for 60 minutes on\r\n");
-				printMsg(msg,&huart3);
-				HAL_Delay(3000);
-
-				sprintf(msg,"\tTurning on Vacuum Gauge for measurement...\r\n");
-				printMsg(msg, &huart3);
-
-				vacuumGaugeADC(&hadc1);
-				volts = adcGet(&hadc1);
-				vacuumScale = readVacuum(volts);
-				sprintf(msg, "\tVacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n\n", volts, vacuumScale);
-				printMsg(msg, &huart3);
-				//HAL_Delay(1000);
-
-
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-				/*Turn Vacuum G*/
-				if(!error) {
-					eNextState = FAIL_STATE;
-				}
-				eNextState = WARM_UP;
-				break;
-			case WARM_UP:
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
-
-				sprintf(msg, "Starting Idle Warm-up Test (Step 19) \r\n");
-				printMsg(msg,&huart3);
-
-				sprintf(msg,"\tTemperature sensor on...\r\n\n");
-				printMsg(msg,&huart3);
-
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-				/*Continuously read temperature*/
-				if(!error) {
-					eNextState = FAIL_STATE;
-				}
-				eNextState = LOAD_TEST;
-				break;
-			case LOAD_TEST:
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
-
-				sprintf(msg,"Starting Load Test (Step(20)\r\n");
-				printMsg(msg, &huart3);
-				sprintf(msg, "\tLoad being added to the system \r\n");
-				printMsg(msg,&huart3);
-
-				sprintf(msg, "\tMeasuring Flow rate\r\n");
-				printMsg(msg,&huart3);
-
-				/*Mass Flow Controller code*/
-				flowControllerADC(&hadc1);
-				volts = adcGet(&hadc1);
-				FlowRate = readFlow(volts);
-				sprintf(msg, "\tFlow Controller\t\tVolts: %.3f V\tFlow Rate:\t%1.0f\tL/min\r\n\n", volts, FlowRate);
-				printMsg(msg, &huart3);
-				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(50));
-
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-
-				/*Read Temperature value*/
-				if(!error) {
-					eNextState = FAIL_STATE;
-				}
-				eNextState = OPERATION_TEST;
-				break;
-			case OPERATION_TEST:
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
-
-				sprintf(msg,"Starting Continuous Operation Test (Step 21)\r\n");
-				printMsg(msg,&huart3);
-				sprintf(msg,"\tReading Temperature... \r\n\n");
-				printMsg(msg,&huart3);
-
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-
-				if(!error) {
-					eNextState = FAIL_STATE;
-				}
-				eNextState = ULTIMATE_MEASURE_TEST;
-				break;
-			case ULTIMATE_MEASURE_TEST:
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_SET);
-
-				sprintf(msg, "Starting Ultimate Vacuum Pressure Test (Step 22)\r\n");
-				printMsg(msg ,&huart3);
-
-
-				sprintf(msg,"\tTurning on Vacuum Guage for measurement...\r\n");
-				printMsg(msg, &huart3);
-
-				vacuumGaugeADC(&hadc1);
-				volts = adcGet(&hadc1);
-				vacuumScale = readVacuum(volts);
-				sprintf(msg, "\tVacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n\n", volts, vacuumScale);
-				printMsg(msg, &huart3);
-
-				HAL_Delay(stateDelay);
-				HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
-
-				if(!error) {
-					eNextState = FAIL_STATE;
-				}
-				eNextState = FAIL_STATE;
-				break;
-			case FAIL_STATE:
-				sprintf(msg, "Fail State \r\n\n");
-				printMsg(msg ,&huart3);
-				for(int i = 0; i < 5; i++) {
-					HAL_Delay(500);
-					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_SET);
-
-					HAL_Delay(500);
-					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
-				}
-
-
-
-
-				if(!error) {
-					eNextState = STOP;
-				}
-				break;
-			case IDLE:
-				break;
-			case STOP:
-				for(int i = 0; i < 5; i++) {
-
-				}
-				break;
-			default:
-				if(!error) {
-					eNextState = STOP;
-				}
-
-		}
-	}
-
   }
   /* USER CODE END 3 */
 }
@@ -456,7 +315,7 @@ static void MX_ADC1_Init(void)
 
   /* USER CODE END ADC1_Init 0 */
 
-//  ADC_ChannelConfTypeDef sConfig = {0};
+  ADC_ChannelConfTypeDef sConfig = {0};
 
   /* USER CODE BEGIN ADC1_Init 1 */
 
@@ -473,7 +332,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 2;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -483,23 +342,23 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-//  sConfig.Channel = ADC_CHANNEL_9;
-//  sConfig.Rank = ADC_REGULAR_RANK_1;
-//  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
-//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-//  {
-//    Error_Handler();
-//  }
-//
-//  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-//  */
-//  sConfig.Channel = ADC_CHANNEL_6;
-//  sConfig.Rank = ADC_REGULAR_RANK_2;
-//  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
-//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-//  {
-//    Error_Handler();
-//  }
+  sConfig.Channel = ADC_CHANNEL_9;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_6;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
+  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
@@ -543,55 +402,6 @@ static void MX_DAC_Init(void)
   /* USER CODE BEGIN DAC_Init 2 */
 
   /* USER CODE END DAC_Init 2 */
-
-}
-
-/**
-  * @brief ETH Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_ETH_Init(void)
-{
-
-  /* USER CODE BEGIN ETH_Init 0 */
-
-  /* USER CODE END ETH_Init 0 */
-
-   static uint8_t MACAddr[6];
-
-  /* USER CODE BEGIN ETH_Init 1 */
-
-  /* USER CODE END ETH_Init 1 */
-  heth.Instance = ETH;
-  MACAddr[0] = 0x00;
-  MACAddr[1] = 0x80;
-  MACAddr[2] = 0xE1;
-  MACAddr[3] = 0x00;
-  MACAddr[4] = 0x00;
-  MACAddr[5] = 0x00;
-  heth.Init.MACAddr = &MACAddr[0];
-  heth.Init.MediaInterface = HAL_ETH_RMII_MODE;
-  heth.Init.TxDesc = DMATxDscrTab;
-  heth.Init.RxDesc = DMARxDscrTab;
-  heth.Init.RxBuffLen = 1524;
-
-  /* USER CODE BEGIN MACADDRESS */
-
-  /* USER CODE END MACADDRESS */
-
-  if (HAL_ETH_Init(&heth) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  memset(&TxConfig, 0 , sizeof(ETH_TxPacketConfig));
-  TxConfig.Attributes = ETH_TX_PACKETS_FEATURES_CSUM | ETH_TX_PACKETS_FEATURES_CRCPAD;
-  TxConfig.ChecksumCtrl = ETH_CHECKSUM_IPHDR_PAYLOAD_INSERT_PHDR_CALC;
-  TxConfig.CRCPadCtrl = ETH_CRC_PAD_INSERT;
-  /* USER CODE BEGIN ETH_Init 2 */
-
-  /* USER CODE END ETH_Init 2 */
 
 }
 
@@ -707,12 +517,36 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : RMII_MDC_Pin RMII_RXD0_Pin RMII_RXD1_Pin */
+  GPIO_InitStruct.Pin = RMII_MDC_Pin|RMII_RXD0_Pin|RMII_RXD1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF11_ETH;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : RMII_REF_CLK_Pin RMII_MDIO_Pin RMII_CRS_DV_Pin */
+  GPIO_InitStruct.Pin = RMII_REF_CLK_Pin|RMII_MDIO_Pin|RMII_CRS_DV_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF11_ETH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
   GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : RMII_TXD1_Pin */
+  GPIO_InitStruct.Pin = RMII_TXD1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF11_ETH;
+  HAL_GPIO_Init(RMII_TXD1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : USB_PowerSwitchOn_Pin */
   GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
@@ -727,6 +561,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : RMII_TX_EN_Pin RMII_TXD0_Pin */
+  GPIO_InitStruct.Pin = RMII_TX_EN_Pin|RMII_TXD0_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF11_ETH;
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
@@ -734,6 +576,343 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the stateMachine thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void *argument)
+{
+  /* USER CODE BEGIN 5 */
+  /* Infinite loop */
+  for(;;)
+  {
+	  switch(eNextState) {
+	  			case START:
+					// Needs GUI: What tests need to be perform and in what order
+//					VAC_ACHIEVMENT_TEST_INIT,
+//					WARM_UP_INIT,
+//					LOAD_TEST_INIT,
+//					OPERATION_TEST_INIT,
+//					ULTIMATE_MEASURE_TEST_INT,
+
+	  				// void listenMsg(int * str, UART_HandleTypeDef *huart2);
+	  				sprintf(msg,"STARTING\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+
+					tests[0] = 1;
+					tests[1] = 3;
+					tests[2] = 5;
+					tests[3] = 7;
+					tests[4] = 9;
+					tests[5] = 11;
+
+					eNextState = *currentTest;
+	  				break;
+	  			case VAC_ACHIEVMENT_TEST_INIT:
+//					Parameters needed to perform vacuum test
+//					(Step 18) Basically, the pump is turned on, we first time how long it takes to achieve the value on the
+//					base pressure sensor.
+//					ATS will make sure the make sure the pump reaches 3.0m Torr within 60 minutes. If the time
+//					to reach target vacuum pressure goes over 60 minutes, shut pump off.
+//
+//					Which pump
+//					How much mTorr
+//					allocated time for this test
+//
+//					Tasks
+//					Task Number One:
+//						recieve parameters from GUI
+//						Initialization
+//						- set timer, target mTorr, assign which pump
+//						- open/close solonoids, close flow controller, open stepper motor
+	  				sprintf(msg,"VAC_ACHIEVMENT_TEST_INIT\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+
+	  				sprintf(msg,"open/close solenoids, close flow controller, open stepper motor\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+
+	  				flowStateClose();
+	  				stepperOpen();
+	  				solenoidOpen(solenoidOneGroup, solenoidOnePin);
+	  				solenoidClose(solenoidTwoGroup, solenoidTwoPin);
+	  				vacuumGaugeADC(&hadc1);
+
+	  				eNextState = VAC_ACHIEVMENT_TEST;
+	  				break;
+	  			case VAC_ACHIEVMENT_TEST:
+//	  				monitor status
+//	  				- mTorr if mTorr = target, shut pump off, success
+//	  				- Timer if Timer > set time, shut pump off, failure
+//	  				- if success/failure, send data, remove task two&three, move to next state
+	  				volts = adcGet(&hadc1);
+//	  				vacuumScale = readVacuum(volts);
+	  				sprintf(msg,"VAC_ACHIEVMENT_TEST Scanning\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+	  				//osThreadResume(sendDataHandle);
+
+	  				vacuumScale = 50.0;
+	  				if(vacuumScale >= 50){
+		  				sprintf(msg,"vacuum of 50 mTorr reached\r\n");
+		  				printMsg(msg, &huart3);
+		  				HAL_Delay(1000);
+		  				currentTest++;
+		  				eNextState = *currentTest;
+	  				}
+//	  				else if(Timer > 60 minutes){
+//	  					test failed
+//	  					eNextState = FAIL_STATE;
+//	  				}
+	  				else{
+	  					eNextState = VAC_ACHIEVMENT_TEST;
+	  				}
+
+	  				//osDelay(100);
+
+	  				break;
+	  			case WARM_UP_INIT:
+//					(Step 19) The pump is still running the whole time with no stops, and we then need to measure the
+//					temperature externally after the pump has been running for 3 hours and record the pump sensor
+//					temperature reading (this could just be a screengrab at the 3-hour mark of the pump status data).
+//					Thermocouple sensors will be used and already attached to the pump before step 18.
+//					Which pump
+//					allocated time for this test
+//					Maxuim temputure for this test
+
+//					recieve parameters from GUI
+//					Initialization
+//					- set timer, Max Temp, assign which pump
+//					- open/close solonoids, open flow controller, open stepper motor
+	  				sprintf(msg,"WARM_UP_INIT\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+
+	  				sprintf(msg,"open/close solenoids, open flow controller, open stepper motor\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+
+	  				flowStateOpen();
+	  				stepperOpen();
+	  				solenoidOpen(solenoidOneGroup, solenoidOnePin);
+	  				solenoidClose(solenoidTwoGroup, solenoidTwoPin);
+	  				vacuumGaugeADC(&hadc1);
+
+	  				eNextState = WARM_UP;
+	  				break;
+	  			case WARM_UP:
+//					- Timer if Timer >= set time, success,
+//					- temperature if temp >= readTemp, failure
+//					- if success/failure, send data, remove task two&three, move to next state
+	  				float temp = 0;
+	  				int timer = 3;
+	  				sprintf(msg,"WARM_UP Scanning\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+	  				//osThreadResume(sendDataHandle);
+
+	  				if(temp > 100){
+//	  					test failed
+	  					eNextState = FAIL_STATE;
+	  				}else if(timer >= 3){
+		  				sprintf(msg,"Time is up: success\r\n");
+		  				printMsg(msg, &huart3);
+		  				HAL_Delay(1000);
+		  				currentTest++;
+		  				eNextState = *currentTest;
+		  				//osThreadSuspend(sendDataHandle);
+	  				}else{
+	  					eNextState = WARM_UP;
+	  				}
+	  				//osDelay(250);
+	  				break;
+	  			case LOAD_TEST_INIT:
+//					(Step 20) The pump is still running when we start the load test where we add 50slm load to the
+//					pump and keep running for 8 hours.
+//					During this 8-hour process, the pump shuts off automatically if overheating occurs. The station
+//					should display when the pump shuts off.
+//					When the pump shuts off, we start step 18 over to the second pump.
+
+//					recieve parameters from GUI
+//					Initialization
+//					- set timer, Max Temp, assign which pump, flow load
+//					- open/close solonoids, control flow controller, open stepper motor
+
+	  				sprintf(msg,"LOAD_TEST_INIT\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+
+	  				sprintf(msg,"open/close solenoids, control flow controller, open stepper motor\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+
+	  				flowStateControl();
+	  				dacVolts = setFlowRate(50);
+	  				dacSet(&hdac, DAC_CHANNEL_1, dacVolts);
+
+	  				stepperOpen();
+	  				solenoidOpen(solenoidOneGroup, solenoidOnePin);
+	  				solenoidClose(solenoidTwoGroup, solenoidTwoPin);
+	  				flowControllerADC(&hadc1);
+
+	  				eNextState = LOAD_TEST;
+
+	  				break;
+	  			case LOAD_TEST:
+//					- Timer if Timer >= set time, success,
+//					- temperature if maxTemp >= readTemp, failure
+//					- flow rate < flow load, failure
+//					- if success/failure, send data, remove task two&three, move to next state
+	  				temp = 0;
+	  				timer = 8;
+	  				sprintf(msg,"LOAD_TEST Scanning\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				//osDelay(1);
+	  				//osThreadResume(sendDataHandle);
+
+	  				if(temp > 100){
+//	  					test failed
+	  					eNextState = FAIL_STATE;
+	  				}else if(timer >= 8){
+		  				sprintf(msg,"Time is up: success\r\n");
+		  				printMsg(msg, &huart3);
+		  				HAL_Delay(1000);
+		  				currentTest++;
+		  				eNextState = *currentTest;
+		  				//osThreadSuspend(sendDataHandle);
+	  				}else{
+	  					eNextState = LOAD_TEST;
+	  				}
+	  				//osDelay(250);
+
+	  				break;
+	  			case OPERATION_TEST_INIT:
+//					(Step 21) Continue running the pump after the load test for 3-4 hours and take a screen grab of the
+//					data.
+//					recieve parameters from GUI
+//					Initialization
+//					- set timer, Max Temp, assign which pump
+//					- open/close solonoids, open flow controller, open stepper motor
+
+	  				sprintf(msg,"OPERATION_TEST_INIT\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+
+	  				eNextState = LOAD_TEST;
+	  				break;
+	  			case OPERATION_TEST:
+//					monitor status
+//					- Timer if Timer >= set time, success,
+//					- temperature if maxTemp >= readTemp, failure
+//					- if success/failure, send data, remove task two&three, move to next state
+
+	  				sprintf(msg,"OPERATION_TEST\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+
+	  				currentTest++;
+	  				eNextState = *currentTest;
+
+	  				break;
+	  			case ULTIMATE_MEASURE_TEST_INIT:
+//					(Step 22) The pump is still running, and we need to check the vacuum pressure again like step 18.
+//					• ATS will turn on Vacuum gauge once more and measure the ultimate vacuum pressure.
+//					Below is proposed design setup for test 18 – 22 where both top inlets of the pump are connected
+//					through metal tubing where when one pump goes through a series of test, the opposite solenoid will
+//					remain closed.
+//					Once Steps 18 –22 are completed, when can move forward with step 23.
+
+	  				sprintf(msg,"ULTIMATE_MEASURE_TEST_INIT\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+
+	  				eNextState = ULTIMATE_MEASURE_TEST;
+
+	  				break;
+	  			case ULTIMATE_MEASURE_TEST:
+
+	  				sprintf(msg,"ULTIMATE_MEASURE_TEST\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+
+	  				currentTest++;
+	  				eNextState = *currentTest;
+	  				break;
+	  			case FAIL_STATE:
+	  				break;
+	  			case IDLE:
+	  				sprintf(msg,"IDLE\r\n");
+	  				printMsg(msg, &huart3);
+	  				HAL_Delay(1000);
+	  				eNextState = IDLE;
+	  				break;
+	  			case STOP:
+	  				break;
+	  			default:
+	  				eNextState = STOP;
+	  }
+
+	  osDelay(100);
+  }
+  /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_StartTask02 */
+/**
+* @brief Function implementing the sendData thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask02 */
+void StartTask02(void *argument)
+{
+  /* USER CODE BEGIN StartTask02 */
+  /* Infinite loop */
+  for(;;)
+  {
+	sprintf(msg,"Sending Data");
+	printMsg(msg, &huart3);
+    osDelay(100);
+  }
+  /* USER CODE END StartTask02 */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM6 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM6) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

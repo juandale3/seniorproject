@@ -3,3 +3,6 @@
 ../Core/Src/flow_controller.c:88:7:setFlowRate	1
 ../Core/Src/flow_controller.c:94:6:flowRateMethod	2
 ../Core/Src/flow_controller.c:122:6:flowRateSP	5
+../Core/Src/flow_controller.c:158:6:flowStateClose	1
+../Core/Src/flow_controller.c:161:6:flowStateOpen	1
+../Core/Src/flow_controller.c:164:6:flowStateControl	1

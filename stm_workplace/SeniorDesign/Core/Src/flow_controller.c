@@ -155,6 +155,15 @@ void flowRateSP(uint8_t setPoint){
 	}
 }
 
+void flowStateClose(void){
+return;
+}
+void flowStateOpen(void){
+return;
+}
+void flowStateControl(void){
+return;
+}
 
 // Static Functions		------------------------------------------------//
 
