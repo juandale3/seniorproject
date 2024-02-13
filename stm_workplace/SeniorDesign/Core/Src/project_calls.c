@@ -80,9 +80,13 @@ void printMsg(char* str, UART_HandleTypeDef *huart2){
 	HAL_UART_Transmit(huart2, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
 	return;
 }
-void listenMsg(int* str, UART_HandleTypeDef *huart2){
-	HAL_UART_Receive(huart2, (uint8_t *)str, 50, HAL_MAX_DELAY);
-	return;
+void listenMsg(UART_HandleTypeDef *huart) {
+    uint8_t buffer[128]; // Define a buffer size according to your needs
+    HAL_UART_Receive(huart, buffer, sizeof(buffer)-1, HAL_MAX_DELAY);
+    buffer[sizeof(buffer)-1] = '\0'; // Null-terminate the string
+    // Now you can use buffer as a string
+    HAL_UART_Transmit(huart, buffer, strlen((char *)buffer), HAL_MAX_DELAY);
+
 }
 
 void solenoidOpen(GPIO_TypeDef * solenoidGroup, uint16_t solenoidPin){

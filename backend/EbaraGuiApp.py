@@ -42,6 +42,9 @@ class App(customtkinter.CTk):
 
         self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text="Pump Status Data", command=self.show_content4)
         self.sidebar_button_4.grid(row=4, column=0, pady=10, padx=20)
+        
+        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Send Serial Data", command=self.show_content4)
+        self.sidebar_button_5.grid(row=5, column=0, pady=10, padx=20)
 
         # Main content area
         # Lighter shade for the main content area

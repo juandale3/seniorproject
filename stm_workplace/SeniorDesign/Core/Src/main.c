@@ -215,7 +215,7 @@ int main(void)
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
-  osKernelStart();
+  //osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
@@ -233,6 +233,9 @@ int main(void)
 	  printMsg(msg, &huart3);
 	  HAL_Delay(1000);
 	*/
+	  char msg[100];
+	  listenMsg(&huart3);
+
 	  /*
 	  flowControllerADC(&hadc1);
 	  volts = adcGet(&hadc1);

@@ -2,5 +2,5 @@
 ../Core/Src/project_calls.c:39:7:adcGet	1
 ../Core/Src/project_calls.c:77:6:printMsg	1
 ../Core/Src/project_calls.c:83:6:listenMsg	1
-../Core/Src/project_calls.c:88:6:solenoidOpen	1
-../Core/Src/project_calls.c:93:6:solenoidClose	1
+../Core/Src/project_calls.c:92:6:solenoidOpen	1
+../Core/Src/project_calls.c:97:6:solenoidClose	1
