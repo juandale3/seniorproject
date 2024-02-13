@@ -234,7 +234,7 @@ int main(void)
 	  HAL_Delay(1000);
 	*/
 	  char msg[100];
-	  listenMsg(&huart3);
+//listenMsg(&huart3);
 
 	  /*
 	  flowControllerADC(&hadc1);
@@ -605,8 +605,8 @@ void StartDefaultTask(void *argument)
 	  				// void listenMsg(int * str, UART_HandleTypeDef *huart2);
 	  				sprintf(msg,"STARTING\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1);
 
 					tests[0] = 1;
 					tests[1] = 3;
@@ -636,13 +636,13 @@ void StartDefaultTask(void *argument)
 //						- open/close solonoids, close flow controller, open stepper motor
 	  				sprintf(msg,"VAC_ACHIEVMENT_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 
 	  				sprintf(msg,"open/close solenoids, close flow controller, open stepper motor\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 
 	  				flowStateClose();
 	  				stepperOpen();
@@ -661,15 +661,15 @@ void StartDefaultTask(void *argument)
 //	  				vacuumScale = readVacuum(volts);
 	  				sprintf(msg,"VAC_ACHIEVMENT_TEST Scanning\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 	  				//osThreadResume(sendDataHandle);
 
 	  				vacuumScale = 50.0;
 	  				if(vacuumScale >= 50){
 		  				sprintf(msg,"vacuum of 50 mTorr reached\r\n");
 		  				printMsg(msg, &huart3);
-		  				HAL_Delay(1000);
+		  				//HAL_Delay(1000);
 		  				currentTest++;
 		  				eNextState = *currentTest;
 	  				}
@@ -699,13 +699,13 @@ void StartDefaultTask(void *argument)
 //					- open/close solonoids, open flow controller, open stepper motor
 	  				sprintf(msg,"WARM_UP_INIT\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 
 	  				sprintf(msg,"open/close solenoids, open flow controller, open stepper motor\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 
 	  				flowStateOpen();
 	  				stepperOpen();
@@ -723,8 +723,8 @@ void StartDefaultTask(void *argument)
 	  				int timer = 3;
 	  				sprintf(msg,"WARM_UP Scanning\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 	  				//osThreadResume(sendDataHandle);
 
 	  				if(temp > 100){
@@ -733,7 +733,7 @@ void StartDefaultTask(void *argument)
 	  				}else if(timer >= 3){
 		  				sprintf(msg,"Time is up: success\r\n");
 		  				printMsg(msg, &huart3);
-		  				HAL_Delay(1000);
+		  				//HAL_Delay(1000);
 		  				currentTest++;
 		  				eNextState = *currentTest;
 		  				//osThreadSuspend(sendDataHandle);
@@ -756,13 +756,13 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"LOAD_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 
 	  				sprintf(msg,"open/close solenoids, control flow controller, open stepper motor\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 
 	  				flowStateControl();
 	  				dacVolts = setFlowRate(50);
@@ -785,8 +785,8 @@ void StartDefaultTask(void *argument)
 	  				timer = 8;
 	  				sprintf(msg,"LOAD_TEST Scanning\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
-	  				//osDelay(1);
+	  				//HAL_Delay(1000);
+	  				osDelay(1000);
 	  				//osThreadResume(sendDataHandle);
 
 	  				if(temp > 100){
@@ -795,7 +795,7 @@ void StartDefaultTask(void *argument)
 	  				}else if(timer >= 8){
 		  				sprintf(msg,"Time is up: success\r\n");
 		  				printMsg(msg, &huart3);
-		  				HAL_Delay(1000);
+		  				//HAL_Delay(1000);
 		  				currentTest++;
 		  				eNextState = *currentTest;
 		  				//osThreadSuspend(sendDataHandle);
@@ -815,7 +815,7 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"OPERATION_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
+	  				//HAL_Delay(1000);
 
 	  				eNextState = LOAD_TEST;
 	  				break;
@@ -827,7 +827,7 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"OPERATION_TEST\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
+	  				//HAL_Delay(1000);
 
 	  				currentTest++;
 	  				eNextState = *currentTest;
@@ -843,7 +843,7 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"ULTIMATE_MEASURE_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
+	  				//HAL_Delay(1000);
 
 	  				eNextState = ULTIMATE_MEASURE_TEST;
 
@@ -852,7 +852,7 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"ULTIMATE_MEASURE_TEST\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
+	  				//HAL_Delay(1000);
 
 	  				currentTest++;
 	  				eNextState = *currentTest;
@@ -862,7 +862,7 @@ void StartDefaultTask(void *argument)
 	  			case IDLE:
 	  				sprintf(msg,"IDLE\r\n");
 	  				printMsg(msg, &huart3);
-	  				HAL_Delay(1000);
+	  				//HAL_Delay(1000);
 	  				eNextState = IDLE;
 	  				break;
 	  			case STOP:
