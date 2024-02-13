@@ -1,14 +1,15 @@
 import customtkinter
 import serial
-import time
 
+import time
+#from sendData import sendData
 
 
 # Setup serial connection
-#ser = serial.Serial('COM9', 115200, timeout=1)
+ser = serial.Serial('COM11', 115200, timeout=1)
 
 # Flush any remaining input buffer to start fresh
-#ser.flushInput()
+ser.flushInput()
 
 #customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 #customtkinter.set_default_color_theme("blue")
@@ -41,9 +42,9 @@ class App(customtkinter.CTk):
 
         self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text="Pump Status Data", command=self.show_content4)
         self.sidebar_button_4.grid(row=4, column=0, pady=10, padx=20)
-        
-        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Send Serial Data", command=self.show_content4)
-        self.sidebar_button_5.grid(row=5, column=0, pady=10, padx=20)
+
+        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Send Serial", command=self.sendData)
+        self.sidebar_button_5.grid(row=5 ,column=0, pady=10, padx=20)
 
         # Main content area
         # Lighter shade for the main content area
@@ -61,18 +62,26 @@ class App(customtkinter.CTk):
     def show_content1(self):
         # Clear any existing content
         self.clear_main_content()
+        
+        label = customtkinter.CTkLabel(self.main_content, text="Choose Pump Model")
+        label.grid(row=0, column=0, pady=20, padx=20)
+        #Option drop down for pump model
+        self.optionmenu_1 = customtkinter.CTkOptionMenu(master=self.main_content, values=["Pump Model 1", "Pump Model 2", "Pump Model 3", "Pump Model 4"])
+        self.optionmenu_1.grid(row=1, column=0, padx=20)
 
         # Add a label to the main content area
         label = customtkinter.CTkLabel(self.main_content, text="Choose a pump to start testing")
-        label.grid(row=0, column=0, pady=20, padx=20)
+        label.grid(row=2, column=0, pady=20, padx=20)
+        
+
 
         # Add a button to the main content area
         self.pump1_button = customtkinter.CTkButton(self.main_content, height=200, width=200,text="Start \nPump 1")
-        self.pump1_button.grid(row=1, column=0, pady=20, padx=20)  # Using grid for consistency
+        self.pump1_button.grid(row=3, column=0, pady=20, padx=20)  # Using grid for consistency
 
         
         self.pump2_button = customtkinter.CTkButton(self.main_content,height=200, width=200, text="Start \n Pump 2")
-        self.pump2_button.grid(row=1, column=2, pady=20, padx=20)  # Using grid for consistency
+        self.pump2_button.grid(row=3, column=1, pady=20, padx=20)  # Using grid for consistency
 
 
     def show_content2(self):
@@ -118,7 +127,28 @@ class App(customtkinter.CTk):
             self.textbox.insert('end', serialData + '\n')  # Insert data at the end of the textbox
         self.after(100, self.update_serial_data)  # Schedule this method to be called again after 100ms
 
-            
+
+    def sendData(self):
+        ser = serial.Serial('COM11', 115200, timeout=1)
+
+        # The data to send
+        # Ensure this matches the expected format and size on the STM32 side
+        data_to_send = "Hello STM32"
+
+        # Convert the string to bytes and send it
+        ser.write(data_to_send.encode())
+
+        # Wait a bit for the data to be sent and processed
+        time.sleep(1)
+
+        # Optionally, read back any response if your STM32 code sends data back
+        response = ser.read_all()
+        print("Received:", response.decode())
+
+        # Close the serial connection
+        ser.close()
+
+
 
 
 
