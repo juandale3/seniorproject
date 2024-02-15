@@ -1,6 +1,6 @@
 ../Core/Src/project_calls.c:33:6:dacSet	24	static
 ../Core/Src/project_calls.c:39:7:adcGet	16	static
 ../Core/Src/project_calls.c:77:6:printMsg	16	static
-../Core/Src/project_calls.c:83:6:listenMsg	144	static
+../Core/Src/project_calls.c:83:6:listenMsg	16	static
 ../Core/Src/project_calls.c:92:6:solenoidOpen	16	static
 ../Core/Src/project_calls.c:97:6:solenoidClose	16	static

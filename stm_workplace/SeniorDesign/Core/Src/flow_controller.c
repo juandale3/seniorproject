@@ -18,7 +18,7 @@ static const uint8_t referenceVolt = 1;				// before voltage division. At refere
 static const uint8_t flowScale = 200;				// Max flow rate we are able to measure through Analog signal
 static const float scalingFactor = ((float)(maxVoltage-referenceVolt)/flowScale);
 
-static const float amp = 1.0 + 10.0/5.1;			// This is how much the OpAmp is increasing the DAC signal from the STM Rf = 10k, Ri = 5.1 k
+static const float amp = 1.0 + 5.1/10;			// This is how much the OpAmp is increasing the DAC signal from the STM Rf = 10k, Ri = 5.1 k
 
 
 
@@ -32,14 +32,14 @@ float flowRestriction = 0.0;
 
 // Pins
 // PA0, input pin DI1
-static GPIO_InitTypeDef FlowMethodPin = {GPIO_PIN_1, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
-static GPIO_TypeDef * FlowMethodGroup = GPIOA;
+static GPIO_InitTypeDef FlowMethodPin = {GPIO_PIN_12, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_TypeDef * FlowMethodGroup = GPIOC;
 // PA1, input pin DI2
-static GPIO_InitTypeDef ContactDI2Pin = {GPIO_PIN_3, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
-static GPIO_TypeDef * ContactDI2Group = GPIOA;
+static GPIO_InitTypeDef ContactDI2Pin = {GPIO_PIN_9, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_TypeDef * ContactDI2Group = GPIOC;
 // PA2, input pin DI3
-static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_5, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
-static GPIO_TypeDef * ContactDI3Group = GPIOA;
+static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_8, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_TypeDef * ContactDI3Group = GPIOC;
 
 
 // Static Functions Declaration	----------------------------------------//
@@ -94,8 +94,8 @@ float setFlowRate(uint8_t targetFlowRate){
 void flowRateMethod(uint8_t method){
 
 	// This is PA_0
-	// 0 = "Tri-State"
-	// 1 = "Gnd"
+	// 0 = "Tri-State"		tri state is analog
+	// 1 = "Gnd"			gnd is digital
 //	GPIO_InitTypeDef GPIO_InitStruct = {0};
 //	GPIO_InitStruct.Pin = GPIO_PIN_1;
 //	GPIO_InitStruct.Pull = GPIO_NOPULL;

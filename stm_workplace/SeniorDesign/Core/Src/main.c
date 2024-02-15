@@ -92,15 +92,17 @@ const osThreadAttr_t sendData_attributes = {
   .priority = (osPriority_t) osPriorityBelowNormal1,
 };
 /* USER CODE BEGIN PV */
-int tests[6];
+int tests[10];
 int* currentTest = &tests[0];
 enum State eNextState = START;
+//enum State eNextState = IDLE;
 
 float volts = 0;
 float dacVolts = 0;
 float FlowRate = 0;
 float vacuumScale = 0;
 char msg[100];
+char mail[100];
 
 
 static GPIO_TypeDef * solenoidOneGroup = GPIOA;
@@ -169,8 +171,8 @@ int main(void)
   MX_DAC_Init();
   /* USER CODE BEGIN 2 */
 
-
-  //dacSet(&hdac, DAC_CHANNEL_1, 2.5);
+  volts = setFlowRate(0);
+  dacSet(&hdac, DAC_CHANNEL_1, volts);
 
 
 
@@ -204,10 +206,11 @@ int main(void)
 
   /* creation of sendData */
   sendDataHandle = osThreadNew(StartTask02, NULL, &sendData_attributes);
-  osThreadSuspend(sendDataHandle);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  osThreadSuspend(sendDataHandle);
+
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -225,6 +228,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+
 	  /*
 	  vacuumGaugeADC(&hadc1);
 	  volts = adcGet(&hadc1);
@@ -563,6 +568,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : DI3_Pin DI2_Pin DI1_Pin */
+  GPIO_InitStruct.Pin = DI3_Pin|DI2_Pin|DI1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   /*Configure GPIO pins : RMII_TX_EN_Pin RMII_TXD0_Pin */
   GPIO_InitStruct.Pin = RMII_TX_EN_Pin|RMII_TXD0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -612,6 +623,7 @@ void StartDefaultTask(void *argument)
 					tests[3] = 7;
 					tests[4] = 9;
 					tests[5] = 11;
+					tests[6] = 13;
 
 					eNextState = *currentTest;
 	  				break;
@@ -632,6 +644,7 @@ void StartDefaultTask(void *argument)
 //						Initialization
 //						- set timer, target mTorr, assign which pump
 //						- open/close solonoids, close flow controller, open stepper motor
+	  				osThreadSuspend(sendDataHandle);
 	  				sprintf(msg,"VAC_ACHIEVMENT_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
 	  				osDelay(1000);
@@ -657,14 +670,16 @@ void StartDefaultTask(void *argument)
 //	  				vacuumScale = readVacuum(volts);
 	  				sprintf(msg,"VAC_ACHIEVMENT_TEST Scanning\r\n");
 	  				printMsg(msg, &huart3);
+	  				osThreadResume(sendDataHandle);
 	  				osDelay(1000);
-	  				//osThreadResume(sendDataHandle);
+
 
 	  				vacuumScale = 50.0;
 	  				if(vacuumScale >= 50){
 		  				sprintf(msg,"vacuum of 50 mTorr reached\r\n");
 		  				printMsg(msg, &huart3);
-		  				//HAL_Delay(1000);
+		  				osThreadSuspend(sendDataHandle);
+		  				osDelay(1000);
 		  				currentTest++;
 		  				eNextState = *currentTest;
 	  				}
@@ -716,8 +731,9 @@ void StartDefaultTask(void *argument)
 	  				int timer = 3;
 	  				sprintf(msg,"WARM_UP Scanning\r\n");
 	  				printMsg(msg, &huart3);
+	  				osThreadResume(sendDataHandle);
 	  				osDelay(1000);
-	  				//osThreadResume(sendDataHandle);
+
 
 	  				if(temp > 100){
 //	  					test failed
@@ -725,10 +741,10 @@ void StartDefaultTask(void *argument)
 	  				}else if(timer >= 3){
 		  				sprintf(msg,"Time is up: success\r\n");
 		  				printMsg(msg, &huart3);
-		  				//HAL_Delay(1000);
 		  				currentTest++;
 		  				eNextState = *currentTest;
-		  				//osThreadSuspend(sendDataHandle);
+		  				osThreadSuspend(sendDataHandle);
+		  				osDelay(1000);
 	  				}else{
 	  					eNextState = WARM_UP;
 	  				}
@@ -775,9 +791,9 @@ void StartDefaultTask(void *argument)
 	  				timer = 8;
 	  				sprintf(msg,"LOAD_TEST Scanning\r\n");
 	  				printMsg(msg, &huart3);
-	  				//HAL_Delay(1000);
+	  				osThreadResume(sendDataHandle);
 	  				osDelay(1000);
-	  				//osThreadResume(sendDataHandle);
+
 
 	  				if(temp > 100){
 //	  					test failed
@@ -787,11 +803,11 @@ void StartDefaultTask(void *argument)
 		  				printMsg(msg, &huart3);
 		  				currentTest++;
 		  				eNextState = *currentTest;
-		  				//osThreadSuspend(sendDataHandle);
+		  				osThreadSuspend(sendDataHandle);
+		  				osDelay(1000);
 	  				}else{
 	  					eNextState = LOAD_TEST;
 	  				}
-	  				//osDelay(250);
 
 	  				break;
 	  			case OPERATION_TEST_INIT:
@@ -804,7 +820,7 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"OPERATION_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
-
+	  				osDelay(1000);
 	  				eNextState = LOAD_TEST;
 	  				break;
 	  			case OPERATION_TEST:
@@ -815,6 +831,10 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"OPERATION_TEST\r\n");
 	  				printMsg(msg, &huart3);
+	  				osThreadResume(sendDataHandle);
+	  				osDelay(1000);
+	  				osThreadSuspend(sendDataHandle);
+
 
 	  				currentTest++;
 	  				eNextState = *currentTest;
@@ -830,6 +850,7 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"ULTIMATE_MEASURE_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
+					osDelay(1000);
 
 	  				eNextState = ULTIMATE_MEASURE_TEST;
 
@@ -838,6 +859,9 @@ void StartDefaultTask(void *argument)
 
 	  				sprintf(msg,"ULTIMATE_MEASURE_TEST\r\n");
 	  				printMsg(msg, &huart3);
+	  				osThreadResume(sendDataHandle);
+	  				osDelay(1000);
+	  				osThreadSuspend(sendDataHandle);
 
 	  				currentTest++;
 	  				eNextState = *currentTest;
@@ -845,17 +869,23 @@ void StartDefaultTask(void *argument)
 	  			case FAIL_STATE:
 	  				break;
 	  			case IDLE:
-	  				sprintf(msg,"IDLE\r\n");
+	  				sprintf(msg,"IDLE %0.3f\r\n", volts);
 	  				printMsg(msg, &huart3);
+	  				//currentTest++;
+	  				//eNextState = *currentTest;
+	  				flowRateMethod(0);
+	  				osDelay(1000);
 	  				eNextState = IDLE;
 	  				break;
 	  			case STOP:
+	  				eNextState = STOP;
+	  				HAL_Delay(5000);
 	  				break;
 	  			default:
 	  				eNextState = STOP;
 	  }
 
-	  osDelay(100);
+	  osDelay(1);
   }
   /* USER CODE END 5 */
 }
@@ -873,9 +903,9 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	sprintf(msg,"Sending Data");
+	sprintf(msg,"Sending Data\r\n");
 	printMsg(msg, &huart3);
-    osDelay(100);
+    osDelay(250);
   }
   /* USER CODE END StartTask02 */
 }

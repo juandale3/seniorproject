@@ -6,7 +6,7 @@ import time
 
 
 # Setup serial connection
-ser = serial.Serial('COM11', 115200, timeout=1)
+ser = serial.Serial('COM4', 115200, timeout=1)
 
 # Flush any remaining input buffer to start fresh
 ser.flushInput()
@@ -129,7 +129,7 @@ class App(customtkinter.CTk):
 
 
     def sendData(self):
-        ser = serial.Serial('COM11', 115200, timeout=1)
+        ser = serial.Serial('COM4', 115200, timeout=1)
 
         # The data to send
         # Ensure this matches the expected format and size on the STM32 side

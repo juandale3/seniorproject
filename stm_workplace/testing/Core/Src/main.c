@@ -64,8 +64,8 @@ TIM_HandleTypeDef htim17;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
-
+uint8_t msg[5];
+char tx_buffer[10] = "Received\n";
 
 /* USER CODE END PV */
 
@@ -120,11 +120,11 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM17_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_PWM_Start(&htim17, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start_IT(&htim17, TIM_CHANNEL_1);
-  HAL_TIM_PWM_PulseFinishedCallback(&htim17);
-  HAL_TIM_Base_Start_IT(&htim17);
-
+//  HAL_TIM_PWM_Start(&htim17, TIM_CHANNEL_1);
+//  HAL_TIM_PWM_Start_IT(&htim17, TIM_CHANNEL_1);
+//  HAL_TIM_PWM_PulseFinishedCallback(&htim17);
+//  HAL_TIM_Base_Start_IT(&htim17);
+  HAL_UART_Receive_IT(&huart2, (uint8_t *)msg, 5);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -414,12 +414,23 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
+//void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
+//
+//	if(htim == &htim17){
+//		HAL_UART_RxCpltCallback(huart)
+//	}
+//
+//}
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart == &huart2)
+    {
+        // Echo received data back
+        HAL_UART_Transmit_IT(&huart2, (uint8_t*)tx_buffer, 20);
 
-	if(htim == &htim17){
-
-	}
-
+        // Start a new receive operation
+        HAL_UART_Receive_IT(&huart2, (uint8_t*)msg, 5);
+    }
 }
 
 /* USER CODE END 4 */
