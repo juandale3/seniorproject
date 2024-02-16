@@ -121,7 +121,7 @@ int main(void)
   MX_TIM17_Init();
   /* USER CODE BEGIN 2 */
 //  HAL_TIM_PWM_Start(&htim17, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start_IT(&htim17, TIM_CHANNEL_1);
+//  HAL_TIM_PWM_Start_IT(&htim17, TIM_CHANNEL_1);
 //  HAL_TIM_PWM_PulseFinishedCallback(&htim17);
 //  HAL_TIM_Base_Start_IT(&htim17);
   HAL_UART_Receive_IT(&huart2, (uint8_t *)msg, 5);
@@ -308,10 +308,10 @@ static void MX_TIM17_Init(void)
 
   /* USER CODE END TIM17_Init 1 */
   htim17.Instance = TIM17;
-  htim17.Init.Prescaler = 8000 - 1;
+  htim17.Init.Prescaler = 20000 - 1;
   htim17.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim17.Init.Period = 256 - 1;
-  htim17.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim17.Init.Period = 20000 - 1;
+  htim17.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
   htim17.Init.RepetitionCounter = 0;
   htim17.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim17) != HAL_OK)
@@ -414,13 +414,13 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
-
-	if(htim == &htim17){
-		HAL_TIM_PWM_Start_IT(&htim17, TIM_CHANNEL_1);
-	}
-
-}
+//void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
+//
+//	if(htim == &htim17){
+//		HAL_UART_RxCpltCallback(huart)
+//	}
+//
+//}
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
     if (huart == &huart2)

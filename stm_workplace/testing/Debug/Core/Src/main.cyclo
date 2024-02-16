@@ -5,5 +5,6 @@
 ../Core/Src/main.c:297:13:MX_TIM17_Init	5
 ../Core/Src/main.c:360:13:MX_USART2_UART_Init	2
 ../Core/Src/main.c:395:13:MX_GPIO_Init	1
+../Core/Src/main.c:417:6:HAL_TIM_PWM_PulseFinishedCallback	2
 ../Core/Src/main.c:424:6:HAL_UART_RxCpltCallback	2
 ../Core/Src/main.c:442:6:Error_Handler	1
