@@ -209,19 +209,16 @@ void HAL_DAC_MspDeInit(DAC_HandleTypeDef* hdac)
 */
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
 {
-  if(htim_base->Instance==TIM17)
+  if(htim_base->Instance==TIM1)
   {
-  /* USER CODE BEGIN TIM17_MspInit 0 */
+  /* USER CODE BEGIN TIM1_MspInit 0 */
 
-  /* USER CODE END TIM17_MspInit 0 */
+  /* USER CODE END TIM1_MspInit 0 */
     /* Peripheral clock enable */
-    __HAL_RCC_TIM17_CLK_ENABLE();
-    /* TIM17 interrupt Init */
-    HAL_NVIC_SetPriority(TIM1_TRG_COM_TIM17_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(TIM1_TRG_COM_TIM17_IRQn);
-  /* USER CODE BEGIN TIM17_MspInit 1 */
+    __HAL_RCC_TIM1_CLK_ENABLE();
+  /* USER CODE BEGIN TIM1_MspInit 1 */
 
-  /* USER CODE END TIM17_MspInit 1 */
+  /* USER CODE END TIM1_MspInit 1 */
   }
 
 }
@@ -229,26 +226,26 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  if(htim->Instance==TIM17)
+  if(htim->Instance==TIM1)
   {
-  /* USER CODE BEGIN TIM17_MspPostInit 0 */
+  /* USER CODE BEGIN TIM1_MspPostInit 0 */
 
-  /* USER CODE END TIM17_MspPostInit 0 */
+  /* USER CODE END TIM1_MspPostInit 0 */
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
-    /**TIM17 GPIO Configuration
-    PA7     ------> TIM17_CH1
+    /**TIM1 GPIO Configuration
+    PA8     ------> TIM1_CH1
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_7;
+    GPIO_InitStruct.Pin = GPIO_PIN_8;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF1_TIM17;
+    GPIO_InitStruct.Alternate = GPIO_AF6_TIM1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN TIM17_MspPostInit 1 */
+  /* USER CODE BEGIN TIM1_MspPostInit 1 */
 
-  /* USER CODE END TIM17_MspPostInit 1 */
+  /* USER CODE END TIM1_MspPostInit 1 */
   }
 
 }
@@ -260,19 +257,16 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
 */
 void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
 {
-  if(htim_base->Instance==TIM17)
+  if(htim_base->Instance==TIM1)
   {
-  /* USER CODE BEGIN TIM17_MspDeInit 0 */
+  /* USER CODE BEGIN TIM1_MspDeInit 0 */
 
-  /* USER CODE END TIM17_MspDeInit 0 */
+  /* USER CODE END TIM1_MspDeInit 0 */
     /* Peripheral clock disable */
-    __HAL_RCC_TIM17_CLK_DISABLE();
+    __HAL_RCC_TIM1_CLK_DISABLE();
+  /* USER CODE BEGIN TIM1_MspDeInit 1 */
 
-    /* TIM17 interrupt DeInit */
-    HAL_NVIC_DisableIRQ(TIM1_TRG_COM_TIM17_IRQn);
-  /* USER CODE BEGIN TIM17_MspDeInit 1 */
-
-  /* USER CODE END TIM17_MspDeInit 1 */
+  /* USER CODE END TIM1_MspDeInit 1 */
   }
 
 }

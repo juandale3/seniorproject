@@ -1357,3 +1357,1477 @@ Finished building: default.size.stdout
  
 Finished building: testing.list
  
+00:37:53 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dac_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f303k8tx.d" -MT"Core/Startup/startup_stm32f303k8tx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f303k8tx.o" "../Core/Startup/startup_stm32f303k8tx.s"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f3xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f3xx.d" -MT"Core/Src/system_stm32f3xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f3xx.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  37356	    488	   2224	  40068	   9c84	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+00:38:44 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37356	    488	   2224	  40068	   9c84	testing.elf
+Finished building: default.size.stdout
+ 
+00:50:52 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  35820	    476	   2220	  38516	   9674	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+00:51:12 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  35180	    476	   2220	  37876	   93f4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+01:00:33 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  35180	    476	   2220	  37876	   93f4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+01:00:50 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35180	    476	   2220	  37876	   93f4	testing.elf
+Finished building: default.size.stdout
+ 
+01:01:24 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35180	    476	   2220	  37876	   93f4	testing.elf
+Finished building: default.size.stdout
+ 
+01:07:41 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  35180	    476	   2220	  37876	   93f4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+01:09:46 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  35180	    476	   2220	  37876	   93f4	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+01:11:09 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  34612	    476	   2220	  37308	   91bc	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+01:35:19 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc -o "testing.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\testing\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing.elf
+ 
+arm-none-eabi-size  testing.elf 
+arm-none-eabi-objdump -h -S testing.elf  > "testing.list"
+   text	   data	    bss	    dec	    hex	filename
+  35452	    476	   2220	  38148	   9504	testing.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing.list
+ 
+01:35:24 **** Incremental Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35452	    476	   2220	  38148	   9504	testing.elf
+Finished building: default.size.stdout
+ 
+01:37:06 **** Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f303k8tx.d" -MT"Core/Startup/startup_stm32f303k8tx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f303k8tx.o" "../Core/Startup/startup_stm32f303k8tx.s"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:107:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  107 |   sprintf(meassage,"Awaken!");
+      |   ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:107:3: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  107 |   sprintf(meassage,"Awaken!");
+      |   ^~~~~~~
+../Core/Src/main.c:107:3: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:107:11: error: 'meassage' undeclared (first use in this function); did you mean 'message'?
+  107 |   sprintf(meassage,"Awaken!");
+      |           ^~~~~~~~
+      |           message
+../Core/Src/main.c:107:11: note: each undeclared identifier is reported only once for each function it appears in
+At top level:
+../Core/Src/main.c:220:13: warning: 'MX_SPI1_Init' defined but not used [-Wunused-function]
+  220 | static void MX_SPI1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:172:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  172 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+01:37:22 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f3xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f3xx.d" -MT"Core/Src/system_stm32f3xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f3xx.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:107:3: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  107 |   sprintf(message,"Awaken!");
+      |   ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:107:3: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  107 |   sprintf(message,"Awaken!");
+      |   ^~~~~~~
+../Core/Src/main.c:107:3: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+At top level:
+../Core/Src/main.c:220:13: warning: 'MX_SPI1_Init' defined but not used [-Wunused-function]
+  220 | static void MX_SPI1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:172:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  172 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  15832	    100	   2036	  17968	   4630	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+01:40:07 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:220:13: warning: 'MX_SPI1_Init' defined but not used [-Wunused-function]
+  220 | static void MX_SPI1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:172:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  172 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28468	    476	   2044	  30988	   790c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+01:45:56 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28468	    476	   2044	  30988	   790c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+01:49:49 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:220:13: warning: 'MX_SPI1_Init' defined but not used [-Wunused-function]
+  220 | static void MX_SPI1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:172:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  172 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28468	    476	   2044	  30988	   790c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+01:51:02 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28468	    476	   2044	  30988	   790c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+01:51:46 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28468	    476	   2044	  30988	   790c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+01:52:30 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:220:13: warning: 'MX_SPI1_Init' defined but not used [-Wunused-function]
+  220 | static void MX_SPI1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:172:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  172 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28460	    476	   2044	  30980	   7904	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+01:53:18 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28460	    476	   2044	  30980	   7904	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+01:53:44 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28460	    476	   2044	  30980	   7904	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+01:54:24 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28460	    476	   2044	  30980	   7904	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+01:56:20 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:230:13: warning: 'MX_SPI1_Init' defined but not used [-Wunused-function]
+  230 | static void MX_SPI1_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:182:13: warning: 'MX_I2C1_Init' defined but not used [-Wunused-function]
+  182 | static void MX_I2C1_Init(void)
+      |             ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28628	    476	   2044	  31148	   79ac	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:05:42 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30076	    476	   2228	  32780	   800c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:08:51 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30076	    476	   2228	  32780	   800c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:11:15 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30076	    476	   2228	  32780	   800c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:12:48 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30076	    476	   2228	  32780	   800c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:15:09 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30068	    476	   2228	  32772	   8004	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:37:46 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28012	    476	   2228	  30716	   77fc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:40:32 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28012	    476	   2228	  30716	   77fc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:43:56 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28012	    476	   2228	  30716	   77fc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:47:21 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28012	    476	   2228	  30716	   77fc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+02:50:53 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28028	    476	   2228	  30732	   780c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+12:38:50 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28020	    476	   2228	  30724	   7804	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+12:41:57 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28012	    476	   2228	  30716	   77fc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+12:44:25 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28012	    476	   2228	  30716	   77fc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+13:15:08 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28012	    476	   2228	  30716	   77fc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+13:16:40 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28204	    476	   2228	  30908	   78bc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+13:17:19 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  28212	    476	   2228	  30916	   78c4	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:17:30 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_spi_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f3xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f3xx.d" -MT"Core/Src/system_stm32f3xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f3xx.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:368:6: warning: type of 'GPIO_Pin' defaults to 'int' [-Wimplicit-int]
+  368 | void HAL_GPIO_EXTI_Callback(GPIO_Pin){
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:368:6: error: argument 'GPIO_Pin' doesn't match prototype
+In file included from ../Core/Inc/stm32f3xx_hal_conf.h:203,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h:299:19: error: prototype declaration
+  299 | void              HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'HAL_TIM_TriggerCallback':
+../Core/Src/main.c:391:6: warning: type of 'htim' defaults to 'int' [-Wimplicit-int]
+  391 | void HAL_TIM_TriggerCallback(htim){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:391:6: error: argument 'htim' doesn't match prototype
+In file included from ../Core/Inc/stm32f3xx_hal_conf.h:319,
+                 from ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h:2482:6: error: prototype declaration
+ 2482 | void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:392:17: warning: comparison between pointer and integer
+  392 |         if(htim == &htim6){
+      |                 ^~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+14:19:02 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30092	    480	   2320	  32892	   807c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:20:48 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30092	    480	   2320	  32892	   807c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:23:04 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30060	    480	   2320	  32860	   805c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:24:05 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30044	    480	   2320	  32844	   804c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:24:51 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:52:16: warning: 'powerMode' defined but not used [-Wunused-variable]
+   52 | static uint8_t powerMode = 1; // 0 = Sleep, 1 = Running
+      |                ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29436	    476	   2316	  32228	   7de4	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:26:02 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:52:16: warning: 'powerMode' defined but not used [-Wunused-variable]
+   52 | static uint8_t powerMode = 1; // 0 = Sleep, 1 = Running
+      |                ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29428	    476	   2316	  32220	   7ddc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:30:07 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:52:16: warning: 'powerMode' defined but not used [-Wunused-variable]
+   52 | static uint8_t powerMode = 1; // 0 = Sleep, 1 = Running
+      |                ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29436	    476	   2316	  32228	   7de4	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:31:06 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30060	    480	   2320	  32860	   805c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:32:08 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30044	    480	   2320	  32844	   804c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:32:46 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30044	    480	   2320	  32844	   804c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+14:37:40 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30044	    480	   2320	  32844	   804c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:38:14 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30052	    480	   2320	  32852	   8054	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:41:30 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29676	    480	   2320	  32476	   7edc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:48:29 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29748	    476	   2324	  32548	   7f24	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:49:32 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29716	    476	   2324	  32516	   7f04	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:51:50 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29748	    476	   2324	  32548	   7f24	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:53:20 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29756	    476	   2324	  32556	   7f2c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:54:50 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29756	    476	   2324	  32556	   7f2c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:57:03 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29756	    480	   2320	  32556	   7f2c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:58:53 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29764	    480	   2320	  32564	   7f34	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+14:59:33 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29764	    480	   2320	  32564	   7f34	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+15:03:57 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29788	    480	   2320	  32588	   7f4c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:06:53 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29780	    480	   2320	  32580	   7f44	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:07:59 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29804	    480	   2320	  32604	   7f5c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:10:08 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30028	    480	   2320	  32828	   803c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:20:24 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30076	    480	   2320	  32876	   806c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:22:28 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30076	    480	   2320	  32876	   806c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:23:03 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30084	    480	   2320	  32884	   8074	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:25:27 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30188	    480	   2320	  32988	   80dc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:25:49 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30188	    480	   2320	  32988	   80dc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+15:26:43 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30204	    480	   2320	  33004	   80ec	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:29:05 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30204	    480	   2320	  33004	   80ec	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+15:30:30 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30196	    480	   2320	  32996	   80e4	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+16:50:22 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:411:53: error: 'lastCallBackGPIO' undeclared (first use in this function); did you mean 'lastCallbackGPIO'?
+  411 |         if(GPIO_Pin == GPIO_PIN_0 && (currentTime - lastCallBackGPIO) >= MIN_GPIO_CALLBACK){
+      |                                                     ^~~~~~~~~~~~~~~~
+      |                                                     lastCallbackGPIO
+../Core/Src/main.c:411:53: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:412:17: error: 'lastCallbackTime' undeclared (first use in this function); did you mean 'lastCallbackGPIO'?
+  412 |                 lastCallbackTime = currentTime;
+      |                 ^~~~~~~~~~~~~~~~
+      |                 lastCallbackGPIO
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:51:31 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30428	    480	   2400	  33308	   821c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+16:51:42 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30428	    480	   2400	  33308	   821c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+16:55:15 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30428	    480	   2400	  33308	   821c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+16:55:27 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30428	    480	   2400	  33308	   821c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+16:59:09 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
+../Core/Src/main.c: In function 'sleepMode':
+../Core/Src/main.c:395:28: error: 'htim7' undeclared (first use in this function); did you mean 'htim6'?
+  395 |         HAL_TIM_Base_Stop(&htim7);
+      |                            ^~~~~
+      |                            htim6
+../Core/Src/main.c:395:28: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:59:35 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30188	    480	   2320	  32988	   80dc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:02:17 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30188	    480	   2320	  32988	   80dc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:03:21 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30188	    480	   2320	  32988	   80dc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:05:40 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30156	    480	   2320	  32956	   80bc	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:32:51 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:400:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  400 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29868	    480	   2320	  32668	   7f9c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:36:38 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:421:9: warning: 'decToBcd' defined but not used [-Wunused-function]
+  421 | uint8_t decToBcd(int val){
+      |         ^~~~~~~~
+../Core/Src/main.c:408:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  408 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29868	    480	   2320	  32668	   7f9c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:48:44 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:410:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  410 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  29868	    480	   2320	  32668	   7f9c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:54:51 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:146:27: warning: too many arguments for format [-Wformat-extra-args]
+  146 |           sprintf(buffer, "%02d:02d:02d", time.hour, time.minutes, time.seconds);
+      |                           ^~~~~~~~~~~~~~
+../Core/Src/main.c:149:27: warning: too many arguments for format [-Wformat-extra-args]
+  149 |           sprintf(buffer, "%02d:02d:02d", time.dayOfMonth, time.dayOfWeek, time.year);
+      |                           ^~~~~~~~~~~~~~
+At top level:
+../Core/Src/main.c:416:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  416 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  31996	    480	   2360	  34836	   8814	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:55:21 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:416:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  416 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  31996	    480	   2360	  34836	   8814	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:55:47 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:417:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  417 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  32004	    480	   2360	  34844	   881c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:57:08 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:417:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  417 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  32036	    480	   2360	  34876	   883c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+17:59:19 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:417:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  417 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  32036	    480	   2360	  34876	   883c	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+18:03:13 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  30140	    480	   2320	  32940	   80ac	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+18:09:03 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:421:6: warning: 'sleepMode' defined but not used [-Wunused-function]
+  421 | void sleepMode(){
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  31956	    480	   2320	  34756	   87c4	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+18:09:14 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31956	    480	   2320	  34756	   87c4	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+18:10:54 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  33340	    480	   2360	  36180	   8d54	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+18:11:28 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-size  F303k8_watch.elf 
+   text	   data	    bss	    dec	    hex	filename
+  33340	    480	   2360	  36180	   8d54	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+18:14:12 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  33340	    480	   2360	  36180	   8d54	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
+18:19:09 **** Incremental Build of configuration Debug for project F303k8_watch ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "F303k8_watch.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\F303k8_watch\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F303k8_watch.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: F303k8_watch.elf
+ 
+arm-none-eabi-size  F303k8_watch.elf 
+arm-none-eabi-objdump -h -S F303k8_watch.elf  > "F303k8_watch.list"
+   text	   data	    bss	    dec	    hex	filename
+  33340	    480	   2360	  36180	   8d54	F303k8_watch.elf
+Finished building: default.size.stdout
+ 
+Finished building: F303k8_watch.list
+ 
