@@ -54,7 +54,7 @@
   struct stateVariables {
   	  float vacuumScale;
   	  float flowRate;
-  	  char msg[100];
+  	  char msg[50];
   };
 /* USER CODE END PTD */
 
