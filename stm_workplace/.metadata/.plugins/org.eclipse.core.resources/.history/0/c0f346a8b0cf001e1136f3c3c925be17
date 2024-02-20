@@ -94,8 +94,8 @@ const osThreadAttr_t sendData_attributes = {
 /* USER CODE BEGIN PV */
 uint8_t tests[10];
 uint8_t* currentTest = &tests[0];
-enum State eNextState = START;
-//enum State eNextState = IDLE;
+//enum State eNextState = START;
+enum State eNextState = IDLE;
 
 float volts = 0;
 float dacVolts = 0;
@@ -183,7 +183,7 @@ int main(void)
   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
 
-//  HAL_UART_Receive_IT(&huart3, (uint8_t*)rx_buffer, 5);
+  HAL_UART_Receive_IT(&huart3, (uint8_t*)rx_buffer, 5);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -631,10 +631,10 @@ void StartDefaultTask(void *argument)
 
 	  				// void listenMsg(int * str, UART_HandleTypeDef *huart2);
 	  				sprintf(msg,"STARTING\r\n");
-//	  				printMsg(msg, &huart3);
+	  				printMsg(msg, &huart3);
 	  				osDelay(1000);
 
-	  				HAL_UART_Receive(&huart3, (uint8_t*) tests, 10, HAL_MAX_DELAY);
+	  				HAL_UART_Transmit(&huart3, (uint8_t*)tests[0], 10, HAL_MAX_DELAY);
 
 //					tests[0] = 1;
 //					tests[1] = 3;
@@ -643,9 +643,6 @@ void StartDefaultTask(void *argument)
 //					tests[4] = 9;
 //					tests[5] = 11;
 //					tests[6] = 13;
-//	  				tests[7] = 13;
-//					tests[8] = 13;
-//					tests[9] = 13;
 
 					eNextState = *currentTest;
 	  				break;
