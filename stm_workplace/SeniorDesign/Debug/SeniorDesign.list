@@ -1576,6 +1576,7 @@ void StartDefaultTask(void *argument)
  8000c9c:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  8000ca0:	f005 fb58 	bl	8006354 <osDelay>
 
+	  				//waits for gui to recieve a yes
 	  				HAL_UART_Receive(&huart3, (uint8_t*) tests, 10, HAL_MAX_DELAY);
  8000ca4:	f04f 33ff 	mov.w	r3, #4294967295
  8000ca8:	220a      	movs	r2, #10

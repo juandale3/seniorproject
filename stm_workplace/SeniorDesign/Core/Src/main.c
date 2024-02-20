@@ -634,6 +634,7 @@ void StartDefaultTask(void *argument)
 //	  				printMsg(msg, &huart3);
 	  				osDelay(1000);
 
+	  				//waits for gui to recieve a yes
 	  				HAL_UART_Receive(&huart3, (uint8_t*) tests, 10, HAL_MAX_DELAY);
 
 //					tests[0] = 1;

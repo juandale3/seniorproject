@@ -10,24 +10,31 @@ ser = serial.Serial(port, baudrate=baud_rate, timeout=1)
 
 # Wait for the serial connection to be established
 #time.sleep(2)  # Wait for 2 seconds
+def sendData(state):
+    
+    if (state == "STARTING"):
+        try:
+            print("STARTING command sent to STM")
 
-try:
-    # Define an array of unsigned 8-bit integers
-    data_to_send = [1, 3, 5, 7, 9, 11 , 13, 13, 13, 13]
+            # Define an array of unsigned 8-bit integers
+            data_to_send = [1, 3, 5, 7, 9, 11 , 13, 13, 13, 13]
 
-    # Pack the array into bytes and send it over serial
-    ser.write(bytes(data_to_send))
+            # Pack the array into bytes and send it over serial
+            ser.write(bytes(data_to_send))
 
-    # Wait for a brief moment to ensure the microcontroller has time to process the data
-    #time.sleep(0.1)
+            # Wait for a brief moment to ensure the microcontroller has time to process the data
+            #time.sleep(0.1)
 
-    # Listen for a message from the microcontroller
-    received_data = ser.readline().decode('utf-8').strip()
-    print("Received message:", received_data)
+            # Listen for a message from the microcontroller
+            received_data = ser.readline().decode('utf-8').strip()
+            print("Received message:", received_data)
 
-except KeyboardInterrupt:
-    print("\nExiting program.")
+        except KeyboardInterrupt:
+            print("\nExiting program.")
 
-finally:
-    # Close the serial port
-    ser.close()
+        finally:
+            # Close the serial port
+            ser.close()
+            return "S0-SUCCESS"
+    
+
