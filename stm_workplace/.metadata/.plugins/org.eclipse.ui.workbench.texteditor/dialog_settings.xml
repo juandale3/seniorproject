@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="HAL_TIM_PeriodElapsedCallback"/>
+		<item key="selection" value="BEGIN 4"/>
 		<list key="findhistory">
+			<item value="begin 4"/>
+			<item value="code 4"/>
+			<item value="uart"/>
 			<item value="HAL_TIM_PeriodElapsedCallback"/>
 			<item value="HAL_TIM_IRQHandler"/>
 			<item value="HAL_TIM_Base_Start_IT"/>
@@ -20,9 +23,6 @@
 			<item value="HAL_TIM_PWM_IT"/>
 			<item value="HAL_TIM_PWM"/>
 			<item value="HAL_TIM_"/>
-			<item value="HAL_TIM_E"/>
-			<item value="HAL_TIM_EX"/>
-			<item value="HAL_TIM_EXT"/>
 		</list>
 		<list key="replacehistory">
 		</list>

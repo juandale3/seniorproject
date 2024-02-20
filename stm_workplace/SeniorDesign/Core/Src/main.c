@@ -94,8 +94,8 @@ const osThreadAttr_t sendData_attributes = {
 /* USER CODE BEGIN PV */
 int tests[10];
 int* currentTest = &tests[0];
-enum State eNextState = START;
-//enum State eNextState = IDLE;
+//enum State eNextState = START;
+enum State eNextState = IDLE;
 
 float volts = 0;
 float dacVolts = 0;
@@ -103,6 +103,9 @@ float FlowRate = 0;
 float vacuumScale = 0;
 char msg[100];
 char mail[100];
+
+char tx_buffer[20] = "Received\n";
+uint8_t rx_buffer[5];
 
 
 static GPIO_TypeDef * solenoidOneGroup = GPIOA;
@@ -179,6 +182,8 @@ int main(void)
   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
+
+  HAL_UART_Receive_IT(&huart3, (uint8_t*)rx_buffer, 5);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -588,6 +593,18 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart == &huart3)
+    {
+        // Echo received data back
+        HAL_UART_Transmit_IT(&huart3, (uint8_t*)tx_buffer, 20);
+
+        // Start a new receive operation
+        HAL_UART_Receive_IT(&huart3, (uint8_t*)rx_buffer, 5);
+    }
+}
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -869,11 +886,11 @@ void StartDefaultTask(void *argument)
 	  			case FAIL_STATE:
 	  				break;
 	  			case IDLE:
-	  				sprintf(msg,"IDLE %0.3f\r\n", volts);
-	  				printMsg(msg, &huart3);
-	  				//currentTest++;
-	  				//eNextState = *currentTest;
-	  				flowRateMethod(0);
+//	  				sprintf(msg,"IDLE %0.3f\r\n", volts);
+//	  				printMsg(msg, &huart3);
+//	  				//currentTest++;
+//	  				//eNextState = *currentTest;
+//	  				flowRateMethod(0);
 	  				osDelay(1000);
 	  				eNextState = IDLE;
 	  				break;
