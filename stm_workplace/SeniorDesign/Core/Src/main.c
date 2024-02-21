@@ -635,18 +635,18 @@ void StartDefaultTask(void *argument)
 	  				osDelay(1000);
 
 	  				//waits for gui to recieve a yes
-	  				HAL_UART_Receive(&huart3, (uint8_t*) tests, 10, HAL_MAX_DELAY);
+	  				//HAL_UART_Receive(&huart3, (uint8_t*) tests, 10, HAL_MAX_DELAY);
 
-//					tests[0] = 1;
-//					tests[1] = 3;
-//					tests[2] = 5;
-//					tests[3] = 7;
-//					tests[4] = 9;
-//					tests[5] = 11;
-//					tests[6] = 13;
-//	  				tests[7] = 13;
-//					tests[8] = 13;
-//					tests[9] = 13;
+					tests[0] = 1;
+					tests[1] = 3;
+					tests[2] = 5;
+					tests[3] = 7;
+					tests[4] = 9;
+					tests[5] = 11;
+					tests[6] = 13;
+	  				tests[7] = 13;
+					tests[8] = 13;
+					tests[9] = 13;
 
 					eNextState = *currentTest;
 	  				break;
@@ -892,12 +892,12 @@ void StartDefaultTask(void *argument)
 	  			case FAIL_STATE:
 	  				break;
 	  			case IDLE:
-//	  				sprintf(msg,"IDLE %0.3f\r\n", volts);
-//	  				printMsg(msg, &huart3);
-//	  				//currentTest++;
-//	  				//eNextState = *currentTest;
-//	  				flowRateMethod(0);
-	  				osDelay(1000);
+	  				vacuumGaugeADC(&hadc1);
+	  				volts = adcGet(&hadc1);
+	  				vacuumScale = readVacuum(volts);
+	  				sprintf(msg, "Vacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n", volts, vacuumScale);
+	  				printMsg(msg, &huart3);
+	  				osDelay(100);
 	  				eNextState = IDLE;
 	  				break;
 	  			case STOP:
