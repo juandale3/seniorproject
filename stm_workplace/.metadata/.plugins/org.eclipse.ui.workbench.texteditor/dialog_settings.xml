@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="mail"/>
+		<item key="selection" value="print"/>
 		<list key="findhistory">
+			<item value="print"/>
 			<item value="mail"/>
 			<item value="stateVariables"/>
 			<item value="begin 4"/>
@@ -22,7 +23,6 @@
 			<item value="HAL_TIM_ENABLE_IT"/>
 			<item value="HAL_TIM_PWM_START_IT"/>
 			<item value="HAL_TIM_PWM_"/>
-			<item value="HAL_TIM_PWM_IT"/>
 		</list>
 		<list key="replacehistory">
 		</list>

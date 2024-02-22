@@ -63,12 +63,12 @@
 	  uint8_t stateList[10];
 	  uint8_t* currentState;
 	  enum State eNextState;
-	  uint8_t VATI[5];
-	  uint8_t STI[5];
-	  uint8_t WUI[5];
-	  uint8_t LTI[5];
-	  uint8_t OTI[5];
-	  uint8_t UMTI[5];
+	  uint8_t VATI[8];
+	  uint8_t STI[13];
+	  uint8_t WUI[8];
+	  uint8_t LTI[8];
+	  uint8_t OTI[8];
+	  uint8_t UMTI[9];
 	  enum Status pumpStatus;
   }Test;
 
@@ -76,7 +76,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define PUMP1 0
+#define PUMP2 1
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -653,13 +654,6 @@ void StartDefaultTask(void *argument)
   {
 	  switch(pumpTestsParameters[pump].eNextState) {
 	  			case START:
-					// Needs GUI: What tests need to be perform and in what order
-//					VAC_ACHIEVMENT_TEST_INIT,
-//					WARM_UP_INIT,
-//					LOAD_TEST_INIT,
-//					OPERATION_TEST_INIT,
-//					ULTIMATE_MEASURE_TEST_INT,
-
 					volts = setFlowRate(0);
 					dacSet(&hdac, DAC_CHANNEL_1, volts);
 
@@ -667,80 +661,69 @@ void StartDefaultTask(void *argument)
 					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
 					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
 
-	  				sprintf(msg,"STARTING\r\n");
-	  				printMsg(msg, &huart3);
+//	  				sprintf(msg,"STARTING\r\n");
+//	  				printMsg(msg, &huart3);
+//
+//	  				pumpTestsParameters[0].stateList[0] = START;
+//	  				pumpTestsParameters[0].stateList[1] = VAC_ACHIEVMENT_TEST_INIT;
+//	  				pumpTestsParameters[0].stateList[2] = SPECIAL_TEST_INIT;
+//	  				pumpTestsParameters[0].stateList[3] = WARM_UP_INIT;
+//	  				pumpTestsParameters[0].stateList[4] = LOAD_TEST_INIT;
+//	  				pumpTestsParameters[0].stateList[5] = OPERATION_TEST_INIT;
+//	  				pumpTestsParameters[0].stateList[6] = VAC_ACHIEVMENT_TEST_INIT;
+//	  				pumpTestsParameters[0].stateList[7] = ULTIMATE_MEASURE_TEST_INIT;
+//	  				pumpTestsParameters[0].stateList[8] = IDLE;
+//	  				pumpTestsParameters[0].stateList[9] = 0;
 
-	  				pumpTestsParameters[0].stateList[0] = START;
-	  				pumpTestsParameters[0].stateList[1] = VAC_ACHIEVMENT_TEST_INIT;
-	  				pumpTestsParameters[0].stateList[2] = SPECIAL_TEST_INIT;
-	  				pumpTestsParameters[0].stateList[3] = WARM_UP_INIT;
-	  				pumpTestsParameters[0].stateList[4] = LOAD_TEST_INIT;
-	  				pumpTestsParameters[0].stateList[5] = OPERATION_TEST_INIT;
-	  				pumpTestsParameters[0].stateList[6] = ULTIMATE_MEASURE_TEST_INIT;
-	  				pumpTestsParameters[0].stateList[7] = IDLE;
-	  				pumpTestsParameters[0].stateList[8] = 0;
-	  				pumpTestsParameters[0].stateList[9] = 0;
-
-//	  				pumpTestsParameters[1].stateList[0] = START;
-//	  				pumpTestsParameters[1].stateList[1] = VAC_ACHIEVMENT_TEST_INIT;
-//	  				pumpTestsParameters[1].stateList[2] = SPECIAL_TEST_INIT;
-//	  				pumpTestsParameters[1].stateList[3] = WARM_UP_INIT;
-//	  				pumpTestsParameters[1].stateList[4] = LOAD_TEST_INIT;
-//	  				pumpTestsParameters[1].stateList[5] = OPERATION_TEST_INIT;
-//	  				pumpTestsParameters[1].stateList[6] = ULTIMATE_MEASURE_TEST_INIT;
-//	  				pumpTestsParameters[1].stateList[7] = IDLE;
-//	  				pumpTestsParameters[1].stateList[8] = 0;
-//	  				pumpTestsParameters[1].stateList[9] = 0;
+//	  				osDelay(1000);
 
 
+					// sends current State
+					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 
-
-	  				osDelay(1000);
-
+					// Receives State List
+					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 10, HAL_MAX_DELAY);
 
 	  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST_INIT:
-//					Parameters needed to perform vacuum test
-//					(Step 18) Basically, the pump is turned on, we first time how long it takes to achieve the value on the
-//					base pressure sensor.
-//					ATS will make sure the make sure the pump reaches 3.0m Torr within 60 minutes. If the time
-//					to reach target vacuum pressure goes over 60 minutes, shut pump off.
-//
-//					Which pump
-//					How much mTorr
-//					allocated time for this test
-//
-//					Tasks
-//					Task Number One:
-//						recieve parameters from GUI
-//						Initialization
-//						- set timer, target mTorr, assign which pump
-//						- open/close solonoids, close flow controller, open stepper motor
-	  				osThreadSuspend(sendDataHandle);
-	  				sprintf(msg,"VAC_ACHIEVMENT_TEST_INIT\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
 
-	  				sprintf(msg,"open/close solenoids, close flow controller, open stepper motor\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
+//					pumpTestsParameters[0].VATI[0] = VAC_ACHIEVMENT_TEST_INIT;
+//					pumpTestsParameters[0].VATI[1] = PUMP1;
+//					pumpTestsParameters[0].VATI[2] = 1;		// TIMER HOURS
+//					pumpTestsParameters[0].VATI[3] = 0;		// TIMER MINUTES
+//					pumpTestsParameters[0].VATI[4] = 0;		// Stepper motor open
+//					pumpTestsParameters[0].VATI[5] = 1;		// flow controller closed
+//					pumpTestsParameters[0].VATI[6] = 3;		// mTorr
+//					pumpTestsParameters[0].VATI[7] = 0;		// temperature in C
+//
+//	  				osThreadSuspend(sendDataHandle);
+//	  				sprintf(msg,"VAC_ACHIEVMENT_TEST_INIT\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+//
+//	  				sprintf(msg,"open/close solenoids, close flow controller, open stepper motor\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+//
+//	  				flowStateClose();
+//	  				stepperOpen();
+//	  				solenoidOpen();
+//	  				solenoidClose();
+//	  				vacuumGaugeADC(&hadc1);
 
-	  				flowStateClose();
-	  				stepperOpen();
-//	  				solenoidOpen(solenoidOneGroup, solenoidOnePin);
-//	  				solenoidClose(solenoidTwoGroup, solenoidTwoPin);
-	  				solenoidOpen();
-	  				solenoidClose();
-	  				vacuumGaugeADC(&hadc1);
+
+					// sends current State
+					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
+
+					// Receives Parameters
+					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].VATI[0], 8, HAL_MAX_DELAY);
+
 
 	  				pumpTestsParameters[pump].eNextState = VAC_ACHIEVMENT_TEST;
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST:
-//	  				monitor status
-//	  				- mTorr if mTorr = target, shut pump off, success
-//	  				- Timer if Timer > set time, shut pump off, failure
-//	  				- if success/failure, send data, remove task two&three, move to next state
 	  				volts = adcGet(&hadc1);
 //	  				vacuumScale = readVacuum(volts);
 	  				sprintf(msg,"VAC_ACHIEVMENT_TEST Scanning\r\n");
@@ -755,7 +738,8 @@ void StartDefaultTask(void *argument)
 		  				printMsg(msg, &huart3);
 		  				osThreadSuspend(sendDataHandle);
 		  				osDelay(1000);
-		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;	  				}
+		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+	  				}
 //	  				else if(Timer > 60 minutes){
 //	  					test failed
 //	  					eNextState = FAIL_STATE;
@@ -768,10 +752,30 @@ void StartDefaultTask(void *argument)
 
 	  				break;
 	  			case SPECIAL_TEST_INIT:
-	  				osThreadSuspend(sendDataHandle);
-	  				sprintf(msg,"SPECIAL_TEST_INIT\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
+//					pumpTestsParameters[0].STI[0] = SPECIAL_TEST_INIT;
+//					pumpTestsParameters[0].STI[1] = PUMP1;
+//					pumpTestsParameters[0].STI[2] = 0;		// TIMER HOURS
+//					pumpTestsParameters[0].STI[3] = 10;		// TIMER MINUTES
+//					pumpTestsParameters[0].STI[4] = 0;		// Stepper motor open
+//					pumpTestsParameters[0].STI[5] = 3;		// flow controller controlled
+//					pumpTestsParameters[0].STI[6] = 0;		// mTorr
+//					pumpTestsParameters[0].STI[7] = 0;		// temperature in C
+//					pumpTestsParameters[0].STI[8] = 50;		// Flow Rate 1
+//					pumpTestsParameters[0].STI[9] = 25;		// Flow Rate 2
+//					pumpTestsParameters[0].STI[10] = 75;	// Flow Rate 3
+//					pumpTestsParameters[0].STI[11] = 100;	// Flow Rate 4
+//					pumpTestsParameters[0].STI[12] = 255;	// Flow Rate 5	255 = end of test
+//
+//	  				osThreadSuspend(sendDataHandle);
+//	  				sprintf(msg,"SPECIAL_TEST_INIT\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+
+					// sends current State
+					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
+
+					// Receives Parameters
+					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].STI[0], 13, HAL_MAX_DELAY);
 
 	  				pumpTestsParameters[pump].eNextState = SPECIAL_TEST;
 
@@ -787,42 +791,40 @@ void StartDefaultTask(void *argument)
 
 					break;
 	  			case WARM_UP_INIT:
-//					(Step 19) The pump is still running the whole time with no stops, and we then need to measure the
-//					temperature externally after the pump has been running for 3 hours and record the pump sensor
-//					temperature reading (this could just be a screengrab at the 3-hour mark of the pump status data).
-//					Thermocouple sensors will be used and already attached to the pump before step 18.
-//					Which pump
-//					allocated time for this test
-//					Maxuim temputure for this test
 
-//					recieve parameters from GUI
-//					Initialization
-//					- set timer, Max Temp, assign which pump
-//					- open/close solonoids, open flow controller, open stepper motor
+//	  				pumpTestsParameters[0].WUI[0] = WARM_UP_INIT;
+//					pumpTestsParameters[0].WUI[1] = PUMP1;
+//					pumpTestsParameters[0].WUI[2] = 3;		// TIMER HOURS
+//					pumpTestsParameters[0].WUI[3] = 0;		// TIMER MINUTES
+//					pumpTestsParameters[0].WUI[4] = 0;		// Stepper motor open
+//					pumpTestsParameters[0].WUI[5] = 0;		// flow controller open
+//					pumpTestsParameters[0].WUI[6] = 0;		// mTorr
+//					pumpTestsParameters[0].WUI[7] = 100;	// temperature in C
 
-	  				osThreadSuspend(sendDataHandle);
-	  				sprintf(msg,"WARM_UP_INIT\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
+//	  				osThreadSuspend(sendDataHandle);
+//	  				sprintf(msg,"WARM_UP_INIT\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+//
+//	  				sprintf(msg,"open/close solenoids, open flow controller, open stepper motor\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+//
+//	  				flowStateOpen();
+//	  				stepperOpen();
+//	  				solenoidOpen();
+//	  				solenoidClose();
+//	  				vacuumGaugeADC(&hadc1);
 
-	  				sprintf(msg,"open/close solenoids, open flow controller, open stepper motor\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
+					// sends current State
+					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 
-	  				flowStateOpen();
-	  				stepperOpen();
-//	  				solenoidOpen(solenoidOneGroup, solenoidOnePin);
-//	  				solenoidClose(solenoidTwoGroup, solenoidTwoPin);
-	  				solenoidOpen();
-	  				solenoidClose();
-	  				vacuumGaugeADC(&hadc1);
+					// Receives Parameters
+					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].WUI[0], 8, HAL_MAX_DELAY);
 
 	  				pumpTestsParameters[pump].eNextState = WARM_UP;
 	  				break;
 	  			case WARM_UP:
-//					- Timer if Timer >= set time, success,
-//					- temperature if temp >= readTemp, failure
-//					- if success/failure, send data, remove task two&three, move to next state
 	  				float temp = 0;
 	  				int timer = 3;
 	  				sprintf(msg,"WARM_UP Scanning\r\n");
@@ -837,7 +839,8 @@ void StartDefaultTask(void *argument)
 	  				}else if(timer >= 3){
 		  				sprintf(msg,"Time is up: success\r\n");
 		  				printMsg(msg, &huart3);
-		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;		  				osThreadSuspend(sendDataHandle);
+		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+		  				osThreadSuspend(sendDataHandle);
 		  				osDelay(1000);
 	  				}else{
 	  					pumpTestsParameters[pump].eNextState = WARM_UP;
@@ -845,44 +848,44 @@ void StartDefaultTask(void *argument)
 	  				//osDelay(250);
 	  				break;
 	  			case LOAD_TEST_INIT:
-//					(Step 20) The pump is still running when we start the load test where we add 50slm load to the
-//					pump and keep running for 8 hours.
-//					During this 8-hour process, the pump shuts off automatically if overheating occurs. The station
-//					should display when the pump shuts off.
-//					When the pump shuts off, we start step 18 over to the second pump.
 
-//					recieve parameters from GUI
-//					Initialization
-//					- set timer, Max Temp, assign which pump, flow load
-//					- open/close solonoids, control flow controller, open stepper motor
-	  				osThreadSuspend(sendDataHandle);
-	  				sprintf(msg,"LOAD_TEST_INIT\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
+//					pumpTestsParameters[0].LTI[0] = LOAD_TEST_INIT;
+//					pumpTestsParameters[0].LTI[1] = PUMP1;
+//					pumpTestsParameters[0].LTI[2] = 8;		// TIMER HOURS
+//					pumpTestsParameters[0].LTI[3] = 0;		// TIMER MINUTES
+//					pumpTestsParameters[0].LTI[4] = 0;		// Stepper motor open
+//					pumpTestsParameters[0].LTI[5] = 3;		// flow controller Controlled
+//					pumpTestsParameters[0].LTI[6] = 0;		// mTorr
+//					pumpTestsParameters[0].LTI[7] = 100;	// temperature in C
+//
+//	  				osThreadSuspend(sendDataHandle);
+//	  				sprintf(msg,"LOAD_TEST_INIT\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+//
+//	  				sprintf(msg,"open/close solenoids, control flow controller, open stepper motor\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+//
+//	  				flowStateControl();
+//	  				dacVolts = setFlowRate(50);
+//	  				dacSet(&hdac, DAC_CHANNEL_1, dacVolts);
+//
+//	  				stepperOpen();
+//	  				solenoidOpen();
+//	  				solenoidClose();
+//	  				flowControllerADC(&hadc1);
 
-	  				sprintf(msg,"open/close solenoids, control flow controller, open stepper motor\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
+					// sends current State
+					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 
-	  				flowStateControl();
-	  				dacVolts = setFlowRate(50);
-	  				dacSet(&hdac, DAC_CHANNEL_1, dacVolts);
-
-	  				stepperOpen();
-//	  				solenoidOpen(solenoidOneGroup, solenoidOnePin);
-//	  				solenoidClose(solenoidTwoGroup, solenoidTwoPin);
-	  				solenoidOpen();
-	  				solenoidClose();
-	  				flowControllerADC(&hadc1);
+					// Receives Parameters
+					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].LTI[0], 8, HAL_MAX_DELAY);
 
 	  				pumpTestsParameters[pump].eNextState = LOAD_TEST;
 
 	  				break;
 	  			case LOAD_TEST:
-//					- Timer if Timer >= set time, success,
-//					- temperature if maxTemp >= readTemp, failure
-//					- flow rate < flow load, failure
-//					- if success/failure, send data, remove task two&three, move to next state
 	  				temp = 0;
 	  				timer = 8;
 	  				sprintf(msg,"LOAD_TEST Scanning\r\n");
@@ -897,7 +900,8 @@ void StartDefaultTask(void *argument)
 	  				}else if(timer >= 8){
 		  				sprintf(msg,"Time is up: success\r\n");
 		  				printMsg(msg, &huart3);
-		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;		  				osThreadSuspend(sendDataHandle);
+		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+		  				osThreadSuspend(sendDataHandle);
 		  				osDelay(1000);
 	  				}else{
 	  					pumpTestsParameters[pump].eNextState = LOAD_TEST;
@@ -905,23 +909,31 @@ void StartDefaultTask(void *argument)
 
 	  				break;
 	  			case OPERATION_TEST_INIT:
-//					(Step 21) Continue running the pump after the load test for 3-4 hours and take a screen grab of the
-//					data.
-//					recieve parameters from GUI
-//					Initialization
-//					- set timer, Max Temp, assign which pump
-//					- open/close solonoids, open flow controller, open stepper motor
-	  				osThreadSuspend(sendDataHandle);
-	  				sprintf(msg,"OPERATION_TEST_INIT\r\n");
-	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
-	  				pumpTestsParameters[pump].eNextState = OPERATION_TEST;
+
+//					pumpTestsParameters[0].OTI[0] = OPERATION_TEST_INIT;
+//					pumpTestsParameters[0].OTI[1] = PUMP1;
+//					pumpTestsParameters[0].OTI[2] = 4;		// TIMER HOURS
+//					pumpTestsParameters[0].OTI[3] = 0;		// TIMER MINUTES
+//					pumpTestsParameters[0].OTI[4] = 0;		// Stepper motor open
+//					pumpTestsParameters[0].OTI[5] = 3;		// flow controller Controlled
+//					pumpTestsParameters[0].OTI[6] = 0;		// mTorr
+//					pumpTestsParameters[0].OTI[7] = 100;	// temperature in C
+//
+//	  				osThreadSuspend(sendDataHandle);
+//	  				sprintf(msg,"OPERATION_TEST_INIT\r\n");
+//	  				printMsg(msg, &huart3);
+//	  				osDelay(1000);
+//	  				pumpTestsParameters[pump].eNextState = OPERATION_TEST;
+
+					// sends current State
+					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
+
+					// Receives Parameters
+					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].OTI[0], 8, HAL_MAX_DELAY);
+
+
 	  				break;
 	  			case OPERATION_TEST:
-//					monitor status
-//					- Timer if Timer >= set time, success,
-//					- temperature if maxTemp >= readTemp, failure
-//					- if success/failure, send data, remove task two&three, move to next state
 
 	  				sprintf(msg,"OPERATION_TEST\r\n");
 	  				printMsg(msg, &huart3);
@@ -934,16 +946,27 @@ void StartDefaultTask(void *argument)
 
 	  				break;
 	  			case ULTIMATE_MEASURE_TEST_INIT:
-//					(Step 22) The pump is still running, and we need to check the vacuum pressure again like step 18.
-//					• ATS will turn on Vacuum gauge once more and measure the ultimate vacuum pressure.
-//					Below is proposed design setup for test 18 – 22 where both top inlets of the pump are connected
-//					through metal tubing where when one pump goes through a series of test, the opposite solenoid will
-//					remain closed.
-//					Once Steps 18 –22 are completed, when can move forward with step 23.
-	  				osThreadSuspend(sendDataHandle);
-	  				sprintf(msg,"ULTIMATE_MEASURE_TEST_INIT\r\n");
-	  				printMsg(msg, &huart3);
-					osDelay(1000);
+
+//					pumpTestsParameters[0].UMTI[0] = ULTIMATE_MEASURE_TEST_INIT;
+//					pumpTestsParameters[0].UMTI[1] = PUMP1;
+//					pumpTestsParameters[0].UMTI[2] = 3;		// TIMER HOURS
+//					pumpTestsParameters[0].UMTI[3] = 0;		// TIMER MINUTES
+//					pumpTestsParameters[0].UMTI[4] = 3;		// Stepper motor Controlled
+//					pumpTestsParameters[0].UMTI[5] = 0;		// flow controller open
+//					pumpTestsParameters[0].UMTI[6] = 0;		// mTorr
+//					pumpTestsParameters[0].UMTI[7] = 100;	// temperature in C
+//					pumpTestsParameters[0].UMTI[8] = 15;	// Pressure in kPA
+//
+//	  				osThreadSuspend(sendDataHandle);
+//	  				sprintf(msg,"ULTIMATE_MEASURE_TEST_INIT\r\n");
+//	  				printMsg(msg, &huart3);
+//					osDelay(1000);
+
+					// sends current State
+					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
+
+					// Receives Parameters
+					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].UMTI[0], 9, HAL_MAX_DELAY);
 
 					pumpTestsParameters[pump].eNextState = ULTIMATE_MEASURE_TEST;
 
