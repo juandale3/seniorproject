@@ -720,15 +720,15 @@ void StartDefaultTask(void *argument)
 					// Receives Parameters
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].VATI[0], 8, HAL_MAX_DELAY);
 
-
+					osDelay(1000);
 	  				pumpTestsParameters[pump].eNextState = VAC_ACHIEVMENT_TEST;
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST:
 	  				volts = adcGet(&hadc1);
 //	  				vacuumScale = readVacuum(volts);
-	  				sprintf(msg,"VAC_ACHIEVMENT_TEST Scanning\r\n");
-	  				printMsg(msg, &huart3);
-	  				osThreadResume(sendDataHandle);
+	  				//sprintf(msg,"VAC_ACHIEVMENT_TEST Scanning\r\n");
+	  				//printMsg(msg, &huart3);
+	  				//osThreadResume(sendDataHandle);
 	  				osDelay(1000);
 
 
@@ -981,8 +981,6 @@ void StartDefaultTask(void *argument)
 
 	  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
 	  				break;
-	  			case FAIL_STATE:
-	  				break;
 	  			case IDLE:
 	  				vacuumGaugeADC(&hadc1);
 	  				volts = adcGet(&hadc1);
@@ -991,6 +989,8 @@ void StartDefaultTask(void *argument)
 	  				printMsg(msg, &huart3);
 	  				osDelay(1000);
 	  				pumpTestsParameters[pump].eNextState = IDLE;
+	  				break;
+	  			case FAIL_STATE:
 	  				break;
 	  			case STOP:
 	  				pumpTestsParameters[pump].eNextState = STOP;
