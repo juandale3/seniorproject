@@ -17,8 +17,13 @@ uint16_t adcBitVal; // ADC returns voltage = 12-bit value
 float adcVolts = 0;		// adcBitVal converted into volts
 //const uint8_t ADCSAMPLESIZE = 5;
 
-// Pins
 
+// Pins
+static GPIO_TypeDef * solenoidOneGroup = GPIOA;
+static uint16_t solenoidOnePin = GPIO_PIN_1;
+
+static GPIO_TypeDef * solenoidTwoGroup = GPIOA;
+static uint16_t solenoidTwoPin = GPIO_PIN_2;
 
 
 // Analog Variables
@@ -89,12 +94,12 @@ void listenMsg(char* buffer,UART_HandleTypeDef *huart) {
 
 }
 
-void solenoidOpen(GPIO_TypeDef * solenoidGroup, uint16_t solenoidPin){
+void solenoidOpen(){
 
 //	HAL_GPIO_WritePin(solenoidGroup, solenoidPin, 1);	// 3.3 V
 	return;
 }
-void solenoidClose(GPIO_TypeDef * solenoidGroup, uint16_t solenoidPin){
+void solenoidClose(){
 
 //	HAL_GPIO_WritePin(solenoidGroup, solenoidPin, 0);	// gnd
 	return;

@@ -4057,114 +4057,213 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 01:20:59.583
 !MESSAGE Existing sessions are:
-!SESSION 2024-02-20 11:14:01.459 -----------------------------------------------
+!SESSION 2024-02-20 11:34:32.218 -----------------------------------------------
 eclipse.buildId=Version 1.14.1
 java.version=17.0.8.1
 java.vendor=Eclipse Adoptium
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-20 11:14:10.170
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-20 11:34:43.860
 !MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
 
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-20 11:14:10.174
-!MESSAGE Log4j2 initialized with config file C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\.metadata\.log4j2.xml
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-20 11:34:43.863
+!MESSAGE Log4j2 initialized with config file C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\.metadata\.log4j2.xml
 
-!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-20 11:14:19.752
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-20 11:34:58.925
 !MESSAGE Started RMI Server, listening on port 41337
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:50:05.382
-!MESSAGE Error - No active DSF-Session. tmpSessionId = 17 (contextManager row 121)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 16:04:04.942
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 9 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:50:05.384
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 16:04:04.944
 !MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:50:05.386
-!MESSAGE Error - No active DSF-Session. tmpSessionId = 17 (contextManager row 121)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 17:12:38.609
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 24 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:50:05.387
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 17:12:38.610
 !MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:01:57.867
-!MESSAGE Error - No active DSF-Session. tmpSessionId = 25 (contextManager row 121)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:08:35.828
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 36 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:01:57.868
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:08:35.829
 !MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:01:57.870
-!MESSAGE Error - No active DSF-Session. tmpSessionId = 25 (contextManager row 121)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:16:14.499
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 40 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:01:57.870
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:16:14.499
 !MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:40:54.696
-!MESSAGE Error - No active DSF-Session. tmpSessionId = 39 (contextManager row 121)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:19:55.277
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 45 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:40:54.696
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:19:55.277
 !MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:40:54.697
-!MESSAGE Error - No active DSF-Session. tmpSessionId = 39 (contextManager row 121)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:26:28.496
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 49 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:40:54.698
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:26:28.497
 !MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 4 0 2024-02-20 21:07:52.834
-!MESSAGE Failed to parse wmic output
-!STACK 0
-org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
-	at com.st.stm32cube.ide.mpu.remote.serial.internal.SerialPortProviderWindows.run(SerialPortProviderWindows.java:127)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:566)
-	at java.base/java.util.TimerThread.run(Timer.java:516)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:27:24.149
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 50 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 4 0 2024-02-20 21:07:53.798
-!MESSAGE Failed to parse wmic output
-!STACK 0
-org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
-	at com.st.stm32cube.ide.mpu.remote.serial.internal.SerialPortProviderWindows.run(SerialPortProviderWindows.java:127)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:566)
-	at java.base/java.util.TimerThread.run(Timer.java:516)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:27:24.150
+!MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 4 0 2024-02-20 21:07:54.792
-!MESSAGE Failed to parse wmic output
-!STACK 0
-org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
-	at com.st.stm32cube.ide.mpu.remote.serial.internal.SerialPortProviderWindows.run(SerialPortProviderWindows.java:127)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:566)
-	at java.base/java.util.TimerThread.run(Timer.java:516)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:27:49.636
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 51 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 4 0 2024-02-20 21:07:55.792
-!MESSAGE Failed to parse wmic output
-!STACK 0
-org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
-	at com.st.stm32cube.ide.mpu.remote.serial.internal.SerialPortProviderWindows.run(SerialPortProviderWindows.java:127)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:566)
-	at java.base/java.util.TimerThread.run(Timer.java:516)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:27:49.636
+!MESSAGE Existing sessions are:
 
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 4 0 2024-02-20 21:07:56.790
-!MESSAGE Failed to parse wmic output
-!STACK 0
-org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
-	at com.st.stm32cube.ide.mpu.remote.serial.internal.SerialPortProviderWindows.run(SerialPortProviderWindows.java:127)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:566)
-	at java.base/java.util.TimerThread.run(Timer.java:516)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:45:57.437
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 62 (contextManager row 121)
 
-!ENTRY com.st.stm32cube.ide.mpu.remote.serial 4 0 2024-02-20 21:07:57.793
-!MESSAGE Failed to parse wmic output
-!STACK 0
-org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1; Premature end of file.
-	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:262)
-	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:342)
-	at com.st.stm32cube.ide.mpu.remote.serial.internal.SerialPortProviderWindows.run(SerialPortProviderWindows.java:127)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:566)
-	at java.base/java.util.TimerThread.run(Timer.java:516)
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:45:57.438
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:48:05.991
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 64 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:48:05.991
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:49:09.392
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 65 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:49:09.393
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:55:55.957
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 66 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:55:55.957
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:56:23.550
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 67 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:56:23.551
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:59:34.121
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 68 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 18:59:34.122
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:01:13.495
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 70 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:01:13.495
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:03:30.422
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 71 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 19:03:30.423
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 20:04:35.113
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 74 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 20:04:35.115
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 20:05:07.520
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 75 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-20 20:05:07.523
+!MESSAGE Existing sessions are:
+!SESSION 2024-02-21 00:19:25.628 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-21 00:19:50.915
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-21 00:19:50.922
+!MESSAGE Log4j2 initialized with config file C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-21 00:20:05.022
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-21 16:17:49.347 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-21 16:18:09.341
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-21 16:18:09.349
+!MESSAGE Log4j2 initialized with config file C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-21 16:18:22.099
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-22 12:57:58.602 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-22 12:59:32.885
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-22 12:59:32.888
+!MESSAGE Log4j2 initialized with config file C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-22 12:59:50.822
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-22 14:56:14.152
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 1 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-22 14:56:14.154
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-22 14:56:14.156
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 1 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-02-22 14:56:14.157
+!MESSAGE Existing sessions are:
+!SESSION 2024-02-26 22:20:51.798 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-26 22:21:12.480
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-26 22:21:12.483
+!MESSAGE Log4j2 initialized with config file C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-26 22:21:24.162
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-27 12:04:49.249 -----------------------------------------------
+eclipse.buildId=Version 1.14.1
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-27 12:05:13.662
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-27 12:05:13.670
+!MESSAGE Log4j2 initialized with config file C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-27 12:05:26.630
+!MESSAGE Started RMI Server, listening on port 41337

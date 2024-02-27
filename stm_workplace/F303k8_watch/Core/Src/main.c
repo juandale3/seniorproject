@@ -135,7 +135,7 @@ int main(void)
   sprintf(buffer, "Date:\t%02d:%02d:%02d\r\n\n", time.month, time.dayOfMonth, time.year);
   HAL_UART_Transmit(&huart2, (uint8_t *) buffer, 30, HAL_MAX_DELAY);
 
-  HAL_TIM_Base_Start_IT(&htim6);	// Starts Sleep timer
+//  HAL_TIM_Base_Start_IT(&htim6);	// Starts Sleep timer
   HAL_SPI_Transmit(&hspi1, spiData, 8, HAL_MAX_DELAY);
   /* USER CODE END 2 */
 

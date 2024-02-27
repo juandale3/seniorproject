@@ -6,9 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="BEGIN 4"/>
+		<item key="selection" value="flowRate"/>
 		<list key="findhistory">
+			<item value="FlowRate"/>
 			<item value="begin 4"/>
+			<item value="print"/>
+			<item value="mail"/>
+			<item value="stateVariables"/>
 			<item value="code 4"/>
 			<item value="uart"/>
 			<item value="HAL_TIM_PeriodElapsedCallback"/>
@@ -19,16 +23,13 @@
 			<item value="TIM17_IRQHandler"/>
 			<item value="HAL_TIM_ENABLE_IT"/>
 			<item value="HAL_TIM_PWM_START_IT"/>
-			<item value="HAL_TIM_PWM_"/>
-			<item value="HAL_TIM_PWM_IT"/>
-			<item value="HAL_TIM_PWM"/>
-			<item value="HAL_TIM_"/>
 		</list>
 		<list key="replacehistory">
+			<item value="flowRate"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1569"/>
+		<item key="DIALOG_X_ORIGIN" value="1420"/>
 		<item key="DIALOG_Y_ORIGIN" value="225"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
