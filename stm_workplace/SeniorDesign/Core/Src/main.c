@@ -106,7 +106,7 @@ char mail[100];
 
 char tx_buffer[20] = "Received\n";
 uint8_t rx_buffer[5];
-
+uint8_t VCAT[5]; //Vaccuum Achievement Test protocol
 
 static GPIO_TypeDef * solenoidOneGroup = GPIOA;
 static uint16_t solenoidOnePin = GPIO_PIN_1;
@@ -630,12 +630,13 @@ void StartDefaultTask(void *argument)
 //					ULTIMATE_MEASURE_TEST_INT,
 
 	  				// void listenMsg(int * str, UART_HandleTypeDef *huart2);
-	  				sprintf(msg,"STARTING\r\n");
-//	  				printMsg(msg, &huart3);
-	  				osDelay(1000);
+
+	  				//osDelay(1000);
 
 	  				//waits for gui to recieve a yes
 	  				HAL_UART_Receive(&huart3, (uint8_t*) tests, 10, HAL_MAX_DELAY);
+	  				sprintf(msg,"STARTING\r\n");
+	  				printMsg(msg, &huart3);
 
 //					tests[0] = 1;
 //					tests[1] = 3;
@@ -671,10 +672,18 @@ void StartDefaultTask(void *argument)
 	  				sprintf(msg,"VAC_ACHIEVMENT_TEST_INIT\r\n");
 	  				printMsg(msg, &huart3);
 	  				osDelay(1000);
+	  				sprintf(msg,"Waiting for Test Parameters\r\n");
+	  				printMsg(msg,&huart3);
+	  				osDelay(1000);
+//HAL_UART_Receive(&huart3, (uint8_t*) VCAT, 5, HAL_MAX_DELAY);
 
+	  				//osDelay(1000);
+	  				sprintf(msg,"Test Paramenters Recieved, Proceeding to Test\r\n");
+	  				printMsg(msg,&huart3);
 	  				sprintf(msg,"open/close solenoids, close flow controller, open stepper motor\r\n");
 	  				printMsg(msg, &huart3);
 	  				osDelay(1000);
+
 
 	  				flowStateClose();
 	  				stepperOpen();
@@ -692,6 +701,7 @@ void StartDefaultTask(void *argument)
 	  				volts = adcGet(&hadc1);
 //	  				vacuumScale = readVacuum(volts);
 	  				sprintf(msg,"VAC_ACHIEVMENT_TEST Scanning\r\n");
+
 	  				printMsg(msg, &huart3);
 	  				osThreadResume(sendDataHandle);
 	  				osDelay(1000);

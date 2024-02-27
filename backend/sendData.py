@@ -37,4 +37,3 @@ def sendData(state):
             ser.close()
             return "S0-SUCCESS"
     
-

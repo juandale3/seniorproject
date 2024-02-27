@@ -3372,3 +3372,388 @@ arm-none-eabi-size  SeniorDesign.elf
   49596	    500	  22556	  72652	  11bcc	SeniorDesign.elf
 Finished building: default.size.stdout
  
+11:19:12 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49596	    500	  22556	  72652	  11bcc	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+12:30:20 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49596	    500	  22556	  72652	  11bcc	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+12:42:28 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49596	    500	  22556	  72652	  11bcc	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:23:03 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:23:54 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:24:39 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:25:05 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:31:53 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:33:06 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:34:07 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:36:15 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49708	    500	  22556	  72764	  11c3c	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:37:07 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49708	    500	  22556	  72764	  11c3c	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:39:47 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:43:51 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:46:16 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:47:16 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:47:55 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:49:55 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:50:35 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:51:31 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:52:58 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:54:14 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:55:00 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:55:50 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+18:59:27 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:01:48 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:03:45 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:09:15 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:10:21 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:11:25 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:14:16 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:17:04 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:17:35 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:20:10 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:22:05 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22564	  72788	  11c54	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:23:31 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49740	    500	  22564	  72804	  11c64	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:24:43 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49740	    500	  22564	  72804	  11c64	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:28:14 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49740	    500	  22564	  72804	  11c64	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:32:33 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49740	    500	  22564	  72804	  11c64	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:40:45 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49740	    500	  22564	  72804	  11c64	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:48:06 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22556	  72780	  11c4c	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+20:44:23 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  49724	    500	  22556	  72780	  11c4c	SeniorDesign.elf
+Finished building: default.size.stdout
+ 

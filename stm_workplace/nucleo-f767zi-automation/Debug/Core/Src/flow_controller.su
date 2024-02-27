@@ -1,0 +1,8 @@
+../Core/Src/flow_controller.c:40:19:createDAC	32	static
+../Core/Src/flow_controller.c:53:6:dacSet	16	static
+../Core/Src/flow_controller.c:68:7:adcGet	16	static
+../Core/Src/flow_controller.c:76:7:adcFiltered	64	dynamic
+../Core/Src/flow_controller.c:105:6:printMsg	16	static
+../Core/Src/flow_controller.c:111:7:readFlow	24	static
+../Core/Src/flow_controller.c:127:6:flowRateMethod	40	static
+../Core/Src/flow_controller.c:155:6:flowRateSP	16	static

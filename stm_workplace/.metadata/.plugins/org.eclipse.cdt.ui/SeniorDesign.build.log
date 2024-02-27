@@ -1,10 +1,10 @@
-01:24:33 **** Incremental Build of configuration Debug for project SeniorDesign ****
+20:44:23 **** Incremental Build of configuration Debug for project SeniorDesign ****
 make -j12 all 
 arm-none-eabi-size  SeniorDesign.elf 
    text	   data	    bss	    dec	    hex	filename
-  49596	    500	  22556	  72652	  11bcc	SeniorDesign.elf
+  49724	    500	  22556	  72780	  11c4c	SeniorDesign.elf
 Finished building: default.size.stdout
  
 
-01:24:33 Build Finished. 0 errors, 0 warnings. (took 443ms)
+20:44:24 Build Finished. 0 errors, 0 warnings. (took 368ms)
 
