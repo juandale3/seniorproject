@@ -15,7 +15,7 @@ def protocol_0():
 
 def protocol_1():
     print("Protocol 1: VAC_ACHIEVMENT_TEST_INIT")
-    data_to_send = [1,0,1,0,0,1,3,0]  
+    data_to_send = [1,0,1,0,0,1,3,50]  
     ser.write(bytes(data_to_send))
 
 def protocol_2():
@@ -25,7 +25,7 @@ def protocol_2():
 
 def protocol_3():
     print("Protocol 3: SPECIAL_TEST_INIT")
-    data_to_send = [3,0,0,10,0,3,0,0,50,25,75,100,255]  
+    data_to_send = [3,0,0,10,0,3,0,50,50]  
     ser.write(bytes(data_to_send))
 
 def protocol_4():
