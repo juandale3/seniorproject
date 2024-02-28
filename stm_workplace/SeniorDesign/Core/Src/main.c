@@ -150,7 +150,7 @@ float vacuumScale = 0;
 char msg[68];
 
 uint8_t tx_buffer[20];
-uint8_t tx_buffer_size;
+uint8_t tx_buffer_size = 0;
 
 uint16_t pulseCount = 0;
 
@@ -706,8 +706,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     if (huart == &huart3)
     {
         // Echo received data back
-        HAL_UART_Transmit_IT(&huart3, (uint8_t*)tx_buffer, 20);
-
+        HAL_UART_Transmit(&huart3, (uint8_t*)tx_buffer, tx_buffer_size, 20);
         // Start a new receive operation
         //HAL_UART_Receive_IT(&huart3, (uint8_t*)rx_buffer, 5);
     }
@@ -1176,8 +1175,10 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	sprintf(msg,"Sending Data\r\n");
-	printMsg(msg, &huart3);
+//	sprintf(msg,"Sending Data\r\n");
+//	printMsg(msg, &huart3);
+
+
 
     switch(pumpTestsParameters[pump].eNextState){
     case VAC_ACHIEVMENT_TEST:
@@ -1198,19 +1199,55 @@ void StartTask02(void *argument)
     	tx_buffer[4] = seconds;
     	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
     	tx_buffer[6] = 25;						// temperature in C
-    	tx_buffer_size = 7;
+    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
+    	tx_buffer_size = 8;
     	break;
     case WARM_UP:
+    	tx_buffer[0] = WARM_UP;
+    	tx_buffer[1] = pump;
+    	tx_buffer[2] = hours;
+    	tx_buffer[3] = minutes;
+    	tx_buffer[4] = seconds;
+    	tx_buffer[5] = 25;						// temperature in C
+    	tx_buffer_size = 6;
     	break;
     case LOAD_TEST:
+    	tx_buffer[0] = LOAD_TEST;
+    	tx_buffer[1] = pump;
+    	tx_buffer[2] = hours;
+    	tx_buffer[3] = minutes;
+    	tx_buffer[4] = seconds;
+    	tx_buffer[5] = (uint8_t) flowRate;		// L/min
+    	tx_buffer[6] = 25;						// temperature in C
+    	tx_buffer_size = 7;
     	break;
     case OPERATION_TEST:
+    	tx_buffer[0] = OPERATION_TEST;
+    	tx_buffer[1] = pump;
+    	tx_buffer[2] = hours;
+    	tx_buffer[3] = minutes;
+    	tx_buffer[4] = seconds;
+    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
+    	tx_buffer[6] = 25;						// temperature in C
+    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
+    	tx_buffer_size = 8;
     	break;
     case ULTIMATE_MEASURE_TEST:
+    	tx_buffer[0] = ULTIMATE_MEASURE_TEST;
+    	tx_buffer[1] = pump;
+    	tx_buffer[2] = hours;
+    	tx_buffer[3] = minutes;
+    	tx_buffer[4] = seconds;
+    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
+    	tx_buffer[6] = 25;						// temperature in C
+    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
+    	tx_buffer_size = 8;
     	break;
     default:
     	break;
+
     }
+    HAL_UART_Transmit_IT(&huart3, (uint8_t*)tx_buffer, 1);
     osDelay(1000);
   }
   /* USER CODE END StartTask02 */
