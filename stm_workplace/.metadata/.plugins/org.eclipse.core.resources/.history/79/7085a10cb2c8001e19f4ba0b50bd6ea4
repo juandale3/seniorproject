@@ -1,0 +1,29 @@
+/*
+ * stepperMotor.c
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: oneju
+ */
+
+
+// Includes
+#include "main.h"
+
+
+// Static Functions Declaration	----------------------------------------//
+
+
+
+// Public Functions		------------------------------------------------//
+
+void stepperClose(){
+
+}
+
+void stepperOpen(){
+
+}
+
+void stepperAngle(uint8_t angle){
+
+}
