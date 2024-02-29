@@ -2,91 +2,88 @@ import serial
 import time
 
 # Configure the serial port
-port = 'COM8'  # Change this to your COM port (e.g., 'COM1' on Windows)
+port = 'COM7'  # Change this to your COM port (e.g., 'COM1' on Windows)
 baud_rate = 115200  # Change this to match your microcontroller's baud rate
 
 # Open the serial port
-ser = serial.Serial(port, baudrate=baud_rate, timeout=1)
+ser = serial.Serial(port, baudrate=baud_rate, timeout=1000)
 
 def protocol_0():
     print("Protocol 0: START")
-    data_to_send = [1,3,5,7,9,11,13,0,0,0]  
+    # data_to_send = [0,1,3,5,7,9,11,13,13,13,11,12,13,14,15,16,17,18,19,20] 
+    data_to_send = [0,7,13,11,13,13,13,0,0,0,0,0,0,0,0,0,0,0,0,0] 
     ser.write(bytes(data_to_send))
 
 def protocol_1():
-    print("Protocol 1: VAC_ACHIEVMENT_TEST_INIT")
-    data_to_send = [1,0,1,0,0,1,3,50]  
+    print("\nProtocol 1: VAC_ACHIEVMENT_TEST_INIT")
+    # data_to_send = [1,0,1,0,0,1,3,50]     # actual Default Parameters
+    data_to_send = [1,0,0,1,0,1,3,50]       # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
 
 def protocol_2():
-    print("Protocol 2: VAC_ACHIEVMENT_TEST")
-    data_to_send = [2,0,1,0,0,1,3,0] 
-    # ser.write(bytes(data_to_send))
+    received_data = ser.read(7 - 1)
+    print("Protocol 2: VAC_ACHIEVMENT_TEST\t\tReceived data:", [int(byte) for byte in received_data], end="\r")
 
 def protocol_3():
-    print("Protocol 3: SPECIAL_TEST_INIT")
-    data_to_send = [3,0,0,10,0,3,0,50,50]  
+    print("\nProtocol 3: SPECIAL_TEST_INIT")
+    # data_to_send = [3,0,0,10,0,3,0,50,50]     # actual Default Parameters
+    data_to_send = [3,0,0,1,0,3,0,50,50]        # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
-
+    
 def protocol_4():
-    print("Protocol 4: SPECIAL_TEST")
-    data_to_send = [4,0,1,0,0,1,3,0] 
-    # ser.write(bytes(data_to_send))
-
+    received_data = ser.read(8 - 1)
+    print("Protocol 4: SPECIAL_TEST\t\tReceived data:", [int(byte) for byte in received_data], end="\r")
+    
 def protocol_5():
-    print("Protocol 5: WARM_UP_INIT")
-    data_to_send = [5,0,3,0,0,0,0,100]  
+    print("\nProtocol 5: WARM_UP_INIT")
+    # data_to_send = [5,0,3,0,0,0,0,100]        # actual Default Parameters
+    data_to_send = [5,0,0,1,0,0,0,100]          # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
 
 def protocol_6():
-    print("Protocol 6: WARM_UP")
-    data_to_send = [6,0,1,0,0,1,3,0] 
-    # ser.write(bytes(data_to_send))
+    received_data = ser.read(6 - 1)
+    print("Protocol 6: WARM_UP\t\t\tReceived data:", [int(byte) for byte in received_data], end="\r")
 
 def protocol_7():
-    print("Protocol 7: LOAD_TEST_INIT")
-    data_to_send = [7,0,8,0,0,3,0,100]  
+    print("\nProtocol 7: LOAD_TEST_INIT")
+    # data_to_send = [7,0,8,0,0,3,0,100]        # actual Default Parameters
+    data_to_send = [7,0,0,1,0,3,0,100]          # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
 
 def protocol_8():
-    print("Protocol 8: LOAD_TEST")
-    data_to_send = [8,0,1,0,0,1,3,0]  
-    #ser.write(bytes(data_to_send))
+    received_data = ser.read(7 - 1)
+    print("Protocol 8: LOAD_TEST\t\t\tReceived data:", [int(byte) for byte in received_data], end='\r')
 
 def protocol_9():
-    print("Protocol 9: OPERATION_TEST_INIT")
-    data_to_send = [9,0,4,0,0,3,0,100]  
+    print("\nProtocol 9: OPERATION_TEST_INIT")
+    # data_to_send = [9,0,4,0,0,3,0,100]        # actual Default Parameters
+    data_to_send = [9,0,0,1,0,3,0,100]          # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
 
 def protocol_10():
-    print("Protocol 10: OPERATION_TEST")
-    data_to_send = [1,0,1,0,0,1,3,0]  
-    # ser.write(bytes(data_to_send))
+    received_data = ser.read(8 - 1)   
+    print("Protocol 10: OPERATION_TEST\t\tReceived data:", [int(byte) for byte in received_data], end='\r')
 
 def protocol_11():
-    print("Protocol 11: ULTIMATE_MEASURE_TEST_INIT")
-    data_to_send = [11,0,3,0,3,0,0,100,15]  
+    print("\nProtocol 11: ULTIMATE_MEASURE_TEST_INIT")
+    # data_to_send = [11,0,3,0,3,0,0,100,15]    # actual Default Parameters
+    data_to_send = [11,0,0,1,3,0,0,100,50,15]      # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
 
 def protocol_12():
-    print("Protocol 12: ULTIMATE_MEASURE_TEST")
-    data_to_send = [1,0,1,0,0,1,3,0] 
-    # ser.write(bytes(data_to_send))
+    received_data = ser.read(8 - 1)
+    print("Protocol 12: ULTIMATE_MEASURE_TEST\tReceived data:", [int(byte) for byte in received_data], end='\r')
 
 def protocol_13():
-    print("Protocol 13: IDLE")
-    data_to_send = [1,0,1,0,0,1,3,0]  
-    #ser.write(bytes(data_to_send))
+    received_data = ser.read(8 - 1)
+    print("Protocol 13: IDLE\t\tReceived data:", [int(byte) for byte in received_data], end='\r') 
 
 def protocol_14():
-    print("Protocol 14: FAIL_STATE")
-    data_to_send = [1,0,1,0,0,1,3,0]
-    # ser.write(bytes(data_to_send))
+    print("\nProtocol 14: FAIL_STATE")
 
 def protocol_15():
     print("Protocol 15: STOP")
-    data_to_send = [1,0,1,0,0,1,3,0]  
-    #ser.write(bytes(data_to_send))
+
 
 
 
