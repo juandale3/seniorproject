@@ -41,6 +41,9 @@ static GPIO_TypeDef * ContactDI2Group = GPIOC;
 static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_8, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
 static GPIO_TypeDef * ContactDI3Group = GPIOC;
 
+//static GPIO_InitTypeDef
+//static GPIO_TypeDef *
+
 
 // Static Functions Declaration	----------------------------------------//
 

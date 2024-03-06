@@ -1,3 +1,0 @@
-../Core/Src/stepperMotor.c:30:6:stepperClose	1
-../Core/Src/stepperMotor.c:33:6:stepperOpen	1
-../Core/Src/stepperMotor.c:36:6:stepperAngle	1

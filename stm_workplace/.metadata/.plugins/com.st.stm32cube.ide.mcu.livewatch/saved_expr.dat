@@ -2,3 +2,6 @@ pumpTestsParameters
 seconds
 minutes
 tx_buffer
+steps
+currPos
+toggleCount

@@ -11,15 +11,8 @@
 
 
 // Variables
-uint8_t angle;
-uint8_t direction;
 
-// Pins
-static GPIO_TypeDef * pulGroup = GPIOA;
-static uint16_t pulPin = GPIO_PIN_1;
 
-static GPIO_TypeDef * dirGroup = GPIOA;
-static uint16_t dirPin = GPIO_PIN_2;
 
 // Static Functions Declaration	----------------------------------------//
 
@@ -27,11 +20,4 @@ static uint16_t dirPin = GPIO_PIN_2;
 
 // Public Functions		------------------------------------------------//
 
-void stepperClose(){
-}
 
-void stepperOpen(){
-}
-
-void stepperAngle(uint8_t angle){
-}

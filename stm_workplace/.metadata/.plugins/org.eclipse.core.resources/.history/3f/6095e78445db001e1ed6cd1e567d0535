@@ -1,0 +1,30 @@
+/*
+ * stepperMotor.h
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: oneju
+ */
+
+#ifndef INC_STEPPERMOTOR_H_
+#define INC_STEPPERMOTOR_H_
+
+
+
+#endif /* INC_STEPPERMOTOR_H_ */
+
+uint16_t currPos = 0;
+uint16_t steps = 0;;
+uint8_t direction = 0;
+
+// Pins
+// Steps
+GPIO_TypeDef * pulGroup = GPIOA;
+uint16_t pulPin = GPIO_PIN_1;
+
+//Direction
+GPIO_TypeDef * dirGroup = GPIOA;
+uint16_t dirPin = GPIO_PIN_2;
+
+void stepperClose();
+void stepperOpen();
+void stepperAngle(uint8_t angle);
