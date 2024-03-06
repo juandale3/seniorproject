@@ -778,7 +778,7 @@ void StartDefaultTask(void *argument)
 					// Receives State List
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
 
-					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+					//pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
 					//pumpTestsParameters[pump].eNextState = START;
 
 	  				break;

@@ -2,7 +2,7 @@ import serial
 import time
 
 # Configure the serial port
-port = 'COM7'  # Change this to your COM port (e.g., 'COM1' on Windows)
+port = 'COM8'  # Change this to your COM port (e.g., 'COM1' on Windows)
 baud_rate = 115200  # Change this to match your microcontroller's baud rate
 
 # Open the serial port
@@ -10,8 +10,8 @@ ser = serial.Serial(port, baudrate=baud_rate, timeout=1000)
 
 def protocol_0():
     print("Protocol 0: START")
-    # data_to_send = [0,1,3,5,7,9,11,13,13,13,11,12,13,14,15,16,17,18,19,20] 
-    data_to_send = [0,7,13,11,13,13,13,0,0,0,0,0,0,0,0,0,0,0,0,0] 
+    data_to_send = [0,1,3,5,7,9,11,13,13,13,11,12,13,14,15,16,17,18,19,20] 
+    # data_to_send = [0,7,13,11,13,13,13,0,0,0,0,0,0,0,0,0,0,0,0,0] 
     ser.write(bytes(data_to_send))
 
 def protocol_1():

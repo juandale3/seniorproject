@@ -7383,3 +7383,254 @@ Finished building: default.size.stdout
  
 Finished building: SeniorDesign.list
  
+18:58:57 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:1265:11: error: 'pulseCount' undeclared (first use in this function)
+ 1265 |           pulseCount++;
+      |           ^~~~~~~~~~
+../Core/Src/main.c:1265:11: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+18:59:30 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:1266:28: error: 'pulseCount' undeclared (first use in this function)
+ 1266 |                         if(pulseCount >= 3200){
+      |                            ^~~~~~~~~~
+../Core/Src/main.c:1266:28: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+18:59:48 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60240	    492	  22796	  83528	  14648	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:00:32 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60240	    492	  22796	  83528	  14648	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:01:20 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60240	    492	  22796	  83528	  14648	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+19:03:26 **** Build of configuration Debug for project testing ****
+make -j12 all 
+arm-none-eabi-size  testing.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32660	    476	   2220	  35356	   8a1c	testing.elf
+Finished building: default.size.stdout
+ 
+19:07:09 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60192	    492	  22796	  83480	  14618	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:12:10 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60192	    492	  22796	  83480	  14618	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:13:32 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60208	    492	  22796	  83496	  14628	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:17:13 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60208	    492	  22796	  83496	  14628	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:22:36 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60224	    492	  22796	  83512	  14638	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:24:39 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60224	    492	  22796	  83512	  14638	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:26:45 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60128	    492	  22796	  83416	  145d8	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:34:23 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f7xx_hal_msp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_hal_msp.d" -MT"Core/Src/stm32f7xx_hal_msp.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f7xx_it.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_it.d" -MT"Core/Src/stm32f7xx_it.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_it.o"
+../Core/Src/main.c: In function 'StartDefaultTask':
+../Core/Src/main.c:1063:64: error: 'htim11' undeclared (first use in this function); did you mean 'htim10'?
+ 1063 |                                         HAL_TIM_Base_Start_IT(&htim11); // starts closing
+      |                                                                ^~~~~~
+      |                                                                htim10
+../Core/Src/main.c:1063:64: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:34:37 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60448	    492	  22796	  83736	  14718	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:36:35 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60464	    492	  22796	  83752	  14728	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:38:33 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60448	    492	  22796	  83736	  14718	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:39:15 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60448	    492	  22796	  83736	  14718	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+20:06:21 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60544	    492	  22796	  83832	  14778	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+20:07:32 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60544	    492	  22796	  83832	  14778	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+20:08:35 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60544	    492	  22796	  83832	  14778	SeniorDesign.elf
+Finished building: default.size.stdout
+ 

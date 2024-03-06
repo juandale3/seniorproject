@@ -223,7 +223,7 @@ int main(void)
   MX_TIM10_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-  // HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_Base_Start_IT(&htim7);
 
   /* USER CODE END 2 */
 
@@ -478,7 +478,7 @@ static void MX_TIM7_Init(void)
   htim7.Instance = TIM7;
   htim7.Init.Prescaler = 9600 - 1;
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim7.Init.Period = 5 - 1;
+  htim7.Init.Period = 100 - 1;
   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {
@@ -773,13 +773,13 @@ void StartDefaultTask(void *argument)
 //	  				pumpTestsParameters[0].stateList[9] = 0;
 
 					// sends current State
-					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
+					//HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 
 					// Receives State List
-					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
+					//HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
 
-					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-					//pumpTestsParameters[pump].eNextState = START;
+					//pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+					pumpTestsParameters[pump].eNextState = START;
 
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST_INIT:

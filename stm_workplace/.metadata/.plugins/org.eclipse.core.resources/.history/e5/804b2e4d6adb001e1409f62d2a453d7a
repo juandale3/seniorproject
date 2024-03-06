@@ -223,7 +223,7 @@ int main(void)
   MX_TIM10_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-  // HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_Base_Start_IT(&htim11);
 
   /* USER CODE END 2 */
 
@@ -773,13 +773,13 @@ void StartDefaultTask(void *argument)
 //	  				pumpTestsParameters[0].stateList[9] = 0;
 
 					// sends current State
-					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
+					//HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 
 					// Receives State List
-					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
+					//HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
 
-					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-					//pumpTestsParameters[pump].eNextState = START;
+					//pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+					pumpTestsParameters[pump].eNextState = START;
 
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST_INIT:
@@ -1060,7 +1060,7 @@ void StartDefaultTask(void *argument)
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].UMTI[0], 9, HAL_MAX_DELAY);
 
 					stepperStep(800);				// close valve half way
-					HAL_TIM_Base_Start_IT(&htim7);	// starts closing
+					HAL_TIM_Base_Start_IT(&htim11);	// starts closing
 	  				stepperOpen();
 	  				solenoidOpen();
 	  				solenoidClose();
@@ -1258,7 +1258,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   			}
   		}
   	}
-  if(htim->Instance == TIM7) { // This is for PWM
+  if(htim->Instance == TIM11) { // This is for PWM
 //	  currPos = toggleCount/2;
 //	if(steps != currPos || (toggleCount%2) != 0){
 //		if(steps > currPos ){
@@ -1275,7 +1275,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //		//HAL_TIM_Base_Stop_IT(&htim11);
 //	}
 	  HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_5);
-	  HAL_TIM_Base_Start_IT(&htim7);
+	  HAL_TIM_Base_Start_IT(&htim11);
   }
 
   /* USER CODE END Callback 1 */

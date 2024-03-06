@@ -90,8 +90,8 @@ ADC_HandleTypeDef hadc1;
 
 DAC_HandleTypeDef hdac;
 
-TIM_HandleTypeDef htim7;
 TIM_HandleTypeDef htim10;
+TIM_HandleTypeDef htim11;
 
 UART_HandleTypeDef huart3;
 
@@ -169,7 +169,7 @@ static void MX_USB_OTG_FS_PCD_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_DAC_Init(void);
 static void MX_TIM10_Init(void);
-static void MX_TIM7_Init(void);
+static void MX_TIM11_Init(void);
 void StartDefaultTask(void *argument);
 void StartTask02(void *argument);
 
@@ -221,9 +221,9 @@ int main(void)
   MX_ADC1_Init();
   MX_DAC_Init();
   MX_TIM10_Init();
-  MX_TIM7_Init();
+  MX_TIM11_Init();
   /* USER CODE BEGIN 2 */
-  // HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_Base_Start_IT(&htim11);
 
   /* USER CODE END 2 */
 
@@ -459,44 +459,6 @@ static void MX_DAC_Init(void)
 }
 
 /**
-  * @brief TIM7 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TIM7_Init(void)
-{
-
-  /* USER CODE BEGIN TIM7_Init 0 */
-
-  /* USER CODE END TIM7_Init 0 */
-
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-
-  /* USER CODE BEGIN TIM7_Init 1 */
-
-  /* USER CODE END TIM7_Init 1 */
-  htim7.Instance = TIM7;
-  htim7.Init.Prescaler = 9600 - 1;
-  htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim7.Init.Period = 5 - 1;
-  htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim7, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM7_Init 2 */
-
-  /* USER CODE END TIM7_Init 2 */
-
-}
-
-/**
   * @brief TIM10 Initialization Function
   * @param None
   * @retval None
@@ -524,6 +486,37 @@ static void MX_TIM10_Init(void)
   /* USER CODE BEGIN TIM10_Init 2 */
 
   /* USER CODE END TIM10_Init 2 */
+
+}
+
+/**
+  * @brief TIM11 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM11_Init(void)
+{
+
+  /* USER CODE BEGIN TIM11_Init 0 */
+
+  /* USER CODE END TIM11_Init 0 */
+
+  /* USER CODE BEGIN TIM11_Init 1 */
+
+  /* USER CODE END TIM11_Init 1 */
+  htim11.Instance = TIM11;
+  htim11.Init.Prescaler = 9600 - 1;
+  htim11.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim11.Init.Period = 5 - 1;
+  htim11.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim11.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim11) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM11_Init 2 */
+
+  /* USER CODE END TIM11_Init 2 */
 
 }
 
@@ -779,7 +772,7 @@ void StartDefaultTask(void *argument)
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
 
 					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-					//pumpTestsParameters[pump].eNextState = START;
+
 
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST_INIT:
@@ -1060,7 +1053,7 @@ void StartDefaultTask(void *argument)
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].UMTI[0], 9, HAL_MAX_DELAY);
 
 					stepperStep(800);				// close valve half way
-					HAL_TIM_Base_Start_IT(&htim7);	// starts closing
+					HAL_TIM_Base_Start_IT(&htim11);	// starts closing
 	  				stepperOpen();
 	  				solenoidOpen();
 	  				solenoidClose();
@@ -1258,7 +1251,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   			}
   		}
   	}
-  if(htim->Instance == TIM7) { // This is for PWM
+  if(htim->Instance == TIM11) { // This is for PWM
 //	  currPos = toggleCount/2;
 //	if(steps != currPos || (toggleCount%2) != 0){
 //		if(steps > currPos ){
@@ -1275,7 +1268,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //		//HAL_TIM_Base_Stop_IT(&htim11);
 //	}
 	  HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_5);
-	  HAL_TIM_Base_Start_IT(&htim7);
   }
 
   /* USER CODE END Callback 1 */
