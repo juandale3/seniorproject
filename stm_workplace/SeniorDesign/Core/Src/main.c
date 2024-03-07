@@ -514,7 +514,7 @@ static void MX_TIM10_Init(void)
   htim10.Instance = TIM10;
   htim10.Init.Prescaler = 48000 - 1;
   htim10.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim10.Init.Period = 2000 - 1;
+  htim10.Init.Period = 10000 - 1;
   htim10.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim10.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim10) != HAL_OK)
@@ -752,7 +752,7 @@ void StartDefaultTask(void *argument)
 					//stepperOpen();
 					//HAL_TIM_Base_Start_IT(&htim11);
 					stepperStep(800);
-					//HAL_TIM_Base_Start_IT(&htim11);
+					HAL_TIM_Base_Start_IT(&htim7);
 //					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
 //					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
 //					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
@@ -1259,23 +1259,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   		}
   	}
   if(htim->Instance == TIM7) { // This is for PWM
-//	  currPos = toggleCount/2;
-//	if(steps != currPos || (toggleCount%2) != 0){
-//		if(steps > currPos ){
-//			HAL_GPIO_WritePin(dirGroup, dirPin, RESET);
-//			toggleCount++;
-//		}
-//		else {
-//			HAL_GPIO_WritePin(dirGroup, dirPin, SET);
-//			toggleCount--;
-//		}
-//		HAL_GPIO_TogglePin(pulGroup, pulPin);
-//		HAL_TIM_Base_Start_IT(&htim11);
-//	}else{	// Current Position == Steps
-//		//HAL_TIM_Base_Stop_IT(&htim11);
-//	}
-	  HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_5);
-	  HAL_TIM_Base_Start_IT(&htim7);
+	  currPos = toggleCount/2;
+	if(steps != currPos || (toggleCount%2) != 0){
+		if(steps > currPos ){
+			HAL_GPIO_WritePin(dirGroup, dirPin, RESET);
+			toggleCount++;
+		}
+		else {
+			HAL_GPIO_WritePin(dirGroup, dirPin, SET);
+			toggleCount--;
+		}
+		HAL_GPIO_TogglePin(pulGroup, pulPin);
+		HAL_TIM_Base_Start_IT(&htim7);
+	}else{	// Current Position == Steps
+		HAL_TIM_Base_Stop_IT(&htim7);
+	}
+	 //HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_5);
   }
 
   /* USER CODE END Callback 1 */

@@ -15,5 +15,5 @@
 ../Core/Src/main.c:724:6:resetTime	1
 ../Core/Src/main.c:739:6:StartDefaultTask	37
 ../Core/Src/main.c:1128:6:StartTask02	9
-../Core/Src/main.c:1241:6:HAL_TIM_PeriodElapsedCallback	6
-../Core/Src/main.c:1288:6:Error_Handler	1
+../Core/Src/main.c:1241:6:HAL_TIM_PeriodElapsedCallback	9
+../Core/Src/main.c:1287:6:Error_Handler	1
