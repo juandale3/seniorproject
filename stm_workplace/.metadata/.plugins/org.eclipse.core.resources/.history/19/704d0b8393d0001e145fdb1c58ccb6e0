@@ -1,0 +1,24 @@
+/*
+ * states.c
+ *
+ *  Created on: Feb 21, 2024
+ *      Author: oneju
+ */
+
+#include <main.h>
+
+
+uint8_t tests[10];
+uint8_t* currentTest = &tests[0];
+enum State eNextState = START;
+//enum State eNextState = IDLE;
+
+float volts = 0;
+float dacVolts = 0;
+float FlowRate = 0;
+float vacuumScale = 0;
+char msg[100];
+char mail[100];
+
+char tx_buffer[20] = "Received\n";
+uint8_t rx_buffer[5];

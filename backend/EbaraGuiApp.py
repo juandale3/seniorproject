@@ -1,9 +1,9 @@
 import customtkinter
 import serial
-from sendData import sendData
 import time
-#from sendData import sendData
-
+import sendData
+import saveFile
+#from sendData import *
 
 
 
@@ -42,7 +42,7 @@ class App(customtkinter.CTk):
         self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text="Pump Status Data", command=self.show_content4)
         self.sidebar_button_4.grid(row=4, column=0, pady=10, padx=20)
 
-        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Send Serial")# command=self.sendData)
+        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Test Data", command=saveFile.openFileExplorer)
         self.sidebar_button_5.grid(row=5 ,column=0, pady=10, padx=20)
 
         # Main content area
@@ -90,7 +90,7 @@ class App(customtkinter.CTk):
         #DATA BOX
 
         
-        self.textbox = customtkinter.CTkTextbox(self.main_content, height=400, width=400)
+        self.textbox = customtkinter.CTkTextbox(self.main_content, height=400, width=400,text_color="white", activate_scrollbars=False)
         # Place the textbox right next to the label, ensuring it's in a column that aligns it to the right
         self.textbox.grid(row=3, column=4, rowspan=4, padx=10)  # rowspan adjusts how many rows it spans; "ne" aligns it to the top-right
 
@@ -98,7 +98,11 @@ class App(customtkinter.CTk):
         self.main_content.grid_columnconfigure(4, weight=1)  # Make the second last column expand, pushing column 5 to the right
 
     def handleSendData(self,command,button):
-        sendData(command)
+        #delete contents in test status data
+        with open(sendData.initDataFile,'w'):
+            pass
+        #start protocols and communtication with STM microcontroller
+        sendData.protocol_0()
         self.pump1_button.configure(state="disabled", fg_color=self.start_button_color, text_color=self.disabled_text_color)
         self.pump2_button.configure(state="disabled", fg_color=self.disabled_button_color)
 
@@ -106,19 +110,32 @@ class App(customtkinter.CTk):
         self.status_label.grid(row=4, column=0, columnspan=2, pady=10)  # Adjust positioning as needed
 
 
-        self.start_serial_connection()
+        #self.start_serial_connection()
         self.update_serial_data()
+        self.startProgressBar()
 
-        self.slider_progressbar_frame = customtkinter.CTkFrame(self.main_content, fg_color="transparent")
-        self.slider_progressbar_frame.grid(row=2, column=4, padx=(0, 0), pady=(0, 0), sticky="nsew")
-        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)  # Ensure the column expands fully
-        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)  # Ensure the row of the progress bar can expand as needed
 
-        self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame, width=400,progress_color="green")
-        self.progressbar_1.grid(row=0, column=0, sticky="")
 
-        self.progressbar_1.configure(mode="indeterminate")
-        self.progressbar_1.start()
+
+    def update_serial_data(self):
+        reader = open(sendData.initDataFile)
+        '''
+       if sendData.textbox_data:
+            self.textbox.insert('end', sendData.textbox_data + '\n')  # Append data to the textbox
+        '''
+        
+        initData = reader.read()
+        reader.close()
+        self.textbox.delete("0.0",'end')
+        self.textbox.insert("0.0",initData)
+        
+        self.after(100, self.update_serial_data)  # Schedule next check
+
+    def update_textbox(self,text):
+        self.textbox.insert('end',text)
+
+    
+
 
 
 
@@ -133,7 +150,15 @@ class App(customtkinter.CTk):
 
         textbox.insert("0.0", "CTkTextbox\n\n" +"Pump 1 Data Here\n\n")
 
-        
+    def startProgressBar(self):
+        self.slider_progressbar_frame = customtkinter.CTkFrame(self.main_content, fg_color="transparent")
+        self.slider_progressbar_frame.grid(row=2, column=4, padx=(0, 0), pady=(0, 0), sticky="nsew")
+        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)  # Ensure the column expands fully
+        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)  # Ensure the row of the progress bar can expand as needed
+        self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame, width=400,progress_color="green")
+        self.progressbar_1.grid(row=0, column=0, sticky="")
+        self.progressbar_1.configure(mode="indeterminate")
+        self.progressbar_1.start()
        
 
     def show_content3(self):
@@ -162,13 +187,9 @@ class App(customtkinter.CTk):
         self.ser = serial.Serial('COM13', 115200, timeout=1)
         self.ser.flushInput()  # Clear any existing data in the buffer
 
-    def update_serial_data(self):
-        if self.ser.in_waiting > 0:
-            serialData = self.ser.readline().decode('utf-8').rstrip()  # Decode and strip newline
-            #if statement to watch for string that says end test to close the serial on our end.
-            print(serialData)  # Optional: for debugging
-            self.textbox.insert('end', serialData + '\n')  # Append data to the textbox
-        self.after(100, self.update_serial_data)  # Schedule next check
+
+  
+
 
 
 
@@ -181,6 +202,8 @@ class App(customtkinter.CTk):
 
 if __name__ == '__main__':
     #webapp.run(debug=True, port = 8080)
+
+    
     app = App()
     app.mainloop()
 
