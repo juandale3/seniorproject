@@ -1,27 +1,26 @@
 import threading
-import customtkinter
 
+import sendData
 from EbaraGuiApp import App
-from EbaraWebApp import webapp
 
 
+#threading, running EbaraGuiApp and sendData.py
 def runGUI():
     app = App()
     app.mainloop()
 
-def runWebApp():
+def runSendData():
     # Starting the Flask web app
-    webapp.run(debug=True, port=8080, use_reloader=False)
-
+    sendData.listen()
 if __name__ == "__main__":
     # Create threads for Flask and customtkinter apps
-    flask_thread = threading.Thread(target=runWebApp)
+    sendData_thread = threading.Thread(target=runSendData)
     gui_thread = threading.Thread(target=runGUI)
 
     # Start the threads
-    flask_thread.start()
+    sendData_thread.start()
     gui_thread.start()
 
     # Join threads to the main thread
-    flask_thread.join()
+    sendData_thread.join()
     gui_thread.join()
