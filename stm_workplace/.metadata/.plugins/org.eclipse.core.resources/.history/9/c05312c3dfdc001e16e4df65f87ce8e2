@@ -514,7 +514,7 @@ static void MX_TIM10_Init(void)
   htim10.Instance = TIM10;
   htim10.Init.Prescaler = 48000 - 1;
   htim10.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim10.Init.Period = 2000 - 1;
+  htim10.Init.Period = 10000 - 1;
   htim10.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim10.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim10) != HAL_OK)
@@ -618,7 +618,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOG_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4
+                          |GPIO_PIN_5, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
@@ -632,8 +633,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(USER_Btn_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PF4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  /*Configure GPIO pins : PF0 PF1 PF2 PF4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -748,8 +749,16 @@ void StartDefaultTask(void *argument)
 					flowControllerADC(&hadc1);
 					dacSet(&hdac, DAC_CHANNEL_1, volts);
 
-					stepperOpen();
+					//stepperOpen();
+					//HAL_TIM_Base_Start_IT(&htim11);
+					stepperStep(800);
 					HAL_TIM_Base_Start_IT(&htim7);
+//					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
+//					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+//					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
+
+//	  				sprintf(msg,"STARTING\r\n");
+//	  				printMsg(msg, &huart3);
 
 //	  				pumpTestsParameters[0].stateList[0] = START;
 //	  				pumpTestsParameters[0].stateList[1] = IDLE;
@@ -1082,7 +1091,11 @@ void StartDefaultTask(void *argument)
 	  				osDelay(100);	// Checks condition every 100 ms
 	  				break;
 	  			case IDLE:
-
+//	  				stepperStep(800);
+//	  				HAL_TIM_Base_Start_IT(&htim11);
+//					osDelay(3000);
+//					stepperStep(0);
+//					HAL_TIM_Base_Start_IT(&htim11);
 					osDelay(3000);
 
 	  				break;
@@ -1099,6 +1112,8 @@ void StartDefaultTask(void *argument)
 	  			default:
 	  				pumpTestsParameters[pump].eNextState = STOP;
 	  }
+
+//	  osDelay(1);
   }
   /* USER CODE END 5 */
 }

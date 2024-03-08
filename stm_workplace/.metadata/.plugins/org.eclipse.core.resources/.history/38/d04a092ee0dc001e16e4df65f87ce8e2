@@ -750,6 +750,12 @@ void StartDefaultTask(void *argument)
 
 					stepperOpen();
 					HAL_TIM_Base_Start_IT(&htim7);
+//					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_RESET);
+//					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
+//					HAL_GPIO_WritePin(GPIOF, GPIO_PIN_2, GPIO_PIN_SET);
+
+//	  				sprintf(msg,"STARTING\r\n");
+//	  				printMsg(msg, &huart3);
 
 //	  				pumpTestsParameters[0].stateList[0] = START;
 //	  				pumpTestsParameters[0].stateList[1] = IDLE;
@@ -1082,7 +1088,11 @@ void StartDefaultTask(void *argument)
 	  				osDelay(100);	// Checks condition every 100 ms
 	  				break;
 	  			case IDLE:
-
+//	  				stepperStep(800);
+//	  				HAL_TIM_Base_Start_IT(&htim11);
+//					osDelay(3000);
+//					stepperStep(0);
+//					HAL_TIM_Base_Start_IT(&htim11);
 					osDelay(3000);
 
 	  				break;
@@ -1099,6 +1109,8 @@ void StartDefaultTask(void *argument)
 	  			default:
 	  				pumpTestsParameters[pump].eNextState = STOP;
 	  }
+
+//	  osDelay(1);
   }
   /* USER CODE END 5 */
 }
