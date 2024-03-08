@@ -3,6 +3,7 @@ import serial
 import time
 import sendData
 import saveFile
+import threading
 #from sendData import *
 
 
@@ -42,7 +43,7 @@ class App(customtkinter.CTk):
         self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text="Pump Status Data", command=self.show_content4)
         self.sidebar_button_4.grid(row=4, column=0, pady=10, padx=20)
 
-        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Test Data", command=saveFile.openFileExplorer)
+        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Test Data")
         self.sidebar_button_5.grid(row=5 ,column=0, pady=10, padx=20)
 
         # Main content area
@@ -99,10 +100,17 @@ class App(customtkinter.CTk):
 
     def handleSendData(self,command,button):
         #delete contents in test status data
-        with open(sendData.initDataFile,'w'):
+        '''
+               with open(sendData.initDataFile,'w'):
             pass
         #start protocols and communtication with STM microcontroller
-        sendData.protocol_0()
+        '''
+       
+        #start protocols and communtication with STM microcontroller
+              # Start a separate thread for serial communication
+        self.serial_thread = threading.Thread(target=self.update_serial_data)
+        self.serial_thread.daemon = True  # Daemonize the thread so it will be killed when the main thread exits
+        self.serial_thread.start()
         self.pump1_button.configure(state="disabled", fg_color=self.start_button_color, text_color=self.disabled_text_color)
         self.pump2_button.configure(state="disabled", fg_color=self.disabled_button_color)
 
@@ -111,25 +119,55 @@ class App(customtkinter.CTk):
 
 
         #self.start_serial_connection()
-        self.update_serial_data()
+        
         self.startProgressBar()
 
-
-
-
+       
+        
     def update_serial_data(self):
+        sendData.protocol_0(self.textbox, sendData.ser)
+        try:
+            while True:
+                # Receive a single byte over serial
+                received_byte = sendData.ser.read(1)
+
+                if received_byte:
+                    # Decode the byte and get the protocol function associated with it
+                    sendData.protocol_func = sendData.protocols.get(ord(received_byte), None)
+
+                    if sendData.protocol_func:
+                        # Execute the protocol function
+                        sendData.protocol_func(self.textbox, sendData.ser)
+                    else:
+                        print("Unknown protocol for byte:", ord(received_byte))
+
+        except KeyboardInterrupt:
+            print("\nExiting program.")
+
+        finally:
+            # Close the serial port
+            sendData.ser.close()        
+
+    '''
+    def update_serial_data(self):
+
+
+
+        
         reader = open(sendData.initDataFile)
-        '''
+      
        if sendData.textbox_data:
             self.textbox.insert('end', sendData.textbox_data + '\n')  # Append data to the textbox
-        '''
+       
         
         initData = reader.read()
         reader.close()
         self.textbox.delete("0.0",'end')
         self.textbox.insert("0.0",initData)
         
-        self.after(100, self.update_serial_data)  # Schedule next check
+        self.after(100, self.update_serial_data)  # Schedule next check  
+    
+    '''
 
     def update_textbox(self,text):
         self.textbox.insert('end',text)
