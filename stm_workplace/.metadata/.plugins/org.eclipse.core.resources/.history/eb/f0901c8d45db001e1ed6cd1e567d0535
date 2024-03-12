@@ -1,0 +1,35 @@
+/*
+ * stepperMotor.c
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: oneju
+ */
+
+
+// Includes
+#include "main.h"
+
+
+// Variables
+
+
+
+// Static Functions Declaration	----------------------------------------//
+
+
+
+// Public Functions		------------------------------------------------//
+
+void stepperClose(){
+	step = MAX_STEP;
+}
+
+void stepperOpen(){
+	step = 0;
+}
+
+void stepperStep(uint16_t step){
+	if(step > MAX_STEP){
+		step = MAX_STEP;
+	}
+}

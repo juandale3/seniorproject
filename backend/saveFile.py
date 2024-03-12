@@ -1,10 +1,15 @@
 import os
 import pandas as pd
+
 '''
 Using this function make sure it opens up the data folder within our program, 
 Write code for file explorer to open, make sure it opens in the write folder,
 
 need to add initData.txt into data folder
+
+
+'''
+
 
 
 
@@ -29,4 +34,4 @@ def pumpData(pump_array_data,columns):
     with pd.ExcelWriter(file_path, engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
         # Assuming your data is in the first sheet, you can replace it with the updated DataFrame
         updated_df.to_excel(writer, sheet_name='Sheet1', index=False)
-'''
+

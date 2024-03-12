@@ -1,0 +1,45 @@
+/*
+ * stepperMotor.c
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: oneju
+ */
+
+
+// Includes
+#include "main.h"
+
+
+// Variables
+uint16_t steps;
+uint8_t direction;
+
+// defines
+#define MAX_STEP 1500
+
+// Pins
+static GPIO_TypeDef * pulGroup = GPIOA;
+static uint16_t pulPin = GPIO_PIN_1;
+
+static GPIO_TypeDef * dirGroup = GPIOA;
+static uint16_t dirPin = GPIO_PIN_2;
+
+// Static Functions Declaration	----------------------------------------//
+
+
+
+// Public Functions		------------------------------------------------//
+
+void stepperClose(){
+	step = MAX_STEP;
+}
+
+void stepperOpen(){
+	step = 0;
+}
+
+void stepperStep(uint16_t step){
+	if(step > MAX_STEP){
+		step = MAX_STEP;
+	}
+}

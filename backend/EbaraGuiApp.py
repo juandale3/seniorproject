@@ -12,7 +12,7 @@ import threading
 #customtkinter.set_default_color_theme("blue")
 
 class App(customtkinter.CTk):
-    WIDTH = 1000
+    WIDTH = 1100
     HEIGHT = 600
 
     def __init__(self):
@@ -43,7 +43,7 @@ class App(customtkinter.CTk):
         self.sidebar_button_4 = customtkinter.CTkButton(self.sidebar_frame, text="Pump Status Data", command=self.show_content4)
         self.sidebar_button_4.grid(row=4, column=0, pady=10, padx=20)
 
-        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Test Data")
+        self.sidebar_button_5 = customtkinter.CTkButton(self.sidebar_frame, text="Files" ,command=saveFile.openFileExplorer)
         self.sidebar_button_5.grid(row=5 ,column=0, pady=10, padx=20)
 
         # Main content area
@@ -65,38 +65,43 @@ class App(customtkinter.CTk):
     def show_content1(self):
         # Clear any existing content
         self.clear_main_content()
+
+
+        self.testTitleLabel = customtkinter.CTkLabel(self.main_content, text="Welcome") 
+        self.testTitleLabel.grid(row = 0, column=0, padx=10, sticky="nw")
+
+        self.testTextLabel = customtkinter.CTkLabel(self.main_content, text="Current Test" ,
+                                                    font=('',20),text_color="#6dd5ef")
+        self.testTextLabel.grid(row = 0, column=1, pady=10,padx=10, sticky="nw")
         
-        label = customtkinter.CTkLabel(self.main_content, text="Choose Pump Model")
-        label.grid(row=0, column=0, pady=20, padx=100)
-        #Option drop down for pump model
-        self.optionmenu_1 = customtkinter.CTkOptionMenu(master=self.main_content, values=["Pump Model 1", "Pump Model 2", "Pump Model 3", "Pump Model 4"])
-        self.optionmenu_1.grid(row=1, column=0, padx=20)
-
-        # Add a label to the main content area
-        label = customtkinter.CTkLabel(self.main_content, text="Choose a pump to start testing")
-        label.grid(row=2, column=0, pady=20, padx=20)
-        
-
-
         # Add a button to the main content area
-        self.pump1_button = customtkinter.CTkButton(self.main_content, height=200, width=200,text="Start \nPump 1" ,
+        self.pump1_button = customtkinter.CTkButton(self.main_content, height=150, width=150,text="Start \nPump 1" ,
                                                     command= lambda: self.handleSendData("STARTING",self.pump1_button))
-        self.pump1_button.grid(row=3, column=0, pady=5, padx=20)  # Using grid for consistency
+        self.pump1_button.grid(row=2, column=3,  padx=10,pady=10, sticky="n")
 
         
-        self.pump2_button = customtkinter.CTkButton(self.main_content,height=200, width=200, text="Start \n Pump 2")
-        self.pump2_button.grid(row=4, column=0, pady=5, padx=20)  # Using grid for consistency
+        self.pump2_button = customtkinter.CTkButton(self.main_content,height=150, width=150, text="Start \n Pump 2")
+        self.pump2_button.grid(row=2, column=4,  padx=10,pady=10, sticky="n")
         
 
         #DATA BOX
 
         
-        self.textbox = customtkinter.CTkTextbox(self.main_content, height=400, width=400,text_color="white", activate_scrollbars=False)
-        # Place the textbox right next to the label, ensuring it's in a column that aligns it to the right
-        self.textbox.grid(row=3, column=4, rowspan=4, padx=10)  # rowspan adjusts how many rows it spans; "ne" aligns it to the top-right
+  # DATA BOX for title
+        self.title_textbox = customtkinter.CTkTextbox(
+            self.main_content, height=40, width=400, text_color="white", activate_scrollbars=False
+        )
+        # Place the title textbox at the top, spanning across the width of the window
+        self.title_textbox.grid(row=1, column=1, padx=10, sticky="se")
 
-        # Ensure main_content is configured to push widgets to the right
-        self.main_content.grid_columnconfigure(4, weight=1)  # Make the second last column expand, pushing column 5 to the right
+        # DATA BOX for text
+        self.textbox = customtkinter.CTkTextbox(
+            self.main_content, height=400, width=400, text_color="white", activate_scrollbars=False
+        )
+        # Place the textbox below the title textbox
+        self.textbox.grid(row=2, column=1, pady=10, padx=10, sticky="ne")
+
+
 
     def handleSendData(self,command,button):
         #delete contents in test status data
@@ -114,8 +119,8 @@ class App(customtkinter.CTk):
         self.pump1_button.configure(state="disabled", fg_color=self.start_button_color, text_color=self.disabled_text_color)
         self.pump2_button.configure(state="disabled", fg_color=self.disabled_button_color)
 
-        self.status_label = customtkinter.CTkLabel(self.main_content, text="PUMP 1 test is now active ", text_color="white")
-        self.status_label.grid(row=4, column=0, columnspan=2, pady=10)  # Adjust positioning as needed
+        #self.status_label = customtkinter.CTkLabel(self.main_content, text="PUMP 1 test is now active ", text_color="white")
+        #self.status_label.grid(row=4, column=0, columnspan=2, pady=10)  # Adjust positioning as needed
 
 
         #self.start_serial_connection()
@@ -125,19 +130,21 @@ class App(customtkinter.CTk):
        
         
     def update_serial_data(self):
-        sendData.protocol_0(self.textbox, sendData.ser)
+        sendData.protocol_0(self.title_textbox,self.textbox, sendData.ser)
         try:
             while True:
                 # Receive a single byte over serial
                 received_byte = sendData.ser.read(1)
-
+                
+                
                 if received_byte:
                     # Decode the byte and get the protocol function associated with it
                     sendData.protocol_func = sendData.protocols.get(ord(received_byte), None)
 
                     if sendData.protocol_func:
                         # Execute the protocol function
-                        sendData.protocol_func(self.textbox, sendData.ser)
+                        sendData.protocol_func(self.title_textbox, self.textbox, sendData.ser)
+                        
                     else:
                         print("Unknown protocol for byte:", ord(received_byte))
 
@@ -183,24 +190,27 @@ class App(customtkinter.CTk):
         label = customtkinter.CTkLabel(self.main_content, text="Pump 1 Data")
         label.grid(pady=20, padx=20)
 
-        textbox = customtkinter.CTkTextbox(self.main_content,height=200 ,width=400)
-        textbox.grid(row=2, column=2)
+        label2 = customtkinter.CTkLabel(self.main_content,text="TEST")
+        label2.grid(row = 1, column = 0)
 
-        textbox.insert("0.0", "CTkTextbox\n\n" +"Pump 1 Data Here\n\n")
+        label3 = customtkinter.CTkLabel(self.main_content,text="TEST2")
+        label3.grid(row = 1, column = 2)
+
+ 
+
 
     def startProgressBar(self):
         self.slider_progressbar_frame = customtkinter.CTkFrame(self.main_content, fg_color="transparent")
-        self.slider_progressbar_frame.grid(row=2, column=4, padx=(0, 0), pady=(0, 0), sticky="nsew")
-        self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)  # Ensure the column expands fully
-        self.slider_progressbar_frame.grid_rowconfigure(1, weight=1)  # Ensure the row of the progress bar can expand as needed
+        self.slider_progressbar_frame.grid(row=4, column=1, padx=10 ,sticky="nsew")
+        
         self.progressbar_1 = customtkinter.CTkProgressBar(self.slider_progressbar_frame, width=400,progress_color="green")
-        self.progressbar_1.grid(row=0, column=0, sticky="")
+        self.progressbar_1.grid(row=4, column=1, sticky="e")
         self.progressbar_1.configure(mode="indeterminate")
         self.progressbar_1.start()
        
 
     def show_content3(self):
-        # Update to content 3
+        # Update to content 3z
         self.clear_main_content()
         label = customtkinter.CTkLabel(self.main_content, text="Pump 2 Data")
         label.grid(pady=20, padx=20)
