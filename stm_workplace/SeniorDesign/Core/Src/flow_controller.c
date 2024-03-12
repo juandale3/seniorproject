@@ -41,6 +41,11 @@ static GPIO_TypeDef * ContactDI2Group = GPIOC;
 static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_8, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
 static GPIO_TypeDef * ContactDI3Group = GPIOC;
 
+static GPIO_TypeDef * ModeInput2Group = GPIOB;
+static uint16_t ModeInput2Pin = GPIO_PIN_6;
+
+static GPIO_TypeDef * ModeInput1Group = GPIOB;
+static uint16_t ModeInput1Pin = GPIO_PIN_2;
 //static GPIO_InitTypeDef
 //static GPIO_TypeDef *
 
@@ -53,7 +58,7 @@ static GPIO_TypeDef * ContactDI3Group = GPIOC;
 void flowControllerADC(ADC_HandleTypeDef* hadc){
 	ADC_ChannelConfTypeDef sConfig = {0};
 
-	sConfig.Channel = ADC_CHANNEL_9;
+	sConfig.Channel = ADC_CHANNEL_3;
 	sConfig.Rank = ADC_REGULAR_RANK_1;
 	sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
 

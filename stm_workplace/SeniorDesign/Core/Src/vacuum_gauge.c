@@ -26,7 +26,7 @@ float scalingFactor = 0.75;
 void vacuumGaugeADC(ADC_HandleTypeDef* hadc){
 	ADC_ChannelConfTypeDef sConfig = {0};
 
-	sConfig.Channel = ADC_CHANNEL_6;
+	sConfig.Channel = ADC_CHANNEL_10;
 	sConfig.Rank = ADC_REGULAR_RANK_1;
 	sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
 

@@ -19,11 +19,11 @@ float adcVolts = 0;		// adcBitVal converted into volts
 
 
 // Pins
-static GPIO_TypeDef * solenoidOneGroup = GPIOA;
-static uint16_t solenoidOnePin = GPIO_PIN_1;
-
-static GPIO_TypeDef * solenoidTwoGroup = GPIOA;
-static uint16_t solenoidTwoPin = GPIO_PIN_2;
+//static GPIO_TypeDef * solenoidOneGroup = GPIOA;
+//static uint16_t solenoidOnePin = GPIO_PIN_1;
+//
+//static GPIO_TypeDef * solenoidTwoGroup = GPIOA;
+//static uint16_t solenoidTwoPin = GPIO_PIN_2;
 
 
 // Analog Variables
