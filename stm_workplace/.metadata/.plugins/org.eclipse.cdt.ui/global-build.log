@@ -7626,3 +7626,10 @@ Finished building: default.size.stdout
  
 Finished building: SeniorDesign.list
  
+13:36:05 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60064	    492	  22796	  83352	  14598	SeniorDesign.elf
+Finished building: default.size.stdout
+ 

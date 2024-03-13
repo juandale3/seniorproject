@@ -2,7 +2,9 @@ import serial
 import time
 import saveFile
 import customtkinter
+from datetime import datetime
 
+# Get the current date and time
 
 initDataFile = ".\data\initData.txt"
 
@@ -42,24 +44,45 @@ def protocol_2(title_textbox, textbox, ser):
     title_textbox.delete('1.0','end')
     title_textbox.insert('end',"Vacuum Achievement Test")
     array = [int(byte) for byte in received_data]
+
     textbox.delete("1.0","end")
-    textbox.insert('end',f"Time: {array[2]}:{array[2]}:{array[3]}\n")
-    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n")
+    # Current Time
+    now = datetime.now()
+    formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+
+    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
+    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
 
 def protocol_3(title_textbox, textbox, ser):
     title_textbox.delete('1.0','end')
-    title_textbox.insert('Initiating Special Test')
+    title_textbox.insert('end','Initiating Special Test')
     textbox.insert('end', "\nProtocol 3: SPECIAL_TEST_INIT\n")
     # data_to_send = [3,0,0,10,0,3,0,50,50]     # actual Default Parameters
     data_to_send = [3,0,0,1,0,3,0,50,50]        # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
     
-def protocol_4(title_textboxt, textbox, ser):
-    title_textboxt.delete('1.0','end')
-    title_textboxt.insert('SPECIAL TEST\n')
+def protocol_4(title_textbox, textbox, ser):
+    title_textbox.delete('1.0','end')
+    textbox.delete('1.0','end')
+    title_textbox.insert('end','SPECIAL TEST\n')
     received_data = ser.read(8 - 1)
-    textbox.insert('end', "Protocol 4: SPECIAL_TEST\t\tReceived data: {}\n".format([int(byte) for byte in received_data]))
-    
+    array = [int(byte) for byte in received_data]
+
+    #   Current Time
+    now = datetime.now()
+    formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+
+    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
+    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
+    textbox.insert('end',f"Current Flow rate: {array[6]} L/min \n\n")
+
+
 def protocol_5(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 5: WARM_UP_INIT\n")
     # data_to_send = [5,0,3,0,0,0,0,100]        # actual Default Parameters
@@ -68,9 +91,19 @@ def protocol_5(title_textbox, textbox, ser):
 
 def protocol_6(title_textbox, textbox, ser):
     received_data = ser.read(6 - 1)
+    textbox.delete('1.0','end')
     title_textbox.delete('1.0','end')
-    title_textbox.insert('WARM UP TEST')
-    textbox.insert('end', "Protocol 6: WARM_UP\t\t\tReceived data: {}\n".format([int(byte) for byte in received_data]))
+    title_textbox.insert('end','WARM UP TEST')
+    array = [int(byte) for byte in received_data]
+
+    #   Current Time
+    now = datetime.now()
+    formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+
+    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
+    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {array[4]} F\n\n")
 
 def protocol_7(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 7: LOAD_TEST_INIT\n")
@@ -80,9 +113,22 @@ def protocol_7(title_textbox, textbox, ser):
 
 def protocol_8(title_textbox, textbox, ser):
     title_textbox.delete('1.0','end')
-    title_textbox.insert('LOAD TEST')
+    textbox.delete('1.0','end')
+    title_textbox.insert('end','LOAD TEST')
     received_data = ser.read(7 - 1)
-    textbox.insert('end', "Protocol 8: LOAD_TEST\t\t\tReceived data: {}\n".format([int(byte) for byte in received_data]))
+
+    array = [int(byte) for byte in received_data]
+
+    # Current Time
+    now = datetime.now()
+    formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+
+    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
+    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
+    textbox.insert('end',f"Current Flow rate: {array[4]} L/min \n\n")
+    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
+
 
 def protocol_9(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 9: OPERATION_TEST_INIT\n")
@@ -92,9 +138,21 @@ def protocol_9(title_textbox, textbox, ser):
 
 def protocol_10(title_textbox, textbox, ser):
     title_textbox.delete('1.0','end')
-    title_textbox.insert("Operation Test")
+    textbox.delete('1.0','end')
+    title_textbox.insert('end',"Operation Test")
     received_data = ser.read(8 - 1)   
-    textbox.insert('end', "Protocol 10: OPERATION_TEST\t\tReceived data: {}\n".format([int(byte) for byte in received_data]))
+    array = [int(byte) for byte in received_data]
+
+    # Current Time
+    now = datetime.now() 
+    formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+
+    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
+    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
+    textbox.insert('end',f"Current Flow rate: {array[6]} L/min \n\n")
 
 def protocol_11(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 11: ULTIMATE_MEASURE_TEST_INIT\n")
@@ -104,9 +162,21 @@ def protocol_11(title_textbox, textbox, ser):
 
 def protocol_12(title_textbox, textbox, ser):
     title_textbox.delete('1.0','end')
-    title_textbox.insert('Ulimate Pressure Test')
+    textbox.delete('1.0','end')
+    title_textbox.insert('end','Ulimate Pressure Test')
     received_data = ser.read(8 - 1)
-    textbox.insert('end', "Protocol 12: ULTIMATE_MEASURE_TEST\tReceived data: {}\n".format([int(byte) for byte in received_data]))
+    array = [int(byte) for byte in received_data]
+
+    #Current Time
+    now = datetime.now()    
+    formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+    
+    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
+    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
+    textbox.insert('end',f"Current Flow rate: {array[6]} L/min \n\n")
 
 def protocol_13(title_textbox,textbox, ser):
     received_data = ser.read(8 - 1)
