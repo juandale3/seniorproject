@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .comment      00000043  00000000  00000000  00020222  2**0
                   CONTENTS, READONLY
- 13 .debug_info   00024f3a  00000000  00000000  00020265  2**0
+ 13 .debug_info   00024e9f  00000000  00000000  00020265  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00004fa0  00000000  00000000  0004519f  2**0
+ 14 .debug_abbrev 00004f7c  00000000  00000000  00045104  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00001d00  00000000  00000000  0004a140  2**3
+ 15 .debug_aranges 00001d00  00000000  00000000  0004a080  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 0000166b  00000000  00000000  0004be40  2**0
+ 16 .debug_rnglists 0000166b  00000000  00000000  0004bd80  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0002cea6  00000000  00000000  0004d4ab  2**0
+ 17 .debug_macro  0002cea6  00000000  00000000  0004d3eb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0002445d  00000000  00000000  0007a351  2**0
+ 18 .debug_line   0002445e  00000000  00000000  0007a291  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00111cd2  00000000  00000000  0009e7ae  2**0
+ 19 .debug_str    00111d38  00000000  00000000  0009e6ef  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  000089c0  00000000  00000000  001b0480  2**2
+ 20 .debug_frame  000089c0  00000000  00000000  001b0428  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000073  00000000  00000000  001b8e40  2**0
+ 21 .debug_line_str 00000073  00000000  00000000  001b8de8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -439,8 +439,8 @@ void flowControllerADC(ADC_HandleTypeDef* hadc){
  80005fe:	609a      	str	r2, [r3, #8]
  8000600:	60da      	str	r2, [r3, #12]
 
-	sConfig.Channel = ADC_CHANNEL_9;
- 8000602:	2309      	movs	r3, #9
+	sConfig.Channel = ADC_CHANNEL_3;
+ 8000602:	2303      	movs	r3, #3
  8000604:	60bb      	str	r3, [r7, #8]
 	sConfig.Rank = ADC_REGULAR_RANK_1;
  8000606:	2301      	movs	r3, #1
@@ -988,8 +988,8 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_9;
- 800092c:	2309      	movs	r3, #9
+  sConfig.Channel = ADC_CHANNEL_3;
+ 800092c:	2303      	movs	r3, #3
  800092e:	603b      	str	r3, [r7, #0]
   sConfig.Rank = ADC_REGULAR_RANK_1;
  8000930:	2301      	movs	r3, #1
@@ -1012,8 +1012,8 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_6;
- 800094c:	2306      	movs	r3, #6
+  sConfig.Channel = ADC_CHANNEL_10;
+ 800094c:	230a      	movs	r3, #10
  800094e:	603b      	str	r3, [r7, #0]
   sConfig.Rank = ADC_REGULAR_RANK_2;
  8000950:	2302      	movs	r3, #2
@@ -1231,9 +1231,9 @@ static void MX_TIM10_Init(void)
  8000a52:	4b0b      	ldr	r3, [pc, #44]	; (8000a80 <MX_TIM10_Init+0x40>)
  8000a54:	2200      	movs	r2, #0
  8000a56:	609a      	str	r2, [r3, #8]
-  htim10.Init.Period = 10000 - 1;
+  htim10.Init.Period = 2000 - 1;
  8000a58:	4b09      	ldr	r3, [pc, #36]	; (8000a80 <MX_TIM10_Init+0x40>)
- 8000a5a:	f242 720f 	movw	r2, #9999	; 0x270f
+ 8000a5a:	f240 72cf 	movw	r2, #1999	; 0x7cf
  8000a5e:	60da      	str	r2, [r3, #12]
   htim10.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
  8000a60:	4b07      	ldr	r3, [pc, #28]	; (8000a80 <MX_TIM10_Init+0x40>)
@@ -1513,19 +1513,19 @@ static void MX_GPIO_Init(void)
  8000c00:	683b      	ldr	r3, [r7, #0]
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_4|GPIO_PIN_5, GPIO_PIN_RESET);
  8000c02:	2200      	movs	r2, #0
- 8000c04:	2137      	movs	r1, #55	; 0x37
+ 8000c04:	2130      	movs	r1, #48	; 0x30
  8000c06:	485b      	ldr	r0, [pc, #364]	; (8000d74 <MX_GPIO_Init+0x230>)
  8000c08:	f002 ff48 	bl	8003a9c <HAL_GPIO_WritePin>
-                          |GPIO_PIN_5, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LD1_Pin|GPIO_PIN_2|LD3_Pin|GPIO_PIN_6
  8000c0c:	2200      	movs	r2, #0
- 8000c0e:	f244 0181 	movw	r1, #16513	; 0x4081
+ 8000c0e:	f244 01c5 	movw	r1, #16581	; 0x40c5
  8000c12:	4859      	ldr	r0, [pc, #356]	; (8000d78 <MX_GPIO_Init+0x234>)
  8000c14:	f002 ff42 	bl	8003a9c <HAL_GPIO_WritePin>
+                          |LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
@@ -1550,9 +1550,9 @@ static void MX_GPIO_Init(void)
  8000c38:	4851      	ldr	r0, [pc, #324]	; (8000d80 <MX_GPIO_Init+0x23c>)
  8000c3a:	f002 fd83 	bl	8003744 <HAL_GPIO_Init>
 
-  /*Configure GPIO pins : PF0 PF1 PF2 PF4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4;
- 8000c3e:	2317      	movs	r3, #23
+  /*Configure GPIO pin : PF4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+ 8000c3e:	2310      	movs	r3, #16
  8000c40:	61fb      	str	r3, [r7, #28]
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  8000c42:	2301      	movs	r3, #1
@@ -1632,10 +1632,12 @@ static void MX_GPIO_Init(void)
  8000cb0:	4834      	ldr	r0, [pc, #208]	; (8000d84 <MX_GPIO_Init+0x240>)
  8000cb2:	f002 fd47 	bl	8003744 <HAL_GPIO_Init>
 
-  /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
-  GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
- 8000cb6:	f244 0381 	movw	r3, #16513	; 0x4081
+  /*Configure GPIO pins : LD1_Pin PB2 LD3_Pin PB6
+                           LD2_Pin */
+  GPIO_InitStruct.Pin = LD1_Pin|GPIO_PIN_2|LD3_Pin|GPIO_PIN_6
+ 8000cb6:	f244 03c5 	movw	r3, #16581	; 0x40c5
  8000cba:	61fb      	str	r3, [r7, #28]
+                          |LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  8000cbc:	2301      	movs	r3, #1
  8000cbe:	623b      	str	r3, [r7, #32]
@@ -1808,10 +1810,10 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
 	  switch(pumpTestsParameters[pump].eNextState) {
- 8000dc0:	4bad      	ldr	r3, [pc, #692]	; (8001078 <StartDefaultTask+0x2c0>)
+ 8000dc0:	4bc7      	ldr	r3, [pc, #796]	; (80010e0 <StartDefaultTask+0x328>)
  8000dc2:	781b      	ldrb	r3, [r3, #0]
  8000dc4:	4619      	mov	r1, r3
- 8000dc6:	4aad      	ldr	r2, [pc, #692]	; (800107c <StartDefaultTask+0x2c4>)
+ 8000dc6:	4ac7      	ldr	r2, [pc, #796]	; (80010e4 <StartDefaultTask+0x32c>)
  8000dc8:	460b      	mov	r3, r1
  8000dca:	009b      	lsls	r3, r3, #2
  8000dcc:	440b      	add	r3, r1
@@ -1825,24 +1827,24 @@ void StartDefaultTask(void *argument)
  8000dde:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
  8000de2:	bf00      	nop
  8000de4:	08000e25 	.word	0x08000e25
- 8000de8:	08000ee9 	.word	0x08000ee9
- 8000dec:	08000f5d 	.word	0x08000f5d
+ 8000de8:	08000ee5 	.word	0x08000ee5
+ 8000dec:	08000f59 	.word	0x08000f59
  8000df0:	08001123 	.word	0x08001123
  8000df4:	080011c3 	.word	0x080011c3
- 8000df8:	080013a9 	.word	0x080013a9
- 8000dfc:	0800141b 	.word	0x0800141b
- 8000e00:	080014ef 	.word	0x080014ef
- 8000e04:	08001589 	.word	0x08001589
- 8000e08:	080016c1 	.word	0x080016c1
- 8000e0c:	0800172f 	.word	0x0800172f
- 8000e10:	0800185f 	.word	0x0800185f
- 8000e14:	080018db 	.word	0x080018db
- 8000e18:	080019af 	.word	0x080019af
+ 8000df8:	0800136f 	.word	0x0800136f
+ 8000dfc:	0800141d 	.word	0x0800141d
+ 8000e00:	080014f1 	.word	0x080014f1
+ 8000e04:	0800158b 	.word	0x0800158b
+ 8000e08:	0800168f 	.word	0x0800168f
+ 8000e0c:	08001731 	.word	0x08001731
+ 8000e10:	08001861 	.word	0x08001861
+ 8000e14:	080018dd 	.word	0x080018dd
+ 8000e18:	080019b1 	.word	0x080019b1
  8000e1c:	080019f1 	.word	0x080019f1
  8000e20:	08001a65 	.word	0x08001a65
 	  			case START:
 	  				osThreadSuspend(sendDataHandle);
- 8000e24:	4b96      	ldr	r3, [pc, #600]	; (8001080 <StartDefaultTask+0x2c8>)
+ 8000e24:	4bb0      	ldr	r3, [pc, #704]	; (80010e8 <StartDefaultTask+0x330>)
  8000e26:	681b      	ldr	r3, [r3, #0]
  8000e28:	4618      	mov	r0, r3
  8000e2a:	f006 fb5d 	bl	80074e8 <osThreadSuspend>
@@ -1850,372 +1852,370 @@ void StartDefaultTask(void *argument)
  8000e2e:	2000      	movs	r0, #0
  8000e30:	f7ff fc2a 	bl	8000688 <setFlowRate>
  8000e34:	eef0 7a40 	vmov.f32	s15, s0
- 8000e38:	4b92      	ldr	r3, [pc, #584]	; (8001084 <StartDefaultTask+0x2cc>)
+ 8000e38:	4bac      	ldr	r3, [pc, #688]	; (80010ec <StartDefaultTask+0x334>)
  8000e3a:	edc3 7a00 	vstr	s15, [r3]
 					flowControllerADC(&hadc1);
- 8000e3e:	4892      	ldr	r0, [pc, #584]	; (8001088 <StartDefaultTask+0x2d0>)
+ 8000e3e:	48ac      	ldr	r0, [pc, #688]	; (80010f0 <StartDefaultTask+0x338>)
  8000e40:	f7ff fbd4 	bl	80005ec <flowControllerADC>
 					dacSet(&hdac, DAC_CHANNEL_1, volts);
- 8000e44:	4b8f      	ldr	r3, [pc, #572]	; (8001084 <StartDefaultTask+0x2cc>)
+ 8000e44:	4ba9      	ldr	r3, [pc, #676]	; (80010ec <StartDefaultTask+0x334>)
  8000e46:	edd3 7a00 	vldr	s15, [r3]
  8000e4a:	eeb0 0a67 	vmov.f32	s0, s15
  8000e4e:	2100      	movs	r1, #0
- 8000e50:	488e      	ldr	r0, [pc, #568]	; (800108c <StartDefaultTask+0x2d4>)
+ 8000e50:	48a8      	ldr	r0, [pc, #672]	; (80010f4 <StartDefaultTask+0x33c>)
  8000e52:	f001 f889 	bl	8001f68 <dacSet>
 
-					//stepperOpen();
-					//HAL_TIM_Base_Start_IT(&htim11);
-					stepperStep(800);
- 8000e56:	f44f 7048 	mov.w	r0, #800	; 0x320
- 8000e5a:	f7ff fc5f 	bl	800071c <stepperStep>
+					stepperOpen();
+ 8000e56:	f7ff fc55 	bl	8000704 <stepperOpen>
 					HAL_TIM_Base_Start_IT(&htim7);
- 8000e5e:	488c      	ldr	r0, [pc, #560]	; (8001090 <StartDefaultTask+0x2d8>)
- 8000e60:	f004 f97e 	bl	8005160 <HAL_TIM_Base_Start_IT>
+ 8000e5a:	48a7      	ldr	r0, [pc, #668]	; (80010f8 <StartDefaultTask+0x340>)
+ 8000e5c:	f004 f980 	bl	8005160 <HAL_TIM_Base_Start_IT>
 //	  				pumpTestsParameters[0].stateList[7] = ULTIMATE_MEASURE_TEST_INIT;
 //	  				pumpTestsParameters[0].stateList[8] = IDLE;
 //	  				pumpTestsParameters[0].stateList[9] = 0;
 
 					// sends current State
 					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
- 8000e64:	4b84      	ldr	r3, [pc, #528]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000e66:	781b      	ldrb	r3, [r3, #0]
- 8000e68:	461a      	mov	r2, r3
- 8000e6a:	4613      	mov	r3, r2
- 8000e6c:	009b      	lsls	r3, r3, #2
- 8000e6e:	4413      	add	r3, r2
- 8000e70:	011b      	lsls	r3, r3, #4
- 8000e72:	3318      	adds	r3, #24
- 8000e74:	4a81      	ldr	r2, [pc, #516]	; (800107c <StartDefaultTask+0x2c4>)
- 8000e76:	1899      	adds	r1, r3, r2
- 8000e78:	f04f 33ff 	mov.w	r3, #4294967295
- 8000e7c:	2201      	movs	r2, #1
- 8000e7e:	4885      	ldr	r0, [pc, #532]	; (8001094 <StartDefaultTask+0x2dc>)
- 8000e80:	f004 fcf6 	bl	8005870 <HAL_UART_Transmit>
+ 8000e60:	4b9f      	ldr	r3, [pc, #636]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000e62:	781b      	ldrb	r3, [r3, #0]
+ 8000e64:	461a      	mov	r2, r3
+ 8000e66:	4613      	mov	r3, r2
+ 8000e68:	009b      	lsls	r3, r3, #2
+ 8000e6a:	4413      	add	r3, r2
+ 8000e6c:	011b      	lsls	r3, r3, #4
+ 8000e6e:	3318      	adds	r3, #24
+ 8000e70:	4a9c      	ldr	r2, [pc, #624]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000e72:	1899      	adds	r1, r3, r2
+ 8000e74:	f04f 33ff 	mov.w	r3, #4294967295
+ 8000e78:	2201      	movs	r2, #1
+ 8000e7a:	48a0      	ldr	r0, [pc, #640]	; (80010fc <StartDefaultTask+0x344>)
+ 8000e7c:	f004 fcf8 	bl	8005870 <HAL_UART_Transmit>
 
 					// Receives State List
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
- 8000e84:	4b7c      	ldr	r3, [pc, #496]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000e86:	781b      	ldrb	r3, [r3, #0]
- 8000e88:	461a      	mov	r2, r3
- 8000e8a:	4613      	mov	r3, r2
- 8000e8c:	009b      	lsls	r3, r3, #2
- 8000e8e:	4413      	add	r3, r2
- 8000e90:	011b      	lsls	r3, r3, #4
- 8000e92:	4a7a      	ldr	r2, [pc, #488]	; (800107c <StartDefaultTask+0x2c4>)
- 8000e94:	1899      	adds	r1, r3, r2
- 8000e96:	f04f 33ff 	mov.w	r3, #4294967295
- 8000e9a:	2214      	movs	r2, #20
- 8000e9c:	487d      	ldr	r0, [pc, #500]	; (8001094 <StartDefaultTask+0x2dc>)
- 8000e9e:	f004 fd6a 	bl	8005976 <HAL_UART_Receive>
+ 8000e80:	4b97      	ldr	r3, [pc, #604]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000e82:	781b      	ldrb	r3, [r3, #0]
+ 8000e84:	461a      	mov	r2, r3
+ 8000e86:	4613      	mov	r3, r2
+ 8000e88:	009b      	lsls	r3, r3, #2
+ 8000e8a:	4413      	add	r3, r2
+ 8000e8c:	011b      	lsls	r3, r3, #4
+ 8000e8e:	4a95      	ldr	r2, [pc, #596]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000e90:	1899      	adds	r1, r3, r2
+ 8000e92:	f04f 33ff 	mov.w	r3, #4294967295
+ 8000e96:	2214      	movs	r2, #20
+ 8000e98:	4898      	ldr	r0, [pc, #608]	; (80010fc <StartDefaultTask+0x344>)
+ 8000e9a:	f004 fd6c 	bl	8005976 <HAL_UART_Receive>
 
 					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
- 8000ea2:	4b75      	ldr	r3, [pc, #468]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000ea4:	781b      	ldrb	r3, [r3, #0]
- 8000ea6:	461a      	mov	r2, r3
- 8000ea8:	4974      	ldr	r1, [pc, #464]	; (800107c <StartDefaultTask+0x2c4>)
- 8000eaa:	4613      	mov	r3, r2
- 8000eac:	009b      	lsls	r3, r3, #2
- 8000eae:	4413      	add	r3, r2
- 8000eb0:	011b      	lsls	r3, r3, #4
- 8000eb2:	440b      	add	r3, r1
- 8000eb4:	3314      	adds	r3, #20
- 8000eb6:	6819      	ldr	r1, [r3, #0]
- 8000eb8:	1c48      	adds	r0, r1, #1
- 8000eba:	4c70      	ldr	r4, [pc, #448]	; (800107c <StartDefaultTask+0x2c4>)
- 8000ebc:	4613      	mov	r3, r2
- 8000ebe:	009b      	lsls	r3, r3, #2
- 8000ec0:	4413      	add	r3, r2
- 8000ec2:	011b      	lsls	r3, r3, #4
- 8000ec4:	4423      	add	r3, r4
- 8000ec6:	3314      	adds	r3, #20
- 8000ec8:	6018      	str	r0, [r3, #0]
- 8000eca:	4b6b      	ldr	r3, [pc, #428]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000ecc:	781b      	ldrb	r3, [r3, #0]
- 8000ece:	4618      	mov	r0, r3
- 8000ed0:	7809      	ldrb	r1, [r1, #0]
- 8000ed2:	4a6a      	ldr	r2, [pc, #424]	; (800107c <StartDefaultTask+0x2c4>)
- 8000ed4:	4603      	mov	r3, r0
- 8000ed6:	009b      	lsls	r3, r3, #2
- 8000ed8:	4403      	add	r3, r0
- 8000eda:	011b      	lsls	r3, r3, #4
- 8000edc:	4413      	add	r3, r2
- 8000ede:	3318      	adds	r3, #24
- 8000ee0:	460a      	mov	r2, r1
- 8000ee2:	701a      	strb	r2, [r3, #0]
+ 8000e9e:	4b90      	ldr	r3, [pc, #576]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000ea0:	781b      	ldrb	r3, [r3, #0]
+ 8000ea2:	461a      	mov	r2, r3
+ 8000ea4:	498f      	ldr	r1, [pc, #572]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000ea6:	4613      	mov	r3, r2
+ 8000ea8:	009b      	lsls	r3, r3, #2
+ 8000eaa:	4413      	add	r3, r2
+ 8000eac:	011b      	lsls	r3, r3, #4
+ 8000eae:	440b      	add	r3, r1
+ 8000eb0:	3314      	adds	r3, #20
+ 8000eb2:	6819      	ldr	r1, [r3, #0]
+ 8000eb4:	1c48      	adds	r0, r1, #1
+ 8000eb6:	4c8b      	ldr	r4, [pc, #556]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000eb8:	4613      	mov	r3, r2
+ 8000eba:	009b      	lsls	r3, r3, #2
+ 8000ebc:	4413      	add	r3, r2
+ 8000ebe:	011b      	lsls	r3, r3, #4
+ 8000ec0:	4423      	add	r3, r4
+ 8000ec2:	3314      	adds	r3, #20
+ 8000ec4:	6018      	str	r0, [r3, #0]
+ 8000ec6:	4b86      	ldr	r3, [pc, #536]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000ec8:	781b      	ldrb	r3, [r3, #0]
+ 8000eca:	4618      	mov	r0, r3
+ 8000ecc:	7809      	ldrb	r1, [r1, #0]
+ 8000ece:	4a85      	ldr	r2, [pc, #532]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000ed0:	4603      	mov	r3, r0
+ 8000ed2:	009b      	lsls	r3, r3, #2
+ 8000ed4:	4403      	add	r3, r0
+ 8000ed6:	011b      	lsls	r3, r3, #4
+ 8000ed8:	4413      	add	r3, r2
+ 8000eda:	3318      	adds	r3, #24
+ 8000edc:	460a      	mov	r2, r1
+ 8000ede:	701a      	strb	r2, [r3, #0]
 					//pumpTestsParameters[pump].eNextState = START;
 
 	  				break;
- 8000ee4:	f000 bddb 	b.w	8001a9e <StartDefaultTask+0xce6>
+ 8000ee0:	f000 bddd 	b.w	8001a9e <StartDefaultTask+0xce6>
 //					pumpTestsParameters[0].VATI[5] = 1;		// flow controller closed
 //					pumpTestsParameters[0].VATI[6] = 3;		// mTorr
 //					pumpTestsParameters[0].VATI[7] = 50;		// temperature in C
 
 					// sends current State
 					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
- 8000ee8:	4b63      	ldr	r3, [pc, #396]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000eea:	781b      	ldrb	r3, [r3, #0]
- 8000eec:	461a      	mov	r2, r3
- 8000eee:	4613      	mov	r3, r2
- 8000ef0:	009b      	lsls	r3, r3, #2
- 8000ef2:	4413      	add	r3, r2
- 8000ef4:	011b      	lsls	r3, r3, #4
- 8000ef6:	3318      	adds	r3, #24
- 8000ef8:	4a60      	ldr	r2, [pc, #384]	; (800107c <StartDefaultTask+0x2c4>)
- 8000efa:	1899      	adds	r1, r3, r2
- 8000efc:	f04f 33ff 	mov.w	r3, #4294967295
- 8000f00:	2201      	movs	r2, #1
- 8000f02:	4864      	ldr	r0, [pc, #400]	; (8001094 <StartDefaultTask+0x2dc>)
- 8000f04:	f004 fcb4 	bl	8005870 <HAL_UART_Transmit>
+ 8000ee4:	4b7e      	ldr	r3, [pc, #504]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000ee6:	781b      	ldrb	r3, [r3, #0]
+ 8000ee8:	461a      	mov	r2, r3
+ 8000eea:	4613      	mov	r3, r2
+ 8000eec:	009b      	lsls	r3, r3, #2
+ 8000eee:	4413      	add	r3, r2
+ 8000ef0:	011b      	lsls	r3, r3, #4
+ 8000ef2:	3318      	adds	r3, #24
+ 8000ef4:	4a7b      	ldr	r2, [pc, #492]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000ef6:	1899      	adds	r1, r3, r2
+ 8000ef8:	f04f 33ff 	mov.w	r3, #4294967295
+ 8000efc:	2201      	movs	r2, #1
+ 8000efe:	487f      	ldr	r0, [pc, #508]	; (80010fc <StartDefaultTask+0x344>)
+ 8000f00:	f004 fcb6 	bl	8005870 <HAL_UART_Transmit>
 
 					// Receives Parameters
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].VATI[0], 8, HAL_MAX_DELAY);
- 8000f08:	f04f 33ff 	mov.w	r3, #4294967295
- 8000f0c:	2208      	movs	r2, #8
- 8000f0e:	4962      	ldr	r1, [pc, #392]	; (8001098 <StartDefaultTask+0x2e0>)
- 8000f10:	4860      	ldr	r0, [pc, #384]	; (8001094 <StartDefaultTask+0x2dc>)
- 8000f12:	f004 fd30 	bl	8005976 <HAL_UART_Receive>
+ 8000f04:	f04f 33ff 	mov.w	r3, #4294967295
+ 8000f08:	2208      	movs	r2, #8
+ 8000f0a:	497d      	ldr	r1, [pc, #500]	; (8001100 <StartDefaultTask+0x348>)
+ 8000f0c:	487b      	ldr	r0, [pc, #492]	; (80010fc <StartDefaultTask+0x344>)
+ 8000f0e:	f004 fd32 	bl	8005976 <HAL_UART_Receive>
 
 	  				flowStateClose();
- 8000f16:	f7ff fbdf 	bl	80006d8 <flowStateClose>
+ 8000f12:	f7ff fbe1 	bl	80006d8 <flowStateClose>
 	  				stepperOpen();
- 8000f1a:	f7ff fbf3 	bl	8000704 <stepperOpen>
+ 8000f16:	f7ff fbf5 	bl	8000704 <stepperOpen>
 	  				solenoidOpen();
- 8000f1e:	f001 f895 	bl	800204c <solenoidOpen>
+ 8000f1a:	f001 f897 	bl	800204c <solenoidOpen>
 	  				solenoidClose();
- 8000f22:	f001 f89a 	bl	800205a <solenoidClose>
+ 8000f1e:	f001 f89c 	bl	800205a <solenoidClose>
 	  				vacuumGaugeADC(&hadc1);
- 8000f26:	4858      	ldr	r0, [pc, #352]	; (8001088 <StartDefaultTask+0x2d0>)
- 8000f28:	f001 fc26 	bl	8002778 <vacuumGaugeADC>
+ 8000f22:	4873      	ldr	r0, [pc, #460]	; (80010f0 <StartDefaultTask+0x338>)
+ 8000f24:	f001 fc28 	bl	8002778 <vacuumGaugeADC>
 
 	  				pumpTestsParameters[pump].eNextState = VAC_ACHIEVMENT_TEST;
- 8000f2c:	4b52      	ldr	r3, [pc, #328]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000f2e:	781b      	ldrb	r3, [r3, #0]
- 8000f30:	4619      	mov	r1, r3
- 8000f32:	4a52      	ldr	r2, [pc, #328]	; (800107c <StartDefaultTask+0x2c4>)
- 8000f34:	460b      	mov	r3, r1
- 8000f36:	009b      	lsls	r3, r3, #2
- 8000f38:	440b      	add	r3, r1
- 8000f3a:	011b      	lsls	r3, r3, #4
- 8000f3c:	4413      	add	r3, r2
- 8000f3e:	3318      	adds	r3, #24
- 8000f40:	2202      	movs	r2, #2
- 8000f42:	701a      	strb	r2, [r3, #0]
+ 8000f28:	4b6d      	ldr	r3, [pc, #436]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000f2a:	781b      	ldrb	r3, [r3, #0]
+ 8000f2c:	4619      	mov	r1, r3
+ 8000f2e:	4a6d      	ldr	r2, [pc, #436]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000f30:	460b      	mov	r3, r1
+ 8000f32:	009b      	lsls	r3, r3, #2
+ 8000f34:	440b      	add	r3, r1
+ 8000f36:	011b      	lsls	r3, r3, #4
+ 8000f38:	4413      	add	r3, r2
+ 8000f3a:	3318      	adds	r3, #24
+ 8000f3c:	2202      	movs	r2, #2
+ 8000f3e:	701a      	strb	r2, [r3, #0]
 	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
- 8000f44:	4855      	ldr	r0, [pc, #340]	; (800109c <StartDefaultTask+0x2e4>)
- 8000f46:	f004 f90b 	bl	8005160 <HAL_TIM_Base_Start_IT>
+ 8000f40:	4870      	ldr	r0, [pc, #448]	; (8001104 <StartDefaultTask+0x34c>)
+ 8000f42:	f004 f90d 	bl	8005160 <HAL_TIM_Base_Start_IT>
 	  				resetTime();					// Resets timer
- 8000f4a:	f7ff ff1d 	bl	8000d88 <resetTime>
+ 8000f46:	f7ff ff1f 	bl	8000d88 <resetTime>
 	  				osThreadResume(sendDataHandle);	// Starts data Transfer
- 8000f4e:	4b4c      	ldr	r3, [pc, #304]	; (8001080 <StartDefaultTask+0x2c8>)
- 8000f50:	681b      	ldr	r3, [r3, #0]
- 8000f52:	4618      	mov	r0, r3
- 8000f54:	f006 fafc 	bl	8007550 <osThreadResume>
+ 8000f4a:	4b67      	ldr	r3, [pc, #412]	; (80010e8 <StartDefaultTask+0x330>)
+ 8000f4c:	681b      	ldr	r3, [r3, #0]
+ 8000f4e:	4618      	mov	r0, r3
+ 8000f50:	f006 fafe 	bl	8007550 <osThreadResume>
 	  				break;
- 8000f58:	f000 bda1 	b.w	8001a9e <StartDefaultTask+0xce6>
+ 8000f54:	f000 bda3 	b.w	8001a9e <StartDefaultTask+0xce6>
 	  			case VAC_ACHIEVMENT_TEST:
 	  				volts = adcGet(&hadc1);
- 8000f5c:	484a      	ldr	r0, [pc, #296]	; (8001088 <StartDefaultTask+0x2d0>)
- 8000f5e:	f001 f837 	bl	8001fd0 <adcGet>
- 8000f62:	eef0 7a40 	vmov.f32	s15, s0
- 8000f66:	4b47      	ldr	r3, [pc, #284]	; (8001084 <StartDefaultTask+0x2cc>)
- 8000f68:	edc3 7a00 	vstr	s15, [r3]
+ 8000f58:	4865      	ldr	r0, [pc, #404]	; (80010f0 <StartDefaultTask+0x338>)
+ 8000f5a:	f001 f839 	bl	8001fd0 <adcGet>
+ 8000f5e:	eef0 7a40 	vmov.f32	s15, s0
+ 8000f62:	4b62      	ldr	r3, [pc, #392]	; (80010ec <StartDefaultTask+0x334>)
+ 8000f64:	edc3 7a00 	vstr	s15, [r3]
 	  				vacuumScale = readVacuum(volts);
- 8000f6c:	4b45      	ldr	r3, [pc, #276]	; (8001084 <StartDefaultTask+0x2cc>)
- 8000f6e:	edd3 7a00 	vldr	s15, [r3]
- 8000f72:	eeb0 0a67 	vmov.f32	s0, s15
- 8000f76:	f001 fc23 	bl	80027c0 <readVacuum>
- 8000f7a:	eef0 7a40 	vmov.f32	s15, s0
- 8000f7e:	4b48      	ldr	r3, [pc, #288]	; (80010a0 <StartDefaultTask+0x2e8>)
- 8000f80:	edc3 7a00 	vstr	s15, [r3]
+ 8000f68:	4b60      	ldr	r3, [pc, #384]	; (80010ec <StartDefaultTask+0x334>)
+ 8000f6a:	edd3 7a00 	vldr	s15, [r3]
+ 8000f6e:	eeb0 0a67 	vmov.f32	s0, s15
+ 8000f72:	f001 fc25 	bl	80027c0 <readVacuum>
+ 8000f76:	eef0 7a40 	vmov.f32	s15, s0
+ 8000f7a:	4b63      	ldr	r3, [pc, #396]	; (8001108 <StartDefaultTask+0x350>)
+ 8000f7c:	edc3 7a00 	vstr	s15, [r3]
 
 	  				vacuumScale = 1000; // Remove this once STM is connected to hardware
- 8000f84:	4b46      	ldr	r3, [pc, #280]	; (80010a0 <StartDefaultTask+0x2e8>)
- 8000f86:	4a47      	ldr	r2, [pc, #284]	; (80010a4 <StartDefaultTask+0x2ec>)
- 8000f88:	601a      	str	r2, [r3, #0]
+ 8000f80:	4b61      	ldr	r3, [pc, #388]	; (8001108 <StartDefaultTask+0x350>)
+ 8000f82:	4a62      	ldr	r2, [pc, #392]	; (800110c <StartDefaultTask+0x354>)
+ 8000f84:	601a      	str	r2, [r3, #0]
 
 	  				if(vacuumScale <= (float)pumpTestsParameters[pump].VATI[6] / 1000.0){	// Success
- 8000f8a:	4b45      	ldr	r3, [pc, #276]	; (80010a0 <StartDefaultTask+0x2e8>)
- 8000f8c:	edd3 7a00 	vldr	s15, [r3]
- 8000f90:	eeb7 6ae7 	vcvt.f64.f32	d6, s15
- 8000f94:	4b38      	ldr	r3, [pc, #224]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000f96:	781b      	ldrb	r3, [r3, #0]
- 8000f98:	4619      	mov	r1, r3
- 8000f9a:	4a38      	ldr	r2, [pc, #224]	; (800107c <StartDefaultTask+0x2c4>)
- 8000f9c:	460b      	mov	r3, r1
- 8000f9e:	009b      	lsls	r3, r3, #2
- 8000fa0:	440b      	add	r3, r1
- 8000fa2:	011b      	lsls	r3, r3, #4
- 8000fa4:	4413      	add	r3, r2
- 8000fa6:	331f      	adds	r3, #31
- 8000fa8:	781b      	ldrb	r3, [r3, #0]
- 8000faa:	ee07 3a90 	vmov	s15, r3
- 8000fae:	eef8 7a67 	vcvt.f32.u32	s15, s15
- 8000fb2:	eeb7 5ae7 	vcvt.f64.f32	d5, s15
- 8000fb6:	ed9f 4b2e 	vldr	d4, [pc, #184]	; 8001070 <StartDefaultTask+0x2b8>
- 8000fba:	ee85 7b04 	vdiv.f64	d7, d5, d4
- 8000fbe:	eeb4 6bc7 	vcmpe.f64	d6, d7
- 8000fc2:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8000fc6:	d829      	bhi.n	800101c <StartDefaultTask+0x264>
+ 8000f86:	4b60      	ldr	r3, [pc, #384]	; (8001108 <StartDefaultTask+0x350>)
+ 8000f88:	edd3 7a00 	vldr	s15, [r3]
+ 8000f8c:	eeb7 6ae7 	vcvt.f64.f32	d6, s15
+ 8000f90:	4b53      	ldr	r3, [pc, #332]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000f92:	781b      	ldrb	r3, [r3, #0]
+ 8000f94:	4619      	mov	r1, r3
+ 8000f96:	4a53      	ldr	r2, [pc, #332]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000f98:	460b      	mov	r3, r1
+ 8000f9a:	009b      	lsls	r3, r3, #2
+ 8000f9c:	440b      	add	r3, r1
+ 8000f9e:	011b      	lsls	r3, r3, #4
+ 8000fa0:	4413      	add	r3, r2
+ 8000fa2:	331f      	adds	r3, #31
+ 8000fa4:	781b      	ldrb	r3, [r3, #0]
+ 8000fa6:	ee07 3a90 	vmov	s15, r3
+ 8000faa:	eef8 7a67 	vcvt.f32.u32	s15, s15
+ 8000fae:	eeb7 5ae7 	vcvt.f64.f32	d5, s15
+ 8000fb2:	ed9f 4b49 	vldr	d4, [pc, #292]	; 80010d8 <StartDefaultTask+0x320>
+ 8000fb6:	ee85 7b04 	vdiv.f64	d7, d5, d4
+ 8000fba:	eeb4 6bc7 	vcmpe.f64	d6, d7
+ 8000fbe:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 8000fc2:	d829      	bhi.n	8001018 <StartDefaultTask+0x260>
 	  					HAL_TIM_Base_Stop_IT(&htim10);
- 8000fc8:	4834      	ldr	r0, [pc, #208]	; (800109c <StartDefaultTask+0x2e4>)
- 8000fca:	f004 f941 	bl	8005250 <HAL_TIM_Base_Stop_IT>
+ 8000fc4:	484f      	ldr	r0, [pc, #316]	; (8001104 <StartDefaultTask+0x34c>)
+ 8000fc6:	f004 f943 	bl	8005250 <HAL_TIM_Base_Stop_IT>
 		  				osThreadSuspend(sendDataHandle);
- 8000fce:	4b2c      	ldr	r3, [pc, #176]	; (8001080 <StartDefaultTask+0x2c8>)
- 8000fd0:	681b      	ldr	r3, [r3, #0]
- 8000fd2:	4618      	mov	r0, r3
- 8000fd4:	f006 fa88 	bl	80074e8 <osThreadSuspend>
+ 8000fca:	4b47      	ldr	r3, [pc, #284]	; (80010e8 <StartDefaultTask+0x330>)
+ 8000fcc:	681b      	ldr	r3, [r3, #0]
+ 8000fce:	4618      	mov	r0, r3
+ 8000fd0:	f006 fa8a 	bl	80074e8 <osThreadSuspend>
 		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
- 8000fd8:	4b27      	ldr	r3, [pc, #156]	; (8001078 <StartDefaultTask+0x2c0>)
- 8000fda:	781b      	ldrb	r3, [r3, #0]
- 8000fdc:	461a      	mov	r2, r3
- 8000fde:	4927      	ldr	r1, [pc, #156]	; (800107c <StartDefaultTask+0x2c4>)
- 8000fe0:	4613      	mov	r3, r2
- 8000fe2:	009b      	lsls	r3, r3, #2
- 8000fe4:	4413      	add	r3, r2
- 8000fe6:	011b      	lsls	r3, r3, #4
- 8000fe8:	440b      	add	r3, r1
- 8000fea:	3314      	adds	r3, #20
- 8000fec:	6819      	ldr	r1, [r3, #0]
- 8000fee:	1c48      	adds	r0, r1, #1
- 8000ff0:	4c22      	ldr	r4, [pc, #136]	; (800107c <StartDefaultTask+0x2c4>)
- 8000ff2:	4613      	mov	r3, r2
- 8000ff4:	009b      	lsls	r3, r3, #2
- 8000ff6:	4413      	add	r3, r2
- 8000ff8:	011b      	lsls	r3, r3, #4
- 8000ffa:	4423      	add	r3, r4
- 8000ffc:	3314      	adds	r3, #20
- 8000ffe:	6018      	str	r0, [r3, #0]
- 8001000:	4b1d      	ldr	r3, [pc, #116]	; (8001078 <StartDefaultTask+0x2c0>)
- 8001002:	781b      	ldrb	r3, [r3, #0]
- 8001004:	4618      	mov	r0, r3
- 8001006:	7809      	ldrb	r1, [r1, #0]
- 8001008:	4a1c      	ldr	r2, [pc, #112]	; (800107c <StartDefaultTask+0x2c4>)
- 800100a:	4603      	mov	r3, r0
- 800100c:	009b      	lsls	r3, r3, #2
- 800100e:	4403      	add	r3, r0
- 8001010:	011b      	lsls	r3, r3, #4
- 8001012:	4413      	add	r3, r2
- 8001014:	3318      	adds	r3, #24
- 8001016:	460a      	mov	r2, r1
- 8001018:	701a      	strb	r2, [r3, #0]
- 800101a:	e07d      	b.n	8001118 <StartDefaultTask+0x360>
+ 8000fd4:	4b42      	ldr	r3, [pc, #264]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000fd6:	781b      	ldrb	r3, [r3, #0]
+ 8000fd8:	461a      	mov	r2, r3
+ 8000fda:	4942      	ldr	r1, [pc, #264]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000fdc:	4613      	mov	r3, r2
+ 8000fde:	009b      	lsls	r3, r3, #2
+ 8000fe0:	4413      	add	r3, r2
+ 8000fe2:	011b      	lsls	r3, r3, #4
+ 8000fe4:	440b      	add	r3, r1
+ 8000fe6:	3314      	adds	r3, #20
+ 8000fe8:	6819      	ldr	r1, [r3, #0]
+ 8000fea:	1c48      	adds	r0, r1, #1
+ 8000fec:	4c3d      	ldr	r4, [pc, #244]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8000fee:	4613      	mov	r3, r2
+ 8000ff0:	009b      	lsls	r3, r3, #2
+ 8000ff2:	4413      	add	r3, r2
+ 8000ff4:	011b      	lsls	r3, r3, #4
+ 8000ff6:	4423      	add	r3, r4
+ 8000ff8:	3314      	adds	r3, #20
+ 8000ffa:	6018      	str	r0, [r3, #0]
+ 8000ffc:	4b38      	ldr	r3, [pc, #224]	; (80010e0 <StartDefaultTask+0x328>)
+ 8000ffe:	781b      	ldrb	r3, [r3, #0]
+ 8001000:	4618      	mov	r0, r3
+ 8001002:	7809      	ldrb	r1, [r1, #0]
+ 8001004:	4a37      	ldr	r2, [pc, #220]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8001006:	4603      	mov	r3, r0
+ 8001008:	009b      	lsls	r3, r3, #2
+ 800100a:	4403      	add	r3, r0
+ 800100c:	011b      	lsls	r3, r3, #4
+ 800100e:	4413      	add	r3, r2
+ 8001010:	3318      	adds	r3, #24
+ 8001012:	460a      	mov	r2, r1
+ 8001014:	701a      	strb	r2, [r3, #0]
+ 8001016:	e07f      	b.n	8001118 <StartDefaultTask+0x360>
 	  				}else if(25 >= pumpTestsParameters[pump].VATI[7]){	// if current temp is >= temp limit
- 800101c:	4b16      	ldr	r3, [pc, #88]	; (8001078 <StartDefaultTask+0x2c0>)
- 800101e:	781b      	ldrb	r3, [r3, #0]
- 8001020:	4619      	mov	r1, r3
- 8001022:	4a16      	ldr	r2, [pc, #88]	; (800107c <StartDefaultTask+0x2c4>)
- 8001024:	460b      	mov	r3, r1
- 8001026:	009b      	lsls	r3, r3, #2
- 8001028:	440b      	add	r3, r1
- 800102a:	011b      	lsls	r3, r3, #4
- 800102c:	4413      	add	r3, r2
- 800102e:	3320      	adds	r3, #32
- 8001030:	781b      	ldrb	r3, [r3, #0]
- 8001032:	2b19      	cmp	r3, #25
- 8001034:	d838      	bhi.n	80010a8 <StartDefaultTask+0x2f0>
+ 8001018:	4b31      	ldr	r3, [pc, #196]	; (80010e0 <StartDefaultTask+0x328>)
+ 800101a:	781b      	ldrb	r3, [r3, #0]
+ 800101c:	4619      	mov	r1, r3
+ 800101e:	4a31      	ldr	r2, [pc, #196]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8001020:	460b      	mov	r3, r1
+ 8001022:	009b      	lsls	r3, r3, #2
+ 8001024:	440b      	add	r3, r1
+ 8001026:	011b      	lsls	r3, r3, #4
+ 8001028:	4413      	add	r3, r2
+ 800102a:	3320      	adds	r3, #32
+ 800102c:	781b      	ldrb	r3, [r3, #0]
+ 800102e:	2b19      	cmp	r3, #25
+ 8001030:	d819      	bhi.n	8001066 <StartDefaultTask+0x2ae>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 8001036:	4b10      	ldr	r3, [pc, #64]	; (8001078 <StartDefaultTask+0x2c0>)
- 8001038:	781b      	ldrb	r3, [r3, #0]
- 800103a:	4619      	mov	r1, r3
- 800103c:	4a0f      	ldr	r2, [pc, #60]	; (800107c <StartDefaultTask+0x2c4>)
- 800103e:	460b      	mov	r3, r1
- 8001040:	009b      	lsls	r3, r3, #2
- 8001042:	440b      	add	r3, r1
- 8001044:	011b      	lsls	r3, r3, #4
- 8001046:	4413      	add	r3, r2
- 8001048:	3318      	adds	r3, #24
- 800104a:	220e      	movs	r2, #14
- 800104c:	701a      	strb	r2, [r3, #0]
+ 8001032:	4b2b      	ldr	r3, [pc, #172]	; (80010e0 <StartDefaultTask+0x328>)
+ 8001034:	781b      	ldrb	r3, [r3, #0]
+ 8001036:	4619      	mov	r1, r3
+ 8001038:	4a2a      	ldr	r2, [pc, #168]	; (80010e4 <StartDefaultTask+0x32c>)
+ 800103a:	460b      	mov	r3, r1
+ 800103c:	009b      	lsls	r3, r3, #2
+ 800103e:	440b      	add	r3, r1
+ 8001040:	011b      	lsls	r3, r3, #4
+ 8001042:	4413      	add	r3, r2
+ 8001044:	3318      	adds	r3, #24
+ 8001046:	220e      	movs	r2, #14
+ 8001048:	701a      	strb	r2, [r3, #0]
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
- 800104e:	4b0a      	ldr	r3, [pc, #40]	; (8001078 <StartDefaultTask+0x2c0>)
- 8001050:	781b      	ldrb	r3, [r3, #0]
- 8001052:	4619      	mov	r1, r3
- 8001054:	4a09      	ldr	r2, [pc, #36]	; (800107c <StartDefaultTask+0x2c4>)
- 8001056:	460b      	mov	r3, r1
- 8001058:	009b      	lsls	r3, r3, #2
- 800105a:	440b      	add	r3, r1
- 800105c:	011b      	lsls	r3, r3, #4
- 800105e:	4413      	add	r3, r2
- 8001060:	334e      	adds	r3, #78	; 0x4e
- 8001062:	2202      	movs	r2, #2
- 8001064:	701a      	strb	r2, [r3, #0]
+ 800104a:	4b25      	ldr	r3, [pc, #148]	; (80010e0 <StartDefaultTask+0x328>)
+ 800104c:	781b      	ldrb	r3, [r3, #0]
+ 800104e:	4619      	mov	r1, r3
+ 8001050:	4a24      	ldr	r2, [pc, #144]	; (80010e4 <StartDefaultTask+0x32c>)
+ 8001052:	460b      	mov	r3, r1
+ 8001054:	009b      	lsls	r3, r3, #2
+ 8001056:	440b      	add	r3, r1
+ 8001058:	011b      	lsls	r3, r3, #4
+ 800105a:	4413      	add	r3, r2
+ 800105c:	334e      	adds	r3, #78	; 0x4e
+ 800105e:	2202      	movs	r2, #2
+ 8001060:	701a      	strb	r2, [r3, #0]
 	  					break;
- 8001066:	f000 bd1a 	b.w	8001a9e <StartDefaultTask+0xce6>
- 800106a:	bf00      	nop
- 800106c:	f3af 8000 	nop.w
- 8001070:	00000000 	.word	0x00000000
- 8001074:	408f4000 	.word	0x408f4000
- 8001078:	20000948 	.word	0x20000948
- 800107c:	200008a8 	.word	0x200008a8
- 8001080:	200008a4 	.word	0x200008a4
- 8001084:	2000094c 	.word	0x2000094c
- 8001088:	2000021c 	.word	0x2000021c
- 800108c:	20000264 	.word	0x20000264
- 8001090:	20000278 	.word	0x20000278
- 8001094:	20000310 	.word	0x20000310
- 8001098:	200008c1 	.word	0x200008c1
- 800109c:	200002c4 	.word	0x200002c4
- 80010a0:	20000954 	.word	0x20000954
- 80010a4:	447a0000 	.word	0x447a0000
+ 8001062:	f000 bd1c 	b.w	8001a9e <StartDefaultTask+0xce6>
 	  				}else if(pumpTestsParameters[pump].VATI[2] == hours && pumpTestsParameters[pump].VATI[3] == minutes){
- 80010a8:	4bb1      	ldr	r3, [pc, #708]	; (8001370 <StartDefaultTask+0x5b8>)
- 80010aa:	781b      	ldrb	r3, [r3, #0]
- 80010ac:	4619      	mov	r1, r3
- 80010ae:	4ab1      	ldr	r2, [pc, #708]	; (8001374 <StartDefaultTask+0x5bc>)
- 80010b0:	460b      	mov	r3, r1
- 80010b2:	009b      	lsls	r3, r3, #2
- 80010b4:	440b      	add	r3, r1
- 80010b6:	011b      	lsls	r3, r3, #4
- 80010b8:	4413      	add	r3, r2
- 80010ba:	331b      	adds	r3, #27
- 80010bc:	781a      	ldrb	r2, [r3, #0]
- 80010be:	4bae      	ldr	r3, [pc, #696]	; (8001378 <StartDefaultTask+0x5c0>)
- 80010c0:	781b      	ldrb	r3, [r3, #0]
- 80010c2:	429a      	cmp	r2, r3
- 80010c4:	d128      	bne.n	8001118 <StartDefaultTask+0x360>
- 80010c6:	4baa      	ldr	r3, [pc, #680]	; (8001370 <StartDefaultTask+0x5b8>)
- 80010c8:	781b      	ldrb	r3, [r3, #0]
- 80010ca:	4619      	mov	r1, r3
- 80010cc:	4aa9      	ldr	r2, [pc, #676]	; (8001374 <StartDefaultTask+0x5bc>)
- 80010ce:	460b      	mov	r3, r1
- 80010d0:	009b      	lsls	r3, r3, #2
- 80010d2:	440b      	add	r3, r1
- 80010d4:	011b      	lsls	r3, r3, #4
- 80010d6:	4413      	add	r3, r2
- 80010d8:	331c      	adds	r3, #28
- 80010da:	781a      	ldrb	r2, [r3, #0]
- 80010dc:	4ba7      	ldr	r3, [pc, #668]	; (800137c <StartDefaultTask+0x5c4>)
- 80010de:	781b      	ldrb	r3, [r3, #0]
- 80010e0:	429a      	cmp	r2, r3
- 80010e2:	d119      	bne.n	8001118 <StartDefaultTask+0x360>
+ 8001066:	4b1e      	ldr	r3, [pc, #120]	; (80010e0 <StartDefaultTask+0x328>)
+ 8001068:	781b      	ldrb	r3, [r3, #0]
+ 800106a:	4619      	mov	r1, r3
+ 800106c:	4a1d      	ldr	r2, [pc, #116]	; (80010e4 <StartDefaultTask+0x32c>)
+ 800106e:	460b      	mov	r3, r1
+ 8001070:	009b      	lsls	r3, r3, #2
+ 8001072:	440b      	add	r3, r1
+ 8001074:	011b      	lsls	r3, r3, #4
+ 8001076:	4413      	add	r3, r2
+ 8001078:	331b      	adds	r3, #27
+ 800107a:	781a      	ldrb	r2, [r3, #0]
+ 800107c:	4b24      	ldr	r3, [pc, #144]	; (8001110 <StartDefaultTask+0x358>)
+ 800107e:	781b      	ldrb	r3, [r3, #0]
+ 8001080:	429a      	cmp	r2, r3
+ 8001082:	d149      	bne.n	8001118 <StartDefaultTask+0x360>
+ 8001084:	4b16      	ldr	r3, [pc, #88]	; (80010e0 <StartDefaultTask+0x328>)
+ 8001086:	781b      	ldrb	r3, [r3, #0]
+ 8001088:	4619      	mov	r1, r3
+ 800108a:	4a16      	ldr	r2, [pc, #88]	; (80010e4 <StartDefaultTask+0x32c>)
+ 800108c:	460b      	mov	r3, r1
+ 800108e:	009b      	lsls	r3, r3, #2
+ 8001090:	440b      	add	r3, r1
+ 8001092:	011b      	lsls	r3, r3, #4
+ 8001094:	4413      	add	r3, r2
+ 8001096:	331c      	adds	r3, #28
+ 8001098:	781a      	ldrb	r2, [r3, #0]
+ 800109a:	4b1e      	ldr	r3, [pc, #120]	; (8001114 <StartDefaultTask+0x35c>)
+ 800109c:	781b      	ldrb	r3, [r3, #0]
+ 800109e:	429a      	cmp	r2, r3
+ 80010a0:	d13a      	bne.n	8001118 <StartDefaultTask+0x360>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 80010e4:	4ba2      	ldr	r3, [pc, #648]	; (8001370 <StartDefaultTask+0x5b8>)
- 80010e6:	781b      	ldrb	r3, [r3, #0]
- 80010e8:	4619      	mov	r1, r3
- 80010ea:	4aa2      	ldr	r2, [pc, #648]	; (8001374 <StartDefaultTask+0x5bc>)
- 80010ec:	460b      	mov	r3, r1
- 80010ee:	009b      	lsls	r3, r3, #2
- 80010f0:	440b      	add	r3, r1
- 80010f2:	011b      	lsls	r3, r3, #4
- 80010f4:	4413      	add	r3, r2
- 80010f6:	3318      	adds	r3, #24
- 80010f8:	220e      	movs	r2, #14
- 80010fa:	701a      	strb	r2, [r3, #0]
+ 80010a2:	4b0f      	ldr	r3, [pc, #60]	; (80010e0 <StartDefaultTask+0x328>)
+ 80010a4:	781b      	ldrb	r3, [r3, #0]
+ 80010a6:	4619      	mov	r1, r3
+ 80010a8:	4a0e      	ldr	r2, [pc, #56]	; (80010e4 <StartDefaultTask+0x32c>)
+ 80010aa:	460b      	mov	r3, r1
+ 80010ac:	009b      	lsls	r3, r3, #2
+ 80010ae:	440b      	add	r3, r1
+ 80010b0:	011b      	lsls	r3, r3, #4
+ 80010b2:	4413      	add	r3, r2
+ 80010b4:	3318      	adds	r3, #24
+ 80010b6:	220e      	movs	r2, #14
+ 80010b8:	701a      	strb	r2, [r3, #0]
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
- 80010fc:	4b9c      	ldr	r3, [pc, #624]	; (8001370 <StartDefaultTask+0x5b8>)
- 80010fe:	781b      	ldrb	r3, [r3, #0]
- 8001100:	4619      	mov	r1, r3
- 8001102:	4a9c      	ldr	r2, [pc, #624]	; (8001374 <StartDefaultTask+0x5bc>)
- 8001104:	460b      	mov	r3, r1
- 8001106:	009b      	lsls	r3, r3, #2
- 8001108:	440b      	add	r3, r1
- 800110a:	011b      	lsls	r3, r3, #4
- 800110c:	4413      	add	r3, r2
- 800110e:	334e      	adds	r3, #78	; 0x4e
- 8001110:	2202      	movs	r2, #2
- 8001112:	701a      	strb	r2, [r3, #0]
+ 80010ba:	4b09      	ldr	r3, [pc, #36]	; (80010e0 <StartDefaultTask+0x328>)
+ 80010bc:	781b      	ldrb	r3, [r3, #0]
+ 80010be:	4619      	mov	r1, r3
+ 80010c0:	4a08      	ldr	r2, [pc, #32]	; (80010e4 <StartDefaultTask+0x32c>)
+ 80010c2:	460b      	mov	r3, r1
+ 80010c4:	009b      	lsls	r3, r3, #2
+ 80010c6:	440b      	add	r3, r1
+ 80010c8:	011b      	lsls	r3, r3, #4
+ 80010ca:	4413      	add	r3, r2
+ 80010cc:	334e      	adds	r3, #78	; 0x4e
+ 80010ce:	2202      	movs	r2, #2
+ 80010d0:	701a      	strb	r2, [r3, #0]
 	  					break;
- 8001114:	f000 bcc3 	b.w	8001a9e <StartDefaultTask+0xce6>
+ 80010d2:	f000 bce4 	b.w	8001a9e <StartDefaultTask+0xce6>
+ 80010d6:	bf00      	nop
+ 80010d8:	00000000 	.word	0x00000000
+ 80010dc:	408f4000 	.word	0x408f4000
+ 80010e0:	20000948 	.word	0x20000948
+ 80010e4:	200008a8 	.word	0x200008a8
+ 80010e8:	200008a4 	.word	0x200008a4
+ 80010ec:	2000094c 	.word	0x2000094c
+ 80010f0:	2000021c 	.word	0x2000021c
+ 80010f4:	20000264 	.word	0x20000264
+ 80010f8:	20000278 	.word	0x20000278
+ 80010fc:	20000310 	.word	0x20000310
+ 8001100:	200008c1 	.word	0x200008c1
+ 8001104:	200002c4 	.word	0x200002c4
+ 8001108:	20000954 	.word	0x20000954
+ 800110c:	447a0000 	.word	0x447a0000
+ 8001110:	2000096d 	.word	0x2000096d
+ 8001114:	2000096e 	.word	0x2000096e
 	  				}
 
 	  				osDelay(100); // Checks condition every 100 ms
@@ -2230,7 +2230,7 @@ void StartDefaultTask(void *argument)
 
 					// sends current State
 					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
- 8001122:	4b93      	ldr	r3, [pc, #588]	; (8001370 <StartDefaultTask+0x5b8>)
+ 8001122:	4baf      	ldr	r3, [pc, #700]	; (80013e0 <StartDefaultTask+0x628>)
  8001124:	781b      	ldrb	r3, [r3, #0]
  8001126:	461a      	mov	r2, r3
  8001128:	4613      	mov	r3, r2
@@ -2238,19 +2238,19 @@ void StartDefaultTask(void *argument)
  800112c:	4413      	add	r3, r2
  800112e:	011b      	lsls	r3, r3, #4
  8001130:	3318      	adds	r3, #24
- 8001132:	4a90      	ldr	r2, [pc, #576]	; (8001374 <StartDefaultTask+0x5bc>)
+ 8001132:	4aac      	ldr	r2, [pc, #688]	; (80013e4 <StartDefaultTask+0x62c>)
  8001134:	1899      	adds	r1, r3, r2
  8001136:	f04f 33ff 	mov.w	r3, #4294967295
  800113a:	2201      	movs	r2, #1
- 800113c:	4890      	ldr	r0, [pc, #576]	; (8001380 <StartDefaultTask+0x5c8>)
+ 800113c:	48aa      	ldr	r0, [pc, #680]	; (80013e8 <StartDefaultTask+0x630>)
  800113e:	f004 fb97 	bl	8005870 <HAL_UART_Transmit>
 
 					// Receives Parameters
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].STI[0], 9, HAL_MAX_DELAY);
  8001142:	f04f 33ff 	mov.w	r3, #4294967295
  8001146:	2209      	movs	r2, #9
- 8001148:	498e      	ldr	r1, [pc, #568]	; (8001384 <StartDefaultTask+0x5cc>)
- 800114a:	488d      	ldr	r0, [pc, #564]	; (8001380 <StartDefaultTask+0x5c8>)
+ 8001148:	49a8      	ldr	r1, [pc, #672]	; (80013ec <StartDefaultTask+0x634>)
+ 800114a:	48a7      	ldr	r0, [pc, #668]	; (80013e8 <StartDefaultTask+0x630>)
  800114c:	f004 fc13 	bl	8005976 <HAL_UART_Receive>
 
 	  				flowStateControl();
@@ -2262,15 +2262,15 @@ void StartDefaultTask(void *argument)
 	  				solenoidClose();
  800115c:	f000 ff7d 	bl	800205a <solenoidClose>
 	  				flowControllerADC(&hadc1);
- 8001160:	4889      	ldr	r0, [pc, #548]	; (8001388 <StartDefaultTask+0x5d0>)
+ 8001160:	48a3      	ldr	r0, [pc, #652]	; (80013f0 <StartDefaultTask+0x638>)
  8001162:	f7ff fa43 	bl	80005ec <flowControllerADC>
 
 
 	  				pumpTestsParameters[pump].eNextState = SPECIAL_TEST;
- 8001166:	4b82      	ldr	r3, [pc, #520]	; (8001370 <StartDefaultTask+0x5b8>)
+ 8001166:	4b9e      	ldr	r3, [pc, #632]	; (80013e0 <StartDefaultTask+0x628>)
  8001168:	781b      	ldrb	r3, [r3, #0]
  800116a:	4619      	mov	r1, r3
- 800116c:	4a81      	ldr	r2, [pc, #516]	; (8001374 <StartDefaultTask+0x5bc>)
+ 800116c:	4a9d      	ldr	r2, [pc, #628]	; (80013e4 <StartDefaultTask+0x62c>)
  800116e:	460b      	mov	r3, r1
  8001170:	009b      	lsls	r3, r3, #2
  8001172:	440b      	add	r3, r1
@@ -2280,20 +2280,20 @@ void StartDefaultTask(void *argument)
  800117a:	2204      	movs	r2, #4
  800117c:	701a      	strb	r2, [r3, #0]
 	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
- 800117e:	4883      	ldr	r0, [pc, #524]	; (800138c <StartDefaultTask+0x5d4>)
+ 800117e:	489d      	ldr	r0, [pc, #628]	; (80013f4 <StartDefaultTask+0x63c>)
  8001180:	f003 ffee 	bl	8005160 <HAL_TIM_Base_Start_IT>
 	  				resetTime();					// Resets timer
  8001184:	f7ff fe00 	bl	8000d88 <resetTime>
 	  				osThreadResume(sendDataHandle);	// Starts data Transfer
- 8001188:	4b81      	ldr	r3, [pc, #516]	; (8001390 <StartDefaultTask+0x5d8>)
+ 8001188:	4b9b      	ldr	r3, [pc, #620]	; (80013f8 <StartDefaultTask+0x640>)
  800118a:	681b      	ldr	r3, [r3, #0]
  800118c:	4618      	mov	r0, r3
  800118e:	f006 f9df 	bl	8007550 <osThreadResume>
 	  				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].STI[8]));
- 8001192:	4b77      	ldr	r3, [pc, #476]	; (8001370 <StartDefaultTask+0x5b8>)
+ 8001192:	4b93      	ldr	r3, [pc, #588]	; (80013e0 <StartDefaultTask+0x628>)
  8001194:	781b      	ldrb	r3, [r3, #0]
  8001196:	4619      	mov	r1, r3
- 8001198:	4a76      	ldr	r2, [pc, #472]	; (8001374 <StartDefaultTask+0x5bc>)
+ 8001198:	4a92      	ldr	r2, [pc, #584]	; (80013e4 <StartDefaultTask+0x62c>)
  800119a:	460b      	mov	r3, r1
  800119c:	009b      	lsls	r3, r3, #2
  800119e:	440b      	add	r3, r1
@@ -2306,7 +2306,7 @@ void StartDefaultTask(void *argument)
  80011ae:	eef0 7a40 	vmov.f32	s15, s0
  80011b2:	eeb0 0a67 	vmov.f32	s0, s15
  80011b6:	2100      	movs	r1, #0
- 80011b8:	4876      	ldr	r0, [pc, #472]	; (8001394 <StartDefaultTask+0x5dc>)
+ 80011b8:	4890      	ldr	r0, [pc, #576]	; (80013fc <StartDefaultTask+0x644>)
  80011ba:	f000 fed5 	bl	8001f68 <dacSet>
 	  				break;
  80011be:	f000 bc6e 	b.w	8001a9e <StartDefaultTask+0xce6>
@@ -2316,61 +2316,61 @@ void StartDefaultTask(void *argument)
 //					osDelay(1000);
 
 	  				flowControllerADC(&hadc1);
- 80011c2:	4871      	ldr	r0, [pc, #452]	; (8001388 <StartDefaultTask+0x5d0>)
+ 80011c2:	488b      	ldr	r0, [pc, #556]	; (80013f0 <StartDefaultTask+0x638>)
  80011c4:	f7ff fa12 	bl	80005ec <flowControllerADC>
 					volts = adcGet(&hadc1);
- 80011c8:	486f      	ldr	r0, [pc, #444]	; (8001388 <StartDefaultTask+0x5d0>)
+ 80011c8:	4889      	ldr	r0, [pc, #548]	; (80013f0 <StartDefaultTask+0x638>)
  80011ca:	f000 ff01 	bl	8001fd0 <adcGet>
  80011ce:	eef0 7a40 	vmov.f32	s15, s0
- 80011d2:	4b71      	ldr	r3, [pc, #452]	; (8001398 <StartDefaultTask+0x5e0>)
+ 80011d2:	4b8b      	ldr	r3, [pc, #556]	; (8001400 <StartDefaultTask+0x648>)
  80011d4:	edc3 7a00 	vstr	s15, [r3]
 					flowRate = readFlow(volts);
- 80011d8:	4b6f      	ldr	r3, [pc, #444]	; (8001398 <StartDefaultTask+0x5e0>)
+ 80011d8:	4b89      	ldr	r3, [pc, #548]	; (8001400 <StartDefaultTask+0x648>)
  80011da:	edd3 7a00 	vldr	s15, [r3]
  80011de:	eeb0 0a67 	vmov.f32	s0, s15
  80011e2:	f7ff fa25 	bl	8000630 <readFlow>
  80011e6:	eef0 7a40 	vmov.f32	s15, s0
- 80011ea:	4b6c      	ldr	r3, [pc, #432]	; (800139c <StartDefaultTask+0x5e4>)
+ 80011ea:	4b86      	ldr	r3, [pc, #536]	; (8001404 <StartDefaultTask+0x64c>)
  80011ec:	edc3 7a00 	vstr	s15, [r3]
 
 					vacuumGaugeADC(&hadc1);
- 80011f0:	4865      	ldr	r0, [pc, #404]	; (8001388 <StartDefaultTask+0x5d0>)
+ 80011f0:	487f      	ldr	r0, [pc, #508]	; (80013f0 <StartDefaultTask+0x638>)
  80011f2:	f001 fac1 	bl	8002778 <vacuumGaugeADC>
 	  				volts = adcGet(&hadc1);
- 80011f6:	4864      	ldr	r0, [pc, #400]	; (8001388 <StartDefaultTask+0x5d0>)
+ 80011f6:	487e      	ldr	r0, [pc, #504]	; (80013f0 <StartDefaultTask+0x638>)
  80011f8:	f000 feea 	bl	8001fd0 <adcGet>
  80011fc:	eef0 7a40 	vmov.f32	s15, s0
- 8001200:	4b65      	ldr	r3, [pc, #404]	; (8001398 <StartDefaultTask+0x5e0>)
+ 8001200:	4b7f      	ldr	r3, [pc, #508]	; (8001400 <StartDefaultTask+0x648>)
  8001202:	edc3 7a00 	vstr	s15, [r3]
 	  				vacuumScale = readVacuum(volts);
- 8001206:	4b64      	ldr	r3, [pc, #400]	; (8001398 <StartDefaultTask+0x5e0>)
+ 8001206:	4b7e      	ldr	r3, [pc, #504]	; (8001400 <StartDefaultTask+0x648>)
  8001208:	edd3 7a00 	vldr	s15, [r3]
  800120c:	eeb0 0a67 	vmov.f32	s0, s15
  8001210:	f001 fad6 	bl	80027c0 <readVacuum>
  8001214:	eef0 7a40 	vmov.f32	s15, s0
- 8001218:	4b61      	ldr	r3, [pc, #388]	; (80013a0 <StartDefaultTask+0x5e8>)
+ 8001218:	4b7b      	ldr	r3, [pc, #492]	; (8001408 <StartDefaultTask+0x650>)
  800121a:	edc3 7a00 	vstr	s15, [r3]
 
 	  				flowRate = 0;		// Remove this Once STM is connected to the hardware
- 800121e:	4b5f      	ldr	r3, [pc, #380]	; (800139c <StartDefaultTask+0x5e4>)
+ 800121e:	4b79      	ldr	r3, [pc, #484]	; (8001404 <StartDefaultTask+0x64c>)
  8001220:	f04f 0200 	mov.w	r2, #0
  8001224:	601a      	str	r2, [r3, #0]
 	  				vacuumScale = 1000;	// Remove this Once STM is connected to the hardware
- 8001226:	4b5e      	ldr	r3, [pc, #376]	; (80013a0 <StartDefaultTask+0x5e8>)
- 8001228:	4a5e      	ldr	r2, [pc, #376]	; (80013a4 <StartDefaultTask+0x5ec>)
+ 8001226:	4b78      	ldr	r3, [pc, #480]	; (8001408 <StartDefaultTask+0x650>)
+ 8001228:	4a78      	ldr	r2, [pc, #480]	; (800140c <StartDefaultTask+0x654>)
  800122a:	601a      	str	r2, [r3, #0]
 
 	  				if((uint8_t)flowRate == pumpTestsParameters[pump].STI[8]){	// success
- 800122c:	4b5b      	ldr	r3, [pc, #364]	; (800139c <StartDefaultTask+0x5e4>)
+ 800122c:	4b75      	ldr	r3, [pc, #468]	; (8001404 <StartDefaultTask+0x64c>)
  800122e:	edd3 7a00 	vldr	s15, [r3]
  8001232:	eefc 7ae7 	vcvt.u32.f32	s15, s15
  8001236:	edc7 7a00 	vstr	s15, [r7]
  800123a:	783b      	ldrb	r3, [r7, #0]
  800123c:	b2da      	uxtb	r2, r3
- 800123e:	4b4c      	ldr	r3, [pc, #304]	; (8001370 <StartDefaultTask+0x5b8>)
+ 800123e:	4b68      	ldr	r3, [pc, #416]	; (80013e0 <StartDefaultTask+0x628>)
  8001240:	781b      	ldrb	r3, [r3, #0]
  8001242:	4618      	mov	r0, r3
- 8001244:	494b      	ldr	r1, [pc, #300]	; (8001374 <StartDefaultTask+0x5bc>)
+ 8001244:	4967      	ldr	r1, [pc, #412]	; (80013e4 <StartDefaultTask+0x62c>)
  8001246:	4603      	mov	r3, r0
  8001248:	009b      	lsls	r3, r3, #2
  800124a:	4403      	add	r3, r0
@@ -2381,18 +2381,18 @@ void StartDefaultTask(void *argument)
  8001254:	429a      	cmp	r2, r3
  8001256:	d129      	bne.n	80012ac <StartDefaultTask+0x4f4>
 	  					HAL_TIM_Base_Stop_IT(&htim10);
- 8001258:	484c      	ldr	r0, [pc, #304]	; (800138c <StartDefaultTask+0x5d4>)
+ 8001258:	4866      	ldr	r0, [pc, #408]	; (80013f4 <StartDefaultTask+0x63c>)
  800125a:	f003 fff9 	bl	8005250 <HAL_TIM_Base_Stop_IT>
 						osThreadSuspend(sendDataHandle);
- 800125e:	4b4c      	ldr	r3, [pc, #304]	; (8001390 <StartDefaultTask+0x5d8>)
+ 800125e:	4b66      	ldr	r3, [pc, #408]	; (80013f8 <StartDefaultTask+0x640>)
  8001260:	681b      	ldr	r3, [r3, #0]
  8001262:	4618      	mov	r0, r3
  8001264:	f006 f940 	bl	80074e8 <osThreadSuspend>
 						pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
- 8001268:	4b41      	ldr	r3, [pc, #260]	; (8001370 <StartDefaultTask+0x5b8>)
+ 8001268:	4b5d      	ldr	r3, [pc, #372]	; (80013e0 <StartDefaultTask+0x628>)
  800126a:	781b      	ldrb	r3, [r3, #0]
  800126c:	461a      	mov	r2, r3
- 800126e:	4941      	ldr	r1, [pc, #260]	; (8001374 <StartDefaultTask+0x5bc>)
+ 800126e:	495d      	ldr	r1, [pc, #372]	; (80013e4 <StartDefaultTask+0x62c>)
  8001270:	4613      	mov	r3, r2
  8001272:	009b      	lsls	r3, r3, #2
  8001274:	4413      	add	r3, r2
@@ -2401,7 +2401,7 @@ void StartDefaultTask(void *argument)
  800127a:	3314      	adds	r3, #20
  800127c:	6819      	ldr	r1, [r3, #0]
  800127e:	1c48      	adds	r0, r1, #1
- 8001280:	4c3c      	ldr	r4, [pc, #240]	; (8001374 <StartDefaultTask+0x5bc>)
+ 8001280:	4c58      	ldr	r4, [pc, #352]	; (80013e4 <StartDefaultTask+0x62c>)
  8001282:	4613      	mov	r3, r2
  8001284:	009b      	lsls	r3, r3, #2
  8001286:	4413      	add	r3, r2
@@ -2409,11 +2409,11 @@ void StartDefaultTask(void *argument)
  800128a:	4423      	add	r3, r4
  800128c:	3314      	adds	r3, #20
  800128e:	6018      	str	r0, [r3, #0]
- 8001290:	4b37      	ldr	r3, [pc, #220]	; (8001370 <StartDefaultTask+0x5b8>)
+ 8001290:	4b53      	ldr	r3, [pc, #332]	; (80013e0 <StartDefaultTask+0x628>)
  8001292:	781b      	ldrb	r3, [r3, #0]
  8001294:	4618      	mov	r0, r3
  8001296:	7809      	ldrb	r1, [r1, #0]
- 8001298:	4a36      	ldr	r2, [pc, #216]	; (8001374 <StartDefaultTask+0x5bc>)
+ 8001298:	4a52      	ldr	r2, [pc, #328]	; (80013e4 <StartDefaultTask+0x62c>)
  800129a:	4603      	mov	r3, r0
  800129c:	009b      	lsls	r3, r3, #2
  800129e:	4403      	add	r3, r0
@@ -2424,10 +2424,10 @@ void StartDefaultTask(void *argument)
  80012a8:	701a      	strb	r2, [r3, #0]
  80012aa:	e05c      	b.n	8001366 <StartDefaultTask+0x5ae>
 	  				}else if(25 >= pumpTestsParameters[pump].STI[7]){	// if current temp is >= temp limit
- 80012ac:	4b30      	ldr	r3, [pc, #192]	; (8001370 <StartDefaultTask+0x5b8>)
+ 80012ac:	4b4c      	ldr	r3, [pc, #304]	; (80013e0 <StartDefaultTask+0x628>)
  80012ae:	781b      	ldrb	r3, [r3, #0]
  80012b0:	4619      	mov	r1, r3
- 80012b2:	4a30      	ldr	r2, [pc, #192]	; (8001374 <StartDefaultTask+0x5bc>)
+ 80012b2:	4a4c      	ldr	r2, [pc, #304]	; (80013e4 <StartDefaultTask+0x62c>)
  80012b4:	460b      	mov	r3, r1
  80012b6:	009b      	lsls	r3, r3, #2
  80012b8:	440b      	add	r3, r1
@@ -2438,10 +2438,10 @@ void StartDefaultTask(void *argument)
  80012c2:	2b19      	cmp	r3, #25
  80012c4:	d818      	bhi.n	80012f8 <StartDefaultTask+0x540>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 80012c6:	4b2a      	ldr	r3, [pc, #168]	; (8001370 <StartDefaultTask+0x5b8>)
+ 80012c6:	4b46      	ldr	r3, [pc, #280]	; (80013e0 <StartDefaultTask+0x628>)
  80012c8:	781b      	ldrb	r3, [r3, #0]
  80012ca:	4619      	mov	r1, r3
- 80012cc:	4a29      	ldr	r2, [pc, #164]	; (8001374 <StartDefaultTask+0x5bc>)
+ 80012cc:	4a45      	ldr	r2, [pc, #276]	; (80013e4 <StartDefaultTask+0x62c>)
  80012ce:	460b      	mov	r3, r1
  80012d0:	009b      	lsls	r3, r3, #2
  80012d2:	440b      	add	r3, r1
@@ -2451,10 +2451,10 @@ void StartDefaultTask(void *argument)
  80012da:	220e      	movs	r2, #14
  80012dc:	701a      	strb	r2, [r3, #0]
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
- 80012de:	4b24      	ldr	r3, [pc, #144]	; (8001370 <StartDefaultTask+0x5b8>)
+ 80012de:	4b40      	ldr	r3, [pc, #256]	; (80013e0 <StartDefaultTask+0x628>)
  80012e0:	781b      	ldrb	r3, [r3, #0]
  80012e2:	4619      	mov	r1, r3
- 80012e4:	4a23      	ldr	r2, [pc, #140]	; (8001374 <StartDefaultTask+0x5bc>)
+ 80012e4:	4a3f      	ldr	r2, [pc, #252]	; (80013e4 <StartDefaultTask+0x62c>)
  80012e6:	460b      	mov	r3, r1
  80012e8:	009b      	lsls	r3, r3, #2
  80012ea:	440b      	add	r3, r1
@@ -2466,10 +2466,10 @@ void StartDefaultTask(void *argument)
 	  					break;
  80012f6:	e3d2      	b.n	8001a9e <StartDefaultTask+0xce6>
 	  				}else if(pumpTestsParameters[pump].STI[2] == hours && pumpTestsParameters[pump].STI[3] == minutes){
- 80012f8:	4b1d      	ldr	r3, [pc, #116]	; (8001370 <StartDefaultTask+0x5b8>)
+ 80012f8:	4b39      	ldr	r3, [pc, #228]	; (80013e0 <StartDefaultTask+0x628>)
  80012fa:	781b      	ldrb	r3, [r3, #0]
  80012fc:	4619      	mov	r1, r3
- 80012fe:	4a1d      	ldr	r2, [pc, #116]	; (8001374 <StartDefaultTask+0x5bc>)
+ 80012fe:	4a39      	ldr	r2, [pc, #228]	; (80013e4 <StartDefaultTask+0x62c>)
  8001300:	460b      	mov	r3, r1
  8001302:	009b      	lsls	r3, r3, #2
  8001304:	440b      	add	r3, r1
@@ -2477,14 +2477,14 @@ void StartDefaultTask(void *argument)
  8001308:	4413      	add	r3, r2
  800130a:	3323      	adds	r3, #35	; 0x23
  800130c:	781a      	ldrb	r2, [r3, #0]
- 800130e:	4b1a      	ldr	r3, [pc, #104]	; (8001378 <StartDefaultTask+0x5c0>)
+ 800130e:	4b40      	ldr	r3, [pc, #256]	; (8001410 <StartDefaultTask+0x658>)
  8001310:	781b      	ldrb	r3, [r3, #0]
  8001312:	429a      	cmp	r2, r3
  8001314:	d127      	bne.n	8001366 <StartDefaultTask+0x5ae>
- 8001316:	4b16      	ldr	r3, [pc, #88]	; (8001370 <StartDefaultTask+0x5b8>)
+ 8001316:	4b32      	ldr	r3, [pc, #200]	; (80013e0 <StartDefaultTask+0x628>)
  8001318:	781b      	ldrb	r3, [r3, #0]
  800131a:	4619      	mov	r1, r3
- 800131c:	4a15      	ldr	r2, [pc, #84]	; (8001374 <StartDefaultTask+0x5bc>)
+ 800131c:	4a31      	ldr	r2, [pc, #196]	; (80013e4 <StartDefaultTask+0x62c>)
  800131e:	460b      	mov	r3, r1
  8001320:	009b      	lsls	r3, r3, #2
  8001322:	440b      	add	r3, r1
@@ -2492,15 +2492,15 @@ void StartDefaultTask(void *argument)
  8001326:	4413      	add	r3, r2
  8001328:	3324      	adds	r3, #36	; 0x24
  800132a:	781a      	ldrb	r2, [r3, #0]
- 800132c:	4b13      	ldr	r3, [pc, #76]	; (800137c <StartDefaultTask+0x5c4>)
+ 800132c:	4b39      	ldr	r3, [pc, #228]	; (8001414 <StartDefaultTask+0x65c>)
  800132e:	781b      	ldrb	r3, [r3, #0]
  8001330:	429a      	cmp	r2, r3
  8001332:	d118      	bne.n	8001366 <StartDefaultTask+0x5ae>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 8001334:	4b0e      	ldr	r3, [pc, #56]	; (8001370 <StartDefaultTask+0x5b8>)
+ 8001334:	4b2a      	ldr	r3, [pc, #168]	; (80013e0 <StartDefaultTask+0x628>)
  8001336:	781b      	ldrb	r3, [r3, #0]
  8001338:	4619      	mov	r1, r3
- 800133a:	4a0e      	ldr	r2, [pc, #56]	; (8001374 <StartDefaultTask+0x5bc>)
+ 800133a:	4a2a      	ldr	r2, [pc, #168]	; (80013e4 <StartDefaultTask+0x62c>)
  800133c:	460b      	mov	r3, r1
  800133e:	009b      	lsls	r3, r3, #2
  8001340:	440b      	add	r3, r1
@@ -2510,10 +2510,10 @@ void StartDefaultTask(void *argument)
  8001348:	220e      	movs	r2, #14
  800134a:	701a      	strb	r2, [r3, #0]
 						pumpTestsParameters[pump].pumpStatus = FAILURE;
- 800134c:	4b08      	ldr	r3, [pc, #32]	; (8001370 <StartDefaultTask+0x5b8>)
+ 800134c:	4b24      	ldr	r3, [pc, #144]	; (80013e0 <StartDefaultTask+0x628>)
  800134e:	781b      	ldrb	r3, [r3, #0]
  8001350:	4619      	mov	r1, r3
- 8001352:	4a08      	ldr	r2, [pc, #32]	; (8001374 <StartDefaultTask+0x5bc>)
+ 8001352:	4a24      	ldr	r2, [pc, #144]	; (80013e4 <StartDefaultTask+0x62c>)
  8001354:	460b      	mov	r3, r1
  8001356:	009b      	lsls	r3, r3, #2
  8001358:	440b      	add	r3, r1
@@ -2530,870 +2530,867 @@ void StartDefaultTask(void *argument)
  8001368:	f006 f926 	bl	80075b8 <osDelay>
 					break;
  800136c:	e397      	b.n	8001a9e <StartDefaultTask+0xce6>
- 800136e:	bf00      	nop
- 8001370:	20000948 	.word	0x20000948
- 8001374:	200008a8 	.word	0x200008a8
- 8001378:	2000096d 	.word	0x2000096d
- 800137c:	2000096e 	.word	0x2000096e
- 8001380:	20000310 	.word	0x20000310
- 8001384:	200008c9 	.word	0x200008c9
- 8001388:	2000021c 	.word	0x2000021c
- 800138c:	200002c4 	.word	0x200002c4
- 8001390:	200008a4 	.word	0x200008a4
- 8001394:	20000264 	.word	0x20000264
- 8001398:	2000094c 	.word	0x2000094c
- 800139c:	20000950 	.word	0x20000950
- 80013a0:	20000954 	.word	0x20000954
- 80013a4:	447a0000 	.word	0x447a0000
 //					pumpTestsParameters[0].WUI[5] = 0;		// flow controller open
 //					pumpTestsParameters[0].WUI[6] = 0;		// mTorr
 //					pumpTestsParameters[0].WUI[7] = 100;	// temperature in C
 
 					// sends current State
 					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
- 80013a8:	4bb8      	ldr	r3, [pc, #736]	; (800168c <StartDefaultTask+0x8d4>)
- 80013aa:	781b      	ldrb	r3, [r3, #0]
- 80013ac:	461a      	mov	r2, r3
- 80013ae:	4613      	mov	r3, r2
- 80013b0:	009b      	lsls	r3, r3, #2
- 80013b2:	4413      	add	r3, r2
- 80013b4:	011b      	lsls	r3, r3, #4
- 80013b6:	3318      	adds	r3, #24
- 80013b8:	4ab5      	ldr	r2, [pc, #724]	; (8001690 <StartDefaultTask+0x8d8>)
- 80013ba:	1899      	adds	r1, r3, r2
- 80013bc:	f04f 33ff 	mov.w	r3, #4294967295
- 80013c0:	2201      	movs	r2, #1
- 80013c2:	48b4      	ldr	r0, [pc, #720]	; (8001694 <StartDefaultTask+0x8dc>)
- 80013c4:	f004 fa54 	bl	8005870 <HAL_UART_Transmit>
+ 800136e:	4b1c      	ldr	r3, [pc, #112]	; (80013e0 <StartDefaultTask+0x628>)
+ 8001370:	781b      	ldrb	r3, [r3, #0]
+ 8001372:	461a      	mov	r2, r3
+ 8001374:	4613      	mov	r3, r2
+ 8001376:	009b      	lsls	r3, r3, #2
+ 8001378:	4413      	add	r3, r2
+ 800137a:	011b      	lsls	r3, r3, #4
+ 800137c:	3318      	adds	r3, #24
+ 800137e:	4a19      	ldr	r2, [pc, #100]	; (80013e4 <StartDefaultTask+0x62c>)
+ 8001380:	1899      	adds	r1, r3, r2
+ 8001382:	f04f 33ff 	mov.w	r3, #4294967295
+ 8001386:	2201      	movs	r2, #1
+ 8001388:	4817      	ldr	r0, [pc, #92]	; (80013e8 <StartDefaultTask+0x630>)
+ 800138a:	f004 fa71 	bl	8005870 <HAL_UART_Transmit>
 
 					// Receives Parameters
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].WUI[0], 8, HAL_MAX_DELAY);
- 80013c8:	f04f 33ff 	mov.w	r3, #4294967295
- 80013cc:	2208      	movs	r2, #8
- 80013ce:	49b2      	ldr	r1, [pc, #712]	; (8001698 <StartDefaultTask+0x8e0>)
- 80013d0:	48b0      	ldr	r0, [pc, #704]	; (8001694 <StartDefaultTask+0x8dc>)
- 80013d2:	f004 fad0 	bl	8005976 <HAL_UART_Receive>
+ 800138e:	f04f 33ff 	mov.w	r3, #4294967295
+ 8001392:	2208      	movs	r2, #8
+ 8001394:	4920      	ldr	r1, [pc, #128]	; (8001418 <StartDefaultTask+0x660>)
+ 8001396:	4814      	ldr	r0, [pc, #80]	; (80013e8 <StartDefaultTask+0x630>)
+ 8001398:	f004 faed 	bl	8005976 <HAL_UART_Receive>
 
 	  				flowStateOpen();
- 80013d6:	f7ff f986 	bl	80006e6 <flowStateOpen>
+ 800139c:	f7ff f9a3 	bl	80006e6 <flowStateOpen>
 	  				stepperOpen();
- 80013da:	f7ff f993 	bl	8000704 <stepperOpen>
+ 80013a0:	f7ff f9b0 	bl	8000704 <stepperOpen>
 	  				solenoidOpen();
- 80013de:	f000 fe35 	bl	800204c <solenoidOpen>
+ 80013a4:	f000 fe52 	bl	800204c <solenoidOpen>
 	  				solenoidClose();
- 80013e2:	f000 fe3a 	bl	800205a <solenoidClose>
+ 80013a8:	f000 fe57 	bl	800205a <solenoidClose>
 	  				vacuumGaugeADC(&hadc1);
- 80013e6:	48ad      	ldr	r0, [pc, #692]	; (800169c <StartDefaultTask+0x8e4>)
- 80013e8:	f001 f9c6 	bl	8002778 <vacuumGaugeADC>
+ 80013ac:	4810      	ldr	r0, [pc, #64]	; (80013f0 <StartDefaultTask+0x638>)
+ 80013ae:	f001 f9e3 	bl	8002778 <vacuumGaugeADC>
 
 	  				pumpTestsParameters[pump].eNextState = WARM_UP;
- 80013ec:	4ba7      	ldr	r3, [pc, #668]	; (800168c <StartDefaultTask+0x8d4>)
- 80013ee:	781b      	ldrb	r3, [r3, #0]
- 80013f0:	4619      	mov	r1, r3
- 80013f2:	4aa7      	ldr	r2, [pc, #668]	; (8001690 <StartDefaultTask+0x8d8>)
- 80013f4:	460b      	mov	r3, r1
- 80013f6:	009b      	lsls	r3, r3, #2
- 80013f8:	440b      	add	r3, r1
- 80013fa:	011b      	lsls	r3, r3, #4
- 80013fc:	4413      	add	r3, r2
- 80013fe:	3318      	adds	r3, #24
- 8001400:	2206      	movs	r2, #6
- 8001402:	701a      	strb	r2, [r3, #0]
+ 80013b2:	4b0b      	ldr	r3, [pc, #44]	; (80013e0 <StartDefaultTask+0x628>)
+ 80013b4:	781b      	ldrb	r3, [r3, #0]
+ 80013b6:	4619      	mov	r1, r3
+ 80013b8:	4a0a      	ldr	r2, [pc, #40]	; (80013e4 <StartDefaultTask+0x62c>)
+ 80013ba:	460b      	mov	r3, r1
+ 80013bc:	009b      	lsls	r3, r3, #2
+ 80013be:	440b      	add	r3, r1
+ 80013c0:	011b      	lsls	r3, r3, #4
+ 80013c2:	4413      	add	r3, r2
+ 80013c4:	3318      	adds	r3, #24
+ 80013c6:	2206      	movs	r2, #6
+ 80013c8:	701a      	strb	r2, [r3, #0]
 	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
- 8001404:	48a6      	ldr	r0, [pc, #664]	; (80016a0 <StartDefaultTask+0x8e8>)
- 8001406:	f003 feab 	bl	8005160 <HAL_TIM_Base_Start_IT>
+ 80013ca:	480a      	ldr	r0, [pc, #40]	; (80013f4 <StartDefaultTask+0x63c>)
+ 80013cc:	f003 fec8 	bl	8005160 <HAL_TIM_Base_Start_IT>
 	  				resetTime();					// Resets timer
- 800140a:	f7ff fcbd 	bl	8000d88 <resetTime>
+ 80013d0:	f7ff fcda 	bl	8000d88 <resetTime>
 	  				osThreadResume(sendDataHandle);	// Starts data Transfer
- 800140e:	4ba5      	ldr	r3, [pc, #660]	; (80016a4 <StartDefaultTask+0x8ec>)
- 8001410:	681b      	ldr	r3, [r3, #0]
- 8001412:	4618      	mov	r0, r3
- 8001414:	f006 f89c 	bl	8007550 <osThreadResume>
+ 80013d4:	4b08      	ldr	r3, [pc, #32]	; (80013f8 <StartDefaultTask+0x640>)
+ 80013d6:	681b      	ldr	r3, [r3, #0]
+ 80013d8:	4618      	mov	r0, r3
+ 80013da:	f006 f8b9 	bl	8007550 <osThreadResume>
 	  				break;
- 8001418:	e341      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80013de:	e35e      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80013e0:	20000948 	.word	0x20000948
+ 80013e4:	200008a8 	.word	0x200008a8
+ 80013e8:	20000310 	.word	0x20000310
+ 80013ec:	200008c9 	.word	0x200008c9
+ 80013f0:	2000021c 	.word	0x2000021c
+ 80013f4:	200002c4 	.word	0x200002c4
+ 80013f8:	200008a4 	.word	0x200008a4
+ 80013fc:	20000264 	.word	0x20000264
+ 8001400:	2000094c 	.word	0x2000094c
+ 8001404:	20000950 	.word	0x20000950
+ 8001408:	20000954 	.word	0x20000954
+ 800140c:	447a0000 	.word	0x447a0000
+ 8001410:	2000096d 	.word	0x2000096d
+ 8001414:	2000096e 	.word	0x2000096e
+ 8001418:	200008d2 	.word	0x200008d2
 	  			case WARM_UP:
 
 	  				// record internal/external temperatures
 	  				if(pumpTestsParameters[pump].WUI[2] == hours && pumpTestsParameters[pump].WUI[3] == minutes){
- 800141a:	4b9c      	ldr	r3, [pc, #624]	; (800168c <StartDefaultTask+0x8d4>)
- 800141c:	781b      	ldrb	r3, [r3, #0]
- 800141e:	4619      	mov	r1, r3
- 8001420:	4a9b      	ldr	r2, [pc, #620]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001422:	460b      	mov	r3, r1
- 8001424:	009b      	lsls	r3, r3, #2
- 8001426:	440b      	add	r3, r1
- 8001428:	011b      	lsls	r3, r3, #4
- 800142a:	4413      	add	r3, r2
- 800142c:	332c      	adds	r3, #44	; 0x2c
- 800142e:	781a      	ldrb	r2, [r3, #0]
- 8001430:	4b9d      	ldr	r3, [pc, #628]	; (80016a8 <StartDefaultTask+0x8f0>)
- 8001432:	781b      	ldrb	r3, [r3, #0]
- 8001434:	429a      	cmp	r2, r3
- 8001436:	d138      	bne.n	80014aa <StartDefaultTask+0x6f2>
- 8001438:	4b94      	ldr	r3, [pc, #592]	; (800168c <StartDefaultTask+0x8d4>)
- 800143a:	781b      	ldrb	r3, [r3, #0]
- 800143c:	4619      	mov	r1, r3
- 800143e:	4a94      	ldr	r2, [pc, #592]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001440:	460b      	mov	r3, r1
- 8001442:	009b      	lsls	r3, r3, #2
- 8001444:	440b      	add	r3, r1
- 8001446:	011b      	lsls	r3, r3, #4
- 8001448:	4413      	add	r3, r2
- 800144a:	332d      	adds	r3, #45	; 0x2d
- 800144c:	781a      	ldrb	r2, [r3, #0]
- 800144e:	4b97      	ldr	r3, [pc, #604]	; (80016ac <StartDefaultTask+0x8f4>)
- 8001450:	781b      	ldrb	r3, [r3, #0]
- 8001452:	429a      	cmp	r2, r3
- 8001454:	d129      	bne.n	80014aa <StartDefaultTask+0x6f2>
+ 800141c:	4bb7      	ldr	r3, [pc, #732]	; (80016fc <StartDefaultTask+0x944>)
+ 800141e:	781b      	ldrb	r3, [r3, #0]
+ 8001420:	4619      	mov	r1, r3
+ 8001422:	4ab7      	ldr	r2, [pc, #732]	; (8001700 <StartDefaultTask+0x948>)
+ 8001424:	460b      	mov	r3, r1
+ 8001426:	009b      	lsls	r3, r3, #2
+ 8001428:	440b      	add	r3, r1
+ 800142a:	011b      	lsls	r3, r3, #4
+ 800142c:	4413      	add	r3, r2
+ 800142e:	332c      	adds	r3, #44	; 0x2c
+ 8001430:	781a      	ldrb	r2, [r3, #0]
+ 8001432:	4bb4      	ldr	r3, [pc, #720]	; (8001704 <StartDefaultTask+0x94c>)
+ 8001434:	781b      	ldrb	r3, [r3, #0]
+ 8001436:	429a      	cmp	r2, r3
+ 8001438:	d138      	bne.n	80014ac <StartDefaultTask+0x6f4>
+ 800143a:	4bb0      	ldr	r3, [pc, #704]	; (80016fc <StartDefaultTask+0x944>)
+ 800143c:	781b      	ldrb	r3, [r3, #0]
+ 800143e:	4619      	mov	r1, r3
+ 8001440:	4aaf      	ldr	r2, [pc, #700]	; (8001700 <StartDefaultTask+0x948>)
+ 8001442:	460b      	mov	r3, r1
+ 8001444:	009b      	lsls	r3, r3, #2
+ 8001446:	440b      	add	r3, r1
+ 8001448:	011b      	lsls	r3, r3, #4
+ 800144a:	4413      	add	r3, r2
+ 800144c:	332d      	adds	r3, #45	; 0x2d
+ 800144e:	781a      	ldrb	r2, [r3, #0]
+ 8001450:	4bad      	ldr	r3, [pc, #692]	; (8001708 <StartDefaultTask+0x950>)
+ 8001452:	781b      	ldrb	r3, [r3, #0]
+ 8001454:	429a      	cmp	r2, r3
+ 8001456:	d129      	bne.n	80014ac <StartDefaultTask+0x6f4>
 	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
- 8001456:	4892      	ldr	r0, [pc, #584]	; (80016a0 <StartDefaultTask+0x8e8>)
- 8001458:	f003 fefa 	bl	8005250 <HAL_TIM_Base_Stop_IT>
+ 8001458:	48ac      	ldr	r0, [pc, #688]	; (800170c <StartDefaultTask+0x954>)
+ 800145a:	f003 fef9 	bl	8005250 <HAL_TIM_Base_Stop_IT>
 	  					osThreadSuspend(sendDataHandle);
- 800145c:	4b91      	ldr	r3, [pc, #580]	; (80016a4 <StartDefaultTask+0x8ec>)
- 800145e:	681b      	ldr	r3, [r3, #0]
- 8001460:	4618      	mov	r0, r3
- 8001462:	f006 f841 	bl	80074e8 <osThreadSuspend>
+ 800145e:	4bac      	ldr	r3, [pc, #688]	; (8001710 <StartDefaultTask+0x958>)
+ 8001460:	681b      	ldr	r3, [r3, #0]
+ 8001462:	4618      	mov	r0, r3
+ 8001464:	f006 f840 	bl	80074e8 <osThreadSuspend>
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
- 8001466:	4b89      	ldr	r3, [pc, #548]	; (800168c <StartDefaultTask+0x8d4>)
- 8001468:	781b      	ldrb	r3, [r3, #0]
- 800146a:	461a      	mov	r2, r3
- 800146c:	4988      	ldr	r1, [pc, #544]	; (8001690 <StartDefaultTask+0x8d8>)
- 800146e:	4613      	mov	r3, r2
- 8001470:	009b      	lsls	r3, r3, #2
- 8001472:	4413      	add	r3, r2
- 8001474:	011b      	lsls	r3, r3, #4
- 8001476:	440b      	add	r3, r1
- 8001478:	3314      	adds	r3, #20
- 800147a:	6819      	ldr	r1, [r3, #0]
- 800147c:	1c48      	adds	r0, r1, #1
- 800147e:	4c84      	ldr	r4, [pc, #528]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001480:	4613      	mov	r3, r2
- 8001482:	009b      	lsls	r3, r3, #2
- 8001484:	4413      	add	r3, r2
- 8001486:	011b      	lsls	r3, r3, #4
- 8001488:	4423      	add	r3, r4
- 800148a:	3314      	adds	r3, #20
- 800148c:	6018      	str	r0, [r3, #0]
- 800148e:	4b7f      	ldr	r3, [pc, #508]	; (800168c <StartDefaultTask+0x8d4>)
- 8001490:	781b      	ldrb	r3, [r3, #0]
- 8001492:	4618      	mov	r0, r3
- 8001494:	7809      	ldrb	r1, [r1, #0]
- 8001496:	4a7e      	ldr	r2, [pc, #504]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001498:	4603      	mov	r3, r0
- 800149a:	009b      	lsls	r3, r3, #2
- 800149c:	4403      	add	r3, r0
- 800149e:	011b      	lsls	r3, r3, #4
- 80014a0:	4413      	add	r3, r2
- 80014a2:	3318      	adds	r3, #24
- 80014a4:	460a      	mov	r2, r1
- 80014a6:	701a      	strb	r2, [r3, #0]
- 80014a8:	e01d      	b.n	80014e6 <StartDefaultTask+0x72e>
+ 8001468:	4ba4      	ldr	r3, [pc, #656]	; (80016fc <StartDefaultTask+0x944>)
+ 800146a:	781b      	ldrb	r3, [r3, #0]
+ 800146c:	461a      	mov	r2, r3
+ 800146e:	49a4      	ldr	r1, [pc, #656]	; (8001700 <StartDefaultTask+0x948>)
+ 8001470:	4613      	mov	r3, r2
+ 8001472:	009b      	lsls	r3, r3, #2
+ 8001474:	4413      	add	r3, r2
+ 8001476:	011b      	lsls	r3, r3, #4
+ 8001478:	440b      	add	r3, r1
+ 800147a:	3314      	adds	r3, #20
+ 800147c:	6819      	ldr	r1, [r3, #0]
+ 800147e:	1c48      	adds	r0, r1, #1
+ 8001480:	4c9f      	ldr	r4, [pc, #636]	; (8001700 <StartDefaultTask+0x948>)
+ 8001482:	4613      	mov	r3, r2
+ 8001484:	009b      	lsls	r3, r3, #2
+ 8001486:	4413      	add	r3, r2
+ 8001488:	011b      	lsls	r3, r3, #4
+ 800148a:	4423      	add	r3, r4
+ 800148c:	3314      	adds	r3, #20
+ 800148e:	6018      	str	r0, [r3, #0]
+ 8001490:	4b9a      	ldr	r3, [pc, #616]	; (80016fc <StartDefaultTask+0x944>)
+ 8001492:	781b      	ldrb	r3, [r3, #0]
+ 8001494:	4618      	mov	r0, r3
+ 8001496:	7809      	ldrb	r1, [r1, #0]
+ 8001498:	4a99      	ldr	r2, [pc, #612]	; (8001700 <StartDefaultTask+0x948>)
+ 800149a:	4603      	mov	r3, r0
+ 800149c:	009b      	lsls	r3, r3, #2
+ 800149e:	4403      	add	r3, r0
+ 80014a0:	011b      	lsls	r3, r3, #4
+ 80014a2:	4413      	add	r3, r2
+ 80014a4:	3318      	adds	r3, #24
+ 80014a6:	460a      	mov	r2, r1
+ 80014a8:	701a      	strb	r2, [r3, #0]
+ 80014aa:	e01d      	b.n	80014e8 <StartDefaultTask+0x730>
 	  				}else if(25 >= pumpTestsParameters[0].WUI[7]){	// if current temp is >= temp limit
- 80014aa:	4b79      	ldr	r3, [pc, #484]	; (8001690 <StartDefaultTask+0x8d8>)
- 80014ac:	f893 3031 	ldrb.w	r3, [r3, #49]	; 0x31
- 80014b0:	2b19      	cmp	r3, #25
- 80014b2:	d818      	bhi.n	80014e6 <StartDefaultTask+0x72e>
+ 80014ac:	4b94      	ldr	r3, [pc, #592]	; (8001700 <StartDefaultTask+0x948>)
+ 80014ae:	f893 3031 	ldrb.w	r3, [r3, #49]	; 0x31
+ 80014b2:	2b19      	cmp	r3, #25
+ 80014b4:	d818      	bhi.n	80014e8 <StartDefaultTask+0x730>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 80014b4:	4b75      	ldr	r3, [pc, #468]	; (800168c <StartDefaultTask+0x8d4>)
- 80014b6:	781b      	ldrb	r3, [r3, #0]
- 80014b8:	4619      	mov	r1, r3
- 80014ba:	4a75      	ldr	r2, [pc, #468]	; (8001690 <StartDefaultTask+0x8d8>)
- 80014bc:	460b      	mov	r3, r1
- 80014be:	009b      	lsls	r3, r3, #2
- 80014c0:	440b      	add	r3, r1
- 80014c2:	011b      	lsls	r3, r3, #4
- 80014c4:	4413      	add	r3, r2
- 80014c6:	3318      	adds	r3, #24
- 80014c8:	220e      	movs	r2, #14
- 80014ca:	701a      	strb	r2, [r3, #0]
+ 80014b6:	4b91      	ldr	r3, [pc, #580]	; (80016fc <StartDefaultTask+0x944>)
+ 80014b8:	781b      	ldrb	r3, [r3, #0]
+ 80014ba:	4619      	mov	r1, r3
+ 80014bc:	4a90      	ldr	r2, [pc, #576]	; (8001700 <StartDefaultTask+0x948>)
+ 80014be:	460b      	mov	r3, r1
+ 80014c0:	009b      	lsls	r3, r3, #2
+ 80014c2:	440b      	add	r3, r1
+ 80014c4:	011b      	lsls	r3, r3, #4
+ 80014c6:	4413      	add	r3, r2
+ 80014c8:	3318      	adds	r3, #24
+ 80014ca:	220e      	movs	r2, #14
+ 80014cc:	701a      	strb	r2, [r3, #0]
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
- 80014cc:	4b6f      	ldr	r3, [pc, #444]	; (800168c <StartDefaultTask+0x8d4>)
- 80014ce:	781b      	ldrb	r3, [r3, #0]
- 80014d0:	4619      	mov	r1, r3
- 80014d2:	4a6f      	ldr	r2, [pc, #444]	; (8001690 <StartDefaultTask+0x8d8>)
- 80014d4:	460b      	mov	r3, r1
- 80014d6:	009b      	lsls	r3, r3, #2
- 80014d8:	440b      	add	r3, r1
- 80014da:	011b      	lsls	r3, r3, #4
- 80014dc:	4413      	add	r3, r2
- 80014de:	334e      	adds	r3, #78	; 0x4e
- 80014e0:	2202      	movs	r2, #2
- 80014e2:	701a      	strb	r2, [r3, #0]
+ 80014ce:	4b8b      	ldr	r3, [pc, #556]	; (80016fc <StartDefaultTask+0x944>)
+ 80014d0:	781b      	ldrb	r3, [r3, #0]
+ 80014d2:	4619      	mov	r1, r3
+ 80014d4:	4a8a      	ldr	r2, [pc, #552]	; (8001700 <StartDefaultTask+0x948>)
+ 80014d6:	460b      	mov	r3, r1
+ 80014d8:	009b      	lsls	r3, r3, #2
+ 80014da:	440b      	add	r3, r1
+ 80014dc:	011b      	lsls	r3, r3, #4
+ 80014de:	4413      	add	r3, r2
+ 80014e0:	334e      	adds	r3, #78	; 0x4e
+ 80014e2:	2202      	movs	r2, #2
+ 80014e4:	701a      	strb	r2, [r3, #0]
 	  					break;
- 80014e4:	e2db      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80014e6:	e2da      	b.n	8001a9e <StartDefaultTask+0xce6>
 	  				}
 	  				osDelay(100);	// Checks condition every 100 ms
- 80014e6:	2064      	movs	r0, #100	; 0x64
- 80014e8:	f006 f866 	bl	80075b8 <osDelay>
+ 80014e8:	2064      	movs	r0, #100	; 0x64
+ 80014ea:	f006 f865 	bl	80075b8 <osDelay>
 	  				break;
- 80014ec:	e2d7      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80014ee:	e2d6      	b.n	8001a9e <StartDefaultTask+0xce6>
 //					pumpTestsParameters[0].LTI[6] = 0;		// mTorr
 //					pumpTestsParameters[0].LTI[7] = 100;	// temperature in C
 //	  				pumpTestsParameters[0].LTI[8] = 50;		// Flow Rate
 
 					// sends current State
 					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
- 80014ee:	4b67      	ldr	r3, [pc, #412]	; (800168c <StartDefaultTask+0x8d4>)
- 80014f0:	781b      	ldrb	r3, [r3, #0]
- 80014f2:	461a      	mov	r2, r3
- 80014f4:	4613      	mov	r3, r2
- 80014f6:	009b      	lsls	r3, r3, #2
- 80014f8:	4413      	add	r3, r2
- 80014fa:	011b      	lsls	r3, r3, #4
- 80014fc:	3318      	adds	r3, #24
- 80014fe:	4a64      	ldr	r2, [pc, #400]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001500:	1899      	adds	r1, r3, r2
- 8001502:	f04f 33ff 	mov.w	r3, #4294967295
- 8001506:	2201      	movs	r2, #1
- 8001508:	4862      	ldr	r0, [pc, #392]	; (8001694 <StartDefaultTask+0x8dc>)
- 800150a:	f004 f9b1 	bl	8005870 <HAL_UART_Transmit>
+ 80014f0:	4b82      	ldr	r3, [pc, #520]	; (80016fc <StartDefaultTask+0x944>)
+ 80014f2:	781b      	ldrb	r3, [r3, #0]
+ 80014f4:	461a      	mov	r2, r3
+ 80014f6:	4613      	mov	r3, r2
+ 80014f8:	009b      	lsls	r3, r3, #2
+ 80014fa:	4413      	add	r3, r2
+ 80014fc:	011b      	lsls	r3, r3, #4
+ 80014fe:	3318      	adds	r3, #24
+ 8001500:	4a7f      	ldr	r2, [pc, #508]	; (8001700 <StartDefaultTask+0x948>)
+ 8001502:	1899      	adds	r1, r3, r2
+ 8001504:	f04f 33ff 	mov.w	r3, #4294967295
+ 8001508:	2201      	movs	r2, #1
+ 800150a:	4882      	ldr	r0, [pc, #520]	; (8001714 <StartDefaultTask+0x95c>)
+ 800150c:	f004 f9b0 	bl	8005870 <HAL_UART_Transmit>
 
 					// Receives Parameters
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].LTI[0], 8, HAL_MAX_DELAY);
- 800150e:	f04f 33ff 	mov.w	r3, #4294967295
- 8001512:	2208      	movs	r2, #8
- 8001514:	4966      	ldr	r1, [pc, #408]	; (80016b0 <StartDefaultTask+0x8f8>)
- 8001516:	485f      	ldr	r0, [pc, #380]	; (8001694 <StartDefaultTask+0x8dc>)
- 8001518:	f004 fa2d 	bl	8005976 <HAL_UART_Receive>
+ 8001510:	f04f 33ff 	mov.w	r3, #4294967295
+ 8001514:	2208      	movs	r2, #8
+ 8001516:	4980      	ldr	r1, [pc, #512]	; (8001718 <StartDefaultTask+0x960>)
+ 8001518:	487e      	ldr	r0, [pc, #504]	; (8001714 <StartDefaultTask+0x95c>)
+ 800151a:	f004 fa2c 	bl	8005976 <HAL_UART_Receive>
 
 	  				stepperOpen();
- 800151c:	f7ff f8f2 	bl	8000704 <stepperOpen>
+ 800151e:	f7ff f8f1 	bl	8000704 <stepperOpen>
 	  				solenoidOpen();
- 8001520:	f000 fd94 	bl	800204c <solenoidOpen>
+ 8001522:	f000 fd93 	bl	800204c <solenoidOpen>
 	  				solenoidClose();
- 8001524:	f000 fd99 	bl	800205a <solenoidClose>
+ 8001526:	f000 fd98 	bl	800205a <solenoidClose>
 	  				flowControllerADC(&hadc1);
- 8001528:	485c      	ldr	r0, [pc, #368]	; (800169c <StartDefaultTask+0x8e4>)
- 800152a:	f7ff f85f 	bl	80005ec <flowControllerADC>
+ 800152a:	487c      	ldr	r0, [pc, #496]	; (800171c <StartDefaultTask+0x964>)
+ 800152c:	f7ff f85e 	bl	80005ec <flowControllerADC>
 
 	  				pumpTestsParameters[pump].eNextState = LOAD_TEST;
- 800152e:	4b57      	ldr	r3, [pc, #348]	; (800168c <StartDefaultTask+0x8d4>)
- 8001530:	781b      	ldrb	r3, [r3, #0]
- 8001532:	4619      	mov	r1, r3
- 8001534:	4a56      	ldr	r2, [pc, #344]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001536:	460b      	mov	r3, r1
- 8001538:	009b      	lsls	r3, r3, #2
- 800153a:	440b      	add	r3, r1
- 800153c:	011b      	lsls	r3, r3, #4
- 800153e:	4413      	add	r3, r2
- 8001540:	3318      	adds	r3, #24
- 8001542:	2208      	movs	r2, #8
- 8001544:	701a      	strb	r2, [r3, #0]
+ 8001530:	4b72      	ldr	r3, [pc, #456]	; (80016fc <StartDefaultTask+0x944>)
+ 8001532:	781b      	ldrb	r3, [r3, #0]
+ 8001534:	4619      	mov	r1, r3
+ 8001536:	4a72      	ldr	r2, [pc, #456]	; (8001700 <StartDefaultTask+0x948>)
+ 8001538:	460b      	mov	r3, r1
+ 800153a:	009b      	lsls	r3, r3, #2
+ 800153c:	440b      	add	r3, r1
+ 800153e:	011b      	lsls	r3, r3, #4
+ 8001540:	4413      	add	r3, r2
+ 8001542:	3318      	adds	r3, #24
+ 8001544:	2208      	movs	r2, #8
+ 8001546:	701a      	strb	r2, [r3, #0]
 	  				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
- 8001546:	4b51      	ldr	r3, [pc, #324]	; (800168c <StartDefaultTask+0x8d4>)
- 8001548:	781b      	ldrb	r3, [r3, #0]
- 800154a:	4619      	mov	r1, r3
- 800154c:	4a50      	ldr	r2, [pc, #320]	; (8001690 <StartDefaultTask+0x8d8>)
- 800154e:	460b      	mov	r3, r1
- 8001550:	009b      	lsls	r3, r3, #2
- 8001552:	440b      	add	r3, r1
- 8001554:	011b      	lsls	r3, r3, #4
- 8001556:	4413      	add	r3, r2
- 8001558:	333a      	adds	r3, #58	; 0x3a
- 800155a:	781b      	ldrb	r3, [r3, #0]
- 800155c:	4618      	mov	r0, r3
- 800155e:	f7ff f893 	bl	8000688 <setFlowRate>
- 8001562:	eef0 7a40 	vmov.f32	s15, s0
- 8001566:	eeb0 0a67 	vmov.f32	s0, s15
- 800156a:	2100      	movs	r1, #0
- 800156c:	4851      	ldr	r0, [pc, #324]	; (80016b4 <StartDefaultTask+0x8fc>)
- 800156e:	f000 fcfb 	bl	8001f68 <dacSet>
+ 8001548:	4b6c      	ldr	r3, [pc, #432]	; (80016fc <StartDefaultTask+0x944>)
+ 800154a:	781b      	ldrb	r3, [r3, #0]
+ 800154c:	4619      	mov	r1, r3
+ 800154e:	4a6c      	ldr	r2, [pc, #432]	; (8001700 <StartDefaultTask+0x948>)
+ 8001550:	460b      	mov	r3, r1
+ 8001552:	009b      	lsls	r3, r3, #2
+ 8001554:	440b      	add	r3, r1
+ 8001556:	011b      	lsls	r3, r3, #4
+ 8001558:	4413      	add	r3, r2
+ 800155a:	333a      	adds	r3, #58	; 0x3a
+ 800155c:	781b      	ldrb	r3, [r3, #0]
+ 800155e:	4618      	mov	r0, r3
+ 8001560:	f7ff f892 	bl	8000688 <setFlowRate>
+ 8001564:	eef0 7a40 	vmov.f32	s15, s0
+ 8001568:	eeb0 0a67 	vmov.f32	s0, s15
+ 800156c:	2100      	movs	r1, #0
+ 800156e:	486c      	ldr	r0, [pc, #432]	; (8001720 <StartDefaultTask+0x968>)
+ 8001570:	f000 fcfa 	bl	8001f68 <dacSet>
 	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
- 8001572:	484b      	ldr	r0, [pc, #300]	; (80016a0 <StartDefaultTask+0x8e8>)
- 8001574:	f003 fdf4 	bl	8005160 <HAL_TIM_Base_Start_IT>
+ 8001574:	4865      	ldr	r0, [pc, #404]	; (800170c <StartDefaultTask+0x954>)
+ 8001576:	f003 fdf3 	bl	8005160 <HAL_TIM_Base_Start_IT>
 	  				resetTime();					// Resets timer
- 8001578:	f7ff fc06 	bl	8000d88 <resetTime>
+ 800157a:	f7ff fc05 	bl	8000d88 <resetTime>
 	  				osThreadResume(sendDataHandle);	// Starts data Transfer
- 800157c:	4b49      	ldr	r3, [pc, #292]	; (80016a4 <StartDefaultTask+0x8ec>)
- 800157e:	681b      	ldr	r3, [r3, #0]
- 8001580:	4618      	mov	r0, r3
- 8001582:	f005 ffe5 	bl	8007550 <osThreadResume>
+ 800157e:	4b64      	ldr	r3, [pc, #400]	; (8001710 <StartDefaultTask+0x958>)
+ 8001580:	681b      	ldr	r3, [r3, #0]
+ 8001582:	4618      	mov	r0, r3
+ 8001584:	f005 ffe4 	bl	8007550 <osThreadResume>
 
 	  				break;
- 8001586:	e28a      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 8001588:	e289      	b.n	8001a9e <StartDefaultTask+0xce6>
 	  			case LOAD_TEST:
 
 					volts = adcGet(&hadc1);
- 8001588:	4844      	ldr	r0, [pc, #272]	; (800169c <StartDefaultTask+0x8e4>)
- 800158a:	f000 fd21 	bl	8001fd0 <adcGet>
- 800158e:	eef0 7a40 	vmov.f32	s15, s0
- 8001592:	4b49      	ldr	r3, [pc, #292]	; (80016b8 <StartDefaultTask+0x900>)
- 8001594:	edc3 7a00 	vstr	s15, [r3]
+ 800158a:	4864      	ldr	r0, [pc, #400]	; (800171c <StartDefaultTask+0x964>)
+ 800158c:	f000 fd20 	bl	8001fd0 <adcGet>
+ 8001590:	eef0 7a40 	vmov.f32	s15, s0
+ 8001594:	4b63      	ldr	r3, [pc, #396]	; (8001724 <StartDefaultTask+0x96c>)
+ 8001596:	edc3 7a00 	vstr	s15, [r3]
 					flowRate = readFlow(volts);
- 8001598:	4b47      	ldr	r3, [pc, #284]	; (80016b8 <StartDefaultTask+0x900>)
- 800159a:	edd3 7a00 	vldr	s15, [r3]
- 800159e:	eeb0 0a67 	vmov.f32	s0, s15
- 80015a2:	f7ff f845 	bl	8000630 <readFlow>
- 80015a6:	eef0 7a40 	vmov.f32	s15, s0
- 80015aa:	4b44      	ldr	r3, [pc, #272]	; (80016bc <StartDefaultTask+0x904>)
- 80015ac:	edc3 7a00 	vstr	s15, [r3]
+ 800159a:	4b62      	ldr	r3, [pc, #392]	; (8001724 <StartDefaultTask+0x96c>)
+ 800159c:	edd3 7a00 	vldr	s15, [r3]
+ 80015a0:	eeb0 0a67 	vmov.f32	s0, s15
+ 80015a4:	f7ff f844 	bl	8000630 <readFlow>
+ 80015a8:	eef0 7a40 	vmov.f32	s15, s0
+ 80015ac:	4b5e      	ldr	r3, [pc, #376]	; (8001728 <StartDefaultTask+0x970>)
+ 80015ae:	edc3 7a00 	vstr	s15, [r3]
 
 					flowRate = 0;	// Remove this Once STM is connected to the hardware
- 80015b0:	4b42      	ldr	r3, [pc, #264]	; (80016bc <StartDefaultTask+0x904>)
- 80015b2:	f04f 0200 	mov.w	r2, #0
- 80015b6:	601a      	str	r2, [r3, #0]
+ 80015b2:	4b5d      	ldr	r3, [pc, #372]	; (8001728 <StartDefaultTask+0x970>)
+ 80015b4:	f04f 0200 	mov.w	r2, #0
+ 80015b8:	601a      	str	r2, [r3, #0]
 
 	  				if(pumpTestsParameters[pump].LTI[2] == hours && pumpTestsParameters[pump].LTI[3] == minutes){
- 80015b8:	4b34      	ldr	r3, [pc, #208]	; (800168c <StartDefaultTask+0x8d4>)
- 80015ba:	781b      	ldrb	r3, [r3, #0]
- 80015bc:	4619      	mov	r1, r3
- 80015be:	4a34      	ldr	r2, [pc, #208]	; (8001690 <StartDefaultTask+0x8d8>)
- 80015c0:	460b      	mov	r3, r1
- 80015c2:	009b      	lsls	r3, r3, #2
- 80015c4:	440b      	add	r3, r1
- 80015c6:	011b      	lsls	r3, r3, #4
- 80015c8:	4413      	add	r3, r2
- 80015ca:	3334      	adds	r3, #52	; 0x34
- 80015cc:	781a      	ldrb	r2, [r3, #0]
- 80015ce:	4b36      	ldr	r3, [pc, #216]	; (80016a8 <StartDefaultTask+0x8f0>)
- 80015d0:	781b      	ldrb	r3, [r3, #0]
- 80015d2:	429a      	cmp	r2, r3
- 80015d4:	d138      	bne.n	8001648 <StartDefaultTask+0x890>
- 80015d6:	4b2d      	ldr	r3, [pc, #180]	; (800168c <StartDefaultTask+0x8d4>)
- 80015d8:	781b      	ldrb	r3, [r3, #0]
- 80015da:	4619      	mov	r1, r3
- 80015dc:	4a2c      	ldr	r2, [pc, #176]	; (8001690 <StartDefaultTask+0x8d8>)
- 80015de:	460b      	mov	r3, r1
- 80015e0:	009b      	lsls	r3, r3, #2
- 80015e2:	440b      	add	r3, r1
- 80015e4:	011b      	lsls	r3, r3, #4
- 80015e6:	4413      	add	r3, r2
- 80015e8:	3335      	adds	r3, #53	; 0x35
- 80015ea:	781a      	ldrb	r2, [r3, #0]
- 80015ec:	4b2f      	ldr	r3, [pc, #188]	; (80016ac <StartDefaultTask+0x8f4>)
- 80015ee:	781b      	ldrb	r3, [r3, #0]
- 80015f0:	429a      	cmp	r2, r3
- 80015f2:	d129      	bne.n	8001648 <StartDefaultTask+0x890>
+ 80015ba:	4b50      	ldr	r3, [pc, #320]	; (80016fc <StartDefaultTask+0x944>)
+ 80015bc:	781b      	ldrb	r3, [r3, #0]
+ 80015be:	4619      	mov	r1, r3
+ 80015c0:	4a4f      	ldr	r2, [pc, #316]	; (8001700 <StartDefaultTask+0x948>)
+ 80015c2:	460b      	mov	r3, r1
+ 80015c4:	009b      	lsls	r3, r3, #2
+ 80015c6:	440b      	add	r3, r1
+ 80015c8:	011b      	lsls	r3, r3, #4
+ 80015ca:	4413      	add	r3, r2
+ 80015cc:	3334      	adds	r3, #52	; 0x34
+ 80015ce:	781a      	ldrb	r2, [r3, #0]
+ 80015d0:	4b4c      	ldr	r3, [pc, #304]	; (8001704 <StartDefaultTask+0x94c>)
+ 80015d2:	781b      	ldrb	r3, [r3, #0]
+ 80015d4:	429a      	cmp	r2, r3
+ 80015d6:	d138      	bne.n	800164a <StartDefaultTask+0x892>
+ 80015d8:	4b48      	ldr	r3, [pc, #288]	; (80016fc <StartDefaultTask+0x944>)
+ 80015da:	781b      	ldrb	r3, [r3, #0]
+ 80015dc:	4619      	mov	r1, r3
+ 80015de:	4a48      	ldr	r2, [pc, #288]	; (8001700 <StartDefaultTask+0x948>)
+ 80015e0:	460b      	mov	r3, r1
+ 80015e2:	009b      	lsls	r3, r3, #2
+ 80015e4:	440b      	add	r3, r1
+ 80015e6:	011b      	lsls	r3, r3, #4
+ 80015e8:	4413      	add	r3, r2
+ 80015ea:	3335      	adds	r3, #53	; 0x35
+ 80015ec:	781a      	ldrb	r2, [r3, #0]
+ 80015ee:	4b46      	ldr	r3, [pc, #280]	; (8001708 <StartDefaultTask+0x950>)
+ 80015f0:	781b      	ldrb	r3, [r3, #0]
+ 80015f2:	429a      	cmp	r2, r3
+ 80015f4:	d129      	bne.n	800164a <StartDefaultTask+0x892>
 //	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
- 80015f4:	482a      	ldr	r0, [pc, #168]	; (80016a0 <StartDefaultTask+0x8e8>)
- 80015f6:	f003 fe2b 	bl	8005250 <HAL_TIM_Base_Stop_IT>
+ 80015f6:	4845      	ldr	r0, [pc, #276]	; (800170c <StartDefaultTask+0x954>)
+ 80015f8:	f003 fe2a 	bl	8005250 <HAL_TIM_Base_Stop_IT>
 	  					osThreadSuspend(sendDataHandle);
- 80015fa:	4b2a      	ldr	r3, [pc, #168]	; (80016a4 <StartDefaultTask+0x8ec>)
- 80015fc:	681b      	ldr	r3, [r3, #0]
- 80015fe:	4618      	mov	r0, r3
- 8001600:	f005 ff72 	bl	80074e8 <osThreadSuspend>
+ 80015fc:	4b44      	ldr	r3, [pc, #272]	; (8001710 <StartDefaultTask+0x958>)
+ 80015fe:	681b      	ldr	r3, [r3, #0]
+ 8001600:	4618      	mov	r0, r3
+ 8001602:	f005 ff71 	bl	80074e8 <osThreadSuspend>
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
- 8001604:	4b21      	ldr	r3, [pc, #132]	; (800168c <StartDefaultTask+0x8d4>)
- 8001606:	781b      	ldrb	r3, [r3, #0]
- 8001608:	461a      	mov	r2, r3
- 800160a:	4921      	ldr	r1, [pc, #132]	; (8001690 <StartDefaultTask+0x8d8>)
- 800160c:	4613      	mov	r3, r2
- 800160e:	009b      	lsls	r3, r3, #2
- 8001610:	4413      	add	r3, r2
- 8001612:	011b      	lsls	r3, r3, #4
- 8001614:	440b      	add	r3, r1
- 8001616:	3314      	adds	r3, #20
- 8001618:	6819      	ldr	r1, [r3, #0]
- 800161a:	1c48      	adds	r0, r1, #1
- 800161c:	4c1c      	ldr	r4, [pc, #112]	; (8001690 <StartDefaultTask+0x8d8>)
- 800161e:	4613      	mov	r3, r2
- 8001620:	009b      	lsls	r3, r3, #2
- 8001622:	4413      	add	r3, r2
- 8001624:	011b      	lsls	r3, r3, #4
- 8001626:	4423      	add	r3, r4
- 8001628:	3314      	adds	r3, #20
- 800162a:	6018      	str	r0, [r3, #0]
- 800162c:	4b17      	ldr	r3, [pc, #92]	; (800168c <StartDefaultTask+0x8d4>)
- 800162e:	781b      	ldrb	r3, [r3, #0]
- 8001630:	4618      	mov	r0, r3
- 8001632:	7809      	ldrb	r1, [r1, #0]
- 8001634:	4a16      	ldr	r2, [pc, #88]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001636:	4603      	mov	r3, r0
- 8001638:	009b      	lsls	r3, r3, #2
- 800163a:	4403      	add	r3, r0
- 800163c:	011b      	lsls	r3, r3, #4
- 800163e:	4413      	add	r3, r2
- 8001640:	3318      	adds	r3, #24
- 8001642:	460a      	mov	r2, r1
- 8001644:	701a      	strb	r2, [r3, #0]
- 8001646:	e01d      	b.n	8001684 <StartDefaultTask+0x8cc>
+ 8001606:	4b3d      	ldr	r3, [pc, #244]	; (80016fc <StartDefaultTask+0x944>)
+ 8001608:	781b      	ldrb	r3, [r3, #0]
+ 800160a:	461a      	mov	r2, r3
+ 800160c:	493c      	ldr	r1, [pc, #240]	; (8001700 <StartDefaultTask+0x948>)
+ 800160e:	4613      	mov	r3, r2
+ 8001610:	009b      	lsls	r3, r3, #2
+ 8001612:	4413      	add	r3, r2
+ 8001614:	011b      	lsls	r3, r3, #4
+ 8001616:	440b      	add	r3, r1
+ 8001618:	3314      	adds	r3, #20
+ 800161a:	6819      	ldr	r1, [r3, #0]
+ 800161c:	1c48      	adds	r0, r1, #1
+ 800161e:	4c38      	ldr	r4, [pc, #224]	; (8001700 <StartDefaultTask+0x948>)
+ 8001620:	4613      	mov	r3, r2
+ 8001622:	009b      	lsls	r3, r3, #2
+ 8001624:	4413      	add	r3, r2
+ 8001626:	011b      	lsls	r3, r3, #4
+ 8001628:	4423      	add	r3, r4
+ 800162a:	3314      	adds	r3, #20
+ 800162c:	6018      	str	r0, [r3, #0]
+ 800162e:	4b33      	ldr	r3, [pc, #204]	; (80016fc <StartDefaultTask+0x944>)
+ 8001630:	781b      	ldrb	r3, [r3, #0]
+ 8001632:	4618      	mov	r0, r3
+ 8001634:	7809      	ldrb	r1, [r1, #0]
+ 8001636:	4a32      	ldr	r2, [pc, #200]	; (8001700 <StartDefaultTask+0x948>)
+ 8001638:	4603      	mov	r3, r0
+ 800163a:	009b      	lsls	r3, r3, #2
+ 800163c:	4403      	add	r3, r0
+ 800163e:	011b      	lsls	r3, r3, #4
+ 8001640:	4413      	add	r3, r2
+ 8001642:	3318      	adds	r3, #24
+ 8001644:	460a      	mov	r2, r1
+ 8001646:	701a      	strb	r2, [r3, #0]
+ 8001648:	e01d      	b.n	8001686 <StartDefaultTask+0x8ce>
 	  				}else if(25 >= pumpTestsParameters[0].LTI[7]){	// if current temp is >= temp limit
- 8001648:	4b11      	ldr	r3, [pc, #68]	; (8001690 <StartDefaultTask+0x8d8>)
- 800164a:	f893 3039 	ldrb.w	r3, [r3, #57]	; 0x39
- 800164e:	2b19      	cmp	r3, #25
- 8001650:	d818      	bhi.n	8001684 <StartDefaultTask+0x8cc>
+ 800164a:	4b2d      	ldr	r3, [pc, #180]	; (8001700 <StartDefaultTask+0x948>)
+ 800164c:	f893 3039 	ldrb.w	r3, [r3, #57]	; 0x39
+ 8001650:	2b19      	cmp	r3, #25
+ 8001652:	d818      	bhi.n	8001686 <StartDefaultTask+0x8ce>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 8001652:	4b0e      	ldr	r3, [pc, #56]	; (800168c <StartDefaultTask+0x8d4>)
- 8001654:	781b      	ldrb	r3, [r3, #0]
- 8001656:	4619      	mov	r1, r3
- 8001658:	4a0d      	ldr	r2, [pc, #52]	; (8001690 <StartDefaultTask+0x8d8>)
- 800165a:	460b      	mov	r3, r1
- 800165c:	009b      	lsls	r3, r3, #2
- 800165e:	440b      	add	r3, r1
- 8001660:	011b      	lsls	r3, r3, #4
- 8001662:	4413      	add	r3, r2
- 8001664:	3318      	adds	r3, #24
- 8001666:	220e      	movs	r2, #14
- 8001668:	701a      	strb	r2, [r3, #0]
+ 8001654:	4b29      	ldr	r3, [pc, #164]	; (80016fc <StartDefaultTask+0x944>)
+ 8001656:	781b      	ldrb	r3, [r3, #0]
+ 8001658:	4619      	mov	r1, r3
+ 800165a:	4a29      	ldr	r2, [pc, #164]	; (8001700 <StartDefaultTask+0x948>)
+ 800165c:	460b      	mov	r3, r1
+ 800165e:	009b      	lsls	r3, r3, #2
+ 8001660:	440b      	add	r3, r1
+ 8001662:	011b      	lsls	r3, r3, #4
+ 8001664:	4413      	add	r3, r2
+ 8001666:	3318      	adds	r3, #24
+ 8001668:	220e      	movs	r2, #14
+ 800166a:	701a      	strb	r2, [r3, #0]
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
- 800166a:	4b08      	ldr	r3, [pc, #32]	; (800168c <StartDefaultTask+0x8d4>)
- 800166c:	781b      	ldrb	r3, [r3, #0]
- 800166e:	4619      	mov	r1, r3
- 8001670:	4a07      	ldr	r2, [pc, #28]	; (8001690 <StartDefaultTask+0x8d8>)
- 8001672:	460b      	mov	r3, r1
- 8001674:	009b      	lsls	r3, r3, #2
- 8001676:	440b      	add	r3, r1
- 8001678:	011b      	lsls	r3, r3, #4
- 800167a:	4413      	add	r3, r2
- 800167c:	334e      	adds	r3, #78	; 0x4e
- 800167e:	2202      	movs	r2, #2
- 8001680:	701a      	strb	r2, [r3, #0]
+ 800166c:	4b23      	ldr	r3, [pc, #140]	; (80016fc <StartDefaultTask+0x944>)
+ 800166e:	781b      	ldrb	r3, [r3, #0]
+ 8001670:	4619      	mov	r1, r3
+ 8001672:	4a23      	ldr	r2, [pc, #140]	; (8001700 <StartDefaultTask+0x948>)
+ 8001674:	460b      	mov	r3, r1
+ 8001676:	009b      	lsls	r3, r3, #2
+ 8001678:	440b      	add	r3, r1
+ 800167a:	011b      	lsls	r3, r3, #4
+ 800167c:	4413      	add	r3, r2
+ 800167e:	334e      	adds	r3, #78	; 0x4e
+ 8001680:	2202      	movs	r2, #2
+ 8001682:	701a      	strb	r2, [r3, #0]
 	  					break;
- 8001682:	e20c      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 8001684:	e20b      	b.n	8001a9e <StartDefaultTask+0xce6>
 	  				}
 
 	  				osDelay(100);	// Checks condition every 100 ms
- 8001684:	2064      	movs	r0, #100	; 0x64
- 8001686:	f005 ff97 	bl	80075b8 <osDelay>
+ 8001686:	2064      	movs	r0, #100	; 0x64
+ 8001688:	f005 ff96 	bl	80075b8 <osDelay>
 	  				break;
- 800168a:	e208      	b.n	8001a9e <StartDefaultTask+0xce6>
- 800168c:	20000948 	.word	0x20000948
- 8001690:	200008a8 	.word	0x200008a8
- 8001694:	20000310 	.word	0x20000310
- 8001698:	200008d2 	.word	0x200008d2
- 800169c:	2000021c 	.word	0x2000021c
- 80016a0:	200002c4 	.word	0x200002c4
- 80016a4:	200008a4 	.word	0x200008a4
- 80016a8:	2000096d 	.word	0x2000096d
- 80016ac:	2000096e 	.word	0x2000096e
- 80016b0:	200008da 	.word	0x200008da
- 80016b4:	20000264 	.word	0x20000264
- 80016b8:	2000094c 	.word	0x2000094c
- 80016bc:	20000950 	.word	0x20000950
+ 800168c:	e207      	b.n	8001a9e <StartDefaultTask+0xce6>
 //					pumpTestsParameters[0].OTI[6] = 0;		// mTorr
 //					pumpTestsParameters[0].OTI[7] = 100;	// temperature in C
 //	  				pumpTestsParameters[0].OTI[8] = 0;		// Flow Rate
 
 					// sends current State
 					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
- 80016c0:	4bbd      	ldr	r3, [pc, #756]	; (80019b8 <StartDefaultTask+0xc00>)
- 80016c2:	781b      	ldrb	r3, [r3, #0]
- 80016c4:	461a      	mov	r2, r3
- 80016c6:	4613      	mov	r3, r2
- 80016c8:	009b      	lsls	r3, r3, #2
- 80016ca:	4413      	add	r3, r2
- 80016cc:	011b      	lsls	r3, r3, #4
- 80016ce:	3318      	adds	r3, #24
- 80016d0:	4aba      	ldr	r2, [pc, #744]	; (80019bc <StartDefaultTask+0xc04>)
- 80016d2:	1899      	adds	r1, r3, r2
- 80016d4:	f04f 33ff 	mov.w	r3, #4294967295
- 80016d8:	2201      	movs	r2, #1
- 80016da:	48b9      	ldr	r0, [pc, #740]	; (80019c0 <StartDefaultTask+0xc08>)
- 80016dc:	f004 f8c8 	bl	8005870 <HAL_UART_Transmit>
+ 800168e:	4b1b      	ldr	r3, [pc, #108]	; (80016fc <StartDefaultTask+0x944>)
+ 8001690:	781b      	ldrb	r3, [r3, #0]
+ 8001692:	461a      	mov	r2, r3
+ 8001694:	4613      	mov	r3, r2
+ 8001696:	009b      	lsls	r3, r3, #2
+ 8001698:	4413      	add	r3, r2
+ 800169a:	011b      	lsls	r3, r3, #4
+ 800169c:	3318      	adds	r3, #24
+ 800169e:	4a18      	ldr	r2, [pc, #96]	; (8001700 <StartDefaultTask+0x948>)
+ 80016a0:	1899      	adds	r1, r3, r2
+ 80016a2:	f04f 33ff 	mov.w	r3, #4294967295
+ 80016a6:	2201      	movs	r2, #1
+ 80016a8:	481a      	ldr	r0, [pc, #104]	; (8001714 <StartDefaultTask+0x95c>)
+ 80016aa:	f004 f8e1 	bl	8005870 <HAL_UART_Transmit>
 
 					// Receives Parameters
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].OTI[0], 8, HAL_MAX_DELAY);
- 80016e0:	f04f 33ff 	mov.w	r3, #4294967295
- 80016e4:	2208      	movs	r2, #8
- 80016e6:	49b7      	ldr	r1, [pc, #732]	; (80019c4 <StartDefaultTask+0xc0c>)
- 80016e8:	48b5      	ldr	r0, [pc, #724]	; (80019c0 <StartDefaultTask+0xc08>)
- 80016ea:	f004 f944 	bl	8005976 <HAL_UART_Receive>
+ 80016ae:	f04f 33ff 	mov.w	r3, #4294967295
+ 80016b2:	2208      	movs	r2, #8
+ 80016b4:	491d      	ldr	r1, [pc, #116]	; (800172c <StartDefaultTask+0x974>)
+ 80016b6:	4817      	ldr	r0, [pc, #92]	; (8001714 <StartDefaultTask+0x95c>)
+ 80016b8:	f004 f95d 	bl	8005976 <HAL_UART_Receive>
 
 	  				stepperOpen();
- 80016ee:	f7ff f809 	bl	8000704 <stepperOpen>
+ 80016bc:	f7ff f822 	bl	8000704 <stepperOpen>
 	  				solenoidOpen();
- 80016f2:	f000 fcab 	bl	800204c <solenoidOpen>
+ 80016c0:	f000 fcc4 	bl	800204c <solenoidOpen>
 	  				solenoidClose();
- 80016f6:	f000 fcb0 	bl	800205a <solenoidClose>
+ 80016c4:	f000 fcc9 	bl	800205a <solenoidClose>
 	  				flowControllerADC(&hadc1);
- 80016fa:	48b3      	ldr	r0, [pc, #716]	; (80019c8 <StartDefaultTask+0xc10>)
- 80016fc:	f7fe ff76 	bl	80005ec <flowControllerADC>
+ 80016c8:	4814      	ldr	r0, [pc, #80]	; (800171c <StartDefaultTask+0x964>)
+ 80016ca:	f7fe ff8f 	bl	80005ec <flowControllerADC>
 
 	  				pumpTestsParameters[pump].eNextState = OPERATION_TEST;
- 8001700:	4bad      	ldr	r3, [pc, #692]	; (80019b8 <StartDefaultTask+0xc00>)
- 8001702:	781b      	ldrb	r3, [r3, #0]
- 8001704:	4619      	mov	r1, r3
- 8001706:	4aad      	ldr	r2, [pc, #692]	; (80019bc <StartDefaultTask+0xc04>)
- 8001708:	460b      	mov	r3, r1
- 800170a:	009b      	lsls	r3, r3, #2
- 800170c:	440b      	add	r3, r1
- 800170e:	011b      	lsls	r3, r3, #4
- 8001710:	4413      	add	r3, r2
- 8001712:	3318      	adds	r3, #24
- 8001714:	220a      	movs	r2, #10
- 8001716:	701a      	strb	r2, [r3, #0]
+ 80016ce:	4b0b      	ldr	r3, [pc, #44]	; (80016fc <StartDefaultTask+0x944>)
+ 80016d0:	781b      	ldrb	r3, [r3, #0]
+ 80016d2:	4619      	mov	r1, r3
+ 80016d4:	4a0a      	ldr	r2, [pc, #40]	; (8001700 <StartDefaultTask+0x948>)
+ 80016d6:	460b      	mov	r3, r1
+ 80016d8:	009b      	lsls	r3, r3, #2
+ 80016da:	440b      	add	r3, r1
+ 80016dc:	011b      	lsls	r3, r3, #4
+ 80016de:	4413      	add	r3, r2
+ 80016e0:	3318      	adds	r3, #24
+ 80016e2:	220a      	movs	r2, #10
+ 80016e4:	701a      	strb	r2, [r3, #0]
 	  				//dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
 	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
- 8001718:	48ac      	ldr	r0, [pc, #688]	; (80019cc <StartDefaultTask+0xc14>)
- 800171a:	f003 fd21 	bl	8005160 <HAL_TIM_Base_Start_IT>
+ 80016e6:	4809      	ldr	r0, [pc, #36]	; (800170c <StartDefaultTask+0x954>)
+ 80016e8:	f003 fd3a 	bl	8005160 <HAL_TIM_Base_Start_IT>
 	  				resetTime();					// Resets timer
- 800171e:	f7ff fb33 	bl	8000d88 <resetTime>
+ 80016ec:	f7ff fb4c 	bl	8000d88 <resetTime>
 	  				osThreadResume(sendDataHandle);	// Starts data Transfer
- 8001722:	4bab      	ldr	r3, [pc, #684]	; (80019d0 <StartDefaultTask+0xc18>)
- 8001724:	681b      	ldr	r3, [r3, #0]
- 8001726:	4618      	mov	r0, r3
- 8001728:	f005 ff12 	bl	8007550 <osThreadResume>
+ 80016f0:	4b07      	ldr	r3, [pc, #28]	; (8001710 <StartDefaultTask+0x958>)
+ 80016f2:	681b      	ldr	r3, [r3, #0]
+ 80016f4:	4618      	mov	r0, r3
+ 80016f6:	f005 ff2b 	bl	8007550 <osThreadResume>
 
 	  				break;
- 800172c:	e1b7      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80016fa:	e1d0      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80016fc:	20000948 	.word	0x20000948
+ 8001700:	200008a8 	.word	0x200008a8
+ 8001704:	2000096d 	.word	0x2000096d
+ 8001708:	2000096e 	.word	0x2000096e
+ 800170c:	200002c4 	.word	0x200002c4
+ 8001710:	200008a4 	.word	0x200008a4
+ 8001714:	20000310 	.word	0x20000310
+ 8001718:	200008da 	.word	0x200008da
+ 800171c:	2000021c 	.word	0x2000021c
+ 8001720:	20000264 	.word	0x20000264
+ 8001724:	2000094c 	.word	0x2000094c
+ 8001728:	20000950 	.word	0x20000950
+ 800172c:	200008e3 	.word	0x200008e3
 	  			case OPERATION_TEST:
 
 	  				flowControllerADC(&hadc1);
- 800172e:	48a6      	ldr	r0, [pc, #664]	; (80019c8 <StartDefaultTask+0xc10>)
- 8001730:	f7fe ff5c 	bl	80005ec <flowControllerADC>
+ 8001730:	48a2      	ldr	r0, [pc, #648]	; (80019bc <StartDefaultTask+0xc04>)
+ 8001732:	f7fe ff5b 	bl	80005ec <flowControllerADC>
 					volts = adcGet(&hadc1);
- 8001734:	48a4      	ldr	r0, [pc, #656]	; (80019c8 <StartDefaultTask+0xc10>)
- 8001736:	f000 fc4b 	bl	8001fd0 <adcGet>
- 800173a:	eef0 7a40 	vmov.f32	s15, s0
- 800173e:	4ba5      	ldr	r3, [pc, #660]	; (80019d4 <StartDefaultTask+0xc1c>)
- 8001740:	edc3 7a00 	vstr	s15, [r3]
+ 8001736:	48a1      	ldr	r0, [pc, #644]	; (80019bc <StartDefaultTask+0xc04>)
+ 8001738:	f000 fc4a 	bl	8001fd0 <adcGet>
+ 800173c:	eef0 7a40 	vmov.f32	s15, s0
+ 8001740:	4b9f      	ldr	r3, [pc, #636]	; (80019c0 <StartDefaultTask+0xc08>)
+ 8001742:	edc3 7a00 	vstr	s15, [r3]
 					flowRate = readFlow(volts);
- 8001744:	4ba3      	ldr	r3, [pc, #652]	; (80019d4 <StartDefaultTask+0xc1c>)
- 8001746:	edd3 7a00 	vldr	s15, [r3]
- 800174a:	eeb0 0a67 	vmov.f32	s0, s15
- 800174e:	f7fe ff6f 	bl	8000630 <readFlow>
- 8001752:	eef0 7a40 	vmov.f32	s15, s0
- 8001756:	4ba0      	ldr	r3, [pc, #640]	; (80019d8 <StartDefaultTask+0xc20>)
- 8001758:	edc3 7a00 	vstr	s15, [r3]
+ 8001746:	4b9e      	ldr	r3, [pc, #632]	; (80019c0 <StartDefaultTask+0xc08>)
+ 8001748:	edd3 7a00 	vldr	s15, [r3]
+ 800174c:	eeb0 0a67 	vmov.f32	s0, s15
+ 8001750:	f7fe ff6e 	bl	8000630 <readFlow>
+ 8001754:	eef0 7a40 	vmov.f32	s15, s0
+ 8001758:	4b9a      	ldr	r3, [pc, #616]	; (80019c4 <StartDefaultTask+0xc0c>)
+ 800175a:	edc3 7a00 	vstr	s15, [r3]
 
 					vacuumGaugeADC(&hadc1);
- 800175c:	489a      	ldr	r0, [pc, #616]	; (80019c8 <StartDefaultTask+0xc10>)
- 800175e:	f001 f80b 	bl	8002778 <vacuumGaugeADC>
+ 800175e:	4897      	ldr	r0, [pc, #604]	; (80019bc <StartDefaultTask+0xc04>)
+ 8001760:	f001 f80a 	bl	8002778 <vacuumGaugeADC>
 					volts = adcGet(&hadc1);
- 8001762:	4899      	ldr	r0, [pc, #612]	; (80019c8 <StartDefaultTask+0xc10>)
- 8001764:	f000 fc34 	bl	8001fd0 <adcGet>
- 8001768:	eef0 7a40 	vmov.f32	s15, s0
- 800176c:	4b99      	ldr	r3, [pc, #612]	; (80019d4 <StartDefaultTask+0xc1c>)
- 800176e:	edc3 7a00 	vstr	s15, [r3]
+ 8001764:	4895      	ldr	r0, [pc, #596]	; (80019bc <StartDefaultTask+0xc04>)
+ 8001766:	f000 fc33 	bl	8001fd0 <adcGet>
+ 800176a:	eef0 7a40 	vmov.f32	s15, s0
+ 800176e:	4b94      	ldr	r3, [pc, #592]	; (80019c0 <StartDefaultTask+0xc08>)
+ 8001770:	edc3 7a00 	vstr	s15, [r3]
 					vacuumScale = readVacuum(volts);
- 8001772:	4b98      	ldr	r3, [pc, #608]	; (80019d4 <StartDefaultTask+0xc1c>)
- 8001774:	edd3 7a00 	vldr	s15, [r3]
- 8001778:	eeb0 0a67 	vmov.f32	s0, s15
- 800177c:	f001 f820 	bl	80027c0 <readVacuum>
- 8001780:	eef0 7a40 	vmov.f32	s15, s0
- 8001784:	4b95      	ldr	r3, [pc, #596]	; (80019dc <StartDefaultTask+0xc24>)
- 8001786:	edc3 7a00 	vstr	s15, [r3]
+ 8001774:	4b92      	ldr	r3, [pc, #584]	; (80019c0 <StartDefaultTask+0xc08>)
+ 8001776:	edd3 7a00 	vldr	s15, [r3]
+ 800177a:	eeb0 0a67 	vmov.f32	s0, s15
+ 800177e:	f001 f81f 	bl	80027c0 <readVacuum>
+ 8001782:	eef0 7a40 	vmov.f32	s15, s0
+ 8001786:	4b90      	ldr	r3, [pc, #576]	; (80019c8 <StartDefaultTask+0xc10>)
+ 8001788:	edc3 7a00 	vstr	s15, [r3]
 
 	  				if(pumpTestsParameters[pump].OTI[2] == hours && pumpTestsParameters[pump].OTI[3] == minutes){
- 800178a:	4b8b      	ldr	r3, [pc, #556]	; (80019b8 <StartDefaultTask+0xc00>)
- 800178c:	781b      	ldrb	r3, [r3, #0]
- 800178e:	4619      	mov	r1, r3
- 8001790:	4a8a      	ldr	r2, [pc, #552]	; (80019bc <StartDefaultTask+0xc04>)
- 8001792:	460b      	mov	r3, r1
- 8001794:	009b      	lsls	r3, r3, #2
- 8001796:	440b      	add	r3, r1
- 8001798:	011b      	lsls	r3, r3, #4
- 800179a:	4413      	add	r3, r2
- 800179c:	333d      	adds	r3, #61	; 0x3d
- 800179e:	781a      	ldrb	r2, [r3, #0]
- 80017a0:	4b8f      	ldr	r3, [pc, #572]	; (80019e0 <StartDefaultTask+0xc28>)
- 80017a2:	781b      	ldrb	r3, [r3, #0]
- 80017a4:	429a      	cmp	r2, r3
- 80017a6:	d138      	bne.n	800181a <StartDefaultTask+0xa62>
- 80017a8:	4b83      	ldr	r3, [pc, #524]	; (80019b8 <StartDefaultTask+0xc00>)
- 80017aa:	781b      	ldrb	r3, [r3, #0]
- 80017ac:	4619      	mov	r1, r3
- 80017ae:	4a83      	ldr	r2, [pc, #524]	; (80019bc <StartDefaultTask+0xc04>)
- 80017b0:	460b      	mov	r3, r1
- 80017b2:	009b      	lsls	r3, r3, #2
- 80017b4:	440b      	add	r3, r1
- 80017b6:	011b      	lsls	r3, r3, #4
- 80017b8:	4413      	add	r3, r2
- 80017ba:	333e      	adds	r3, #62	; 0x3e
- 80017bc:	781a      	ldrb	r2, [r3, #0]
- 80017be:	4b89      	ldr	r3, [pc, #548]	; (80019e4 <StartDefaultTask+0xc2c>)
- 80017c0:	781b      	ldrb	r3, [r3, #0]
- 80017c2:	429a      	cmp	r2, r3
- 80017c4:	d129      	bne.n	800181a <StartDefaultTask+0xa62>
+ 800178c:	4b8f      	ldr	r3, [pc, #572]	; (80019cc <StartDefaultTask+0xc14>)
+ 800178e:	781b      	ldrb	r3, [r3, #0]
+ 8001790:	4619      	mov	r1, r3
+ 8001792:	4a8f      	ldr	r2, [pc, #572]	; (80019d0 <StartDefaultTask+0xc18>)
+ 8001794:	460b      	mov	r3, r1
+ 8001796:	009b      	lsls	r3, r3, #2
+ 8001798:	440b      	add	r3, r1
+ 800179a:	011b      	lsls	r3, r3, #4
+ 800179c:	4413      	add	r3, r2
+ 800179e:	333d      	adds	r3, #61	; 0x3d
+ 80017a0:	781a      	ldrb	r2, [r3, #0]
+ 80017a2:	4b8c      	ldr	r3, [pc, #560]	; (80019d4 <StartDefaultTask+0xc1c>)
+ 80017a4:	781b      	ldrb	r3, [r3, #0]
+ 80017a6:	429a      	cmp	r2, r3
+ 80017a8:	d138      	bne.n	800181c <StartDefaultTask+0xa64>
+ 80017aa:	4b88      	ldr	r3, [pc, #544]	; (80019cc <StartDefaultTask+0xc14>)
+ 80017ac:	781b      	ldrb	r3, [r3, #0]
+ 80017ae:	4619      	mov	r1, r3
+ 80017b0:	4a87      	ldr	r2, [pc, #540]	; (80019d0 <StartDefaultTask+0xc18>)
+ 80017b2:	460b      	mov	r3, r1
+ 80017b4:	009b      	lsls	r3, r3, #2
+ 80017b6:	440b      	add	r3, r1
+ 80017b8:	011b      	lsls	r3, r3, #4
+ 80017ba:	4413      	add	r3, r2
+ 80017bc:	333e      	adds	r3, #62	; 0x3e
+ 80017be:	781a      	ldrb	r2, [r3, #0]
+ 80017c0:	4b85      	ldr	r3, [pc, #532]	; (80019d8 <StartDefaultTask+0xc20>)
+ 80017c2:	781b      	ldrb	r3, [r3, #0]
+ 80017c4:	429a      	cmp	r2, r3
+ 80017c6:	d129      	bne.n	800181c <StartDefaultTask+0xa64>
 	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
- 80017c6:	4881      	ldr	r0, [pc, #516]	; (80019cc <StartDefaultTask+0xc14>)
- 80017c8:	f003 fd42 	bl	8005250 <HAL_TIM_Base_Stop_IT>
+ 80017c8:	4884      	ldr	r0, [pc, #528]	; (80019dc <StartDefaultTask+0xc24>)
+ 80017ca:	f003 fd41 	bl	8005250 <HAL_TIM_Base_Stop_IT>
 	  					osThreadSuspend(sendDataHandle);
- 80017cc:	4b80      	ldr	r3, [pc, #512]	; (80019d0 <StartDefaultTask+0xc18>)
- 80017ce:	681b      	ldr	r3, [r3, #0]
- 80017d0:	4618      	mov	r0, r3
- 80017d2:	f005 fe89 	bl	80074e8 <osThreadSuspend>
+ 80017ce:	4b84      	ldr	r3, [pc, #528]	; (80019e0 <StartDefaultTask+0xc28>)
+ 80017d0:	681b      	ldr	r3, [r3, #0]
+ 80017d2:	4618      	mov	r0, r3
+ 80017d4:	f005 fe88 	bl	80074e8 <osThreadSuspend>
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
- 80017d6:	4b78      	ldr	r3, [pc, #480]	; (80019b8 <StartDefaultTask+0xc00>)
- 80017d8:	781b      	ldrb	r3, [r3, #0]
- 80017da:	461a      	mov	r2, r3
- 80017dc:	4977      	ldr	r1, [pc, #476]	; (80019bc <StartDefaultTask+0xc04>)
- 80017de:	4613      	mov	r3, r2
- 80017e0:	009b      	lsls	r3, r3, #2
- 80017e2:	4413      	add	r3, r2
- 80017e4:	011b      	lsls	r3, r3, #4
- 80017e6:	440b      	add	r3, r1
- 80017e8:	3314      	adds	r3, #20
- 80017ea:	6819      	ldr	r1, [r3, #0]
- 80017ec:	1c48      	adds	r0, r1, #1
- 80017ee:	4c73      	ldr	r4, [pc, #460]	; (80019bc <StartDefaultTask+0xc04>)
- 80017f0:	4613      	mov	r3, r2
- 80017f2:	009b      	lsls	r3, r3, #2
- 80017f4:	4413      	add	r3, r2
- 80017f6:	011b      	lsls	r3, r3, #4
- 80017f8:	4423      	add	r3, r4
- 80017fa:	3314      	adds	r3, #20
- 80017fc:	6018      	str	r0, [r3, #0]
- 80017fe:	4b6e      	ldr	r3, [pc, #440]	; (80019b8 <StartDefaultTask+0xc00>)
- 8001800:	781b      	ldrb	r3, [r3, #0]
- 8001802:	4618      	mov	r0, r3
- 8001804:	7809      	ldrb	r1, [r1, #0]
- 8001806:	4a6d      	ldr	r2, [pc, #436]	; (80019bc <StartDefaultTask+0xc04>)
- 8001808:	4603      	mov	r3, r0
- 800180a:	009b      	lsls	r3, r3, #2
- 800180c:	4403      	add	r3, r0
- 800180e:	011b      	lsls	r3, r3, #4
- 8001810:	4413      	add	r3, r2
- 8001812:	3318      	adds	r3, #24
- 8001814:	460a      	mov	r2, r1
- 8001816:	701a      	strb	r2, [r3, #0]
- 8001818:	e01d      	b.n	8001856 <StartDefaultTask+0xa9e>
+ 80017d8:	4b7c      	ldr	r3, [pc, #496]	; (80019cc <StartDefaultTask+0xc14>)
+ 80017da:	781b      	ldrb	r3, [r3, #0]
+ 80017dc:	461a      	mov	r2, r3
+ 80017de:	497c      	ldr	r1, [pc, #496]	; (80019d0 <StartDefaultTask+0xc18>)
+ 80017e0:	4613      	mov	r3, r2
+ 80017e2:	009b      	lsls	r3, r3, #2
+ 80017e4:	4413      	add	r3, r2
+ 80017e6:	011b      	lsls	r3, r3, #4
+ 80017e8:	440b      	add	r3, r1
+ 80017ea:	3314      	adds	r3, #20
+ 80017ec:	6819      	ldr	r1, [r3, #0]
+ 80017ee:	1c48      	adds	r0, r1, #1
+ 80017f0:	4c77      	ldr	r4, [pc, #476]	; (80019d0 <StartDefaultTask+0xc18>)
+ 80017f2:	4613      	mov	r3, r2
+ 80017f4:	009b      	lsls	r3, r3, #2
+ 80017f6:	4413      	add	r3, r2
+ 80017f8:	011b      	lsls	r3, r3, #4
+ 80017fa:	4423      	add	r3, r4
+ 80017fc:	3314      	adds	r3, #20
+ 80017fe:	6018      	str	r0, [r3, #0]
+ 8001800:	4b72      	ldr	r3, [pc, #456]	; (80019cc <StartDefaultTask+0xc14>)
+ 8001802:	781b      	ldrb	r3, [r3, #0]
+ 8001804:	4618      	mov	r0, r3
+ 8001806:	7809      	ldrb	r1, [r1, #0]
+ 8001808:	4a71      	ldr	r2, [pc, #452]	; (80019d0 <StartDefaultTask+0xc18>)
+ 800180a:	4603      	mov	r3, r0
+ 800180c:	009b      	lsls	r3, r3, #2
+ 800180e:	4403      	add	r3, r0
+ 8001810:	011b      	lsls	r3, r3, #4
+ 8001812:	4413      	add	r3, r2
+ 8001814:	3318      	adds	r3, #24
+ 8001816:	460a      	mov	r2, r1
+ 8001818:	701a      	strb	r2, [r3, #0]
+ 800181a:	e01d      	b.n	8001858 <StartDefaultTask+0xaa0>
 	  				}else if(25 >= pumpTestsParameters[0].OTI[7]){	// if current temp is >= temp limit
- 800181a:	4b68      	ldr	r3, [pc, #416]	; (80019bc <StartDefaultTask+0xc04>)
- 800181c:	f893 3042 	ldrb.w	r3, [r3, #66]	; 0x42
- 8001820:	2b19      	cmp	r3, #25
- 8001822:	d818      	bhi.n	8001856 <StartDefaultTask+0xa9e>
+ 800181c:	4b6c      	ldr	r3, [pc, #432]	; (80019d0 <StartDefaultTask+0xc18>)
+ 800181e:	f893 3042 	ldrb.w	r3, [r3, #66]	; 0x42
+ 8001822:	2b19      	cmp	r3, #25
+ 8001824:	d818      	bhi.n	8001858 <StartDefaultTask+0xaa0>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 8001824:	4b64      	ldr	r3, [pc, #400]	; (80019b8 <StartDefaultTask+0xc00>)
- 8001826:	781b      	ldrb	r3, [r3, #0]
- 8001828:	4619      	mov	r1, r3
- 800182a:	4a64      	ldr	r2, [pc, #400]	; (80019bc <StartDefaultTask+0xc04>)
- 800182c:	460b      	mov	r3, r1
- 800182e:	009b      	lsls	r3, r3, #2
- 8001830:	440b      	add	r3, r1
- 8001832:	011b      	lsls	r3, r3, #4
- 8001834:	4413      	add	r3, r2
- 8001836:	3318      	adds	r3, #24
- 8001838:	220e      	movs	r2, #14
- 800183a:	701a      	strb	r2, [r3, #0]
+ 8001826:	4b69      	ldr	r3, [pc, #420]	; (80019cc <StartDefaultTask+0xc14>)
+ 8001828:	781b      	ldrb	r3, [r3, #0]
+ 800182a:	4619      	mov	r1, r3
+ 800182c:	4a68      	ldr	r2, [pc, #416]	; (80019d0 <StartDefaultTask+0xc18>)
+ 800182e:	460b      	mov	r3, r1
+ 8001830:	009b      	lsls	r3, r3, #2
+ 8001832:	440b      	add	r3, r1
+ 8001834:	011b      	lsls	r3, r3, #4
+ 8001836:	4413      	add	r3, r2
+ 8001838:	3318      	adds	r3, #24
+ 800183a:	220e      	movs	r2, #14
+ 800183c:	701a      	strb	r2, [r3, #0]
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
- 800183c:	4b5e      	ldr	r3, [pc, #376]	; (80019b8 <StartDefaultTask+0xc00>)
- 800183e:	781b      	ldrb	r3, [r3, #0]
- 8001840:	4619      	mov	r1, r3
- 8001842:	4a5e      	ldr	r2, [pc, #376]	; (80019bc <StartDefaultTask+0xc04>)
- 8001844:	460b      	mov	r3, r1
- 8001846:	009b      	lsls	r3, r3, #2
- 8001848:	440b      	add	r3, r1
- 800184a:	011b      	lsls	r3, r3, #4
- 800184c:	4413      	add	r3, r2
- 800184e:	334e      	adds	r3, #78	; 0x4e
- 8001850:	2202      	movs	r2, #2
- 8001852:	701a      	strb	r2, [r3, #0]
+ 800183e:	4b63      	ldr	r3, [pc, #396]	; (80019cc <StartDefaultTask+0xc14>)
+ 8001840:	781b      	ldrb	r3, [r3, #0]
+ 8001842:	4619      	mov	r1, r3
+ 8001844:	4a62      	ldr	r2, [pc, #392]	; (80019d0 <StartDefaultTask+0xc18>)
+ 8001846:	460b      	mov	r3, r1
+ 8001848:	009b      	lsls	r3, r3, #2
+ 800184a:	440b      	add	r3, r1
+ 800184c:	011b      	lsls	r3, r3, #4
+ 800184e:	4413      	add	r3, r2
+ 8001850:	334e      	adds	r3, #78	; 0x4e
+ 8001852:	2202      	movs	r2, #2
+ 8001854:	701a      	strb	r2, [r3, #0]
 	  					break;
- 8001854:	e123      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 8001856:	e122      	b.n	8001a9e <StartDefaultTask+0xce6>
 	  				}
 	  				osDelay(100);
- 8001856:	2064      	movs	r0, #100	; 0x64
- 8001858:	f005 feae 	bl	80075b8 <osDelay>
+ 8001858:	2064      	movs	r0, #100	; 0x64
+ 800185a:	f005 fead 	bl	80075b8 <osDelay>
 	  				break;
- 800185c:	e11f      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 800185e:	e11e      	b.n	8001a9e <StartDefaultTask+0xce6>
 //					pumpTestsParameters[0].UMTI[7] = 100;	// temperature in C
 //	  				pumpTestsParameters[0].UMI[8] = 50;		// Flow Rate
 //					pumpTestsParameters[0].UMTI[9] = 15;	// Pressure in kPA
 
 					// sends current State
 					HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
- 800185e:	4b56      	ldr	r3, [pc, #344]	; (80019b8 <StartDefaultTask+0xc00>)
- 8001860:	781b      	ldrb	r3, [r3, #0]
- 8001862:	461a      	mov	r2, r3
- 8001864:	4613      	mov	r3, r2
- 8001866:	009b      	lsls	r3, r3, #2
- 8001868:	4413      	add	r3, r2
- 800186a:	011b      	lsls	r3, r3, #4
- 800186c:	3318      	adds	r3, #24
- 800186e:	4a53      	ldr	r2, [pc, #332]	; (80019bc <StartDefaultTask+0xc04>)
- 8001870:	1899      	adds	r1, r3, r2
- 8001872:	f04f 33ff 	mov.w	r3, #4294967295
- 8001876:	2201      	movs	r2, #1
- 8001878:	4851      	ldr	r0, [pc, #324]	; (80019c0 <StartDefaultTask+0xc08>)
- 800187a:	f003 fff9 	bl	8005870 <HAL_UART_Transmit>
+ 8001860:	4b5a      	ldr	r3, [pc, #360]	; (80019cc <StartDefaultTask+0xc14>)
+ 8001862:	781b      	ldrb	r3, [r3, #0]
+ 8001864:	461a      	mov	r2, r3
+ 8001866:	4613      	mov	r3, r2
+ 8001868:	009b      	lsls	r3, r3, #2
+ 800186a:	4413      	add	r3, r2
+ 800186c:	011b      	lsls	r3, r3, #4
+ 800186e:	3318      	adds	r3, #24
+ 8001870:	4a57      	ldr	r2, [pc, #348]	; (80019d0 <StartDefaultTask+0xc18>)
+ 8001872:	1899      	adds	r1, r3, r2
+ 8001874:	f04f 33ff 	mov.w	r3, #4294967295
+ 8001878:	2201      	movs	r2, #1
+ 800187a:	485a      	ldr	r0, [pc, #360]	; (80019e4 <StartDefaultTask+0xc2c>)
+ 800187c:	f003 fff8 	bl	8005870 <HAL_UART_Transmit>
 
 					// Receives Parameters
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].UMTI[0], 9, HAL_MAX_DELAY);
- 800187e:	f04f 33ff 	mov.w	r3, #4294967295
- 8001882:	2209      	movs	r2, #9
- 8001884:	4958      	ldr	r1, [pc, #352]	; (80019e8 <StartDefaultTask+0xc30>)
- 8001886:	484e      	ldr	r0, [pc, #312]	; (80019c0 <StartDefaultTask+0xc08>)
- 8001888:	f004 f875 	bl	8005976 <HAL_UART_Receive>
+ 8001880:	f04f 33ff 	mov.w	r3, #4294967295
+ 8001884:	2209      	movs	r2, #9
+ 8001886:	4958      	ldr	r1, [pc, #352]	; (80019e8 <StartDefaultTask+0xc30>)
+ 8001888:	4856      	ldr	r0, [pc, #344]	; (80019e4 <StartDefaultTask+0xc2c>)
+ 800188a:	f004 f874 	bl	8005976 <HAL_UART_Receive>
 
 					stepperStep(800);				// close valve half way
- 800188c:	f44f 7048 	mov.w	r0, #800	; 0x320
- 8001890:	f7fe ff44 	bl	800071c <stepperStep>
+ 800188e:	f44f 7048 	mov.w	r0, #800	; 0x320
+ 8001892:	f7fe ff43 	bl	800071c <stepperStep>
 					HAL_TIM_Base_Start_IT(&htim7);	// starts closing
- 8001894:	4855      	ldr	r0, [pc, #340]	; (80019ec <StartDefaultTask+0xc34>)
- 8001896:	f003 fc63 	bl	8005160 <HAL_TIM_Base_Start_IT>
+ 8001896:	4855      	ldr	r0, [pc, #340]	; (80019ec <StartDefaultTask+0xc34>)
+ 8001898:	f003 fc62 	bl	8005160 <HAL_TIM_Base_Start_IT>
 	  				stepperOpen();
- 800189a:	f7fe ff33 	bl	8000704 <stepperOpen>
+ 800189c:	f7fe ff32 	bl	8000704 <stepperOpen>
 	  				solenoidOpen();
- 800189e:	f000 fbd5 	bl	800204c <solenoidOpen>
+ 80018a0:	f000 fbd4 	bl	800204c <solenoidOpen>
 	  				solenoidClose();
- 80018a2:	f000 fbda 	bl	800205a <solenoidClose>
+ 80018a4:	f000 fbd9 	bl	800205a <solenoidClose>
 	  				flowControllerADC(&hadc1);
- 80018a6:	4848      	ldr	r0, [pc, #288]	; (80019c8 <StartDefaultTask+0xc10>)
- 80018a8:	f7fe fea0 	bl	80005ec <flowControllerADC>
+ 80018a8:	4844      	ldr	r0, [pc, #272]	; (80019bc <StartDefaultTask+0xc04>)
+ 80018aa:	f7fe fe9f 	bl	80005ec <flowControllerADC>
 
 
 
 					pumpTestsParameters[pump].eNextState = ULTIMATE_MEASURE_TEST;
- 80018ac:	4b42      	ldr	r3, [pc, #264]	; (80019b8 <StartDefaultTask+0xc00>)
- 80018ae:	781b      	ldrb	r3, [r3, #0]
- 80018b0:	4619      	mov	r1, r3
- 80018b2:	4a42      	ldr	r2, [pc, #264]	; (80019bc <StartDefaultTask+0xc04>)
- 80018b4:	460b      	mov	r3, r1
- 80018b6:	009b      	lsls	r3, r3, #2
- 80018b8:	440b      	add	r3, r1
- 80018ba:	011b      	lsls	r3, r3, #4
- 80018bc:	4413      	add	r3, r2
- 80018be:	3318      	adds	r3, #24
- 80018c0:	220c      	movs	r2, #12
- 80018c2:	701a      	strb	r2, [r3, #0]
+ 80018ae:	4b47      	ldr	r3, [pc, #284]	; (80019cc <StartDefaultTask+0xc14>)
+ 80018b0:	781b      	ldrb	r3, [r3, #0]
+ 80018b2:	4619      	mov	r1, r3
+ 80018b4:	4a46      	ldr	r2, [pc, #280]	; (80019d0 <StartDefaultTask+0xc18>)
+ 80018b6:	460b      	mov	r3, r1
+ 80018b8:	009b      	lsls	r3, r3, #2
+ 80018ba:	440b      	add	r3, r1
+ 80018bc:	011b      	lsls	r3, r3, #4
+ 80018be:	4413      	add	r3, r2
+ 80018c0:	3318      	adds	r3, #24
+ 80018c2:	220c      	movs	r2, #12
+ 80018c4:	701a      	strb	r2, [r3, #0]
 	  				//dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
 	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
- 80018c4:	4841      	ldr	r0, [pc, #260]	; (80019cc <StartDefaultTask+0xc14>)
- 80018c6:	f003 fc4b 	bl	8005160 <HAL_TIM_Base_Start_IT>
+ 80018c6:	4845      	ldr	r0, [pc, #276]	; (80019dc <StartDefaultTask+0xc24>)
+ 80018c8:	f003 fc4a 	bl	8005160 <HAL_TIM_Base_Start_IT>
 	  				resetTime();					// Resets timer
- 80018ca:	f7ff fa5d 	bl	8000d88 <resetTime>
+ 80018cc:	f7ff fa5c 	bl	8000d88 <resetTime>
 	  				osThreadResume(sendDataHandle);	// Starts data Transfer
- 80018ce:	4b40      	ldr	r3, [pc, #256]	; (80019d0 <StartDefaultTask+0xc18>)
- 80018d0:	681b      	ldr	r3, [r3, #0]
- 80018d2:	4618      	mov	r0, r3
- 80018d4:	f005 fe3c 	bl	8007550 <osThreadResume>
+ 80018d0:	4b43      	ldr	r3, [pc, #268]	; (80019e0 <StartDefaultTask+0xc28>)
+ 80018d2:	681b      	ldr	r3, [r3, #0]
+ 80018d4:	4618      	mov	r0, r3
+ 80018d6:	f005 fe3b 	bl	8007550 <osThreadResume>
 
 	  				break;
- 80018d8:	e0e1      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80018da:	e0e0      	b.n	8001a9e <StartDefaultTask+0xce6>
 	  			case ULTIMATE_MEASURE_TEST:
 
 
 	  				if(pumpTestsParameters[pump].UMTI[2] == hours && pumpTestsParameters[pump].UMTI[3] == minutes){
- 80018da:	4b37      	ldr	r3, [pc, #220]	; (80019b8 <StartDefaultTask+0xc00>)
- 80018dc:	781b      	ldrb	r3, [r3, #0]
- 80018de:	4619      	mov	r1, r3
- 80018e0:	4a36      	ldr	r2, [pc, #216]	; (80019bc <StartDefaultTask+0xc04>)
- 80018e2:	460b      	mov	r3, r1
- 80018e4:	009b      	lsls	r3, r3, #2
- 80018e6:	440b      	add	r3, r1
- 80018e8:	011b      	lsls	r3, r3, #4
- 80018ea:	4413      	add	r3, r2
- 80018ec:	3346      	adds	r3, #70	; 0x46
- 80018ee:	781a      	ldrb	r2, [r3, #0]
- 80018f0:	4b3b      	ldr	r3, [pc, #236]	; (80019e0 <StartDefaultTask+0xc28>)
- 80018f2:	781b      	ldrb	r3, [r3, #0]
- 80018f4:	429a      	cmp	r2, r3
- 80018f6:	d138      	bne.n	800196a <StartDefaultTask+0xbb2>
- 80018f8:	4b2f      	ldr	r3, [pc, #188]	; (80019b8 <StartDefaultTask+0xc00>)
- 80018fa:	781b      	ldrb	r3, [r3, #0]
- 80018fc:	4619      	mov	r1, r3
- 80018fe:	4a2f      	ldr	r2, [pc, #188]	; (80019bc <StartDefaultTask+0xc04>)
- 8001900:	460b      	mov	r3, r1
- 8001902:	009b      	lsls	r3, r3, #2
- 8001904:	440b      	add	r3, r1
- 8001906:	011b      	lsls	r3, r3, #4
- 8001908:	4413      	add	r3, r2
- 800190a:	3347      	adds	r3, #71	; 0x47
- 800190c:	781a      	ldrb	r2, [r3, #0]
- 800190e:	4b35      	ldr	r3, [pc, #212]	; (80019e4 <StartDefaultTask+0xc2c>)
- 8001910:	781b      	ldrb	r3, [r3, #0]
- 8001912:	429a      	cmp	r2, r3
- 8001914:	d129      	bne.n	800196a <StartDefaultTask+0xbb2>
+ 80018dc:	4b3b      	ldr	r3, [pc, #236]	; (80019cc <StartDefaultTask+0xc14>)
+ 80018de:	781b      	ldrb	r3, [r3, #0]
+ 80018e0:	4619      	mov	r1, r3
+ 80018e2:	4a3b      	ldr	r2, [pc, #236]	; (80019d0 <StartDefaultTask+0xc18>)
+ 80018e4:	460b      	mov	r3, r1
+ 80018e6:	009b      	lsls	r3, r3, #2
+ 80018e8:	440b      	add	r3, r1
+ 80018ea:	011b      	lsls	r3, r3, #4
+ 80018ec:	4413      	add	r3, r2
+ 80018ee:	3346      	adds	r3, #70	; 0x46
+ 80018f0:	781a      	ldrb	r2, [r3, #0]
+ 80018f2:	4b38      	ldr	r3, [pc, #224]	; (80019d4 <StartDefaultTask+0xc1c>)
+ 80018f4:	781b      	ldrb	r3, [r3, #0]
+ 80018f6:	429a      	cmp	r2, r3
+ 80018f8:	d138      	bne.n	800196c <StartDefaultTask+0xbb4>
+ 80018fa:	4b34      	ldr	r3, [pc, #208]	; (80019cc <StartDefaultTask+0xc14>)
+ 80018fc:	781b      	ldrb	r3, [r3, #0]
+ 80018fe:	4619      	mov	r1, r3
+ 8001900:	4a33      	ldr	r2, [pc, #204]	; (80019d0 <StartDefaultTask+0xc18>)
+ 8001902:	460b      	mov	r3, r1
+ 8001904:	009b      	lsls	r3, r3, #2
+ 8001906:	440b      	add	r3, r1
+ 8001908:	011b      	lsls	r3, r3, #4
+ 800190a:	4413      	add	r3, r2
+ 800190c:	3347      	adds	r3, #71	; 0x47
+ 800190e:	781a      	ldrb	r2, [r3, #0]
+ 8001910:	4b31      	ldr	r3, [pc, #196]	; (80019d8 <StartDefaultTask+0xc20>)
+ 8001912:	781b      	ldrb	r3, [r3, #0]
+ 8001914:	429a      	cmp	r2, r3
+ 8001916:	d129      	bne.n	800196c <StartDefaultTask+0xbb4>
 	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
- 8001916:	482d      	ldr	r0, [pc, #180]	; (80019cc <StartDefaultTask+0xc14>)
- 8001918:	f003 fc9a 	bl	8005250 <HAL_TIM_Base_Stop_IT>
+ 8001918:	4830      	ldr	r0, [pc, #192]	; (80019dc <StartDefaultTask+0xc24>)
+ 800191a:	f003 fc99 	bl	8005250 <HAL_TIM_Base_Stop_IT>
 	  					osThreadSuspend(sendDataHandle);
- 800191c:	4b2c      	ldr	r3, [pc, #176]	; (80019d0 <StartDefaultTask+0xc18>)
- 800191e:	681b      	ldr	r3, [r3, #0]
- 8001920:	4618      	mov	r0, r3
- 8001922:	f005 fde1 	bl	80074e8 <osThreadSuspend>
+ 800191e:	4b30      	ldr	r3, [pc, #192]	; (80019e0 <StartDefaultTask+0xc28>)
+ 8001920:	681b      	ldr	r3, [r3, #0]
+ 8001922:	4618      	mov	r0, r3
+ 8001924:	f005 fde0 	bl	80074e8 <osThreadSuspend>
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
- 8001926:	4b24      	ldr	r3, [pc, #144]	; (80019b8 <StartDefaultTask+0xc00>)
- 8001928:	781b      	ldrb	r3, [r3, #0]
- 800192a:	461a      	mov	r2, r3
- 800192c:	4923      	ldr	r1, [pc, #140]	; (80019bc <StartDefaultTask+0xc04>)
- 800192e:	4613      	mov	r3, r2
- 8001930:	009b      	lsls	r3, r3, #2
- 8001932:	4413      	add	r3, r2
- 8001934:	011b      	lsls	r3, r3, #4
- 8001936:	440b      	add	r3, r1
- 8001938:	3314      	adds	r3, #20
- 800193a:	6819      	ldr	r1, [r3, #0]
- 800193c:	1c48      	adds	r0, r1, #1
- 800193e:	4c1f      	ldr	r4, [pc, #124]	; (80019bc <StartDefaultTask+0xc04>)
- 8001940:	4613      	mov	r3, r2
- 8001942:	009b      	lsls	r3, r3, #2
- 8001944:	4413      	add	r3, r2
- 8001946:	011b      	lsls	r3, r3, #4
- 8001948:	4423      	add	r3, r4
- 800194a:	3314      	adds	r3, #20
- 800194c:	6018      	str	r0, [r3, #0]
- 800194e:	4b1a      	ldr	r3, [pc, #104]	; (80019b8 <StartDefaultTask+0xc00>)
- 8001950:	781b      	ldrb	r3, [r3, #0]
- 8001952:	4618      	mov	r0, r3
- 8001954:	7809      	ldrb	r1, [r1, #0]
- 8001956:	4a19      	ldr	r2, [pc, #100]	; (80019bc <StartDefaultTask+0xc04>)
- 8001958:	4603      	mov	r3, r0
- 800195a:	009b      	lsls	r3, r3, #2
- 800195c:	4403      	add	r3, r0
- 800195e:	011b      	lsls	r3, r3, #4
- 8001960:	4413      	add	r3, r2
- 8001962:	3318      	adds	r3, #24
- 8001964:	460a      	mov	r2, r1
- 8001966:	701a      	strb	r2, [r3, #0]
- 8001968:	e01d      	b.n	80019a6 <StartDefaultTask+0xbee>
+ 8001928:	4b28      	ldr	r3, [pc, #160]	; (80019cc <StartDefaultTask+0xc14>)
+ 800192a:	781b      	ldrb	r3, [r3, #0]
+ 800192c:	461a      	mov	r2, r3
+ 800192e:	4928      	ldr	r1, [pc, #160]	; (80019d0 <StartDefaultTask+0xc18>)
+ 8001930:	4613      	mov	r3, r2
+ 8001932:	009b      	lsls	r3, r3, #2
+ 8001934:	4413      	add	r3, r2
+ 8001936:	011b      	lsls	r3, r3, #4
+ 8001938:	440b      	add	r3, r1
+ 800193a:	3314      	adds	r3, #20
+ 800193c:	6819      	ldr	r1, [r3, #0]
+ 800193e:	1c48      	adds	r0, r1, #1
+ 8001940:	4c23      	ldr	r4, [pc, #140]	; (80019d0 <StartDefaultTask+0xc18>)
+ 8001942:	4613      	mov	r3, r2
+ 8001944:	009b      	lsls	r3, r3, #2
+ 8001946:	4413      	add	r3, r2
+ 8001948:	011b      	lsls	r3, r3, #4
+ 800194a:	4423      	add	r3, r4
+ 800194c:	3314      	adds	r3, #20
+ 800194e:	6018      	str	r0, [r3, #0]
+ 8001950:	4b1e      	ldr	r3, [pc, #120]	; (80019cc <StartDefaultTask+0xc14>)
+ 8001952:	781b      	ldrb	r3, [r3, #0]
+ 8001954:	4618      	mov	r0, r3
+ 8001956:	7809      	ldrb	r1, [r1, #0]
+ 8001958:	4a1d      	ldr	r2, [pc, #116]	; (80019d0 <StartDefaultTask+0xc18>)
+ 800195a:	4603      	mov	r3, r0
+ 800195c:	009b      	lsls	r3, r3, #2
+ 800195e:	4403      	add	r3, r0
+ 8001960:	011b      	lsls	r3, r3, #4
+ 8001962:	4413      	add	r3, r2
+ 8001964:	3318      	adds	r3, #24
+ 8001966:	460a      	mov	r2, r1
+ 8001968:	701a      	strb	r2, [r3, #0]
+ 800196a:	e01d      	b.n	80019a8 <StartDefaultTask+0xbf0>
 	  				}else if(25 >= pumpTestsParameters[0].UMTI[7]){	// if current temp is >= temp limit
- 800196a:	4b14      	ldr	r3, [pc, #80]	; (80019bc <StartDefaultTask+0xc04>)
- 800196c:	f893 304b 	ldrb.w	r3, [r3, #75]	; 0x4b
- 8001970:	2b19      	cmp	r3, #25
- 8001972:	d818      	bhi.n	80019a6 <StartDefaultTask+0xbee>
+ 800196c:	4b18      	ldr	r3, [pc, #96]	; (80019d0 <StartDefaultTask+0xc18>)
+ 800196e:	f893 304b 	ldrb.w	r3, [r3, #75]	; 0x4b
+ 8001972:	2b19      	cmp	r3, #25
+ 8001974:	d818      	bhi.n	80019a8 <StartDefaultTask+0xbf0>
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
- 8001974:	4b10      	ldr	r3, [pc, #64]	; (80019b8 <StartDefaultTask+0xc00>)
- 8001976:	781b      	ldrb	r3, [r3, #0]
- 8001978:	4619      	mov	r1, r3
- 800197a:	4a10      	ldr	r2, [pc, #64]	; (80019bc <StartDefaultTask+0xc04>)
- 800197c:	460b      	mov	r3, r1
- 800197e:	009b      	lsls	r3, r3, #2
- 8001980:	440b      	add	r3, r1
- 8001982:	011b      	lsls	r3, r3, #4
- 8001984:	4413      	add	r3, r2
- 8001986:	3318      	adds	r3, #24
- 8001988:	220e      	movs	r2, #14
- 800198a:	701a      	strb	r2, [r3, #0]
+ 8001976:	4b15      	ldr	r3, [pc, #84]	; (80019cc <StartDefaultTask+0xc14>)
+ 8001978:	781b      	ldrb	r3, [r3, #0]
+ 800197a:	4619      	mov	r1, r3
+ 800197c:	4a14      	ldr	r2, [pc, #80]	; (80019d0 <StartDefaultTask+0xc18>)
+ 800197e:	460b      	mov	r3, r1
+ 8001980:	009b      	lsls	r3, r3, #2
+ 8001982:	440b      	add	r3, r1
+ 8001984:	011b      	lsls	r3, r3, #4
+ 8001986:	4413      	add	r3, r2
+ 8001988:	3318      	adds	r3, #24
+ 800198a:	220e      	movs	r2, #14
+ 800198c:	701a      	strb	r2, [r3, #0]
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
- 800198c:	4b0a      	ldr	r3, [pc, #40]	; (80019b8 <StartDefaultTask+0xc00>)
- 800198e:	781b      	ldrb	r3, [r3, #0]
- 8001990:	4619      	mov	r1, r3
- 8001992:	4a0a      	ldr	r2, [pc, #40]	; (80019bc <StartDefaultTask+0xc04>)
- 8001994:	460b      	mov	r3, r1
- 8001996:	009b      	lsls	r3, r3, #2
- 8001998:	440b      	add	r3, r1
- 800199a:	011b      	lsls	r3, r3, #4
- 800199c:	4413      	add	r3, r2
- 800199e:	334e      	adds	r3, #78	; 0x4e
- 80019a0:	2202      	movs	r2, #2
- 80019a2:	701a      	strb	r2, [r3, #0]
+ 800198e:	4b0f      	ldr	r3, [pc, #60]	; (80019cc <StartDefaultTask+0xc14>)
+ 8001990:	781b      	ldrb	r3, [r3, #0]
+ 8001992:	4619      	mov	r1, r3
+ 8001994:	4a0e      	ldr	r2, [pc, #56]	; (80019d0 <StartDefaultTask+0xc18>)
+ 8001996:	460b      	mov	r3, r1
+ 8001998:	009b      	lsls	r3, r3, #2
+ 800199a:	440b      	add	r3, r1
+ 800199c:	011b      	lsls	r3, r3, #4
+ 800199e:	4413      	add	r3, r2
+ 80019a0:	334e      	adds	r3, #78	; 0x4e
+ 80019a2:	2202      	movs	r2, #2
+ 80019a4:	701a      	strb	r2, [r3, #0]
 	  					break;
- 80019a4:	e07b      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80019a6:	e07a      	b.n	8001a9e <StartDefaultTask+0xce6>
 	  				}
 	  				osDelay(100);	// Checks condition every 100 ms
- 80019a6:	2064      	movs	r0, #100	; 0x64
- 80019a8:	f005 fe06 	bl	80075b8 <osDelay>
+ 80019a8:	2064      	movs	r0, #100	; 0x64
+ 80019aa:	f005 fe05 	bl	80075b8 <osDelay>
 	  				break;
- 80019ac:	e077      	b.n	8001a9e <StartDefaultTask+0xce6>
-//	  				stepperStep(800);
-//	  				HAL_TIM_Base_Start_IT(&htim11);
-//					osDelay(3000);
-//					stepperStep(0);
-//					HAL_TIM_Base_Start_IT(&htim11);
+ 80019ae:	e076      	b.n	8001a9e <StartDefaultTask+0xce6>
+	  			case IDLE:
+
 					osDelay(3000);
- 80019ae:	f640 30b8 	movw	r0, #3000	; 0xbb8
- 80019b2:	f005 fe01 	bl	80075b8 <osDelay>
+ 80019b0:	f640 30b8 	movw	r0, #3000	; 0xbb8
+ 80019b4:	f005 fe00 	bl	80075b8 <osDelay>
 
 	  				break;
- 80019b6:	e072      	b.n	8001a9e <StartDefaultTask+0xce6>
- 80019b8:	20000948 	.word	0x20000948
- 80019bc:	200008a8 	.word	0x200008a8
- 80019c0:	20000310 	.word	0x20000310
- 80019c4:	200008e3 	.word	0x200008e3
- 80019c8:	2000021c 	.word	0x2000021c
- 80019cc:	200002c4 	.word	0x200002c4
- 80019d0:	200008a4 	.word	0x200008a4
- 80019d4:	2000094c 	.word	0x2000094c
- 80019d8:	20000950 	.word	0x20000950
- 80019dc:	20000954 	.word	0x20000954
- 80019e0:	2000096d 	.word	0x2000096d
- 80019e4:	2000096e 	.word	0x2000096e
+ 80019b8:	e071      	b.n	8001a9e <StartDefaultTask+0xce6>
+ 80019ba:	bf00      	nop
+ 80019bc:	2000021c 	.word	0x2000021c
+ 80019c0:	2000094c 	.word	0x2000094c
+ 80019c4:	20000950 	.word	0x20000950
+ 80019c8:	20000954 	.word	0x20000954
+ 80019cc:	20000948 	.word	0x20000948
+ 80019d0:	200008a8 	.word	0x200008a8
+ 80019d4:	2000096d 	.word	0x2000096d
+ 80019d8:	2000096e 	.word	0x2000096e
+ 80019dc:	200002c4 	.word	0x200002c4
+ 80019e0:	200008a4 	.word	0x200008a4
+ 80019e4:	20000310 	.word	0x20000310
  80019e8:	200008ec 	.word	0x200008ec
  80019ec:	20000278 	.word	0x20000278
 	  			case FAIL_STATE:
@@ -4403,35 +4400,35 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
  80020ee:	613b      	str	r3, [r7, #16]
  80020f0:	693b      	ldr	r3, [r7, #16]
 
-    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
  80020f2:	4b1b      	ldr	r3, [pc, #108]	; (8002160 <HAL_ADC_MspInit+0xa8>)
  80020f4:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  80020f6:	4a1a      	ldr	r2, [pc, #104]	; (8002160 <HAL_ADC_MspInit+0xa8>)
- 80020f8:	f043 0301 	orr.w	r3, r3, #1
+ 80020f8:	f043 0304 	orr.w	r3, r3, #4
  80020fc:	6313      	str	r3, [r2, #48]	; 0x30
  80020fe:	4b18      	ldr	r3, [pc, #96]	; (8002160 <HAL_ADC_MspInit+0xa8>)
  8002100:	6b1b      	ldr	r3, [r3, #48]	; 0x30
- 8002102:	f003 0301 	and.w	r3, r3, #1
+ 8002102:	f003 0304 	and.w	r3, r3, #4
  8002106:	60fb      	str	r3, [r7, #12]
  8002108:	68fb      	ldr	r3, [r7, #12]
-    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOA_CLK_ENABLE();
  800210a:	4b15      	ldr	r3, [pc, #84]	; (8002160 <HAL_ADC_MspInit+0xa8>)
  800210c:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  800210e:	4a14      	ldr	r2, [pc, #80]	; (8002160 <HAL_ADC_MspInit+0xa8>)
- 8002110:	f043 0302 	orr.w	r3, r3, #2
+ 8002110:	f043 0301 	orr.w	r3, r3, #1
  8002114:	6313      	str	r3, [r2, #48]	; 0x30
  8002116:	4b12      	ldr	r3, [pc, #72]	; (8002160 <HAL_ADC_MspInit+0xa8>)
  8002118:	6b1b      	ldr	r3, [r3, #48]	; 0x30
- 800211a:	f003 0302 	and.w	r3, r3, #2
+ 800211a:	f003 0301 	and.w	r3, r3, #1
  800211e:	60bb      	str	r3, [r7, #8]
  8002120:	68bb      	ldr	r3, [r7, #8]
-    /**ADC1 GPIO Configuration
+    PC0     ------> ADC1_IN10
+    PA3     ------> ADC1_IN3
     PA5     ------> ADC1_IN5
     PA6     ------> ADC1_IN6
-    PB1     ------> ADC1_IN9
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6;
- 8002122:	2360      	movs	r3, #96	; 0x60
+    GPIO_InitStruct.Pin = GPIO_PIN_0;
+ 8002122:	2301      	movs	r3, #1
  8002124:	617b      	str	r3, [r7, #20]
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
  8002126:	2303      	movs	r3, #3
@@ -4439,14 +4436,14 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
  800212a:	2300      	movs	r3, #0
  800212c:	61fb      	str	r3, [r7, #28]
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
  800212e:	f107 0314 	add.w	r3, r7, #20
  8002132:	4619      	mov	r1, r3
  8002134:	480b      	ldr	r0, [pc, #44]	; (8002164 <HAL_ADC_MspInit+0xac>)
  8002136:	f001 fb05 	bl	8003744 <HAL_GPIO_Init>
 
-    GPIO_InitStruct.Pin = GPIO_PIN_1;
- 800213a:	2302      	movs	r3, #2
+    GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_5|GPIO_PIN_6;
+ 800213a:	2368      	movs	r3, #104	; 0x68
  800213c:	617b      	str	r3, [r7, #20]
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
  800213e:	2303      	movs	r3, #3
@@ -4454,7 +4451,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
  8002142:	2300      	movs	r3, #0
  8002144:	61fb      	str	r3, [r7, #28]
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
  8002146:	f107 0314 	add.w	r3, r7, #20
  800214a:	4619      	mov	r1, r3
  800214c:	4806      	ldr	r0, [pc, #24]	; (8002168 <HAL_ADC_MspInit+0xb0>)
@@ -4472,8 +4469,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
  800215a:	bf00      	nop
  800215c:	40012000 	.word	0x40012000
  8002160:	40023800 	.word	0x40023800
- 8002164:	40020000 	.word	0x40020000
- 8002168:	40020400 	.word	0x40020400
+ 8002164:	40020800 	.word	0x40020800
+ 8002168:	40020000 	.word	0x40020000
 
 0800216c <HAL_DAC_MspInit>:
 * This function configures the hardware resources used in this example
@@ -4922,29 +4919,14 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* hpcd)
  8002440:	40020000 	.word	0x40020000
 
 08002444 <HAL_InitTick>:
-  *         reset by HAL_Init() or at any time when clock is configured, by HAL_RCC_ClockConfig().
-  * @param  TickPriority: Tick interrupt priority.
-  * @retval HAL status
-  */
-HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
-{
  8002444:	b580      	push	{r7, lr}
  8002446:	b08e      	sub	sp, #56	; 0x38
  8002448:	af00      	add	r7, sp, #0
  800244a:	6078      	str	r0, [r7, #4]
-  RCC_ClkInitTypeDef    clkconfig;
-  uint32_t              uwTimclock, uwAPB1Prescaler = 0U;
  800244c:	2300      	movs	r3, #0
  800244e:	62fb      	str	r3, [r7, #44]	; 0x2c
-
-  uint32_t              uwPrescalerValue = 0U;
  8002450:	2300      	movs	r3, #0
  8002452:	62bb      	str	r3, [r7, #40]	; 0x28
-  uint32_t              pFLatency;
-  HAL_StatusTypeDef     status;
-
-  /* Enable TIM6 clock */
-  __HAL_RCC_TIM6_CLK_ENABLE();
  8002454:	4b33      	ldr	r3, [pc, #204]	; (8002524 <HAL_InitTick+0xe0>)
  8002456:	6c1b      	ldr	r3, [r3, #64]	; 0x40
  8002458:	4a32      	ldr	r2, [pc, #200]	; (8002524 <HAL_InitTick+0xe0>)
@@ -4955,135 +4937,77 @@ HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  8002464:	f003 0310 	and.w	r3, r3, #16
  8002468:	60fb      	str	r3, [r7, #12]
  800246a:	68fb      	ldr	r3, [r7, #12]
-
-  /* Get clock configuration */
-  HAL_RCC_GetClockConfig(&clkconfig, &pFLatency);
  800246c:	f107 0210 	add.w	r2, r7, #16
  8002470:	f107 0314 	add.w	r3, r7, #20
  8002474:	4611      	mov	r1, r2
  8002476:	4618      	mov	r0, r3
  8002478:	f002 f9c0 	bl	80047fc <HAL_RCC_GetClockConfig>
-
-  /* Get APB1 prescaler */
-  uwAPB1Prescaler = clkconfig.APB1CLKDivider;
  800247c:	6a3b      	ldr	r3, [r7, #32]
  800247e:	62fb      	str	r3, [r7, #44]	; 0x2c
-  /* Compute TIM6 clock */
-  if (uwAPB1Prescaler == RCC_HCLK_DIV1)
  8002480:	6afb      	ldr	r3, [r7, #44]	; 0x2c
  8002482:	2b00      	cmp	r3, #0
  8002484:	d103      	bne.n	800248e <HAL_InitTick+0x4a>
-  {
-    uwTimclock = HAL_RCC_GetPCLK1Freq();
  8002486:	f002 f991 	bl	80047ac <HAL_RCC_GetPCLK1Freq>
  800248a:	6378      	str	r0, [r7, #52]	; 0x34
  800248c:	e004      	b.n	8002498 <HAL_InitTick+0x54>
-  }
-  else
-  {
-    uwTimclock = 2UL * HAL_RCC_GetPCLK1Freq();
  800248e:	f002 f98d 	bl	80047ac <HAL_RCC_GetPCLK1Freq>
  8002492:	4603      	mov	r3, r0
  8002494:	005b      	lsls	r3, r3, #1
  8002496:	637b      	str	r3, [r7, #52]	; 0x34
-  }
-
-  /* Compute the prescaler value to have TIM6 counter clock equal to 1MHz */
-  uwPrescalerValue = (uint32_t) ((uwTimclock / 1000000U) - 1U);
  8002498:	6b7b      	ldr	r3, [r7, #52]	; 0x34
  800249a:	4a23      	ldr	r2, [pc, #140]	; (8002528 <HAL_InitTick+0xe4>)
  800249c:	fba2 2303 	umull	r2, r3, r2, r3
  80024a0:	0c9b      	lsrs	r3, r3, #18
  80024a2:	3b01      	subs	r3, #1
  80024a4:	62bb      	str	r3, [r7, #40]	; 0x28
-
-  /* Initialize TIM6 */
-  htim6.Instance = TIM6;
  80024a6:	4b21      	ldr	r3, [pc, #132]	; (800252c <HAL_InitTick+0xe8>)
  80024a8:	4a21      	ldr	r2, [pc, #132]	; (8002530 <HAL_InitTick+0xec>)
  80024aa:	601a      	str	r2, [r3, #0]
-  + Period = [(TIM6CLK/1000) - 1]. to have a (1/1000) s time base.
-  + Prescaler = (uwTimclock/1000000 - 1) to have a 1MHz counter clock.
-  + ClockDivision = 0
-  + Counter direction = Up
-  */
-  htim6.Init.Period = (1000000U / 1000U) - 1U;
  80024ac:	4b1f      	ldr	r3, [pc, #124]	; (800252c <HAL_InitTick+0xe8>)
  80024ae:	f240 32e7 	movw	r2, #999	; 0x3e7
  80024b2:	60da      	str	r2, [r3, #12]
-  htim6.Init.Prescaler = uwPrescalerValue;
  80024b4:	4a1d      	ldr	r2, [pc, #116]	; (800252c <HAL_InitTick+0xe8>)
  80024b6:	6abb      	ldr	r3, [r7, #40]	; 0x28
  80024b8:	6053      	str	r3, [r2, #4]
-  htim6.Init.ClockDivision = 0;
  80024ba:	4b1c      	ldr	r3, [pc, #112]	; (800252c <HAL_InitTick+0xe8>)
  80024bc:	2200      	movs	r2, #0
  80024be:	611a      	str	r2, [r3, #16]
-  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
  80024c0:	4b1a      	ldr	r3, [pc, #104]	; (800252c <HAL_InitTick+0xe8>)
  80024c2:	2200      	movs	r2, #0
  80024c4:	609a      	str	r2, [r3, #8]
-  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
  80024c6:	4b19      	ldr	r3, [pc, #100]	; (800252c <HAL_InitTick+0xe8>)
  80024c8:	2200      	movs	r2, #0
  80024ca:	619a      	str	r2, [r3, #24]
-
-  status = HAL_TIM_Base_Init(&htim6);
  80024cc:	4817      	ldr	r0, [pc, #92]	; (800252c <HAL_InitTick+0xe8>)
  80024ce:	f002 fdef 	bl	80050b0 <HAL_TIM_Base_Init>
  80024d2:	4603      	mov	r3, r0
  80024d4:	f887 3033 	strb.w	r3, [r7, #51]	; 0x33
-  if (status == HAL_OK)
  80024d8:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
  80024dc:	2b00      	cmp	r3, #0
  80024de:	d11b      	bne.n	8002518 <HAL_InitTick+0xd4>
-  {
-    /* Start the TIM time Base generation in interrupt mode */
-    status = HAL_TIM_Base_Start_IT(&htim6);
  80024e0:	4812      	ldr	r0, [pc, #72]	; (800252c <HAL_InitTick+0xe8>)
  80024e2:	f002 fe3d 	bl	8005160 <HAL_TIM_Base_Start_IT>
  80024e6:	4603      	mov	r3, r0
  80024e8:	f887 3033 	strb.w	r3, [r7, #51]	; 0x33
-    if (status == HAL_OK)
  80024ec:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
  80024f0:	2b00      	cmp	r3, #0
  80024f2:	d111      	bne.n	8002518 <HAL_InitTick+0xd4>
-    {
-    /* Enable the TIM6 global Interrupt */
-        HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
  80024f4:	2036      	movs	r0, #54	; 0x36
  80024f6:	f000 ff2f 	bl	8003358 <HAL_NVIC_EnableIRQ>
-      /* Configure the SysTick IRQ priority */
-      if (TickPriority < (1UL << __NVIC_PRIO_BITS))
  80024fa:	687b      	ldr	r3, [r7, #4]
  80024fc:	2b0f      	cmp	r3, #15
  80024fe:	d808      	bhi.n	8002512 <HAL_InitTick+0xce>
-      {
-        /* Configure the TIM IRQ priority */
-        HAL_NVIC_SetPriority(TIM6_DAC_IRQn, TickPriority, 0U);
  8002500:	2200      	movs	r2, #0
  8002502:	6879      	ldr	r1, [r7, #4]
  8002504:	2036      	movs	r0, #54	; 0x36
  8002506:	f000 ff0b 	bl	8003320 <HAL_NVIC_SetPriority>
-        uwTickPrio = TickPriority;
  800250a:	4a0a      	ldr	r2, [pc, #40]	; (8002534 <HAL_InitTick+0xf0>)
  800250c:	687b      	ldr	r3, [r7, #4]
  800250e:	6013      	str	r3, [r2, #0]
  8002510:	e002      	b.n	8002518 <HAL_InitTick+0xd4>
-      }
-      else
-      {
-        status = HAL_ERROR;
  8002512:	2301      	movs	r3, #1
  8002514:	f887 3033 	strb.w	r3, [r7, #51]	; 0x33
-      }
-    }
-  }
-
- /* Return function status */
-  return status;
  8002518:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
-}
  800251c:	4618      	mov	r0, r3
  800251e:	3738      	adds	r7, #56	; 0x38
  8002520:	46bd      	mov	sp, r7
@@ -5298,81 +5222,50 @@ void TIM7_IRQHandler(void)
  80025c4:	20000278 	.word	0x20000278
 
 080025c8 <_getpid>:
-void initialise_monitor_handles()
-{
-}
-
-int _getpid(void)
-{
  80025c8:	b480      	push	{r7}
  80025ca:	af00      	add	r7, sp, #0
-  return 1;
  80025cc:	2301      	movs	r3, #1
-}
  80025ce:	4618      	mov	r0, r3
  80025d0:	46bd      	mov	sp, r7
  80025d2:	f85d 7b04 	ldr.w	r7, [sp], #4
  80025d6:	4770      	bx	lr
 
 080025d8 <_kill>:
-
-int _kill(int pid, int sig)
-{
  80025d8:	b580      	push	{r7, lr}
  80025da:	b082      	sub	sp, #8
  80025dc:	af00      	add	r7, sp, #0
  80025de:	6078      	str	r0, [r7, #4]
  80025e0:	6039      	str	r1, [r7, #0]
-  (void)pid;
-  (void)sig;
-  errno = EINVAL;
  80025e2:	f008 fbc5 	bl	800ad70 <__errno>
  80025e6:	4603      	mov	r3, r0
  80025e8:	2216      	movs	r2, #22
  80025ea:	601a      	str	r2, [r3, #0]
-  return -1;
  80025ec:	f04f 33ff 	mov.w	r3, #4294967295
-}
  80025f0:	4618      	mov	r0, r3
  80025f2:	3708      	adds	r7, #8
  80025f4:	46bd      	mov	sp, r7
  80025f6:	bd80      	pop	{r7, pc}
 
 080025f8 <_exit>:
-
-void _exit (int status)
-{
  80025f8:	b580      	push	{r7, lr}
  80025fa:	b082      	sub	sp, #8
  80025fc:	af00      	add	r7, sp, #0
  80025fe:	6078      	str	r0, [r7, #4]
-  _kill(status, -1);
  8002600:	f04f 31ff 	mov.w	r1, #4294967295
  8002604:	6878      	ldr	r0, [r7, #4]
  8002606:	f7ff ffe7 	bl	80025d8 <_kill>
-  while (1) {}    /* Make sure we hang here */
  800260a:	e7fe      	b.n	800260a <_exit+0x12>
 
 0800260c <_read>:
-}
-
-__attribute__((weak)) int _read(int file, char *ptr, int len)
-{
  800260c:	b580      	push	{r7, lr}
  800260e:	b086      	sub	sp, #24
  8002610:	af00      	add	r7, sp, #0
  8002612:	60f8      	str	r0, [r7, #12]
  8002614:	60b9      	str	r1, [r7, #8]
  8002616:	607a      	str	r2, [r7, #4]
-  (void)file;
-  int DataIdx;
-
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  8002618:	2300      	movs	r3, #0
  800261a:	617b      	str	r3, [r7, #20]
  800261c:	e00a      	b.n	8002634 <_read+0x28>
-  {
-    *ptr++ = __io_getchar();
  800261e:	f3af 8000 	nop.w
  8002622:	4601      	mov	r1, r0
  8002624:	68bb      	ldr	r3, [r7, #8]
@@ -5380,7 +5273,6 @@ __attribute__((weak)) int _read(int file, char *ptr, int len)
  8002628:	60ba      	str	r2, [r7, #8]
  800262a:	b2ca      	uxtb	r2, r1
  800262c:	701a      	strb	r2, [r3, #0]
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  800262e:	697b      	ldr	r3, [r7, #20]
  8002630:	3301      	adds	r3, #1
  8002632:	617b      	str	r3, [r7, #20]
@@ -5388,42 +5280,28 @@ __attribute__((weak)) int _read(int file, char *ptr, int len)
  8002636:	687b      	ldr	r3, [r7, #4]
  8002638:	429a      	cmp	r2, r3
  800263a:	dbf0      	blt.n	800261e <_read+0x12>
-  }
-
-  return len;
  800263c:	687b      	ldr	r3, [r7, #4]
-}
  800263e:	4618      	mov	r0, r3
  8002640:	3718      	adds	r7, #24
  8002642:	46bd      	mov	sp, r7
  8002644:	bd80      	pop	{r7, pc}
 
 08002646 <_write>:
-
-__attribute__((weak)) int _write(int file, char *ptr, int len)
-{
  8002646:	b580      	push	{r7, lr}
  8002648:	b086      	sub	sp, #24
  800264a:	af00      	add	r7, sp, #0
  800264c:	60f8      	str	r0, [r7, #12]
  800264e:	60b9      	str	r1, [r7, #8]
  8002650:	607a      	str	r2, [r7, #4]
-  (void)file;
-  int DataIdx;
-
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  8002652:	2300      	movs	r3, #0
  8002654:	617b      	str	r3, [r7, #20]
  8002656:	e009      	b.n	800266c <_write+0x26>
-  {
-    __io_putchar(*ptr++);
  8002658:	68bb      	ldr	r3, [r7, #8]
  800265a:	1c5a      	adds	r2, r3, #1
  800265c:	60ba      	str	r2, [r7, #8]
  800265e:	781b      	ldrb	r3, [r3, #0]
  8002660:	4618      	mov	r0, r3
  8002662:	f3af 8000 	nop.w
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
  8002666:	697b      	ldr	r3, [r7, #20]
  8002668:	3301      	adds	r3, #1
  800266a:	617b      	str	r3, [r7, #20]
@@ -5431,27 +5309,18 @@ __attribute__((weak)) int _write(int file, char *ptr, int len)
  800266e:	687b      	ldr	r3, [r7, #4]
  8002670:	429a      	cmp	r2, r3
  8002672:	dbf1      	blt.n	8002658 <_write+0x12>
-  }
-  return len;
  8002674:	687b      	ldr	r3, [r7, #4]
-}
  8002676:	4618      	mov	r0, r3
  8002678:	3718      	adds	r7, #24
  800267a:	46bd      	mov	sp, r7
  800267c:	bd80      	pop	{r7, pc}
 
 0800267e <_close>:
-
-int _close(int file)
-{
  800267e:	b480      	push	{r7}
  8002680:	b083      	sub	sp, #12
  8002682:	af00      	add	r7, sp, #0
  8002684:	6078      	str	r0, [r7, #4]
-  (void)file;
-  return -1;
  8002686:	f04f 33ff 	mov.w	r3, #4294967295
-}
  800268a:	4618      	mov	r0, r3
  800268c:	370c      	adds	r7, #12
  800268e:	46bd      	mov	sp, r7
@@ -5459,23 +5328,15 @@ int _close(int file)
  8002694:	4770      	bx	lr
 
 08002696 <_fstat>:
-
-
-int _fstat(int file, struct stat *st)
-{
  8002696:	b480      	push	{r7}
  8002698:	b083      	sub	sp, #12
  800269a:	af00      	add	r7, sp, #0
  800269c:	6078      	str	r0, [r7, #4]
  800269e:	6039      	str	r1, [r7, #0]
-  (void)file;
-  st->st_mode = S_IFCHR;
  80026a0:	683b      	ldr	r3, [r7, #0]
  80026a2:	f44f 5200 	mov.w	r2, #8192	; 0x2000
  80026a6:	605a      	str	r2, [r3, #4]
-  return 0;
  80026a8:	2300      	movs	r3, #0
-}
  80026aa:	4618      	mov	r0, r3
  80026ac:	370c      	adds	r7, #12
  80026ae:	46bd      	mov	sp, r7
@@ -5483,17 +5344,11 @@ int _fstat(int file, struct stat *st)
  80026b4:	4770      	bx	lr
 
 080026b6 <_isatty>:
-
-int _isatty(int file)
-{
  80026b6:	b480      	push	{r7}
  80026b8:	b083      	sub	sp, #12
  80026ba:	af00      	add	r7, sp, #0
  80026bc:	6078      	str	r0, [r7, #4]
-  (void)file;
-  return 1;
  80026be:	2301      	movs	r3, #1
-}
  80026c0:	4618      	mov	r0, r3
  80026c2:	370c      	adds	r7, #12
  80026c4:	46bd      	mov	sp, r7
@@ -5501,21 +5356,13 @@ int _isatty(int file)
  80026ca:	4770      	bx	lr
 
 080026cc <_lseek>:
-
-int _lseek(int file, int ptr, int dir)
-{
  80026cc:	b480      	push	{r7}
  80026ce:	b085      	sub	sp, #20
  80026d0:	af00      	add	r7, sp, #0
  80026d2:	60f8      	str	r0, [r7, #12]
  80026d4:	60b9      	str	r1, [r7, #8]
  80026d6:	607a      	str	r2, [r7, #4]
-  (void)file;
-  (void)ptr;
-  (void)dir;
-  return 0;
  80026d8:	2300      	movs	r3, #0
-}
  80026da:	4618      	mov	r0, r3
  80026dc:	3714      	adds	r7, #20
  80026de:	46bd      	mov	sp, r7
@@ -5524,44 +5371,23 @@ int _lseek(int file, int ptr, int dir)
 	...
 
 080026e8 <_sbrk>:
- *
- * @param incr Memory size
- * @return Pointer to allocated memory
- */
-void *_sbrk(ptrdiff_t incr)
-{
  80026e8:	b580      	push	{r7, lr}
  80026ea:	b086      	sub	sp, #24
  80026ec:	af00      	add	r7, sp, #0
  80026ee:	6078      	str	r0, [r7, #4]
-  extern uint8_t _end; /* Symbol defined in the linker script */
-  extern uint8_t _estack; /* Symbol defined in the linker script */
-  extern uint32_t _Min_Stack_Size; /* Symbol defined in the linker script */
-  const uint32_t stack_limit = (uint32_t)&_estack - (uint32_t)&_Min_Stack_Size;
  80026f0:	4a14      	ldr	r2, [pc, #80]	; (8002744 <_sbrk+0x5c>)
  80026f2:	4b15      	ldr	r3, [pc, #84]	; (8002748 <_sbrk+0x60>)
  80026f4:	1ad3      	subs	r3, r2, r3
  80026f6:	617b      	str	r3, [r7, #20]
-  const uint8_t *max_heap = (uint8_t *)stack_limit;
  80026f8:	697b      	ldr	r3, [r7, #20]
  80026fa:	613b      	str	r3, [r7, #16]
-  uint8_t *prev_heap_end;
-
-  /* Initialize heap end at first call */
-  if (NULL == __sbrk_heap_end)
  80026fc:	4b13      	ldr	r3, [pc, #76]	; (800274c <_sbrk+0x64>)
  80026fe:	681b      	ldr	r3, [r3, #0]
  8002700:	2b00      	cmp	r3, #0
  8002702:	d102      	bne.n	800270a <_sbrk+0x22>
-  {
-    __sbrk_heap_end = &_end;
  8002704:	4b11      	ldr	r3, [pc, #68]	; (800274c <_sbrk+0x64>)
  8002706:	4a12      	ldr	r2, [pc, #72]	; (8002750 <_sbrk+0x68>)
  8002708:	601a      	str	r2, [r3, #0]
-  }
-
-  /* Protect heap from growing into the reserved MSP stack */
-  if (__sbrk_heap_end + incr > max_heap)
  800270a:	4b10      	ldr	r3, [pc, #64]	; (800274c <_sbrk+0x64>)
  800270c:	681a      	ldr	r2, [r3, #0]
  800270e:	687b      	ldr	r3, [r7, #4]
@@ -5569,32 +5395,22 @@ void *_sbrk(ptrdiff_t incr)
  8002712:	693a      	ldr	r2, [r7, #16]
  8002714:	429a      	cmp	r2, r3
  8002716:	d207      	bcs.n	8002728 <_sbrk+0x40>
-  {
-    errno = ENOMEM;
  8002718:	f008 fb2a 	bl	800ad70 <__errno>
  800271c:	4603      	mov	r3, r0
  800271e:	220c      	movs	r2, #12
  8002720:	601a      	str	r2, [r3, #0]
-    return (void *)-1;
  8002722:	f04f 33ff 	mov.w	r3, #4294967295
  8002726:	e009      	b.n	800273c <_sbrk+0x54>
-  }
-
-  prev_heap_end = __sbrk_heap_end;
  8002728:	4b08      	ldr	r3, [pc, #32]	; (800274c <_sbrk+0x64>)
  800272a:	681b      	ldr	r3, [r3, #0]
  800272c:	60fb      	str	r3, [r7, #12]
-  __sbrk_heap_end += incr;
  800272e:	4b07      	ldr	r3, [pc, #28]	; (800274c <_sbrk+0x64>)
  8002730:	681a      	ldr	r2, [r3, #0]
  8002732:	687b      	ldr	r3, [r7, #4]
  8002734:	4413      	add	r3, r2
  8002736:	4a05      	ldr	r2, [pc, #20]	; (800274c <_sbrk+0x64>)
  8002738:	6013      	str	r3, [r2, #0]
-
-  return (void *)prev_heap_end;
  800273a:	68fb      	ldr	r3, [r7, #12]
-}
  800273c:	4618      	mov	r0, r3
  800273e:	3718      	adds	r7, #24
  8002740:	46bd      	mov	sp, r7
@@ -5605,28 +5421,13 @@ void *_sbrk(ptrdiff_t incr)
  8002750:	20005500 	.word	0x20005500
 
 08002754 <SystemInit>:
-  *         SystemFrequency variable.
-  * @param  None
-  * @retval None
-  */
-void SystemInit(void)
-{
  8002754:	b480      	push	{r7}
  8002756:	af00      	add	r7, sp, #0
-  /* FPU settings ------------------------------------------------------------*/
-#if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
-  SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
  8002758:	4b06      	ldr	r3, [pc, #24]	; (8002774 <SystemInit+0x20>)
  800275a:	f8d3 3088 	ldr.w	r3, [r3, #136]	; 0x88
  800275e:	4a05      	ldr	r2, [pc, #20]	; (8002774 <SystemInit+0x20>)
  8002760:	f443 0370 	orr.w	r3, r3, #15728640	; 0xf00000
  8002764:	f8c2 3088 	str.w	r3, [r2, #136]	; 0x88
-
-  /* Configure the Vector Table location -------------------------------------*/
-#if defined(USER_VECT_TAB_ADDRESS)
-  SCB->VTOR = VECT_TAB_BASE_ADDRESS | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
-#endif /* USER_VECT_TAB_ADDRESS */
-}
  8002768:	bf00      	nop
  800276a:	46bd      	mov	sp, r7
  800276c:	f85d 7b04 	ldr.w	r7, [sp], #4
@@ -5653,8 +5454,8 @@ void vacuumGaugeADC(ADC_HandleTypeDef* hadc){
  800278a:	609a      	str	r2, [r3, #8]
  800278c:	60da      	str	r2, [r3, #12]
 
-	sConfig.Channel = ADC_CHANNEL_6;
- 800278e:	2306      	movs	r3, #6
+	sConfig.Channel = ADC_CHANNEL_10;
+ 800278e:	230a      	movs	r3, #10
  8002790:	60bb      	str	r3, [r7, #8]
 	sConfig.Rank = ADC_REGULAR_RANK_1;
  8002792:	2301      	movs	r3, #1
