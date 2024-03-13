@@ -1,53 +1,62 @@
+import customtkinter as ctk
 import tkinter as tk
+import math
 
-class BorderProgressBar(tk.Tk):
+class SpinningLoaderApp(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("Border Progress Bar")
-        self.geometry("600x400")
+        self.title("Spinning Loader")
+        self.geometry("300x300")  # Increased window size for a bigger loader
 
-        # Top progress bar
-        self.top_progress = tk.Canvas(self, height=5, bg='lightgray')
-        self.top_progress.pack(fill='x')
+        # Increased canvas size to accommodate the larger loader
+        self.canvas = tk.Canvas(self, width=200, height=200, bg='white', highlightthickness=0)
+        self.canvas.pack(padx=50, pady=50)
 
-        # Left progress bar
-        self.left_progress = tk.Canvas(self, width=5, bg='lightgray')
-        self.left_progress.pack(side='left', fill='y')
+        # Parameters for the loader
+        self.loader_size = 100  # Increased diameter of the loader for a bigger circle
+        self.num_segments = 8  # Number of segments in the loader
+        self.active_segment = 0  # The currently "active" or highlighted segment
 
-        # Right progress bar
-        self.right_progress = tk.Canvas(self, width=5, bg='lightgray')
-        self.right_progress.pack(side='right', fill='y')
+        # Draw the initial loader segments
+        self.segments = self.draw_loader()
 
-        # Bottom progress bar
-        self.bottom_progress = tk.Canvas(self, height=5, bg='lightgray')
-        self.bottom_progress.pack(side='bottom', fill='x')
+        # Start the spinning animation
+        self.animate_loader()
 
-        # Start the progress animation
-        self.animate_progress()
+    def draw_loader(self):
+        segments = []
+        center_x, center_y = 100, 100  # Adjusted center of the canvas/loader for the new size
+        radius = self.loader_size / 2  # Radius of the loader
 
-    def animate_progress(self, step=10):
-        # Reset the progress if it exceeds the window size
-        if step >= self.winfo_width() or step >= self.winfo_height():
-            step = 40
+        for i in range(self.num_segments):
+            angle = 360 / self.num_segments * i
+            end_angle = angle + (360 / self.num_segments)
+            coords = self.arc_coords(center_x, center_y, radius, angle, end_angle)
+            segment = self.canvas.create_arc(coords, start=angle, extent=(360 / self.num_segments - 2), style=tk.ARC, outline='light grey', width=2)
+            segments.append(segment)
+        
+        return segments
 
-        # Clear previous progress
-        self.top_progress.delete('progress')
-        self.left_progress.delete('progress')
-        self.right_progress.delete('progress')
-        self.bottom_progress.delete('progress')
+    def arc_coords(self, cx, cy, r, start_angle, end_angle):
+        # Calculate the bounding box for the arc
+        x0 = cx - r
+        y0 = cy - r
+        x1 = cx + r
+        y1 = cy + r
+        return [x0, y0, x1, y1]
 
-        # Update progress
-        self.top_progress.create_rectangle(0, 0, step, 5, fill='blue', tags='progress')
-        self.left_progress.create_rectangle(0, 0, 5, step, fill='blue', tags='progress')
-        self.right_progress.create_rectangle(0, self.winfo_height()-step, 5, self.winfo_height(), fill='blue', tags='progress')
-        self.bottom_progress.create_rectangle(self.winfo_width()-step, 0, self.winfo_width(), 5, fill='blue', tags='progress')
+    def animate_loader(self):
+        # Update the color of each segment
+        for i in range(self.num_segments):
+            color = 'cyan' if i == self.active_segment else 'black'
+            self.canvas.itemconfig(self.segments[i], outline=color)
+        
+        # Move to the next segment
+        self.active_segment = (self.active_segment + 1) % self.num_segments
 
-        # Increase the step for the next frame
-        step += 0.1
-
-        # Schedule next animation frame
-        self.after(100, lambda: self.animate_progress(step))
+        # Schedule the next frame
+        self.canvas.after(100, self.animate_loader)
 
 if __name__ == "__main__":
-    app = BorderProgressBar()
+    app = SpinningLoaderApp()
     app.mainloop()
