@@ -7526,110 +7526,138 @@ arm-none-eabi-size  SeniorDesign.elf
   60064	    492	  22796	  83352	  14598	SeniorDesign.elf
 Finished building: default.size.stdout
  
-13:02:06 **** Incremental Build of configuration Debug for project SeniorDesign ****
+15:49:31 **** Build of configuration Debug for project SeniorDesign ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
-arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc "../Core/Src/project_calls.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/project_calls.d" -MT"Core/Src/project_calls.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/project_calls.o"
-arm-none-eabi-gcc "../Core/Src/state_machine.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/state_machine.d" -MT"Core/Src/state_machine.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/state_machine.o"
-arm-none-eabi-gcc "../Core/Src/stepperMotor.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stepperMotor.d" -MT"Core/Src/stepperMotor.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stepperMotor.o"
 arm-none-eabi-gcc "../Core/Src/stm32f7xx_hal_msp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_hal_msp.d" -MT"Core/Src/stm32f7xx_hal_msp.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f7xx_hal_timebase_tim.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_hal_timebase_tim.d" -MT"Core/Src/stm32f7xx_hal_timebase_tim.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_hal_timebase_tim.o"
-arm-none-eabi-gcc "../Core/Src/stm32f7xx_it.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_it.d" -MT"Core/Src/stm32f7xx_it.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_it.o"
-arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
-arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
-arm-none-eabi-gcc "../Core/Src/system_stm32f7xx.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f7xx.d" -MT"Core/Src/system_stm32f7xx.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f7xx.o"
-../Core/Src/project_calls.c:26:17: warning: 'solenoidTwoPin' defined but not used [-Wunused-variable]
-   26 | static uint16_t solenoidTwoPin = GPIO_PIN_2;
-      |                 ^~~~~~~~~~~~~~
-../Core/Src/project_calls.c:25:23: warning: 'solenoidTwoGroup' defined but not used [-Wunused-variable]
-   25 | static GPIO_TypeDef * solenoidTwoGroup = GPIOA;
-      |                       ^~~~~~~~~~~~~~~~
-../Core/Src/project_calls.c:23:17: warning: 'solenoidOnePin' defined but not used [-Wunused-variable]
-   23 | static uint16_t solenoidOnePin = GPIO_PIN_1;
-      |                 ^~~~~~~~~~~~~~
-../Core/Src/project_calls.c:22:23: warning: 'solenoidOneGroup' defined but not used [-Wunused-variable]
-   22 | static GPIO_TypeDef * solenoidOneGroup = GPIOA;
-      |                       ^~~~~~~~~~~~~~~~
-../Core/Src/stepperMotor.c:22:17: warning: 'dirPin' defined but not used [-Wunused-variable]
-   22 | static uint16_t dirPin = GPIO_PIN_2;
-      |                 ^~~~~~
-../Core/Src/stepperMotor.c:21:23: warning: 'dirGroup' defined but not used [-Wunused-variable]
-   21 | static GPIO_TypeDef * dirGroup = GPIOA;
-      |                       ^~~~~~~~
-../Core/Src/stepperMotor.c:19:17: warning: 'pulPin' defined but not used [-Wunused-variable]
-   19 | static uint16_t pulPin = GPIO_PIN_1;
-      |                 ^~~~~~
-../Core/Src/stepperMotor.c:18:23: warning: 'pulGroup' defined but not used [-Wunused-variable]
-   18 | static GPIO_TypeDef * pulGroup = GPIOA;
-      |                       ^~~~~~~~
 arm-none-eabi-gcc "../Core/Src/vacuum_gauge.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/vacuum_gauge.d" -MT"Core/Src/vacuum_gauge.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/vacuum_gauge.o"
-arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+../Core/Src/flow_controller.c:48:17: warning: 'ModeInput1Pin' defined but not used [-Wunused-variable]
+   48 | static uint16_t ModeInput1Pin = GPIO_PIN_2;
+      |                 ^~~~~~~~~~~~~
+../Core/Src/flow_controller.c:47:23: warning: 'ModeInput1Group' defined but not used [-Wunused-variable]
+   47 | static GPIO_TypeDef * ModeInput1Group = GPIOB;
+      |                       ^~~~~~~~~~~~~~~
+../Core/Src/flow_controller.c:45:17: warning: 'ModeInput2Pin' defined but not used [-Wunused-variable]
+   45 | static uint16_t ModeInput2Pin = GPIO_PIN_6;
+      |                 ^~~~~~~~~~~~~
+../Core/Src/flow_controller.c:44:23: warning: 'ModeInput2Group' defined but not used [-Wunused-variable]
+   44 | static GPIO_TypeDef * ModeInput2Group = GPIOB;
+      |                       ^~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: SeniorDesign.elf
  
 arm-none-eabi-size  SeniorDesign.elf 
 arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
    text	   data	    bss	    dec	    hex	filename
-  60064	    492	  22796	  83352	  14598	SeniorDesign.elf
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
 Finished building: default.size.stdout
  
 Finished building: SeniorDesign.list
  
-10:58:52 **** Incremental Build of configuration Debug for project SeniorDesign ****
+16:04:02 **** Incremental Build of configuration Debug for project SeniorDesign ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/flow_controller.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/flow_controller.d" -MT"Core/Src/flow_controller.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/flow_controller.o"
-arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/project_calls.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/project_calls.d" -MT"Core/Src/project_calls.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/project_calls.o"
-arm-none-eabi-gcc "../Core/Src/state_machine.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/state_machine.d" -MT"Core/Src/state_machine.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/state_machine.o"
-arm-none-eabi-gcc "../Core/Src/stepperMotor.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stepperMotor.d" -MT"Core/Src/stepperMotor.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stepperMotor.o"
-arm-none-eabi-gcc "../Core/Src/stm32f7xx_hal_msp.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_hal_msp.d" -MT"Core/Src/stm32f7xx_hal_msp.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f7xx_hal_timebase_tim.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_hal_timebase_tim.d" -MT"Core/Src/stm32f7xx_hal_timebase_tim.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_hal_timebase_tim.o"
-arm-none-eabi-gcc "../Core/Src/stm32f7xx_it.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f7xx_it.d" -MT"Core/Src/stm32f7xx_it.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f7xx_it.o"
-arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
-arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
-arm-none-eabi-gcc "../Core/Src/system_stm32f7xx.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f7xx.d" -MT"Core/Src/system_stm32f7xx.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f7xx.o"
-../Core/Src/stepperMotor.c:22:17: warning: 'dirPin' defined but not used [-Wunused-variable]
-   22 | static uint16_t dirPin = GPIO_PIN_2;
-      |                 ^~~~~~
-../Core/Src/stepperMotor.c:21:23: warning: 'dirGroup' defined but not used [-Wunused-variable]
-   21 | static GPIO_TypeDef * dirGroup = GPIOA;
-      |                       ^~~~~~~~
-../Core/Src/stepperMotor.c:19:17: warning: 'pulPin' defined but not used [-Wunused-variable]
-   19 | static uint16_t pulPin = GPIO_PIN_1;
-      |                 ^~~~~~
-../Core/Src/stepperMotor.c:18:23: warning: 'pulGroup' defined but not used [-Wunused-variable]
-   18 | static GPIO_TypeDef * pulGroup = GPIOA;
-      |                       ^~~~~~~~
-../Core/Src/project_calls.c:26:17: warning: 'solenoidTwoPin' defined but not used [-Wunused-variable]
-   26 | static uint16_t solenoidTwoPin = GPIO_PIN_2;
-      |                 ^~~~~~~~~~~~~~
-../Core/Src/project_calls.c:25:23: warning: 'solenoidTwoGroup' defined but not used [-Wunused-variable]
-   25 | static GPIO_TypeDef * solenoidTwoGroup = GPIOA;
-      |                       ^~~~~~~~~~~~~~~~
-../Core/Src/project_calls.c:23:17: warning: 'solenoidOnePin' defined but not used [-Wunused-variable]
-   23 | static uint16_t solenoidOnePin = GPIO_PIN_1;
-      |                 ^~~~~~~~~~~~~~
-../Core/Src/project_calls.c:22:23: warning: 'solenoidOneGroup' defined but not used [-Wunused-variable]
-   22 | static GPIO_TypeDef * solenoidOneGroup = GPIOA;
-      |                       ^~~~~~~~~~~~~~~~
-arm-none-eabi-gcc "../Core/Src/vacuum_gauge.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/vacuum_gauge.d" -MT"Core/Src/vacuum_gauge.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/vacuum_gauge.o"
-arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\mmorteo\OneDrive - ebaratech.com\Documents\GitHub\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: SeniorDesign.elf
  
 arm-none-eabi-size  SeniorDesign.elf 
 arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
    text	   data	    bss	    dec	    hex	filename
-  60064	    492	  22796	  83352	  14598	SeniorDesign.elf
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
 Finished building: default.size.stdout
  
 Finished building: SeniorDesign.list
  
-13:36:05 **** Incremental Build of configuration Debug for project SeniorDesign ****
+16:19:19 **** Incremental Build of configuration Debug for project SeniorDesign ****
 make -j12 all 
 arm-none-eabi-size  SeniorDesign.elf 
    text	   data	    bss	    dec	    hex	filename
-  60064	    492	  22796	  83352	  14598	SeniorDesign.elf
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+16:26:09 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+16:28:51 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+16:30:04 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+16:39:12 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+16:42:29 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+16:44:26 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+16:56:10 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+17:01:25 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+18:43:58 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+19:22:42 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  60704	    508	  22796	  84008	  14828	SeniorDesign.elf
 Finished building: default.size.stdout
  

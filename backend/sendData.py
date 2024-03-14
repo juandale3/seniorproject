@@ -10,7 +10,7 @@ initDataFile = ".\data\initData.txt"
 
 textbox = customtkinter.CTkTextbox
 # Configure the serial port
-port = 'COM14'  # Change this to your COM port (e.g., 'COM1' on Windows)
+port = 'COM9'  # Change this to your COM port (e.g., 'COM1' on Windows)
 baud_rate = 115200  # Change this to match your microcontroller's baud rate
 serialData =""
 # Open the serial port
