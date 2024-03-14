@@ -772,9 +772,7 @@ void StartDefaultTask(void *argument)
 					// Receives State List
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
 
-					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-					//pumpTestsParameters[pump].eNextState = START;
-
+					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState;
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST_INIT:
 
@@ -1100,7 +1098,7 @@ void StartDefaultTask(void *argument)
 	  				HAL_Delay(5000);
 	  				break;
 	  			default:
-	  				pumpTestsParameters[pump].eNextState = STOP;
+	  				pumpTestsParameters[pump].eNextState = START;
 	  }
   }
   /* USER CODE END 5 */

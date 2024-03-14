@@ -14,6 +14,6 @@
 ../Core/Src/main.c:716:6:HAL_UART_RxCpltCallback	1
 ../Core/Src/main.c:726:6:resetTime	1
 ../Core/Src/main.c:741:6:StartDefaultTask	37
-../Core/Src/main.c:1116:6:StartTask02	9
-../Core/Src/main.c:1229:6:HAL_TIM_PeriodElapsedCallback	9
-../Core/Src/main.c:1275:6:Error_Handler	1
+../Core/Src/main.c:1114:6:StartTask02	9
+../Core/Src/main.c:1227:6:HAL_TIM_PeriodElapsedCallback	9
+../Core/Src/main.c:1273:6:Error_Handler	1
