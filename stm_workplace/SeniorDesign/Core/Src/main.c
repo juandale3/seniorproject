@@ -147,7 +147,7 @@ float volts = 0;
 float dacVolts = 0;
 float flowRate = 0;
 float vacuumScale = 0.0;
-float tempurature = 25.0;
+float temperature = 25.0;
 char msg[68];
 
 uint8_t tx_buffer[20];
@@ -812,8 +812,9 @@ void StartDefaultTask(void *argument)
 	  				if(vacuumScale <= (float)pumpTestsParameters[pump].VATI[6] / 1000.0){	// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
 		  				osThreadSuspend(sendDataHandle);
-		  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-	  				}else if(tempurature >= pumpTestsParameters[pump].VATI[7]){	// if current temp is >= temp limit
+	  					*(pumpTestsParameters[pump].currentState++);
+	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
+	  				}else if(temperature >= pumpTestsParameters[pump].VATI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
 	  					break;
@@ -876,8 +877,9 @@ void StartDefaultTask(void *argument)
 	  				if((uint8_t)flowRate == pumpTestsParameters[pump].STI[8]){	// success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
 						osThreadSuspend(sendDataHandle);
-						pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-	  				}else if(tempurature >= pumpTestsParameters[pump].STI[7]){	// if current temp is >= temp limit
+	  					*(pumpTestsParameters[pump].currentState++);
+	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
+	  				}else if(temperature >= pumpTestsParameters[pump].STI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
 	  					break;
@@ -923,8 +925,9 @@ void StartDefaultTask(void *argument)
 	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
 	  					osThreadSuspend(sendDataHandle);
-	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-	  				}else if(tempurature >= pumpTestsParameters[0].WUI[7]){	// if current temp is >= temp limit
+	  					*(pumpTestsParameters[pump].currentState++);
+	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
+	  				}else if(temperature >= pumpTestsParameters[0].WUI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
 	  					break;
@@ -972,8 +975,9 @@ void StartDefaultTask(void *argument)
 //	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
 	  					osThreadSuspend(sendDataHandle);
-	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-	  				}else if(tempurature >= pumpTestsParameters[0].LTI[7]){	// if current temp is >= temp limit
+	  					*(pumpTestsParameters[pump].currentState++);
+	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
+	  				}else if(temperature >= pumpTestsParameters[0].LTI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
 	  					break;
@@ -1025,8 +1029,9 @@ void StartDefaultTask(void *argument)
 	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
 	  					osThreadSuspend(sendDataHandle);
-	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-	  				}else if(tempurature >= pumpTestsParameters[0].OTI[7]){	// if current temp is >= temp limit
+	  					*(pumpTestsParameters[pump].currentState++);
+	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
+	  				}else if(temperature >= pumpTestsParameters[0].OTI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
 	  					break;
@@ -1075,8 +1080,9 @@ void StartDefaultTask(void *argument)
 	  					// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
 	  					osThreadSuspend(sendDataHandle);
-	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
-	  				}else if(tempurature >= pumpTestsParameters[0].UMTI[7]){	// if current temp is >= temp limit
+	  					*(pumpTestsParameters[pump].currentState++);
+	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
+	  				}else if(temperature >= pumpTestsParameters[0].UMTI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
 	  					break;
@@ -1092,7 +1098,8 @@ void StartDefaultTask(void *argument)
 	  				HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 	  				HAL_TIM_Base_Stop_IT(&htim10);
 	  				osThreadSuspend(sendDataHandle);
-	  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState++;
+	  				*(pumpTestsParameters[pump].currentState++);
+	  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				break;
 	  			case STOP:
 	  				pumpTestsParameters[pump].eNextState = STOP;
@@ -1118,94 +1125,157 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
+	  uint8_t *vacuumScaleBytes = (uint8_t *) &vacuumScale;
+	  uint8_t *temperatureBytes = (uint8_t *) &temperature;
+	  uint8_t *flowRateBytes = (uint8_t *) &flowRate;
 
     switch(pumpTestsParameters[pump].eNextState){
-    case VAC_ACHIEVMENT_TEST:
-    	tx_buffer[0] = VAC_ACHIEVMENT_TEST;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
-    	tx_buffer[6] = tempurature;						// temperature in C
-    	tx_buffer_size = 7;
-    	break;
-    case SPECIAL_TEST:
-    	tx_buffer[0] = SPECIAL_TEST;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
-    	tx_buffer[6] = tempurature;						// temperature in C
-    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
-    	tx_buffer_size = 8;
-    	break;
-    case WARM_UP:
-    	tx_buffer[0] = WARM_UP;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = tempurature;						// temperature in C
-    	tx_buffer_size = 6;
-    	break;
-    case LOAD_TEST:
-    	tx_buffer[0] = LOAD_TEST;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = (uint8_t) flowRate;		// L/min
-    	tx_buffer[6] = tempurature;						// temperature in C
-    	tx_buffer_size = 7;
-    	break;
-    case OPERATION_TEST:
-    	tx_buffer[0] = OPERATION_TEST;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
-    	tx_buffer[6] = tempurature;						// temperature in C
-    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
-    	tx_buffer_size = 8;
-    	break;
-    case ULTIMATE_MEASURE_TEST:
-    	tx_buffer[0] = ULTIMATE_MEASURE_TEST;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
-    	tx_buffer[6] = tempurature;						// temperature in C
-    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
-    	tx_buffer_size = 8;
-    	break;
-    case IDLE:
-    	tx_buffer[0] = IDLE;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
-    	tx_buffer[6] = tempurature;						// temperature in C
-    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
-    	tx_buffer_size = 8;
-    	break;
-    case FAIL_STATE:
-    	tx_buffer[0] = FAIL_STATE;
-    	tx_buffer[1] = pump;
-    	tx_buffer[2] = hours;
-    	tx_buffer[3] = minutes;
-    	tx_buffer[4] = seconds;
-    	tx_buffer[5] = (uint8_t) vacuumScale;	// mTorr
-    	tx_buffer[6] = tempurature;						// temperature in C
-    	tx_buffer[7] = (uint8_t) flowRate;		// L/min
-    	tx_buffer_size = 8;
-    	break;
-    default:
-    	break;
+		case VAC_ACHIEVMENT_TEST:
+			tx_buffer[0] = VAC_ACHIEVMENT_TEST;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
+			tx_buffer[6] = vacuumScaleBytes[1];
+			tx_buffer[7] = vacuumScaleBytes[2];
+			tx_buffer[8] = vacuumScaleBytes[3];
+			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[10] = temperatureBytes[1];
+			tx_buffer[11] = temperatureBytes[2];
+			tx_buffer[12] = temperatureBytes[3];
+			tx_buffer_size = 13;
+			break;
+		case SPECIAL_TEST:
+			tx_buffer[0] = SPECIAL_TEST;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
+			tx_buffer[6] = vacuumScaleBytes[1];
+			tx_buffer[7] = vacuumScaleBytes[2];
+			tx_buffer[8] = vacuumScaleBytes[3];
+			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[10] = temperatureBytes[1];
+			tx_buffer[11] = temperatureBytes[2];
+			tx_buffer[12] = temperatureBytes[3];
+			tx_buffer[13] = flowRateBytes[0];	// L/min
+			tx_buffer[14] = flowRateBytes[1];
+			tx_buffer[15] = flowRateBytes[2];
+			tx_buffer[16] = flowRateBytes[3];
+			tx_buffer_size = 17;
+			break;
+		case WARM_UP:
+			tx_buffer[0] = WARM_UP;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[6] = temperatureBytes[1];
+			tx_buffer[7] = temperatureBytes[2];
+			tx_buffer[8] = temperatureBytes[3];
+			tx_buffer_size = 9;
+			break;
+		case LOAD_TEST:
+			tx_buffer[0] = LOAD_TEST;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[6] = temperatureBytes[1];
+			tx_buffer[7] = temperatureBytes[2];
+			tx_buffer[8] = temperatureBytes[3];
+			tx_buffer[9] = flowRateBytes[0];	// L/min
+			tx_buffer[10] = flowRateBytes[1];
+			tx_buffer[11] = flowRateBytes[2];
+			tx_buffer[12] = flowRateBytes[3];
+			tx_buffer_size = 13;
+			break;
+		case OPERATION_TEST:
+			tx_buffer[0] = OPERATION_TEST;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
+			tx_buffer[6] = vacuumScaleBytes[1];
+			tx_buffer[7] = vacuumScaleBytes[2];
+			tx_buffer[8] = vacuumScaleBytes[3];
+			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[10] = temperatureBytes[1];
+			tx_buffer[11] = temperatureBytes[2];
+			tx_buffer[12] = temperatureBytes[3];
+			tx_buffer[13] = flowRateBytes[0];	// L/min
+			tx_buffer[14] = flowRateBytes[1];
+			tx_buffer[15] = flowRateBytes[2];
+			tx_buffer[16] = flowRateBytes[3];
+			tx_buffer_size = 17;
+			break;
+		case ULTIMATE_MEASURE_TEST:
+			tx_buffer[0] = ULTIMATE_MEASURE_TEST;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
+			tx_buffer[6] = vacuumScaleBytes[1];
+			tx_buffer[7] = vacuumScaleBytes[2];
+			tx_buffer[8] = vacuumScaleBytes[3];
+			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[10] = temperatureBytes[1];
+			tx_buffer[11] = temperatureBytes[2];
+			tx_buffer[12] = temperatureBytes[3];
+			tx_buffer[13] = flowRateBytes[0];	// L/min
+			tx_buffer[14] = flowRateBytes[1];
+			tx_buffer[15] = flowRateBytes[2];
+			tx_buffer[16] = flowRateBytes[3];
+			tx_buffer_size = 17;
+			break;
+		case IDLE:
+			tx_buffer[0] = IDLE;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
+			tx_buffer[6] = vacuumScaleBytes[1];
+			tx_buffer[7] = vacuumScaleBytes[2];
+			tx_buffer[8] = vacuumScaleBytes[3];
+			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[10] = temperatureBytes[1];
+			tx_buffer[11] = temperatureBytes[2];
+			tx_buffer[12] = temperatureBytes[3];
+			tx_buffer[13] = flowRateBytes[0];	// L/min
+			tx_buffer[14] = flowRateBytes[1];
+			tx_buffer[15] = flowRateBytes[2];
+			tx_buffer[16] = flowRateBytes[3];
+			tx_buffer_size = 17;
+			break;
+		case FAIL_STATE:
+			tx_buffer[0] = FAIL_STATE;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
+			tx_buffer[6] = vacuumScaleBytes[1];
+			tx_buffer[7] = vacuumScaleBytes[2];
+			tx_buffer[8] = vacuumScaleBytes[3];
+			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[10] = temperatureBytes[1];
+			tx_buffer[11] = temperatureBytes[2];
+			tx_buffer[12] = temperatureBytes[3];
+			tx_buffer[13] = flowRateBytes[0];	// L/min
+			tx_buffer[14] = flowRateBytes[1];
+			tx_buffer[15] = flowRateBytes[2];
+			tx_buffer[16] = flowRateBytes[3];
+			tx_buffer_size = 17;
+			break;
+		default:
+			break;
 
     }
     HAL_UART_Transmit_IT(&huart3, (uint8_t*)tx_buffer, tx_buffer_size);

@@ -3,6 +3,7 @@ import time
 import saveFile
 import customtkinter
 from datetime import datetime
+import struct
 
 # Get the current date and time
 
@@ -10,14 +11,14 @@ initDataFile = ".\data\initData.txt"
 
 textbox = customtkinter.CTkTextbox
 # Configure the serial port
-port = 'COM8'  # Change this to your COM port (e.g., 'COM1' on Windows)
+port = 'COM7'  # Change this to your COM port (e.g., 'COM1' on Windows)
 baud_rate = 115200  # Change this to match your microcontroller's baud rate
 serialData =""
 # Open the serial port
 
 
 textbox_data = ""
-ser = serial.Serial(port, baudrate=baud_rate, timeout=1)
+ser = serial.Serial(port, baudrate=baud_rate, timeout=100)
 
 def writeInitData(file,data):
     with open(file,'a') as initDataFile:
@@ -25,7 +26,7 @@ def writeInitData(file,data):
         initDataFile.close()
 
 def protocol_0(title_textbox, textbox, ser):
-    data_to_send = [1,3,5,7,9,11,13,13,13,11,12,13,14,15,16,17,18,19,20,0] 
+    data_to_send = [1,3,5,7,9,11,13,0,0,0,0,0,0,0,0,0,0,0,0,20] 
     # data_to_send = [0,7,13,11,13,13,13,0,0,0,0,0,0,0,0,0,0,0,0,0] 
     ser.write(bytes(data_to_send))
     title_textbox.delete("1.0",'end')
@@ -41,10 +42,16 @@ def protocol_1(title_textbox, textbox, ser):
     ser.write(bytes(data_to_send))
 
 def protocol_2(title_textbox, textbox, ser):
-    received_data = ser.read(7 - 1)
+    # Read 12 bytes of data (excluding start byte)
+    received_data = ser.read(13 - 1)
+
+    # Update title of the textbox
     title_textbox.delete('1.0','end')
     title_textbox.insert('end',"Vacuum Achievement Test")
-    array = [int(byte) for byte in received_data]
+
+    # Interpret received data
+    data = struct.unpack('<BBBBff', received_data)  # Assuming byte order is little-endian
+    pump, hours, minutes, seconds, vacuum_pressure, temperature = data
 
     textbox.delete("1.0","end")
     # Current Time
@@ -52,10 +59,10 @@ def protocol_2(title_textbox, textbox, ser):
     formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
     textbox.insert('end',f"Start Time: {formatted_now}\n\n")
 
-    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
-    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
-    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
+    textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
 
 def protocol_3(title_textbox, textbox, ser):
     title_textbox.delete('1.0','end')
@@ -66,22 +73,28 @@ def protocol_3(title_textbox, textbox, ser):
     ser.write(bytes(data_to_send))
     
 def protocol_4(title_textbox, textbox, ser):
+    # Read 16 bytes of data (excluding start byte)
+    received_data = ser.read(17 - 1)
+
+    # Update title of the textbox
     title_textbox.delete('1.0','end')
     textbox.delete('1.0','end')
     title_textbox.insert('end','SPECIAL TEST\n')
-    received_data = ser.read(8 - 1)
-    array = [int(byte) for byte in received_data]
+    
+    # Interpret received data
+    data = struct.unpack('<BBBBfff', received_data)  # Assuming byte order is little-endian
+    pump, hours, minutes, seconds, vacuum_pressure, temperature, flow_rate = data
 
     #   Current Time
     now = datetime.now()
     formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
     textbox.insert('end',f"Start Time: {formatted_now}\n\n")
 
-    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
-    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
-    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
-    textbox.insert('end',f"Current Flow rate: {array[6]} L/min \n\n")
+    textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 
 def protocol_5(title_textbox, textbox, ser):
@@ -91,20 +104,26 @@ def protocol_5(title_textbox, textbox, ser):
     ser.write(bytes(data_to_send))
 
 def protocol_6(title_textbox, textbox, ser):
-    received_data = ser.read(6 - 1)
+    # Read 8 bytes of data (excluding start byte)
+    received_data = ser.read(9 - 1)
+
+    # Update title of the textbox
     textbox.delete('1.0','end')
     title_textbox.delete('1.0','end')
     title_textbox.insert('end','WARM UP TEST')
-    array = [int(byte) for byte in received_data]
-
+    
+    # Interpret received data
+    data = struct.unpack('<BBBBf', received_data)  # Assuming byte order is little-endian
+    pump, hours, minutes, seconds, temperature = data
+    
     #   Current Time
     now = datetime.now()
     formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
     textbox.insert('end',f"Start Time: {formatted_now}\n\n")
 
-    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
-    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {array[4]} F\n\n")
+    textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
 
 def protocol_7(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 7: LOAD_TEST_INIT\n")
@@ -113,22 +132,27 @@ def protocol_7(title_textbox, textbox, ser):
     ser.write(bytes(data_to_send))
 
 def protocol_8(title_textbox, textbox, ser):
+    # Read 12 bytes of data (excluding start byte)
+    received_data = ser.read(13 - 1)
+
+    # Update title of the textbox
     title_textbox.delete('1.0','end')
     textbox.delete('1.0','end')
     title_textbox.insert('end','LOAD TEST')
-    received_data = ser.read(7 - 1)
-
-    array = [int(byte) for byte in received_data]
+    
+    # Interpret received data
+    data = struct.unpack('<BBBBff', received_data)  # Assuming byte order is little-endian
+    pump, hours, minutes, seconds, temperature, flow_rate = data
 
     # Current Time
     now = datetime.now()
     formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
     textbox.insert('end',f"Start Time: {formatted_now}\n\n")
 
-    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
-    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
-    textbox.insert('end',f"Current Flow rate: {array[4]} L/min \n\n")
-    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
+    textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 
 def protocol_9(title_textbox, textbox, ser):
@@ -138,22 +162,28 @@ def protocol_9(title_textbox, textbox, ser):
     ser.write(bytes(data_to_send))
 
 def protocol_10(title_textbox, textbox, ser):
+    # Read 16 bytes of data (excluding start byte)
+    received_data = ser.read(17 - 1)
+
+    # Update title of the textbox  
     title_textbox.delete('1.0','end')
     textbox.delete('1.0','end')
     title_textbox.insert('end',"Operation Test")
-    received_data = ser.read(8 - 1)   
-    array = [int(byte) for byte in received_data]
+    
+    # Interpret received data
+    data = struct.unpack('<BBBBfff', received_data)  # Assuming byte order is little-endian
+    pump, hours, minutes, seconds, vacuum_pressure, temperature, flow_rate = data
 
     # Current Time
     now = datetime.now() 
     formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
     textbox.insert('end',f"Start Time: {formatted_now}\n\n")
 
-    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
-    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
-    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
-    textbox.insert('end',f"Current Flow rate: {array[6]} L/min \n\n")
+    textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_11(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 11: ULTIMATE_MEASURE_TEST_INIT\n")
@@ -162,30 +192,79 @@ def protocol_11(title_textbox, textbox, ser):
     ser.write(bytes(data_to_send))
 
 def protocol_12(title_textbox, textbox, ser):
+    # Read 16 bytes of data (excluding start byte)
+    received_data = ser.read(17 - 1)
+
+    # Update title of the textbox
     title_textbox.delete('1.0','end')
     textbox.delete('1.0','end')
     title_textbox.insert('end','Ulimate Pressure Test')
-    received_data = ser.read(8 - 1)
-    array = [int(byte) for byte in received_data]
+
+    # Interpret received data
+    data = struct.unpack('<BBBBfff', received_data)  # Assuming byte order is little-endian
+    pump, hours, minutes, seconds, vacuum_pressure, temperature, flow_rate = data
 
     #Current Time
     now = datetime.now()    
     formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
     textbox.insert('end',f"Start Time: {formatted_now}\n\n")
     
-    textbox.insert('end',f"Current Pump: {array[0] + 1}\n\n")
-    textbox.insert('end',f"Time: {array[1]}:{array[2]}:{array[3]}\n\n")
-    textbox.insert('end',f"Vacuum Pressure: {array[4]} mTorr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {array[5]} F\n\n")
-    textbox.insert('end',f"Current Flow rate: {array[6]} L/min \n\n")
+    textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_13(title_textbox,textbox, ser):
-    received_data = ser.read(8 - 1)
+    received_data = ser.read(17 - 1)
     textbox.insert('end', "Protocol 13: IDLE\t\tReceived data: {}\n".format([int(byte) for byte in received_data])) 
+    # # Read 16 bytes of data (excluding start byte)
+    # received_data = ser.read(17 - 1)
+
+    # # Update title of the textbox
+    # title_textbox.delete('1.0','end')
+    # textbox.delete('1.0','end')
+    # title_textbox.insert('end','Idle State\n')
+    
+    # # Interpret received data
+    # data = struct.unpack('<BBBBfff', received_data)  # Assuming byte order is little-endian
+    # pump, hours, minutes, seconds, vacuum_pressure, temperature, flow_rate = data
+
+    # #   Current Time
+    # now = datetime.now()
+    # formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    # textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+
+    # textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    # textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    # textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
+    # textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    # textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_14(title_textbox, textbox, ser):
-
     textbox.insert('end', "\nProtocol 14: FAIL_STATE\n")
+    # # Read 16 bytes of data (excluding start byte)
+    # received_data = ser.read(17 - 1)
+
+    # # Update title of the textbox
+    # title_textbox.delete('1.0','end')
+    # textbox.delete('1.0','end')
+    # title_textbox.insert('end','Failed State\n')
+    
+    # # Interpret received data
+    # data = struct.unpack('<BBBBfff', received_data)  # Assuming byte order is little-endian
+    # pump, hours, minutes, seconds, vacuum_pressure, temperature, flow_rate = data
+
+    # #   Current Time
+    # now = datetime.now()
+    # formatted_now = now.strftime("%Y-%m-%d   %I:%M:%S %p")
+    # textbox.insert('end',f"Start Time: {formatted_now}\n\n")
+
+    # textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    # textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    # textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
+    # textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    # textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_15(title_textbox, textbox, ser):
     title_textbox.delete('1.0', 'end')

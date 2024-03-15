@@ -13,7 +13,7 @@
 ../Core/Src/main.c:606:13:MX_GPIO_Init	56	static
 ../Core/Src/main.c:717:6:HAL_UART_RxCpltCallback	16	static
 ../Core/Src/main.c:727:6:resetTime	4	static
-../Core/Src/main.c:742:6:StartDefaultTask	24	static
-../Core/Src/main.c:1116:6:StartTask02	16	static
-../Core/Src/main.c:1229:6:HAL_TIM_PeriodElapsedCallback	16	static
-../Core/Src/main.c:1275:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:742:6:StartDefaultTask	16	static
+../Core/Src/main.c:1122:6:StartTask02	32	static
+../Core/Src/main.c:1295:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/main.c:1341:6:Error_Handler	4	static,ignoring_inline_asm
