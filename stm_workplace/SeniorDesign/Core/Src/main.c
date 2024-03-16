@@ -176,6 +176,7 @@ void StartTask02(void *argument);
 
 /* USER CODE BEGIN PFP */
 void resetTime();
+void establishConnection(UART_HandleTypeDef *huart);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -225,7 +226,7 @@ int main(void)
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
   // HAL_TIM_Base_Start_IT(&htim7);
-
+  // establishConnection(&huart3);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -728,6 +729,21 @@ void resetTime(){
 	seconds = 0;
 	minutes = 0;
 	hours = 0;
+}
+
+void establishConnection(UART_HandleTypeDef *huart){
+	char received_data[17];
+	char STM32_DEVICE_RESPONSE[22];
+	sprintf(STM32_DEVICE_RESPONSE,"stm32_device_response");
+	// Receive data from UART
+	HAL_StatusTypeDef status = HAL_UART_Receive(huart, (uint8_t *)received_data, sizeof(received_data), HAL_MAX_DELAY);
+	if (status == HAL_OK) {
+		// Check if received data matches the identify command
+		if (strcmp(received_data, "identify_command") == 0) {
+			// Send response to indicate STM32 device
+			HAL_UART_Transmit(huart, (uint8_t *)STM32_DEVICE_RESPONSE, strlen(STM32_DEVICE_RESPONSE), HAL_MAX_DELAY);
+		}
+	}
 }
 
 /* USER CODE END 4 */

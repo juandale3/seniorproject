@@ -130,6 +130,8 @@ class App(customtkinter.CTk):
        
         
     def update_serial_data(self):
+        sendData.port = sendData.find_stm32_port(self.title_textbox, self.textbox)
+        sendData.ser = serial.Serial(sendData.port, sendData.baud_rate , timeout=100)
         sendData.protocol_0(self.title_textbox,self.textbox, sendData.ser)
         try:
             while True:

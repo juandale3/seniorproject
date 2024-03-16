@@ -4,21 +4,40 @@ import saveFile
 import customtkinter
 from datetime import datetime
 import struct
-
-# Get the current date and time
+import serial.tools.list_ports
 
 initDataFile = ".\data\initData.txt"
 
 textbox = customtkinter.CTkTextbox
 # Configure the serial port
-port = 'COM7'  # Change this to your COM port (e.g., 'COM1' on Windows)
+port = 'COM1'  # Change this to your COM port
 baud_rate = 115200  # Change this to match your microcontroller's baud rate
 serialData =""
-# Open the serial port
-
-
 textbox_data = ""
 ser = serial.Serial(port, baudrate=baud_rate, timeout=100)
+
+# Function to find the COM port of the STM32 device
+def find_stm32_port(title_textbox, textbox):
+    # Enumerate all available COM ports
+    ports = serial.tools.list_ports.comports()
+    title_textbox.delete("1.0",'end')
+    title_textbox.insert('end', "Establishing connection!\n")
+    # Iterate through the list of ports
+    for port in ports:
+        try:
+            # Check if the port description matches "STMicroelectronics STLink Virtual COM Port"
+            if "STMicroelectronics STLink Virtual COM Port" in port.description or "USB Serial Port" in port.description:
+                # Found the STLink Virtual COM Port
+                textbox.insert('end', "\nSTLink Virtual COM Port found on:", port.device)
+                # Close the serial connection
+                ser.close()
+                # Return the COM port
+                return port.device
+        except serial.SerialException:
+            pass
+    # Return None if STM32 device not found
+    textbox.insert('end', "\nSTM32 Not Found\n")
+    return None
 
 def writeInitData(file,data):
     with open(file,'a') as initDataFile:

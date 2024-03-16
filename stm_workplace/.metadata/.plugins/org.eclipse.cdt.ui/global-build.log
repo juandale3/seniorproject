@@ -8206,3 +8206,164 @@ arm-none-eabi-size  SeniorDesign.elf
   61312	    512	  22800	  84624	  14a90	SeniorDesign.elf
 Finished building: default.size.stdout
  
+01:46:40 **** Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:228:3: warning: implicit declaration of function 'establishConnection' [-Wimplicit-function-declaration]
+  228 |   establishConnection(&huart3);
+      |   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:733:6: warning: conflicting types for 'establishConnection'; have 'void(UART_HandleTypeDef *)' {aka 'void(struct __UART_HandleTypeDef *)'}
+  733 | void establishConnection(UART_HandleTypeDef *huart){
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:228:3: note: previous implicit declaration of 'establishConnection' with type 'void(UART_HandleTypeDef *)' {aka 'void(struct __UART_HandleTypeDef *)'}
+  228 |   establishConnection(&huart3);
+      |   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'establishConnection':
+../Core/Src/main.c:738:71: error: 'received_data' undeclared (first use in this function); did you mean 'recievedData'?
+  738 |         HAL_StatusTypeDef status = HAL_UART_Receive(huart, (uint8_t *)received_data, sizeof(received_data), HAL_MAX_DELAY);
+      |                                                                       ^~~~~~~~~~~~~
+      |                                                                       recievedData
+../Core/Src/main.c:738:71: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:741:43: error: 'identify_command' undeclared (first use in this function)
+  741 |                 if (strcmp(received_data, identify_command) == 0) {
+      |                                           ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:734:14: warning: unused variable 'recievedData' [-Wunused-variable]
+  734 |         char recievedData[17];
+      |              ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'StartDefaultTask':
+../Core/Src/main.c:830:49: warning: value computed is not used [-Wunused-value]
+  830 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:895:49: warning: value computed is not used [-Wunused-value]
+  895 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:943:49: warning: value computed is not used [-Wunused-value]
+  943 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:993:49: warning: value computed is not used [-Wunused-value]
+  993 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1047:49: warning: value computed is not used [-Wunused-value]
+ 1047 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1098:49: warning: value computed is not used [-Wunused-value]
+ 1098 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1116:41: warning: value computed is not used [-Wunused-value]
+ 1116 |                                         *(pumpTestsParameters[pump].currentState++);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+01:48:00 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'establishConnection':
+../Core/Src/main.c:742:43: error: 'identify_command' undeclared (first use in this function)
+  742 |                 if (strcmp(received_data, identify_command) == 0) {
+      |                                           ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:742:43: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c: In function 'StartDefaultTask':
+../Core/Src/main.c:831:49: warning: value computed is not used [-Wunused-value]
+  831 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:896:49: warning: value computed is not used [-Wunused-value]
+  896 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:944:49: warning: value computed is not used [-Wunused-value]
+  944 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:994:49: warning: value computed is not used [-Wunused-value]
+  994 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1048:49: warning: value computed is not used [-Wunused-value]
+ 1048 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1099:49: warning: value computed is not used [-Wunused-value]
+ 1099 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1117:41: warning: value computed is not used [-Wunused-value]
+ 1117 |                                         *(pumpTestsParameters[pump].currentState++);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+01:48:32 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartDefaultTask':
+../Core/Src/main.c:831:49: warning: value computed is not used [-Wunused-value]
+  831 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:896:49: warning: value computed is not used [-Wunused-value]
+  896 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:944:49: warning: value computed is not used [-Wunused-value]
+  944 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:994:49: warning: value computed is not used [-Wunused-value]
+  994 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1048:49: warning: value computed is not used [-Wunused-value]
+ 1048 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1099:49: warning: value computed is not used [-Wunused-value]
+ 1099 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1117:41: warning: value computed is not used [-Wunused-value]
+ 1117 |                                         *(pumpTestsParameters[pump].currentState++);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  62416	    512	  22800	  85728	  14ee0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
+01:48:52 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  62416	    512	  22800	  85728	  14ee0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+02:02:42 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'StartDefaultTask':
+../Core/Src/main.c:831:49: warning: value computed is not used [-Wunused-value]
+  831 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:896:49: warning: value computed is not used [-Wunused-value]
+  896 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:944:49: warning: value computed is not used [-Wunused-value]
+  944 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:994:49: warning: value computed is not used [-Wunused-value]
+  994 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1048:49: warning: value computed is not used [-Wunused-value]
+ 1048 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1099:49: warning: value computed is not used [-Wunused-value]
+ 1099 |                                                 *(pumpTestsParameters[pump].currentState++);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:1117:41: warning: value computed is not used [-Wunused-value]
+ 1117 |                                         *(pumpTestsParameters[pump].currentState++);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "SeniorDesign.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\SeniorDesign\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SeniorDesign.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SeniorDesign.elf
+ 
+arm-none-eabi-size  SeniorDesign.elf 
+arm-none-eabi-objdump -h -S SeniorDesign.elf  > "SeniorDesign.list"
+   text	   data	    bss	    dec	    hex	filename
+  61360	    512	  22800	  84672	  14ac0	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
+Finished building: SeniorDesign.list
+ 
