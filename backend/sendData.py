@@ -81,7 +81,7 @@ def protocol_2(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
     textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
 
 def protocol_3(title_textbox, textbox, ser):
     title_textbox.delete('1.0','end')
@@ -112,7 +112,7 @@ def protocol_4(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
     textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
     textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 
@@ -142,7 +142,7 @@ def protocol_6(title_textbox, textbox, ser):
 
     textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
 
 def protocol_7(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 7: LOAD_TEST_INIT\n")
@@ -170,7 +170,7 @@ def protocol_8(title_textbox, textbox, ser):
 
     textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
     textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 
@@ -201,7 +201,7 @@ def protocol_10(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
     textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
     textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_11(title_textbox, textbox, ser):
@@ -231,7 +231,7 @@ def protocol_12(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
     textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
-    textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
     textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_13(title_textbox,textbox, ser):
@@ -257,7 +257,7 @@ def protocol_13(title_textbox,textbox, ser):
     # textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     # textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
     # textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
-    # textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    # textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
     # textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_14(title_textbox, textbox, ser):
@@ -282,7 +282,7 @@ def protocol_14(title_textbox, textbox, ser):
     # textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
     # textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
     # textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
-    # textbox.insert('end',f"Current Pump Temperature: {temperature} F\n\n")
+    # textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
     # textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_15(title_textbox, textbox, ser):
