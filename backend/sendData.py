@@ -54,11 +54,10 @@ def protocol_0(title_textbox, textbox, ser):
 
 
 def protocol_1(title_textbox, textbox, ser):
-    
-    textbox.insert('end', "\nProtocol 1: VAC_ACHIEVMENT_TEST_INIT\n")
     # data_to_send = [1,0,1,0,0,1,3,50]     # actual Default Parameters
     data_to_send = [1,0,0,1,0,1,3,50]       # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
+    textbox.insert('end', "\nProtocol 1: VAC_ACHIEVMENT_TEST_INIT\n")
 
 def protocol_2(title_textbox, textbox, ser):
     # Read 12 bytes of data (excluding start byte)
@@ -84,12 +83,13 @@ def protocol_2(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
 
 def protocol_3(title_textbox, textbox, ser):
-    title_textbox.delete('1.0','end')
-    title_textbox.insert('end','Initiating Special Test')
-    textbox.insert('end', "\nProtocol 3: SPECIAL_TEST_INIT\n")
     # data_to_send = [3,0,0,10,0,3,0,50,50]     # actual Default Parameters
     data_to_send = [3,0,0,1,0,3,0,50,50]        # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
+
+    title_textbox.delete('1.0','end')
+    title_textbox.insert('end','Initiating Special Test')
+    textbox.insert('end', "\nProtocol 3: SPECIAL_TEST_INIT\n")
     
 def protocol_4(title_textbox, textbox, ser):
     # Read 16 bytes of data (excluding start byte)
@@ -117,10 +117,11 @@ def protocol_4(title_textbox, textbox, ser):
 
 
 def protocol_5(title_textbox, textbox, ser):
-    textbox.insert('end', "\nProtocol 5: WARM_UP_INIT\n")
     # data_to_send = [5,0,3,0,0,0,0,100]        # actual Default Parameters
     data_to_send = [5,0,0,1,0,0,0,100]          # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
+    textbox.insert('end', "\nProtocol 5: WARM_UP_INIT\n")
+
 
 def protocol_6(title_textbox, textbox, ser):
     # Read 8 bytes of data (excluding start byte)
@@ -145,10 +146,10 @@ def protocol_6(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
 
 def protocol_7(title_textbox, textbox, ser):
-    textbox.insert('end', "\nProtocol 7: LOAD_TEST_INIT\n")
     # data_to_send = [7,0,8,0,0,3,0,100]        # actual Default Parameters
     data_to_send = [7,0,0,1,0,3,0,100]          # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
+    textbox.insert('end', "\nProtocol 7: LOAD_TEST_INIT\n")
 
 def protocol_8(title_textbox, textbox, ser):
     # Read 12 bytes of data (excluding start byte)
@@ -175,10 +176,10 @@ def protocol_8(title_textbox, textbox, ser):
 
 
 def protocol_9(title_textbox, textbox, ser):
-    textbox.insert('end', "\nProtocol 9: OPERATION_TEST_INIT\n")
     # data_to_send = [9,0,4,0,0,3,0,100]        # actual Default Parameters
     data_to_send = [9,0,0,1,0,3,0,100]          # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
+    textbox.insert('end', "\nProtocol 9: OPERATION_TEST_INIT\n")
 
 def protocol_10(title_textbox, textbox, ser):
     # Read 16 bytes of data (excluding start byte)
@@ -205,10 +206,10 @@ def protocol_10(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_11(title_textbox, textbox, ser):
-    textbox.insert('end', "\nProtocol 11: ULTIMATE_MEASURE_TEST_INIT\n")
     # data_to_send = [11,0,3,0,3,0,0,100,15]    # actual Default Parameters
     data_to_send = [11,0,0,1,3,0,0,100,50,15]      # testing parameters, test time reduced
     ser.write(bytes(data_to_send))
+    textbox.insert('end', "\nProtocol 11: ULTIMATE_MEASURE_TEST_INIT\n")
 
 def protocol_12(title_textbox, textbox, ser):
     # Read 16 bytes of data (excluding start byte)

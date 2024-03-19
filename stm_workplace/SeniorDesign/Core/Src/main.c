@@ -78,6 +78,15 @@
 /* USER CODE BEGIN PD */
 #define PUMP1 0
 #define PUMP2 1
+
+  // Define bit positions for flags
+  #define SEND_DATA_BIT           (0)   // LSB
+
+
+  // Define macros to set and clear individual bits
+  #define SET_FLAG_BIT(byte, bit)     ((byte) |= (1 << (bit)))
+  #define CLEAR_FLAG_BIT(byte, bit)   ((byte) &= ~(1 << (bit)))
+  #define GET_FLAG_BIT(byte, bit)     (((byte) >> (bit)) & 1)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -153,6 +162,8 @@ char msg[68];
 uint8_t tx_buffer[20];
 uint8_t tx_buffer_size = 0;
 
+// Declare the variable dataTransmitFlags
+uint8_t dataTransmitFlags = 0;  // Initialize all bits to 0
 
 
 uint8_t hours;
@@ -729,23 +740,9 @@ void resetTime(){
 	seconds = 0;
 	minutes = 0;
 	hours = 0;
+	HAL_TIM_Base_DeInit(&htim10);
+	HAL_TIM_Base_Init(&htim10);
 }
-
-void establishConnection(UART_HandleTypeDef *huart){
-	char received_data[17];
-	char STM32_DEVICE_RESPONSE[22];
-	sprintf(STM32_DEVICE_RESPONSE,"stm32_device_response");
-	// Receive data from UART
-	HAL_StatusTypeDef status = HAL_UART_Receive(huart, (uint8_t *)received_data, sizeof(received_data), HAL_MAX_DELAY);
-	if (status == HAL_OK) {
-		// Check if received data matches the identify command
-		if (strcmp(received_data, "identify_command") == 0) {
-			// Send response to indicate STM32 device
-			HAL_UART_Transmit(huart, (uint8_t *)STM32_DEVICE_RESPONSE, strlen(STM32_DEVICE_RESPONSE), HAL_MAX_DELAY);
-		}
-	}
-}
-
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -813,23 +810,35 @@ void StartDefaultTask(void *argument)
 	  				solenoidOpen();
 	  				solenoidClose();
 	  				vacuumGaugeADC(&hadc1);
-
 	  				pumpTestsParameters[pump].eNextState = VAC_ACHIEVMENT_TEST;
-	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
-	  				resetTime();					// Resets timer
-	  				osThreadResume(sendDataHandle);	// Starts data Transfer
+
+	  				// Starts data Transfer
+	  				SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);
+	  				osThreadResume(sendDataHandle);
+
+	  				// Starts this timer
+	  				resetTime();
+	  				HAL_TIM_Base_Start_IT(&htim10);
+
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST:
 	  				volts = adcGet(&hadc1);
 	  				vacuumScale = readVacuum(volts);
 
-	  				vacuumScale = 1000; // Remove this once STM is connected to hardware
+	  				// Remove this once STM is connected to hardware
+	  				vacuumScale = 1000;
+	  				if(seconds == 10){	// Passes test after 10 seconds
+	  					vacuumScale = 0;
+	  				}
+	  				//
 
 	  				if(vacuumScale <= (float)pumpTestsParameters[pump].VATI[6] / 1000.0){	// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
-		  				osThreadSuspend(sendDataHandle);
-	  					*(pumpTestsParameters[pump].currentState++);
+	  					pumpTestsParameters[pump].currentState++;
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
+		  				// osThreadSuspend(sendDataHandle);
+	  					CLEAR_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);	// Suspends Data Transfer
+						osThreadSuspend(stateMachineHandle);			// Pause Testing until Final Message is sent
 	  				}else if(temperature >= pumpTestsParameters[pump].VATI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
@@ -865,35 +874,41 @@ void StartDefaultTask(void *argument)
 	  				solenoidOpen();
 	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
-
-
 	  				pumpTestsParameters[pump].eNextState = SPECIAL_TEST;
-	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
-	  				resetTime();					// Resets timer
-	  				osThreadResume(sendDataHandle);	// Starts data Transfer
 	  				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].STI[8]));
+
+	  				// Starts data Transfer
+	  				SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);
+	  				osThreadResume(sendDataHandle);
+
+	  				// Starts this timer
+	  				resetTime();
+	  				HAL_TIM_Base_Start_IT(&htim10);
+
 	  				break;
 
 	  			case SPECIAL_TEST:
-//	  				sprintf(msg,"SPECIAL_TEST Scanning\r\n");
-//					printMsg(msg, &huart3);
-//					osDelay(1000);
-
 	  				flowControllerADC(&hadc1);
 					volts = adcGet(&hadc1);
 					flowRate = readFlow(volts);
-
 					vacuumGaugeADC(&hadc1);
 	  				volts = adcGet(&hadc1);
 	  				vacuumScale = readVacuum(volts);
 
-	  				flowRate = 0;		// Remove this Once STM is connected to the hardware
-	  				vacuumScale = 1000;	// Remove this Once STM is connected to the hardware
+	  				// Remove this Once STM is connected to the hardware
+	  				flowRate = 0;
+	  				vacuumScale = 1000;
+	  				if(seconds == 10){	// After 10 sec Test is success
+	  					flowRate = 50;
+	  				}
+	  				//
 
 	  				if((uint8_t)flowRate == pumpTestsParameters[pump].STI[8]){	// success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
-						osThreadSuspend(sendDataHandle);
-	  					*(pumpTestsParameters[pump].currentState++);
+						// osThreadSuspend(sendDataHandle);
+	  					CLEAR_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);	// Suspends Data Transfer
+	  					osThreadSuspend(stateMachineHandle);			// Pause Testing until Final Message is sent
+	  					pumpTestsParameters[pump].currentState++;
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				}else if(temperature >= pumpTestsParameters[pump].STI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
@@ -928,20 +943,30 @@ void StartDefaultTask(void *argument)
 	  				solenoidOpen();
 	  				solenoidClose();
 	  				vacuumGaugeADC(&hadc1);
-
 	  				pumpTestsParameters[pump].eNextState = WARM_UP;
-	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
-	  				resetTime();					// Resets timer
-	  				osThreadResume(sendDataHandle);	// Starts data Transfer
+
+	  				// Starts data Transfer
+	  				SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);
+	  				osThreadResume(sendDataHandle);
+
+
+	  				// Starts this timer
+	  				resetTime();
+	  				HAL_TIM_Base_Start_IT(&htim10);
+
+
 	  				break;
 	  			case WARM_UP:
+	  				// Remove this once STM is connected to hardware
+	  				//
 
 	  				// record internal/external temperatures
-	  				if(pumpTestsParameters[pump].WUI[2] == hours && pumpTestsParameters[pump].WUI[3] == minutes){
-	  					// Success
+	  				if(pumpTestsParameters[pump].WUI[2] == hours && pumpTestsParameters[pump].WUI[3] == minutes){	// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
-	  					osThreadSuspend(sendDataHandle);
-	  					*(pumpTestsParameters[pump].currentState++);
+	  					//osThreadSuspend(sendDataHandle);
+	  					CLEAR_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);	// Suspends Data Transfer
+	  					osThreadSuspend(stateMachineHandle);			// Pause Testing until Final Message is sent
+	  					pumpTestsParameters[pump].currentState++;
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				}else if(temperature >= pumpTestsParameters[0].WUI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
@@ -972,12 +997,16 @@ void StartDefaultTask(void *argument)
 	  				solenoidOpen();
 	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
-
 	  				pumpTestsParameters[pump].eNextState = LOAD_TEST;
 	  				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
-	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
-	  				resetTime();					// Resets timer
-	  				osThreadResume(sendDataHandle);	// Starts data Transfer
+
+	  				// Starts data Transfer
+	  				SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);
+	  				osThreadResume(sendDataHandle);
+
+	  				// Starts this timer
+	  				resetTime();
+	  				HAL_TIM_Base_Start_IT(&htim10);
 
 	  				break;
 	  			case LOAD_TEST:
@@ -985,13 +1014,16 @@ void StartDefaultTask(void *argument)
 					volts = adcGet(&hadc1);
 					flowRate = readFlow(volts);
 
-					flowRate = 0;	// Remove this Once STM is connected to the hardware
+					// Remove this Once STM is connected to the hardware
+					flowRate = 0;
+					//
 
-	  				if(pumpTestsParameters[pump].LTI[2] == hours && pumpTestsParameters[pump].LTI[3] == minutes){
-//	  					// Success
+	  				if(pumpTestsParameters[pump].LTI[2] == hours && pumpTestsParameters[pump].LTI[3] == minutes){	// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
-	  					osThreadSuspend(sendDataHandle);
-	  					*(pumpTestsParameters[pump].currentState++);
+	  					// osThreadSuspend(sendDataHandle);
+	  					CLEAR_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);	// Suspends Data Transfer
+	  					osThreadSuspend(stateMachineHandle);			// Pause Testing until Final Message is sent
+	  					pumpTestsParameters[pump].currentState++;
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				}else if(temperature >= pumpTestsParameters[0].LTI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
@@ -1023,29 +1055,35 @@ void StartDefaultTask(void *argument)
 	  				solenoidOpen();
 	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
-
 	  				pumpTestsParameters[pump].eNextState = OPERATION_TEST;
 	  				//dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
-	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
-	  				resetTime();					// Resets timer
-	  				osThreadResume(sendDataHandle);	// Starts data Transfer
+
+	  				// Starts data Transfer
+	  				SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);
+	  				osThreadResume(sendDataHandle);
+
+	  				// Starts this timer
+	  				resetTime();
+	  				HAL_TIM_Base_Start_IT(&htim10);
 
 	  				break;
 	  			case OPERATION_TEST:
-
 	  				flowControllerADC(&hadc1);
 					volts = adcGet(&hadc1);
 					flowRate = readFlow(volts);
-
 					vacuumGaugeADC(&hadc1);
 					volts = adcGet(&hadc1);
 					vacuumScale = readVacuum(volts);
 
-	  				if(pumpTestsParameters[pump].OTI[2] == hours && pumpTestsParameters[pump].OTI[3] == minutes){
-	  					// Success
+					// Remove this once STM is connected to Hardware
+					//
+
+	  				if(pumpTestsParameters[pump].OTI[2] == hours && pumpTestsParameters[pump].OTI[3] == minutes){	// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
-	  					osThreadSuspend(sendDataHandle);
-	  					*(pumpTestsParameters[pump].currentState++);
+	  					// osThreadSuspend(sendDataHandle);
+	  					CLEAR_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);	// Suspends Data Transfer
+	  					osThreadSuspend(stateMachineHandle);			// Pause Testing until Final Message is sent
+	  					pumpTestsParameters[pump].currentState++;
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				}else if(temperature >= pumpTestsParameters[0].OTI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
@@ -1079,24 +1117,35 @@ void StartDefaultTask(void *argument)
 	  				solenoidOpen();
 	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
-
-
-
 					pumpTestsParameters[pump].eNextState = ULTIMATE_MEASURE_TEST;
 	  				//dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
-	  				HAL_TIM_Base_Start_IT(&htim10);	// Starts this timer
-	  				resetTime();					// Resets timer
-	  				osThreadResume(sendDataHandle);	// Starts data Transfer
+
+	  				// Starts data Transfer
+	  				SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);
+	  				osThreadResume(sendDataHandle);
+
+	  				// Starts this timer
+	  				resetTime();
+	  				HAL_TIM_Base_Start_IT(&htim10);
 
 	  				break;
 	  			case ULTIMATE_MEASURE_TEST:
+	  				flowControllerADC(&hadc1);
+					volts = adcGet(&hadc1);
+					flowRate = readFlow(volts);
+					vacuumGaugeADC(&hadc1);
+					volts = adcGet(&hadc1);
+					vacuumScale = readVacuum(volts);
 
+					// Remove this once STM is connected to Hardware
+					//
 
-	  				if(pumpTestsParameters[pump].UMTI[2] == hours && pumpTestsParameters[pump].UMTI[3] == minutes){
-	  					// Success
+	  				if(pumpTestsParameters[pump].UMTI[2] == hours && pumpTestsParameters[pump].UMTI[3] == minutes){	// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
-	  					osThreadSuspend(sendDataHandle);
-	  					*(pumpTestsParameters[pump].currentState++);
+	  					// osThreadSuspend(sendDataHandle);
+	  					CLEAR_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);	// Suspends Data Transfer
+	  					osThreadSuspend(stateMachineHandle);			// Pause Testing until Final Message is sent
+	  					pumpTestsParameters[pump].currentState++;
 	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				}else if(temperature >= pumpTestsParameters[0].UMTI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
@@ -1108,13 +1157,12 @@ void StartDefaultTask(void *argument)
 	  			case IDLE:
 
 					osDelay(3000);
-
 	  				break;
 	  			case FAIL_STATE:
 	  				HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 	  				HAL_TIM_Base_Stop_IT(&htim10);
 	  				osThreadSuspend(sendDataHandle);
-	  				*(pumpTestsParameters[pump].currentState++);
+	  				pumpTestsParameters[pump].currentState++;
 	  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				break;
 	  			case STOP:
@@ -1141,6 +1189,7 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
+
 	  uint8_t *vacuumScaleBytes = (uint8_t *) &vacuumScale;
 	  uint8_t *temperatureBytes = (uint8_t *) &temperature;
 	  uint8_t *flowRateBytes = (uint8_t *) &flowRate;
@@ -1292,10 +1341,16 @@ void StartTask02(void *argument)
 			break;
 		default:
 			break;
-
     }
     HAL_UART_Transmit_IT(&huart3, (uint8_t*)tx_buffer, tx_buffer_size);
+
+    // If data no longer needs to be sent
+	if(!GET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT)){
+		osThreadResume(stateMachineHandle);
+		osThreadSuspend(sendDataHandle);
+	}
     osDelay(1000);
+
   }
   /* USER CODE END StartTask02 */
 }
