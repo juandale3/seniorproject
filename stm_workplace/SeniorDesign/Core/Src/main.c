@@ -287,27 +287,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-
-	  /*
-	  vacuumGaugeADC(&hadc1);
-	  volts = adcGet(&hadc1);
-	  vacuumScale = readVacuum(volts);
-	  sprintf(msg, "Vacuum Gauge\t\tVolts: %.3f V\tVacuum:\t\t%1.0f\tkPa\r\n", volts, vacuumScale);
-	  printMsg(msg, &huart3);
-	  HAL_Delay(1000);
-	*/
-
-
-	  /*
-	  flowControllerADC(&hadc1);
-	  volts = adcGet(&hadc1);
-	  flowRate = readFlow(volts);
-	  sprintf(msg, "Flow Controller\t\tVolts: %.3f V\tFlow Rate:\t%1.0f\tL/min\r\n", volts, flowRate);
-	  printMsg(msg, &huart3);
-	  dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(volts, 50));
-	  HAL_Delay(1000);
-	  */
   }
   /* USER CODE END 3 */
 }
@@ -740,8 +719,8 @@ void resetTime(){
 	seconds = 0;
 	minutes = 0;
 	hours = 0;
-	HAL_TIM_Base_DeInit(&htim10);
-	HAL_TIM_Base_Init(&htim10);
+//	HAL_TIM_Base_DeInit(&htim10);
+//	HAL_TIM_Base_Init(&htim10);
 }
 /* USER CODE END 4 */
 
@@ -764,7 +743,7 @@ void StartDefaultTask(void *argument)
 					volts = setFlowRate(0);
 					flowControllerADC(&hadc1);
 					dacSet(&hdac, DAC_CHANNEL_1, volts);
-
+					resetTime();
 					stepperOpen();
 					HAL_TIM_Base_Start_IT(&htim7);
 
@@ -817,8 +796,8 @@ void StartDefaultTask(void *argument)
 	  				osThreadResume(sendDataHandle);
 
 	  				// Starts this timer
-	  				resetTime();
 	  				HAL_TIM_Base_Start_IT(&htim10);
+	  				resetTime();
 
 	  				break;
 	  			case VAC_ACHIEVMENT_TEST:
@@ -827,18 +806,18 @@ void StartDefaultTask(void *argument)
 
 	  				// Remove this once STM is connected to hardware
 	  				vacuumScale = 1000;
-	  				if(seconds == 10){	// Passes test after 10 seconds
+	  				if(seconds >= 10){	// Passes test after 10 seconds
 	  					vacuumScale = 0;
 	  				}
 	  				//
 
 	  				if(vacuumScale <= (float)pumpTestsParameters[pump].VATI[6] / 1000.0){	// Success
 	  					HAL_TIM_Base_Stop_IT(&htim10);
-	  					pumpTestsParameters[pump].currentState++;
-	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 		  				// osThreadSuspend(sendDataHandle);
 	  					CLEAR_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);	// Suspends Data Transfer
 						osThreadSuspend(stateMachineHandle);			// Pause Testing until Final Message is sent
+	  					pumpTestsParameters[pump].currentState++;
+	  					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				}else if(temperature >= pumpTestsParameters[pump].VATI[7]){	// if current temp is >= temp limit
 	  					pumpTestsParameters[pump].eNextState = FAIL_STATE;
 	  					pumpTestsParameters[pump].pumpStatus = FAILURE;
@@ -882,8 +861,8 @@ void StartDefaultTask(void *argument)
 	  				osThreadResume(sendDataHandle);
 
 	  				// Starts this timer
-	  				resetTime();
 	  				HAL_TIM_Base_Start_IT(&htim10);
+	  				resetTime();
 
 	  				break;
 
@@ -898,7 +877,7 @@ void StartDefaultTask(void *argument)
 	  				// Remove this Once STM is connected to the hardware
 	  				flowRate = 0;
 	  				vacuumScale = 1000;
-	  				if(seconds == 10){	// After 10 sec Test is success
+	  				if(seconds >= 10){	// After 10 sec Test is success
 	  					flowRate = 50;
 	  				}
 	  				//
@@ -951,8 +930,8 @@ void StartDefaultTask(void *argument)
 
 
 	  				// Starts this timer
-	  				resetTime();
 	  				HAL_TIM_Base_Start_IT(&htim10);
+	  				resetTime();
 
 
 	  				break;
@@ -1005,8 +984,8 @@ void StartDefaultTask(void *argument)
 	  				osThreadResume(sendDataHandle);
 
 	  				// Starts this timer
-	  				resetTime();
 	  				HAL_TIM_Base_Start_IT(&htim10);
+	  				resetTime();
 
 	  				break;
 	  			case LOAD_TEST:
@@ -1063,8 +1042,8 @@ void StartDefaultTask(void *argument)
 	  				osThreadResume(sendDataHandle);
 
 	  				// Starts this timer
-	  				resetTime();
 	  				HAL_TIM_Base_Start_IT(&htim10);
+	  				resetTime();
 
 	  				break;
 	  			case OPERATION_TEST:
@@ -1125,8 +1104,8 @@ void StartDefaultTask(void *argument)
 	  				osThreadResume(sendDataHandle);
 
 	  				// Starts this timer
-	  				resetTime();
 	  				HAL_TIM_Base_Start_IT(&htim10);
+	  				resetTime();
 
 	  				break;
 	  			case ULTIMATE_MEASURE_TEST:
@@ -1155,7 +1134,7 @@ void StartDefaultTask(void *argument)
 	  				osDelay(100);	// Checks condition every 100 ms
 	  				break;
 	  			case IDLE:
-
+	  				HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 					osDelay(3000);
 	  				break;
 	  			case FAIL_STATE:
@@ -1166,6 +1145,7 @@ void StartDefaultTask(void *argument)
 	  				pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump].currentState);
 	  				break;
 	  			case STOP:
+	  				HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
 	  				pumpTestsParameters[pump].eNextState = STOP;
 	  				HAL_Delay(5000);
 	  				break;
@@ -1195,132 +1175,16 @@ void StartTask02(void *argument)
 	  uint8_t *flowRateBytes = (uint8_t *) &flowRate;
 
     switch(pumpTestsParameters[pump].eNextState){
-		case VAC_ACHIEVMENT_TEST:
-			tx_buffer[0] = VAC_ACHIEVMENT_TEST;
-			tx_buffer[1] = pump;
-			tx_buffer[2] = hours;
-			tx_buffer[3] = minutes;
-			tx_buffer[4] = seconds;
-			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
-			tx_buffer[6] = vacuumScaleBytes[1];
-			tx_buffer[7] = vacuumScaleBytes[2];
-			tx_buffer[8] = vacuumScaleBytes[3];
-			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
-			tx_buffer[10] = temperatureBytes[1];
-			tx_buffer[11] = temperatureBytes[2];
-			tx_buffer[12] = temperatureBytes[3];
-			tx_buffer_size = 13;
-			break;
-		case SPECIAL_TEST:
-			tx_buffer[0] = SPECIAL_TEST;
-			tx_buffer[1] = pump;
-			tx_buffer[2] = hours;
-			tx_buffer[3] = minutes;
-			tx_buffer[4] = seconds;
-			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
-			tx_buffer[6] = vacuumScaleBytes[1];
-			tx_buffer[7] = vacuumScaleBytes[2];
-			tx_buffer[8] = vacuumScaleBytes[3];
-			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
-			tx_buffer[10] = temperatureBytes[1];
-			tx_buffer[11] = temperatureBytes[2];
-			tx_buffer[12] = temperatureBytes[3];
-			tx_buffer[13] = flowRateBytes[0];	// L/min
-			tx_buffer[14] = flowRateBytes[1];
-			tx_buffer[15] = flowRateBytes[2];
-			tx_buffer[16] = flowRateBytes[3];
-			tx_buffer_size = 17;
-			break;
-		case WARM_UP:
-			tx_buffer[0] = WARM_UP;
-			tx_buffer[1] = pump;
-			tx_buffer[2] = hours;
-			tx_buffer[3] = minutes;
-			tx_buffer[4] = seconds;
-			tx_buffer[5] = temperatureBytes[0];	// Temperature in C
-			tx_buffer[6] = temperatureBytes[1];
-			tx_buffer[7] = temperatureBytes[2];
-			tx_buffer[8] = temperatureBytes[3];
-			tx_buffer_size = 9;
-			break;
-		case LOAD_TEST:
-			tx_buffer[0] = LOAD_TEST;
-			tx_buffer[1] = pump;
-			tx_buffer[2] = hours;
-			tx_buffer[3] = minutes;
-			tx_buffer[4] = seconds;
-			tx_buffer[5] = temperatureBytes[0];	// Temperature in C
-			tx_buffer[6] = temperatureBytes[1];
-			tx_buffer[7] = temperatureBytes[2];
-			tx_buffer[8] = temperatureBytes[3];
-			tx_buffer[9] = flowRateBytes[0];	// L/min
-			tx_buffer[10] = flowRateBytes[1];
-			tx_buffer[11] = flowRateBytes[2];
-			tx_buffer[12] = flowRateBytes[3];
-			tx_buffer_size = 13;
-			break;
-		case OPERATION_TEST:
-			tx_buffer[0] = OPERATION_TEST;
-			tx_buffer[1] = pump;
-			tx_buffer[2] = hours;
-			tx_buffer[3] = minutes;
-			tx_buffer[4] = seconds;
-			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
-			tx_buffer[6] = vacuumScaleBytes[1];
-			tx_buffer[7] = vacuumScaleBytes[2];
-			tx_buffer[8] = vacuumScaleBytes[3];
-			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
-			tx_buffer[10] = temperatureBytes[1];
-			tx_buffer[11] = temperatureBytes[2];
-			tx_buffer[12] = temperatureBytes[3];
-			tx_buffer[13] = flowRateBytes[0];	// L/min
-			tx_buffer[14] = flowRateBytes[1];
-			tx_buffer[15] = flowRateBytes[2];
-			tx_buffer[16] = flowRateBytes[3];
-			tx_buffer_size = 17;
-			break;
-		case ULTIMATE_MEASURE_TEST:
-			tx_buffer[0] = ULTIMATE_MEASURE_TEST;
-			tx_buffer[1] = pump;
-			tx_buffer[2] = hours;
-			tx_buffer[3] = minutes;
-			tx_buffer[4] = seconds;
-			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
-			tx_buffer[6] = vacuumScaleBytes[1];
-			tx_buffer[7] = vacuumScaleBytes[2];
-			tx_buffer[8] = vacuumScaleBytes[3];
-			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
-			tx_buffer[10] = temperatureBytes[1];
-			tx_buffer[11] = temperatureBytes[2];
-			tx_buffer[12] = temperatureBytes[3];
-			tx_buffer[13] = flowRateBytes[0];	// L/min
-			tx_buffer[14] = flowRateBytes[1];
-			tx_buffer[15] = flowRateBytes[2];
-			tx_buffer[16] = flowRateBytes[3];
-			tx_buffer_size = 17;
+		case START:
 			break;
 		case IDLE:
-			tx_buffer[0] = IDLE;
-			tx_buffer[1] = pump;
-			tx_buffer[2] = hours;
-			tx_buffer[3] = minutes;
-			tx_buffer[4] = seconds;
-			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
-			tx_buffer[6] = vacuumScaleBytes[1];
-			tx_buffer[7] = vacuumScaleBytes[2];
-			tx_buffer[8] = vacuumScaleBytes[3];
-			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
-			tx_buffer[10] = temperatureBytes[1];
-			tx_buffer[11] = temperatureBytes[2];
-			tx_buffer[12] = temperatureBytes[3];
-			tx_buffer[13] = flowRateBytes[0];	// L/min
-			tx_buffer[14] = flowRateBytes[1];
-			tx_buffer[15] = flowRateBytes[2];
-			tx_buffer[16] = flowRateBytes[3];
-			tx_buffer_size = 17;
 			break;
 		case FAIL_STATE:
-			tx_buffer[0] = FAIL_STATE;
+			break;
+		case STOP:
+			break;
+		default:
+			tx_buffer[0] = pumpTestsParameters[pump].eNextState;
 			tx_buffer[1] = pump;
 			tx_buffer[2] = hours;
 			tx_buffer[3] = minutes;
@@ -1338,19 +1202,18 @@ void StartTask02(void *argument)
 			tx_buffer[15] = flowRateBytes[2];
 			tx_buffer[16] = flowRateBytes[3];
 			tx_buffer_size = 17;
-			break;
-		default:
 			break;
     }
     HAL_UART_Transmit_IT(&huart3, (uint8_t*)tx_buffer, tx_buffer_size);
+    //HAL_UART_Transmit(&huart3, (uint8_t*)tx_buffer, tx_buffer_size, HAL_MAX_DELAY);
 
     // If data no longer needs to be sent
 	if(!GET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT)){
 		osThreadResume(stateMachineHandle);
 		osThreadSuspend(sendDataHandle);
+	}else{
+		osDelay(1000);
 	}
-    osDelay(1000);
-
   }
   /* USER CODE END StartTask02 */
 }
