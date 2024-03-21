@@ -1134,8 +1134,23 @@ void StartDefaultTask(void *argument)
 	  				osDelay(100);	// Checks condition every 100 ms
 	  				break;
 	  			case IDLE:
-	  				HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
-					osDelay(3000);
+	  				flowControllerADC(&hadc1);
+					volts = adcGet(&hadc1);
+					flowRate = readFlow(volts);
+					vacuumGaugeADC(&hadc1);
+					volts = adcGet(&hadc1);
+					vacuumScale = readVacuum(volts);
+
+	  				if(!GET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT)){
+						// Starts data Transfer
+						SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);
+						osThreadResume(sendDataHandle);
+
+						// Starts this timer
+						HAL_TIM_Base_Start_IT(&htim10);
+						resetTime();
+	  				}
+					osDelay(1000);
 	  				break;
 	  			case FAIL_STATE:
 	  				HAL_UART_Transmit(&huart3, (uint8_t*)&pumpTestsParameters[pump].eNextState, 1, HAL_MAX_DELAY);
@@ -1178,6 +1193,24 @@ void StartTask02(void *argument)
 		case START:
 			break;
 		case IDLE:
+			tx_buffer[0] = pumpTestsParameters[pump].eNextState;
+			tx_buffer[1] = pump;
+			tx_buffer[2] = hours;
+			tx_buffer[3] = minutes;
+			tx_buffer[4] = seconds;
+			tx_buffer[5] = vacuumScaleBytes[0];	// Torr
+			tx_buffer[6] = vacuumScaleBytes[1];
+			tx_buffer[7] = vacuumScaleBytes[2];
+			tx_buffer[8] = vacuumScaleBytes[3];
+			tx_buffer[9] = temperatureBytes[0];	// Temperature in C
+			tx_buffer[10] = temperatureBytes[1];
+			tx_buffer[11] = temperatureBytes[2];
+			tx_buffer[12] = temperatureBytes[3];
+			tx_buffer[13] = flowRateBytes[0];	// L/min
+			tx_buffer[14] = flowRateBytes[1];
+			tx_buffer[15] = flowRateBytes[2];
+			tx_buffer[16] = flowRateBytes[3];
+			tx_buffer_size = 17;
 			break;
 		case FAIL_STATE:
 			break;

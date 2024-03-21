@@ -35,7 +35,7 @@ def find_stm32_port(title_textbox, textbox):
             # Check if the port description matches "STMicroelectronics STLink Virtual COM Port"
             if "STMicroelectronics STLink Virtual COM Port" in port.description or "USB Serial Port" in port.description:
                 # Found the STLink Virtual COM Port
-                textbox.insert('end', "\nSTLink Virtual COM Port found on:", port.device)
+                # textbox.insert('end', "\nSTLink Virtual COM Port found on:", port.device)
                 # Close the serial connection
                 ser.close()
                 # Return the COM port
@@ -60,11 +60,9 @@ def writeInitData(file,data):
         initDataFile.close()
 
 def protocol_0(title_textbox, textbox, ser):
-    data_to_send = [1,3,5,7,9,11,13,0,0,0,0,0,0,0,0,0,0,0,0,20] 
-    # data_to_send = [0,7,13,11,13,13,13,0,0,0,0,0,0,0,0,0,0,0,0,0] 
+    # data_to_send = [1,3,5,7,9,11,13,0,0,0,0,0,0,0,0,0,0,0,0,20] 
+    data_to_send = [13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20] 
     ser.write(bytes(data_to_send))
-    title_textbox.delete("1.0",'end')
-    title_textbox.insert('end', "Starting Pump Test!\n")
     textbox.insert('end', "Protocol 0: START\n")
 
 
@@ -201,9 +199,16 @@ def protocol_12(title_textbox, textbox, ser):
     textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_13(title_textbox,textbox, ser):
+    processData()
+    # Update title of the textbox
     title_textbox.delete('1.0','end')
     textbox.delete('1.0','end')
-    title_textbox.insert('end', "Protocol 13: IDLE\n") 
+    title_textbox.insert('end','IDLE')
+    textbox.insert('end',f"Current Pump: {pump + 1}\n\n")
+    textbox.insert('end', f"Time: {hours:02d}:{minutes:02d}:{seconds:02d}\n\n")
+    textbox.insert('end',f"Vacuum Pressure: {vacuum_pressure} Torr\n\n")
+    textbox.insert('end',f"Current Pump Temperature: {temperature} C\n\n")
+    textbox.insert('end',f"Current Flow rate: {flow_rate} L/min \n\n")
 
 def protocol_14(title_textbox, textbox, ser):
     textbox.insert('end', "\nProtocol 14: FAIL_STATE\n")
