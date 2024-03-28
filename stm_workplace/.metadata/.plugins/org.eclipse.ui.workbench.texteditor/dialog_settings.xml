@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);"/>
+		<item key="selection" value="tx_frame"/>
 		<list key="findhistory">
+			<item value="tx_command"/>
 			<item value="SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);"/>
 			<item value="tempurature"/>
 			<item value="FlowRate"/>
@@ -22,9 +23,9 @@
 			<item value="HAL_TIM_Base_Start_IT"/>
 			<item value="__weak void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)"/>
 			<item value="HAL_TIM_PWM_PulseFinishedCallback("/>
-			<item value="TIM17_IRQHandler"/>
 		</list>
 		<list key="replacehistory">
+			<item value="tx_frame"/>
 			<item value="temperature"/>
 			<item value="flowRate"/>
 		</list>
