@@ -1159,12 +1159,14 @@ void accessPumpData(UART_HandleTypeDef* huart){
  8000992:	4b10      	ldr	r3, [pc, #64]	; (80009d4 <accessPumpData+0x78>)
  8000994:	2230      	movs	r2, #48	; 0x30
  8000996:	725a      	strb	r2, [r3, #9]
-    tx_frame[10] = '9';
+    //tx_frame[10] = '9';
+    //tx_frame[11] = convertToAscii(0x0E);
+    tx_frame[10] = '0';
  8000998:	4b0e      	ldr	r3, [pc, #56]	; (80009d4 <accessPumpData+0x78>)
- 800099a:	2239      	movs	r2, #57	; 0x39
+ 800099a:	2230      	movs	r2, #48	; 0x30
  800099c:	729a      	strb	r2, [r3, #10]
-    tx_frame[11] = convertToAscii(0x0E);
- 800099e:	200e      	movs	r0, #14
+    tx_frame[11] = convertToAscii(0x01);
+ 800099e:	2001      	movs	r0, #1
  80009a0:	f000 f81e 	bl	80009e0 <convertToAscii>
  80009a4:	4603      	mov	r3, r0
  80009a6:	461a      	mov	r2, r3

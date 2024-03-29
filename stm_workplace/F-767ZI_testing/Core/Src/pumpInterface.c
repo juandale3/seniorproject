@@ -33,8 +33,10 @@ void accessPumpData(UART_HandleTypeDef* huart){
     tx_frame[7] = '0';
     tx_frame[8] = '0';
     tx_frame[9] = '0';
-    tx_frame[10] = '9';
-    tx_frame[11] = convertToAscii(0x0E);
+    //tx_frame[10] = '9';
+    //tx_frame[11] = convertToAscii(0x0E);
+    tx_frame[10] = '0';
+    tx_frame[11] = convertToAscii(0x01);
     // End of TX
     tx_frame[12] = ETX;
 
