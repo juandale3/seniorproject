@@ -32,14 +32,14 @@ float flowRestriction = 0.0;
 
 // Pins
 // PA0, input pin DI1
-static GPIO_InitTypeDef FlowMethodPin = {GPIO_PIN_12, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
-static GPIO_TypeDef * FlowMethodGroup = GPIOC;
+static GPIO_InitTypeDef FlowMethodPin = {GPIO_PIN_13, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_TypeDef * FlowMethodGroup = GPIOD;	// Test this
 // PA1, input pin DI2
-static GPIO_InitTypeDef ContactDI2Pin = {GPIO_PIN_9, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
-static GPIO_TypeDef * ContactDI2Group = GPIOC;
+static GPIO_InitTypeDef ContactDI2Pin = {GPIO_PIN_12, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_TypeDef * ContactDI2Group = GPIOD;
 // PA2, input pin DI3
-static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_8, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
-static GPIO_TypeDef * ContactDI3Group = GPIOC;
+static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_11, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_TypeDef * ContactDI3Group = GPIOD;
 
 static GPIO_TypeDef * ModeInput2Group = GPIOB;
 static uint16_t ModeInput2Pin = GPIO_PIN_6;

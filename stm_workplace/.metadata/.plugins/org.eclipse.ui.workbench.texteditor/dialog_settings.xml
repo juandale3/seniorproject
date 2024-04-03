@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="tx_frame"/>
+		<item key="selection" value="ADC"/>
 		<list key="findhistory">
+			<item value="adc"/>
 			<item value="tx_command"/>
 			<item value="SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);"/>
 			<item value="tempurature"/>
@@ -22,7 +23,6 @@
 			<item value="HAL_TIM_IRQHandler"/>
 			<item value="HAL_TIM_Base_Start_IT"/>
 			<item value="__weak void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)"/>
-			<item value="HAL_TIM_PWM_PulseFinishedCallback("/>
 		</list>
 		<list key="replacehistory">
 			<item value="tx_frame"/>
@@ -33,8 +33,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1420"/>
 		<item key="DIALOG_Y_ORIGIN" value="225"/>
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_WIDTH" value="511"/>
+		<item key="DIALOG_HEIGHT" value="523"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 </section>
