@@ -19,8 +19,8 @@ void printMsg(char * str, UART_HandleTypeDef *huart2);		// Prints char[] through
 void listenMsg(char* buffer,UART_HandleTypeDef *huart);
 //void solenoidOpen(GPIO_TypeDef * solenoidGroup, uint16_t solenoidPin);
 //void solenoidClose(GPIO_TypeDef * solenoidGroup, uint16_t solenoidPin);
-void solenoidOpen();
-void solenoidClose();
+void solenoidOneOpen();
+void solenoidTwoOpen();
 
 
 #endif /* INC_PROJECT_CALLS_H_ */

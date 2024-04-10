@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="ADC"/>
+		<item key="selection" value="solenoidOpen();"/>
 		<list key="findhistory">
+			<item value="solenoidOpen();"/>
+			<item value="solenoidOneOpen"/>
+			<item value="sol"/>
 			<item value="adc"/>
 			<item value="tx_command"/>
 			<item value="SET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT);"/>
@@ -20,9 +23,6 @@
 			<item value="code 4"/>
 			<item value="uart"/>
 			<item value="HAL_TIM_PeriodElapsedCallback"/>
-			<item value="HAL_TIM_IRQHandler"/>
-			<item value="HAL_TIM_Base_Start_IT"/>
-			<item value="__weak void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)"/>
 		</list>
 		<list key="replacehistory">
 			<item value="tx_frame"/>

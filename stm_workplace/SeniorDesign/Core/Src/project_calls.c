@@ -19,11 +19,11 @@ float adcVolts = 0;		// adcBitVal converted into volts
 
 
 // Pins
-//static GPIO_TypeDef * solenoidOneGroup = GPIOA;
-//static uint16_t solenoidOnePin = GPIO_PIN_1;
-//
-//static GPIO_TypeDef * solenoidTwoGroup = GPIOA;
-//static uint16_t solenoidTwoPin = GPIO_PIN_2;
+static GPIO_TypeDef * solenoidOneGroup = GPIOE;
+static uint16_t solenoidOnePin = GPIO_PIN_2;
+
+static GPIO_TypeDef * solenoidTwoGroup = GPIOD;
+static uint16_t solenoidTwoPin = GPIO_PIN_4;
 
 
 // Analog Variables
@@ -94,15 +94,16 @@ void listenMsg(char* buffer,UART_HandleTypeDef *huart) {
 
 }
 
-void solenoidOpen(){
-
-//	HAL_GPIO_WritePin(solenoidGroup, solenoidPin, 1);	// 3.3 V
+void solenoidOneOpen(){
+	HAL_GPIO_WritePin(solenoidOneGroup, solenoidOnePin, 1);	// 3.3 V
+	HAL_GPIO_WritePin(solenoidTwoGroup, solenoidTwoPin, 0);
 	return;
 }
-void solenoidClose(){
-
-//	HAL_GPIO_WritePin(solenoidGroup, solenoidPin, 0);	// gnd
+void solenoidTwoOpen(){
+	HAL_GPIO_WritePin(solenoidOneGroup, solenoidOnePin, 0);
+	HAL_GPIO_WritePin(solenoidTwoGroup, solenoidTwoPin, 1);
 	return;
 }
+
 
 // Static Functions		------------------------------------------------//

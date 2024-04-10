@@ -10,7 +10,7 @@ initDataFile = ".\data\initData.txt"
 
 textbox = customtkinter.CTkTextbox
 # Configure the serial port
-port = 'COM1'  # Change this to your COM port
+port = 'COM8'  # Change this to your COM port
 baud_rate = 115200  # Change this to match your microcontroller's baud rate
 serialData =""
 textbox_data = ""
@@ -35,7 +35,7 @@ def find_stm32_port(title_textbox, textbox):
             # Check if the port description matches "STMicroelectronics STLink Virtual COM Port"
             if "STMicroelectronics STLink Virtual COM Port" in port.description or "USB Serial Port" in port.description:
                 # Found the STLink Virtual COM Port
-                # textbox.insert('end', "\nSTLink Virtual COM Port found on:", port.device)
+                textbox.insert('end', "\nSTLink Virtual COM Port found on:", port.device)
                 # Close the serial connection
                 ser.close()
                 # Return the COM port

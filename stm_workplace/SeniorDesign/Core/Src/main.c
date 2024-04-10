@@ -360,7 +360,7 @@ static void MX_ADC1_Init(void)
 
   /* USER CODE END ADC1_Init 0 */
 
-  ADC_ChannelConfTypeDef sConfig = {0};
+//  ADC_ChannelConfTypeDef sConfig = {0};
 
   /* USER CODE BEGIN ADC1_Init 1 */
 
@@ -377,7 +377,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 2;
+  hadc1.Init.NbrOfConversion = 1;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -387,23 +387,23 @@ static void MX_ADC1_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_3;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
-  */
-  sConfig.Channel = ADC_CHANNEL_10;
-  sConfig.Rank = ADC_REGULAR_RANK_2;
-  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
+//  sConfig.Channel = ADC_CHANNEL_3;
+//  sConfig.Rank = ADC_REGULAR_RANK_1;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
+//
+//  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+//  */
+//  sConfig.Channel = ADC_CHANNEL_10;
+//  sConfig.Rank = ADC_REGULAR_RANK_2;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
@@ -601,6 +601,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
@@ -610,21 +611,31 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOG_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOF, motor2gpio_Pin|GPIO_PIN_5, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(motor1GPIO_GPIO_Port, motor1GPIO_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LD1_Pin|GPIO_PIN_2|LD3_Pin|GPIO_PIN_6
                           |LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_2
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_4
                           |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_2|GPIO_PIN_3|USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_3|USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : PE2 */
+  GPIO_InitStruct.Pin = GPIO_PIN_2;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /*Configure GPIO pin : USER_Btn_Pin */
   GPIO_InitStruct.Pin = USER_Btn_Pin;
@@ -654,12 +665,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF11_ETH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : motor1GPIO_Pin */
-  GPIO_InitStruct.Pin = motor1GPIO_Pin;
+  /*Configure GPIO pin : PC2 */
+  GPIO_InitStruct.Pin = GPIO_PIN_2;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(motor1GPIO_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : RMII_REF_CLK_Pin RMII_MDIO_Pin RMII_CRS_DV_Pin */
   GPIO_InitStruct.Pin = RMII_REF_CLK_Pin|RMII_MDIO_Pin|RMII_CRS_DV_Pin;
@@ -686,17 +697,17 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF11_ETH;
   HAL_GPIO_Init(RMII_TXD1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PD11 PD12 PD13 PD2
+  /*Configure GPIO pins : PD11 PD12 PD13 PD4
                            PD5 PD6 PD7 */
-  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_2
+  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_4
                           |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PG2 PG3 USB_PowerSwitchOn_Pin */
-  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3|USB_PowerSwitchOn_Pin;
+  /*Configure GPIO pins : PG3 USB_PowerSwitchOn_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_3|USB_PowerSwitchOn_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -763,14 +774,18 @@ void StartDefaultTask(void *argument)
 	  switch(pumpTestsParameters[pump].eNextState) {
 	  			case START:
 	  				osThreadSuspend(sendDataHandle);
-					volts = setFlowRate(0);
-					flowControllerADC(&hadc1);
-					// dacSet(&hdac, DAC_CHANNEL_1, volts);
-					dacSet(&hdac, DAC_CHANNEL_1, 1);
-					resetTime();
-					stepperOpen();
-					HAL_TIM_Base_Start_IT(&htim7);
-
+					volts = setFlowRate(0);					// assigns volts to 0 L/min
+					dacSet(&hdac, DAC_CHANNEL_1, volts);	// Sets volts
+					flowControllerADC(&hadc1);				// Changes ADC mult to read Flow Ctrl
+					flowStateOpen();						// Opens Flow Ctrl
+					resetTime();							// Resets Clk
+					stepperOpen();							// Assigns Stepper Motor to Open
+					HAL_TIM_Base_Start_IT(&htim7);			// Opens Stepper Motor
+					if(pump){
+						solenoidTwoOpen();
+					}else{
+						solenoidOneOpen();
+					}
 //	  				pumpTestsParameters[0].stateList[0] = START;
 //	  				pumpTestsParameters[0].stateList[1] = IDLE;
 //	  				//pumpTestsParameters[0].stateList[1] = VAC_ACHIEVMENT_TEST_INIT;
@@ -810,8 +825,8 @@ void StartDefaultTask(void *argument)
 
 	  				flowStateClose();
 	  				stepperOpen();
-	  				solenoidOpen();
-	  				solenoidClose();
+	  				//solenoidOneOpen();
+	  				//solenoidClose();
 	  				vacuumGaugeADC(&hadc1);
 	  				pumpTestsParameters[pump].eNextState = VAC_ACHIEVMENT_TEST;
 
@@ -874,8 +889,8 @@ void StartDefaultTask(void *argument)
 
 	  				flowStateControl();
 	  				stepperOpen();
-	  				solenoidOpen();
-	  				solenoidClose();
+//	  				solenoidOpen();
+//	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
 	  				pumpTestsParameters[pump].eNextState = SPECIAL_TEST;
 	  				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].STI[8]));
@@ -943,8 +958,8 @@ void StartDefaultTask(void *argument)
 
 	  				flowStateOpen();
 	  				stepperOpen();
-	  				solenoidOpen();
-	  				solenoidClose();
+//	  				solenoidOpen();
+//	  				solenoidClose();
 	  				vacuumGaugeADC(&hadc1);
 	  				pumpTestsParameters[pump].eNextState = WARM_UP;
 
@@ -997,8 +1012,8 @@ void StartDefaultTask(void *argument)
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].LTI[0], 8, HAL_MAX_DELAY);
 
 	  				stepperOpen();
-	  				solenoidOpen();
-	  				solenoidClose();
+//	  				solenoidOpen();
+//	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
 	  				pumpTestsParameters[pump].eNextState = LOAD_TEST;
 	  				dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
@@ -1055,8 +1070,8 @@ void StartDefaultTask(void *argument)
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[0].OTI[0], 8, HAL_MAX_DELAY);
 
 	  				stepperOpen();
-	  				solenoidOpen();
-	  				solenoidClose();
+//	  				solenoidOpen();
+//	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
 	  				pumpTestsParameters[pump].eNextState = OPERATION_TEST;
 	  				//dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
@@ -1117,8 +1132,8 @@ void StartDefaultTask(void *argument)
 					stepperStep(800);				// close valve half way
 					HAL_TIM_Base_Start_IT(&htim7);	// starts closing
 	  				stepperOpen();
-	  				solenoidOpen();
-	  				solenoidClose();
+//	  				solenoidOpen();
+//	  				solenoidClose();
 	  				flowControllerADC(&hadc1);
 					pumpTestsParameters[pump].eNextState = ULTIMATE_MEASURE_TEST;
 	  				//dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(pumpTestsParameters[pump].LTI[8]));
@@ -1164,6 +1179,23 @@ void StartDefaultTask(void *argument)
 					vacuumGaugeADC(&hadc1);
 					volts = adcGet(&hadc1);
 					vacuumScale = readVacuum(volts);
+
+					// This is the tests for the Flow Controller
+					flowRateMethod(0);
+					//flowStateControl();
+					//flowStateClose();
+					flowStateOpen();
+					dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(10));
+
+					solenoidTwoOpen();
+					// This is testing the Stepper Moter
+					if(seconds%10 == 0){
+						stepperClose();
+						HAL_TIM_Base_Start_IT(&htim7);
+					}else if(seconds%10 == 5){
+						stepperOpen();
+						HAL_TIM_Base_Start_IT(&htim7);
+					}
 
 	  				if(!GET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT)){
 						// Starts data Transfer

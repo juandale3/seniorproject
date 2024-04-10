@@ -32,20 +32,20 @@ float flowRestriction = 0.0;
 
 // Pins
 // PA0, input pin DI1
-static GPIO_InitTypeDef FlowMethodPin = {GPIO_PIN_13, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_InitTypeDef FlowMethodPin = {GPIO_PIN_11, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
 static GPIO_TypeDef * FlowMethodGroup = GPIOD;	// Test this
 // PA1, input pin DI2
 static GPIO_InitTypeDef ContactDI2Pin = {GPIO_PIN_12, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
 static GPIO_TypeDef * ContactDI2Group = GPIOD;
 // PA2, input pin DI3
-static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_11, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
+static GPIO_InitTypeDef ContactDI3Pin = {GPIO_PIN_13, GPIO_MODE_INPUT, GPIO_NOPULL, 0, 0};
 static GPIO_TypeDef * ContactDI3Group = GPIOD;
 
 static GPIO_TypeDef * ModeInput2Group = GPIOB;
-static uint16_t ModeInput2Pin = GPIO_PIN_6;
+static uint16_t ModeInput2Pin = GPIO_PIN_2;
 
 static GPIO_TypeDef * ModeInput1Group = GPIOB;
-static uint16_t ModeInput1Pin = GPIO_PIN_2;
+static uint16_t ModeInput1Pin = GPIO_PIN_6;
 //static GPIO_InitTypeDef
 //static GPIO_TypeDef *
 
@@ -78,7 +78,8 @@ float readFlow(float voltage)
 //	instFlow = (voltage - 0.662)/  0.0132;
 //	return instFlow;
 
-	instFlow = (voltage/voltageDivider - (float)referenceVolt)/scalingFactor;
+	//instFlow = (voltage/voltageDivider - (float)referenceVolt)/scalingFactor;
+	instFlow = (voltage - 0.652) / 0.0128;	// calibrated
 	return instFlow;
 }
 
@@ -164,12 +165,18 @@ void flowRateSP(uint8_t setPoint){
 }
 
 void flowStateClose(void){
+	HAL_GPIO_WritePin(ModeInput1Group, ModeInput1Pin, 0);
+	HAL_GPIO_WritePin(ModeInput2Group, ModeInput2Pin, 0);
 return;
 }
 void flowStateOpen(void){
+	HAL_GPIO_WritePin(ModeInput1Group, ModeInput1Pin, 1);
+	HAL_GPIO_WritePin(ModeInput2Group, ModeInput2Pin, 0);
 return;
 }
 void flowStateControl(void){
+	//HAL_GPIO_WritePin(ModeInput1Group, ModeInput1Pin, 0);	// PB_6 state is irrelevant
+	HAL_GPIO_WritePin(ModeInput2Group, ModeInput2Pin, 1);
 return;
 }
 
