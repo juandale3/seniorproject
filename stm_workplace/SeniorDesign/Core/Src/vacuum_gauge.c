@@ -28,7 +28,7 @@ void vacuumGaugeADC(ADC_HandleTypeDef* hadc){
 
 	sConfig.Channel = ADC_CHANNEL_10;
 	sConfig.Rank = ADC_REGULAR_RANK_1;
-	sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES;
+	sConfig.SamplingTime = ADC_SAMPLETIME_56CYCLES;
 
 	if (HAL_ADC_ConfigChannel(hadc, &sConfig) != HAL_OK)
 	{

@@ -4,3 +4,5 @@ minutes
 tx_buffer
 tx_frame
 currPos
+vacVolts
+flowVolts
