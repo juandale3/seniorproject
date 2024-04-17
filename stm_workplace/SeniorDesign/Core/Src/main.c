@@ -813,8 +813,10 @@ void StartDefaultTask(void *argument)
 					flowControllerADC(&hadc1);				// Changes ADC mult to read Flow Ctrl
 					flowStateOpen();						// Opens Flow Ctrl
 					resetTime();							// Resets Clk
-					stepperOpen();							// Assigns Stepper Motor to Open
+
+					recalibrate();
 					HAL_TIM_Base_Start_IT(&htim7);			// Opens Stepper Motor
+
 					if(pump){
 						solenoidTwoOpen();
 					}else{
@@ -837,6 +839,8 @@ void StartDefaultTask(void *argument)
 
 					// Receives State List
 					HAL_UART_Receive(&huart3, (uint8_t*)&pumpTestsParameters[pump].stateList, 20, HAL_MAX_DELAY);
+
+
 
 					pumpTestsParameters[pump].eNextState = *(pumpTestsParameters[pump]).currentState;
 	  				break;
@@ -1223,13 +1227,13 @@ void StartDefaultTask(void *argument)
 
 					solenoidTwoOpen();
 					// This is testing the Stepper Moter
-					if(seconds%10 == 0){
-						stepperClose();
-						HAL_TIM_Base_Start_IT(&htim7);
-					}else if(seconds%10 == 5){
-						stepperOpen();
-						HAL_TIM_Base_Start_IT(&htim7);
-					}
+//					if(seconds%10 == 0){
+//						stepperClose();
+//						HAL_TIM_Base_Start_IT(&htim7);
+//					}else if(seconds%10 == 5){
+//						stepperOpen();
+//						HAL_TIM_Base_Start_IT(&htim7);
+//					}
 
 					if(seconds%2 == 0){
 						HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_6);
@@ -1376,13 +1380,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   	}
   if(htim->Instance == TIM7) { // This is for PWM
 	  currPos = toggleCount/2;
-	if(steps != currPos || (toggleCount%2) != 0){
+	if(steps != currPos || ((toggleCount%2) != 0)){
 		if(steps > currPos ){
-			HAL_GPIO_WritePin(dirGroup, dirPin, RESET);
+			HAL_GPIO_WritePin(dirGroup, dirPin, SET);
 			toggleCount++;
 		}
 		else {
-			HAL_GPIO_WritePin(dirGroup, dirPin, SET);
+			HAL_GPIO_WritePin(dirGroup, dirPin, RESET);
 			toggleCount--;
 		}
 		HAL_GPIO_TogglePin(pulGroup, pulPin);

@@ -52,5 +52,6 @@ void stepperStep(uint16_t num){
 
 void recalibrate(){
 	currPos = MAX_STEP;
+	toggleCount = currPos * 2;
 	stepperOpen();
 }

@@ -79,7 +79,7 @@ float readFlow(float voltage)
 //	return instFlow;
 
 	//instFlow = (voltage/voltageDivider - (float)referenceVolt)/scalingFactor;
-	instFlow = (voltage - 0.652) / 0.0128;	// calibrated
+	instFlow = (voltage - 0.63) / 0.0128;	// calibrated
 	return instFlow;
 }
 
