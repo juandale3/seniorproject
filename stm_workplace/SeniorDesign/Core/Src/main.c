@@ -1227,13 +1227,13 @@ void StartDefaultTask(void *argument)
 
 					solenoidTwoOpen();
 					// This is testing the Stepper Moter
-//					if(seconds%10 == 0){
-//						stepperClose();
-//						HAL_TIM_Base_Start_IT(&htim7);
-//					}else if(seconds%10 == 5){
-//						stepperOpen();
-//						HAL_TIM_Base_Start_IT(&htim7);
-//					}
+					if(seconds%10 == 0){
+						stepperClose();
+						HAL_TIM_Base_Start_IT(&htim7);
+					}else if(seconds%10 == 5){
+						stepperOpen();
+						HAL_TIM_Base_Start_IT(&htim7);
+					}
 
 					if(seconds%2 == 0){
 						HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_6);
