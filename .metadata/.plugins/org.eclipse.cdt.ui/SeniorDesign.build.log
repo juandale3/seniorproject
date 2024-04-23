@@ -1,6 +1,10 @@
-00:03:55 **** Building Selected Files of configuration Debug for project SeniorDesign ****
-Info: Internal Builder is used for build
-arm-none-eabi-gcc "..\\Core\\Src\\state_machine.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core\\Src\\state_machine.o" 
+22:48:54 **** Incremental Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  62096	    568	  22944	  85608	  14e68	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
 
-00:03:55 Build Finished. 0 errors, 0 warnings. (took 156ms)
+22:48:55 Build Finished. 0 errors, 0 warnings. (took 415ms)
 
