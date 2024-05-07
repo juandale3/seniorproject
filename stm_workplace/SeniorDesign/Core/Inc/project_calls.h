@@ -9,7 +9,11 @@
 #define INC_PROJECT_CALLS_H_
 
 
+GPIO_TypeDef * greenLightGroup = GPIOD;
+uint16_t greenLightPin = GPIO_PIN_5;
 
+GPIO_TypeDef * redLightGroup = GPIOD;
+uint16_t redLightPin = GPIO_PIN_6;
 // Public Functions Declarations
 //float adcFiltered(ADC_HandleTypeDef *hadc1);
 void dacSet(DAC_HandleTypeDef *dac, uint32_t channel, float volts);

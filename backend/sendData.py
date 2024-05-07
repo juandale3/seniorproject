@@ -67,8 +67,8 @@ def writeInitData(file,data):
 
 def protocol_0(title_textbox, textbox, ser):
     stateData.db["currentState"] = 0
-    data_to_send = [1,3,5,7,9,11,13,0,0,0,0,0,0,0,0,0,0,0,0,20] 
-    #data_to_send = [13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20] 
+    #data_to_send = [1,3,5,7,9,11,13,0,0,0,0,0,0,0,0,0,0,0,0,20] 
+    data_to_send = [13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20] 
     ser.write(bytes(data_to_send))
     textbox.insert('end', "Protocol 0: START\n")
 
