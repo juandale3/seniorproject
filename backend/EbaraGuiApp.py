@@ -110,7 +110,7 @@ class App(customtkinter.CTk):
 
 
 
-
+    #PARAMETER PAGE LOADS UP AFTER INIT WINDOW (STM SCAN)
     def parameters(self):
         self.parameter_window = customtkinter.CTkToplevel(self)
         self.parameter_window.title("Parameter Window")
@@ -213,15 +213,16 @@ class App(customtkinter.CTk):
 
         # Add a button to the main content area
         self.pump1_button = customtkinter.CTkButton(self.main_content, height=150, width=150,text="Start \nPump 1" ,
-                                                    command= lambda: self.handleSendData("STARTING",self.pump1_button))
+                                                    command= lambda: self.handleSendData("STARTING", self.pump1_button))
         self.pump1_button.grid(row=2, column=3,  padx=10,pady=10, sticky="n")
 
         
         self.pump2_button = customtkinter.CTkButton(self.main_content,height=150, width=150, text="Start \n Pump 2")
         self.pump2_button.grid(row=2, column=4,  padx=10,pady=10, sticky="n")
+
+        self.stop_button = customtkinter.CTkButton(self.main_content,height=150, width=150, fg_color="#8B0000", bg_color="#8B0000", corner_radius=2, text_color="white",text="STOP TEST")
+        self.stop_button.grid(row=2, column=4, padx=10, pady=10, sticky="s")
         
-
-
         #DATA BOX
 
         
@@ -292,6 +293,7 @@ class App(customtkinter.CTk):
                         
                     else:
                         print("Unknown protocol for byte:", ord(received_byte))
+                
 
         except KeyboardInterrupt:
             print("\nExiting program.")
@@ -300,28 +302,12 @@ class App(customtkinter.CTk):
             # Close the serial port
             sendData.ser.close() 
 
+    def stopTest(self):
+        sendData.protocol_0(self.title_textbox,self.textbox, sendData.ser)
+
 
     def update_textbox(self,text):
         self.textbox.insert('end',text)
-
-    
-
-
-
-
-    def show_content2(self):
-        # Update to content 2
-        self.clear_main_content()
-        label = customtkinter.CTkLabel(self.main_content, text="Pump 1 Data")
-        label.grid(pady=20, padx=20)
-
-        label2 = customtkinter.CTkLabel(self.main_content,text="TEST")
-        label2.grid(row = 1, column = 0)
-
-        label3 = customtkinter.CTkLabel(self.main_content,text="TEST2")
-        label3.grid(row = 1, column = 2)
-
- 
 
 
     def startProgressBar(self):
@@ -332,33 +318,6 @@ class App(customtkinter.CTk):
         self.progressbar_1.grid(row=4, column=1, sticky="e")
         self.progressbar_1.configure(mode="indeterminate")
         self.progressbar_1.start()
-       
-
-    def show_content3(self):
-        # Update to content 3z
-        self.clear_main_content()
-        label = customtkinter.CTkLabel(self.main_content, text="Pump 2 Data")
-        label.grid(pady=20, padx=20)
-        
-        textbox = customtkinter.CTkTextbox(self.main_content,height=200 ,width=400)
-        textbox.grid(row=2, column=2)
-
-        textbox.insert("0.0", "CTkTextbox\n\n" +"Pump 2 Data Here\n\n")
-
-    def show_content4(self):
-        # Update to content 4
-        self.clear_main_content()
-        label = customtkinter.CTkLabel(self.main_content, text="Pump Status Data")
-        label.grid(pady=20, padx=20)
-        
-        self.textbox = customtkinter.CTkTextbox(self.main_content, height=500, width=500)
-        self.textbox.grid(row=2, column=2)
-
-        self.update_serial_data()
-
-    def start_serial_connection(self):
-        self.ser = serial.Serial('COM13', 115200, timeout=1)
-        self.ser.flushInput()  # Clear any existing data in the buffer
 
 
   
@@ -369,13 +328,6 @@ class App(customtkinter.CTk):
 
 
 if __name__ == '__main__':
-    #webapp.run(debug=True, port = 8080)
-
     app = App()
     app.mainloop()
  
-'''
-if __name__ == "__main__":
-    app = App()
-    app.mainloop()
-'''

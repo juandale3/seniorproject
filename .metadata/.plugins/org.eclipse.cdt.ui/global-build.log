@@ -287,3 +287,10 @@ arm-none-eabi-size  SeniorDesign.elf
   62096	    568	  22944	  85608	  14e68	SeniorDesign.elf
 Finished building: default.size.stdout
  
+11:49:53 **** Build of configuration Debug for project SeniorDesign ****
+make -j12 all 
+arm-none-eabi-size  SeniorDesign.elf 
+   text	   data	    bss	    dec	    hex	filename
+  62096	    568	  22944	  85608	  14e68	SeniorDesign.elf
+Finished building: default.size.stdout
+ 
