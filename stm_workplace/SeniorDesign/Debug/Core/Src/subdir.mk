@@ -9,6 +9,7 @@ C_SRCS += \
 ../Core/Src/freertos.c \
 ../Core/Src/main.c \
 ../Core/Src/project_calls.c \
+../Core/Src/pumpInterface.c \
 ../Core/Src/stepperMotor.c \
 ../Core/Src/stm32f7xx_hal_msp.c \
 ../Core/Src/stm32f7xx_hal_timebase_tim.c \
@@ -23,6 +24,7 @@ OBJS += \
 ./Core/Src/freertos.o \
 ./Core/Src/main.o \
 ./Core/Src/project_calls.o \
+./Core/Src/pumpInterface.o \
 ./Core/Src/stepperMotor.o \
 ./Core/Src/stm32f7xx_hal_msp.o \
 ./Core/Src/stm32f7xx_hal_timebase_tim.o \
@@ -37,6 +39,7 @@ C_DEPS += \
 ./Core/Src/freertos.d \
 ./Core/Src/main.d \
 ./Core/Src/project_calls.d \
+./Core/Src/pumpInterface.d \
 ./Core/Src/stepperMotor.d \
 ./Core/Src/stm32f7xx_hal_msp.d \
 ./Core/Src/stm32f7xx_hal_timebase_tim.d \
@@ -54,7 +57,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/flow_controller.cyclo ./Core/Src/flow_controller.d ./Core/Src/flow_controller.o ./Core/Src/flow_controller.su ./Core/Src/freertos.cyclo ./Core/Src/freertos.d ./Core/Src/freertos.o ./Core/Src/freertos.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/project_calls.cyclo ./Core/Src/project_calls.d ./Core/Src/project_calls.o ./Core/Src/project_calls.su ./Core/Src/stepperMotor.cyclo ./Core/Src/stepperMotor.d ./Core/Src/stepperMotor.o ./Core/Src/stepperMotor.su ./Core/Src/stm32f7xx_hal_msp.cyclo ./Core/Src/stm32f7xx_hal_msp.d ./Core/Src/stm32f7xx_hal_msp.o ./Core/Src/stm32f7xx_hal_msp.su ./Core/Src/stm32f7xx_hal_timebase_tim.cyclo ./Core/Src/stm32f7xx_hal_timebase_tim.d ./Core/Src/stm32f7xx_hal_timebase_tim.o ./Core/Src/stm32f7xx_hal_timebase_tim.su ./Core/Src/stm32f7xx_it.cyclo ./Core/Src/stm32f7xx_it.d ./Core/Src/stm32f7xx_it.o ./Core/Src/stm32f7xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f7xx.cyclo ./Core/Src/system_stm32f7xx.d ./Core/Src/system_stm32f7xx.o ./Core/Src/system_stm32f7xx.su ./Core/Src/vacuum_gauge.cyclo ./Core/Src/vacuum_gauge.d ./Core/Src/vacuum_gauge.o ./Core/Src/vacuum_gauge.su
+	-$(RM) ./Core/Src/flow_controller.cyclo ./Core/Src/flow_controller.d ./Core/Src/flow_controller.o ./Core/Src/flow_controller.su ./Core/Src/freertos.cyclo ./Core/Src/freertos.d ./Core/Src/freertos.o ./Core/Src/freertos.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/project_calls.cyclo ./Core/Src/project_calls.d ./Core/Src/project_calls.o ./Core/Src/project_calls.su ./Core/Src/pumpInterface.cyclo ./Core/Src/pumpInterface.d ./Core/Src/pumpInterface.o ./Core/Src/pumpInterface.su ./Core/Src/stepperMotor.cyclo ./Core/Src/stepperMotor.d ./Core/Src/stepperMotor.o ./Core/Src/stepperMotor.su ./Core/Src/stm32f7xx_hal_msp.cyclo ./Core/Src/stm32f7xx_hal_msp.d ./Core/Src/stm32f7xx_hal_msp.o ./Core/Src/stm32f7xx_hal_msp.su ./Core/Src/stm32f7xx_hal_timebase_tim.cyclo ./Core/Src/stm32f7xx_hal_timebase_tim.d ./Core/Src/stm32f7xx_hal_timebase_tim.o ./Core/Src/stm32f7xx_hal_timebase_tim.su ./Core/Src/stm32f7xx_it.cyclo ./Core/Src/stm32f7xx_it.d ./Core/Src/stm32f7xx_it.o ./Core/Src/stm32f7xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f7xx.cyclo ./Core/Src/system_stm32f7xx.d ./Core/Src/system_stm32f7xx.o ./Core/Src/system_stm32f7xx.su ./Core/Src/vacuum_gauge.cyclo ./Core/Src/vacuum_gauge.d ./Core/Src/vacuum_gauge.o ./Core/Src/vacuum_gauge.su
 
 .PHONY: clean-Core-2f-Src
 

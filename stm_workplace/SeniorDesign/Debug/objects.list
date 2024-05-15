@@ -2,6 +2,7 @@
 "./Core/Src/freertos.o"
 "./Core/Src/main.o"
 "./Core/Src/project_calls.o"
+"./Core/Src/pumpInterface.o"
 "./Core/Src/stepperMotor.o"
 "./Core/Src/stm32f7xx_hal_msp.o"
 "./Core/Src/stm32f7xx_hal_timebase_tim.o"

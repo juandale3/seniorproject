@@ -39,7 +39,7 @@ void vacuumGaugeADC(ADC_HandleTypeDef* hadc){
 
 float readVacuum(float voltage){
 
-	float exponent = (voltage * 3.13 - referenceVoltage)/scalingFactor;
+	float exponent = (voltage * 3.198 - referenceVoltage)/scalingFactor;
 	pressure = referencePressure * pow(10, exponent);
 
 	return pressure;

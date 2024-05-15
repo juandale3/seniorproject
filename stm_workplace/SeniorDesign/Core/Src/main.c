@@ -542,7 +542,7 @@ static void MX_UART5_Init(void)
 
   /* USER CODE END UART5_Init 1 */
   huart5.Instance = UART5;
-  huart5.Init.BaudRate = 115200;
+  huart5.Init.BaudRate = 9600;
   huart5.Init.WordLength = UART_WORDLENGTH_8B;
   huart5.Init.StopBits = UART_STOPBITS_1;
   huart5.Init.Parity = UART_PARITY_NONE;
@@ -811,19 +811,20 @@ void StartDefaultTask(void *argument)
 	  			case START:
 	  				osThreadSuspend(sendDataHandle);
 					volts = setFlowRate(0);					// assigns volts to 0 L/min
-					dacSet(&hdac, DAC_CHANNEL_1, volts);	// Sets volts
+					//dacSet(&hdac, DAC_CHANNEL_1, volts);	// Sets volts
 					flowControllerADC(&hadc1);				// Changes ADC mult to read Flow Ctrl
-					flowStateOpen();						// Opens Flow Ctrl
+					//flowStateOpen();						// Opens Flow Ctrl
 					resetTime();							// Resets Clk
 
 					recalibrate();
 					HAL_TIM_Base_Start_IT(&htim7);			// Opens Stepper Motor
 
-					if(pump){
-						solenoidTwoOpen();
-					}else{
-						solenoidOneOpen();
-					}
+//					if(pump){
+//						solenoidTwoOpen();
+//					}else{
+//						solenoidOneOpen();
+//					}
+					solenoidTwoOpen();
 //	  				pumpTestsParameters[0].stateList[0] = START;
 //	  				pumpTestsParameters[0].stateList[1] = IDLE;
 //	  				//pumpTestsParameters[0].stateList[1] = VAC_ACHIEVMENT_TEST_INIT;
@@ -1222,12 +1223,12 @@ void StartDefaultTask(void *argument)
 
 					// This is the tests for the Flow Controller
 					flowRateMethod(0);
-					//flowStateControl();
 					//flowStateClose();
-					flowStateOpen();
-					dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(10));
+					//flowStateOpen();
+					flowStateControl();
+					dacSet(&hdac, DAC_CHANNEL_1, setFlowRate(50));
 
-					solenoidTwoOpen();
+					//solenoidTwoOpen();
 					// This is testing the Stepper Moter
 //					if(seconds%10 == 0){
 //						stepperClose();
@@ -1236,11 +1237,14 @@ void StartDefaultTask(void *argument)
 //						stepperOpen();
 //						HAL_TIM_Base_Start_IT(&htim7);
 //					}
+					//accessPumpData(&huart5);
 
-					if(seconds%2 == 0){
-						HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_6);
-						HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_5);
-					}
+//					if(seconds%2 == 0){
+//						HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_6);
+//						HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_5);
+//					}
+					HAL_GPIO_WritePin(greenLightGroup, greenLightPin, 1);
+					HAL_GPIO_WritePin(redLightGroup, redLightPin, 0);
 
 	  				if(!GET_FLAG_BIT(dataTransmitFlags, SEND_DATA_BIT)){
 						// Starts data Transfer

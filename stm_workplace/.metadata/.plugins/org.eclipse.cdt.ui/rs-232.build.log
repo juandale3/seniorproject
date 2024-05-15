@@ -1,10 +1,17 @@
-21:42:33 **** Incremental Build of configuration Debug for project rs-232 ****
+17:18:43 **** Incremental Build of configuration Debug for project rs-232 ****
 make -j12 all 
+arm-none-eabi-gcc "../Core/Src/pumpInterface.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/pumpInterface.d" -MT"Core/Src/pumpInterface.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/pumpInterface.o"
+arm-none-eabi-gcc -o "rs-232.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\oneju\STM32CubeIDE\seniorproject\stm_workplace\rs-232\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="rs-232.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: rs-232.elf
+ 
 arm-none-eabi-size  rs-232.elf 
+arm-none-eabi-objdump -h -S rs-232.elf  > "rs-232.list"
    text	   data	    bss	    dec	    hex	filename
-  11468	     20	   1860	  13348	   3424	rs-232.elf
+  36840	    476	   2300	  39616	   9ac0	rs-232.elf
 Finished building: default.size.stdout
  
+Finished building: rs-232.list
+ 
 
-21:42:33 Build Finished. 0 errors, 0 warnings. (took 693ms)
+17:18:44 Build Finished. 0 errors, 0 warnings. (took 1s.874ms)
 

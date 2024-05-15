@@ -26,6 +26,7 @@ static GPIO_TypeDef * solenoidTwoGroup = GPIOD;
 static uint16_t solenoidTwoPin = GPIO_PIN_4;
 
 
+
 // Analog Variables
 
 

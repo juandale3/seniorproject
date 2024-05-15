@@ -1,6 +1,6 @@
-../Core/Src/project_calls.c:38:6:dacSet	24	static
-../Core/Src/project_calls.c:44:7:adcGet	16	static
-../Core/Src/project_calls.c:82:6:printMsg	16	static
-../Core/Src/project_calls.c:88:6:listenMsg	16	static
-../Core/Src/project_calls.c:97:6:solenoidOneOpen	8	static
-../Core/Src/project_calls.c:102:6:solenoidTwoOpen	8	static
+../Core/Src/project_calls.c:39:6:dacSet	24	static
+../Core/Src/project_calls.c:45:7:adcGet	16	static
+../Core/Src/project_calls.c:83:6:printMsg	16	static
+../Core/Src/project_calls.c:89:6:listenMsg	16	static
+../Core/Src/project_calls.c:98:6:solenoidOneOpen	8	static
+../Core/Src/project_calls.c:103:6:solenoidTwoOpen	8	static
